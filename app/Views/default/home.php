@@ -6,7 +6,7 @@
     <div class="section no-pad-bot">
       <div class="container">
         <br><br>
-        <h1 class="header center teal-text text-lighten-2">Barmiton</h1>
+        <h1 class="header center white-text">Barmiton</h1>
         <div class="row center">
           <h5 class="header col s12 light">Plus de 1000 recettes de cocktails !</h5>
         </div>
@@ -17,7 +17,7 @@
 
       </div>
     </div>
-    <div class="parallax"><img src="<?= $this->assetUrl('img/background1.jpg') ?>" alt="Unsplashed background img 1"></div>
+    <div class="parallax"><img src="<?= $this->assetUrl('img/mojito.jpeg') ?>" alt="Unsplashed background img 1"></div>
   </div>
 
 
