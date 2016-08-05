@@ -1,6 +1,6 @@
 <?php
 
-namespace Model;
+namespace Model\Cocktail;
 
 class CocktailModel extends \W\Model\Model 
 {
@@ -39,11 +39,11 @@ class CocktailModel extends \W\Model\Model
 								'color' 		=> $_cocktail->color,
 								'skill' 		=> $_cocktail->skill->name,
 								'imgurl' 		=> "http://assets.absolutdrinks.com/drinks/" . $_cocktail->id . ".png",
-								'imgurlmodal' 	=> "http://assets.absolutdrinks.com/drinks/transparent-background-white/soft-shadow/floor-reflection/300x400/" . $_cocktail->id . ".png",
+								'imgurlmodal' 	=> "http://assets.absolutdrinks.com/drinks/transparent-background-white/soft-shadow/floor-reflection/450x600/" . $_cocktail->id . ".png",
 
 			);
 		
-			$cocktaillist[] = $_cocktailcard;
+			$_cocktaillist[] = $_cocktailcard;
 		
 		} // Fin de foreach()	
 		
