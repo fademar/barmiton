@@ -7,10 +7,11 @@
 
 	      	<!--   Icon Section   -->
 	     	<div class="row">
+	     		<?= $error ?>
 			
 				<?php foreach ($cocktaillist as $cocktailcard): ?>
 					<div class="col s12 m7 l3">
-			          <div class="card">
+			          <div class="card hoverable">
 			            <div class="card-image">
 			              <img src="<?= $cocktailcard['imgurl']?>">
 			            </div>
