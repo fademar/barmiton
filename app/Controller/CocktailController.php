@@ -11,7 +11,7 @@ class CocktailController extends Controller
 	private $_alcools 		= array();
 	private $_urlpart 		= '';
 	private $_cocktaillist 	= array();
-	private $_error 		= '';
+	private $_error;
 
 	public function getformhome()
 	{
@@ -31,10 +31,10 @@ class CocktailController extends Controller
 		}
 		
 		if (!empty($_cocktaillist)) {
-			$this->show('cocktail/cocktail', ['cocktaillist' => $_cocktaillist]);
+			$this->show('cocktail/cocktail', ['cocktaillist' => $_cocktaillist, 'error' => '',]);
 		}
 		else {
-			$_error = '<h3 class="center-align">Oups, nous n\'avons aucune recettes correspondant à votre recherche !</h3>';
+			$_error = '<h3 class="center-align">Oups, aucune recette ne correspond à votre recherche !</h3>';
 			$this->show('cocktail/cocktail', ['error' => $_error]);
 		}	
 	}

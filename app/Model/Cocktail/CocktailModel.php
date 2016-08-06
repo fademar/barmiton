@@ -20,33 +20,40 @@ class CocktailModel extends \W\Model\Model
 		$_json = file_get_contents($_jsonurl);
 		$_data = json_decode($_json)->result;
 
-		/**************** Traitement des données ******************/
-		foreach ($_data as $_cocktail) {
-
-			// echo gettype($_cocktail);
-			// echo "<pre>";
-			// 	print_r($_cocktail);
-			// echo "</pre>";
-			// echo "<hr>";
-
-			$_cocktailcard = array(
-								'id'			=> $_cocktail->id,
-								'name' 			=> $_cocktail->name,
-								'ingredients'	=> $_cocktail->ingredients,
-								'description'	=> $_cocktail->descriptionPlain,
-								'occasions' 	=> $_cocktail->occasions,
-								'taste' 		=> $_cocktail->tastes,
-								'color' 		=> $_cocktail->color,
-								'skill' 		=> $_cocktail->skill->name,
-								'imgurl' 		=> "http://assets.absolutdrinks.com/drinks/" . $_cocktail->id . ".png",
-								'imgurlmodal' 	=> "http://assets.absolutdrinks.com/drinks/transparent-background-white/soft-shadow/floor-reflection/450x600/" . $_cocktail->id . ".png",
-
-			);
 		
-			$_cocktaillist[] = $_cocktailcard;
-		
-		} // Fin de foreach()	
-		
+		if (!empty($_data)) {
+
+			/**************** Traitement des données ******************/
+			foreach ($_data as $_cocktail) {
+
+				// echo gettype($_cocktail);
+				// echo "<pre>";
+				// 	print_r($_cocktail);
+				// echo "</pre>";
+				// echo "<hr>";
+
+				$_cocktailcard = array(
+									'id'			=> $_cocktail->id,
+									'name' 			=> $_cocktail->name,
+									'ingredients'	=> $_cocktail->ingredients,
+									'description'	=> $_cocktail->descriptionPlain,
+									'occasions' 	=> $_cocktail->occasions,
+									'taste' 		=> $_cocktail->tastes,
+									'color' 		=> $_cocktail->color,
+									'skill' 		=> $_cocktail->skill->name,
+									'imgurl' 		=> "http://assets.absolutdrinks.com/drinks/" . $_cocktail->id . ".png",
+									'imgurlmodal' 	=> "http://assets.absolutdrinks.com/drinks/transparent-background-white/soft-shadow/floor-reflection/450x600/" . $_cocktail->id . ".png",
+
+				);
+			
+				$_cocktaillist[] = $_cocktailcard;
+			
+			} // Fin de foreach()	
+		}
+		else {
+			$_cocktaillist = '';
+		}
+				
 		return $_cocktaillist;
 
 	} //fin de function getcocktaillist
