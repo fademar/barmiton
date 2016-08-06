@@ -16,7 +16,7 @@ class CocktailModel extends \W\Model\Model
 	public function getcocktaillist($urlpart)
 	{
 		/**************** Récupération des données ******************/
-		$_jsonurl = 'https://addb.absolutdrinks.com/drinks/' . $urlpart . '?apiKey=2c758736e5f844bdb9d39308df889c6d';
+		$_jsonurl = 'https://addb.absolutdrinks.com/drinks/' . $urlpart . '/?apiKey=2c758736e5f844bdb9d39308df889c6d';
 		$_json = file_get_contents($_jsonurl);
 		$_data = json_decode($_json)->result;
 
@@ -41,7 +41,7 @@ class CocktailModel extends \W\Model\Model
 									'taste' 		=> $_cocktail->tastes,
 									'color' 		=> $_cocktail->color,
 									'skill' 		=> $_cocktail->skill->name,
-									'imgurlsmall' 	=> "http://assets.absolutdrinks.com/drinks/300x400/" . $_cocktail->id . ".png",
+									'imgurlsmall' 	=> "http://assets.absolutdrinks.com/drinks/300x400/" . $_cocktail->id . "(60).jpg",
 									'imgurlmodal' 	=> "http://assets.absolutdrinks.com/drinks/transparent-background-white/soft-shadow/floor-reflection/450x600/" . $_cocktail->id . ".png",
 
 				);

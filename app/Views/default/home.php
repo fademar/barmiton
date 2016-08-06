@@ -5,19 +5,18 @@
   <div id="index-banner" class="parallax-container">
     <div class="section no-pad-bot">
       <div class="container">
-        <br><br>
-        <h1 class="header center white-text">Barmiton</h1>
-        <div class="row center">
-          <h5 class="header col s12 light">Plus de 1000 recettes de cocktails !</h5>
+        <div class="container valign-wrapper container-title">
+          <div class="row center">
+            <h1 class="header header-title center-align valign white-text">Barmiton</h1>
+            <h2 class="header header-subtitle col s12 center-align valign">Plus de 1000 recettes de cocktails !</h2>
+          </div>
         </div>
         <div class="row center">
-          <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Mixez</a>
+          <a href="#" class="btn-floating btn-large waves-effect waves-light transparent"><i class="material-icons md-36">arrow_downward</i></a>
         </div>
-        <br><br>
-
       </div>
     </div>
-    <div class="parallax"><img src="<?= $this->assetUrl('img/mojito.jpeg') ?>" alt="Unsplashed background img 1"></div>
+    <div class="parallax"><img src="<?= $this->assetUrl('img/mojito-champagne.jpg') ?>" alt="Unsplashed background img 1"></div>
   </div>
 
 
@@ -27,8 +26,13 @@
       <!--   Icon Section   -->
       <div class="row">
         <div class="col s12">
+            <div class="row center">
+              <h3>Choisissez vos ingrédients préférés</h3>
+            </div>
+
           	<form action="cocktails/" method="POST">
-          		<p>
+              <h5>Alcools</h5>
+              <p>
           			<input type="checkbox" name="alcool[]" id="ginId" value="gin">
           			<label for="ginId">Gin</label>
           		</p>
@@ -44,10 +48,31 @@
           			<input type="checkbox" name="alcool[]" id="tequilaId" value="tequila">
           			<label for="tequilaId">Tequila</label>
           		</p>
-          		<p>
-          			<input type="checkbox" name="alcool[]" id="whiskyId" value="whisky">
-          			<label for="whiskyId">Whisky</label>
+              <p>
+                <input type="checkbox" name="alcool[]" id="whiskyId" value="whisky">
+                <label for="whiskyId">Tequila</label>
+              </p>
+          		<h5>Jus de fruits</h5>
+              <p>
+          			<input type="checkbox" name="juice[]" id="pommeId" value="apple/or/apple-juice/or/apple-juice-fresh-pressed/or/apple-juice-hot">
+          			<label for="pommeId">Pomme</label>
           		</p>
+              <p>
+                <input type="checkbox" name="juice[]" id="orangeId" value="orange-juice">
+                <label for="orangeId">Orange</label>
+              </p>
+              <p>
+                <input type="checkbox" name="juice[]" id="citronId" value="lemon-juice/or/lime-juice">
+                <label for="citronId">Citron / Citron vert</label>
+              </p>
+              <p>
+                <input type="checkbox" name="juice[]" id="fruitsrougesId" value="cherry-juice/or/cranberry-juice/or/raspberry-juice/or/strawberry-juice">
+                <label for="fruitsrougesId">Fruits rouges</label>
+              </p>
+              <p>
+                <input type="checkbox" name="juice[]" id="ananasId" value="pineapple-juice">
+                <label for="ananasId">Ananas</label>
+              </p>
           		<p>
           			<input type="submit" name="submit" value="mixer">
           		</p>

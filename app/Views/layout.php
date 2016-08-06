@@ -11,9 +11,10 @@
   <link href="<?= $this->assetUrl('css/style.css') ?>" rel="stylesheet" media="screen,projection"/>
 </head>
 <body>
+ <div class="navbar-fixed">
   <nav class="white" role="navigation">
     <div class="nav-wrapper container">
-      <a id="logo-container" href="#" class="brand-logo">Barmiton</a>
+      <a id="logo-container" href="<?= $this->url("default_home"); ?>" class="brand-logo">Barmiton</a>
       <ul class="right hide-on-med-and-down">
         <li><a href="#">&Agrave; propos</a></li>
         <li><a href="#">Cocktails</a></li>
@@ -28,6 +29,7 @@
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
   </nav>
+  </div>
   
   <?= $this->section('main_content') ?>
 
@@ -72,7 +74,5 @@
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="<?= $this->assetUrl('js/materialize.js') ?>"></script>
   <script src="<?= $this->assetUrl('js/init.js') ?>"></script>
-  <script src="<?= $this->assetUrl('js/main.js') ?>"></script>
-
   </body>
 </html>

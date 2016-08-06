@@ -12,7 +12,7 @@
 				<?php if (!empty($cocktaillist)): ?>
 					<?php foreach ($cocktaillist as $cocktailcard): ?>
 						<div class="col s12 m7 l3">
-				          <div class="card hoverable">
+				          <div class="card">
 				            <div class="card-image">
 				              <img src="<?= $cocktailcard['imgurlsmall']?>">
 				            </div>
@@ -35,11 +35,12 @@
 						    	</div>
 						    </div>
 						    <div class="modal-footer">
-						    	<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Fermer</a>
+						    	<a href="#!" class="modal-action modal-close red btn-flat">Fermer</a>
 						    </div>
 						</div>
 					<?php endforeach ?>
 				<?php endif ?>
+					
 			</div>
 		</div>
 	</div>

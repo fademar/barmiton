@@ -20,26 +20,42 @@ p {
 }
 
 .parallax-container {
-  min-height: 1000px;
+  min-height: 700px;
   line-height: 0;
   height: auto;
   color: rgba(255,255,255,.9);
 }
-  .parallax-container .section {
-    width: 100%;
-  }
+
+.parallax-container .section {
+  width: 100%;
+}
 
 .margin-top-20 {
   margin: 20px 0 0 0;
 }
 
-.image-cocktail-modal {
-  width: 40%;
+.container-title {
+  min-height: 700px;
 }
 
-.half {
-  width: 49%;
+.header-title {
+  font-family: 'ralewaysemibold';
+  font-size: 10em;
 }
+
+.header-subtitle {
+  font-family: 'ralewaymedium';
+}
+
+.material-icons.md-36 {
+  font-size: 36px; 
+}
+
+.vert {
+  color: #A3A846;
+}
+
+
 
 @media only screen and (max-width : 992px) {
   .parallax-container .section {
