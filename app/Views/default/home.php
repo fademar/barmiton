@@ -86,12 +86,37 @@
   <div class="container">
     <div class="section">
 
-      <div class="row">
-        <div class="col s12 center">
-          <h3><i class="mdi-content-send brown-text"></i></h3>
-          <h4>Contact Us</h4>
-          <p class="left-align light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
-        </div>
+      <div class="row center">
+        <h3>Notre sélection</h3>
+       <?php foreach ($cocktailselection as $cocktailcard): ?>
+            <div class="col s12 m7 l4">
+                  <div class="card">
+                    <div class="card-image">
+                      <img src="<?= $cocktailcard['imgurlsmall']?>">
+                    </div>
+                    <div class="card-action">
+                        <div class="card-title grey-text text-darken-4 center-align"><?= $cocktailcard['name']?></div>
+                <!-- Modal Trigger -->
+                <div class="center-align margin-top-20"><button class="btn-floating waves-effect waves-light blue-grey lighten-4 modal-trigger" data-target="modal-<?= $cocktailcard['id']?>"><i class="material-icons">add</i></button></div>
+                    </div>
+                  </div>
+                </div>
+            <!-- Modal Structure -->
+            <div id="modal-<?= $cocktailcard['id']?>" class="modal">
+              <div class="modal-content">
+                  <h4><?= $cocktailcard['name']?></h4>
+                  <div>
+                    <p><?= $cocktailcard['description']?></p>
+                  </div>
+                  <div>
+                    <img src="<?= $cocktailcard['imgurlmodal']?>">
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <a href="#!" class="modal-action modal-close red btn-flat">Fermer</a>
+                </div>
+            </div>
+          <?php endforeach ?>
       </div>
 
     </div>

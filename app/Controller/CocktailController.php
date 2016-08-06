@@ -15,7 +15,7 @@ class CocktailController extends Controller
 	private $_cocktaillist 	= array();
 	private $_error;
 
-	public function getformhome()
+	public function searchformhome()
 	{
 		
 		if (isset($_POST['submit']) && $_POST['submit'] === 'mixer') {
@@ -23,26 +23,29 @@ class CocktailController extends Controller
 
 			/**************** Construction de l'url pour la requête des alcools ******************/
 
-			if (!empty($_POST['alcool'])) {
+			if (!empty($_POST['alcool']) && !empty($_POST['juice'])) {
 
 				$_alcools = $_POST['alcool'];
 				$_urlpartalcool = 'withtype/' . implode('/and/', $_alcools);				
-				$_urlpartjuice = '';
+				$_juices = $_POST['juice'];
+				$_urlpartjuice = 'with/' . implode('/and/', $_juices);
+				$_urlpart = $_urlpartalcool . '/' . $_urlpartjuice;
 			}
 			
-			/**************** Construction de l'url pour la requête des jus de fruits ******************/
+			if (!empty($_POST['alcool']) && empty($_POST['juice'])) {
 
-			if (!empty($_POST['juice'])) {
-
+				$_alcools = $_POST['alcool'];
+				$_urlpartalcool = 'withtype/' . implode('/and/', $_alcools);				
+				$_urlpart = $_urlpartalcool;
+			}
+			
+			if (empty($_POST['alcool']) && !empty($_POST['juice'])) {
 
 				$_juices = $_POST['juice'];
 				$_urlpartjuice = 'with/' . implode('/and/', $_juices);
-				$_urlpartalcool .= '';
+				$_urlpart = $_urlpartjuice;
 			}
-
-			/**************** Construction de l'url complète pour la requête auprès de l'API ******************/
 			
-			$_urlpart = $_urlpartalcool . '/' . $_urlpartjuice;
 
 			$api = new CocktailModel;
 			$_cocktaillist = $api->getcocktaillist($_urlpart);

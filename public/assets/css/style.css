@@ -52,7 +52,11 @@ p {
 }
 
 .vert {
-  color: #A3A846;
+  background: #C6CB74;
+}
+
+.vert-dark {
+  background: #B5B15C;
 }
 
 
