@@ -14,7 +14,7 @@
 						<div class="col s12 m7 l3">
 				          <div class="card hoverable">
 				            <div class="card-image">
-				              <img src="<?= $cocktailcard['imgurl']?>">
+				              <img src="<?= $cocktailcard['imgurlsmall']?>">
 				            </div>
 				            <div class="card-action">
 				              	<div class="card-title grey-text text-darken-4 center-align"><?= $cocktailcard['name']?></div>

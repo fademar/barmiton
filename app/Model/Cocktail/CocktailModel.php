@@ -41,7 +41,7 @@ class CocktailModel extends \W\Model\Model
 									'taste' 		=> $_cocktail->tastes,
 									'color' 		=> $_cocktail->color,
 									'skill' 		=> $_cocktail->skill->name,
-									'imgurl' 		=> "http://assets.absolutdrinks.com/drinks/" . $_cocktail->id . ".png",
+									'imgurlsmall' 	=> "http://assets.absolutdrinks.com/drinks/300x400/" . $_cocktail->id . ".png",
 									'imgurlmodal' 	=> "http://assets.absolutdrinks.com/drinks/transparent-background-white/soft-shadow/floor-reflection/450x600/" . $_cocktail->id . ".png",
 
 				);
