@@ -15,7 +15,11 @@
     <div class="nav-wrapper container">
       <a id="logo-container" href="#" class="brand-logo">Barmiton</a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="#">Navbar Link</a></li>
+        <li><a href="#">&Agrave; propos</a></li>
+        <li><a href="#">Cocktails</a></li>
+        <li><a href="#">S'inscrire</a></li>
+        <li><a href="#">Se connecter</a></li>
+        <li><a href="#">Contact</a></li>
       </ul>
 
       <ul id="nav-mobile" class="side-nav">
@@ -68,6 +72,7 @@
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="<?= $this->assetUrl('js/materialize.js') ?>"></script>
   <script src="<?= $this->assetUrl('js/init.js') ?>"></script>
+  <script src="<?= $this->assetUrl('js/main.js') ?>"></script>
 
   </body>
 </html>

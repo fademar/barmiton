@@ -29,6 +29,18 @@ p {
     width: 100%;
   }
 
+.margin-top-20 {
+  margin: 20px 0 0 0;
+}
+
+.image-cocktail-modal {
+  width: 40%;
+}
+
+.half {
+  width: 49%;
+}
+
 @media only screen and (max-width : 992px) {
   .parallax-container .section {
     position: absolute;
