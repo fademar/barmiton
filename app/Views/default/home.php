@@ -28,35 +28,34 @@
         <div class="col s12">
             <div class="row center">
               <h3>Choisissez vos ingrédients préférés</h3>
-            </div>
-
-          	<form action="cocktails/" method="POST">
+              <img class="responsive-img" src="<?= $this->assetUrl('img/shakermatte.png') ?>">
+            <form action="cocktails/" method="POST">
               <h5>Alcools</h5>
               <p>
-          			<input type="checkbox" name="alcool[]" id="ginId" value="gin">
-          			<label for="ginId">Gin</label>
-          		</p>
-          		<p>
-          			<input type="checkbox" name="alcool[]" id="vodkaId" value="vodka">
-          			<label for="vodkaId">Vodka</label>
-          		</p>
-          		<p>
-          			<input type="checkbox" name="alcool[]" id="rhumId" value="rum">
-          			<label for="rhumId">Rhum</label>
-          		</p>
-          		<p>
-          			<input type="checkbox" name="alcool[]" id="tequilaId" value="tequila">
-          			<label for="tequilaId">Tequila</label>
-          		</p>
+                <input type="checkbox" name="alcool[]" id="ginId" value="gin">
+                <label for="ginId">Gin</label>
+              </p>
+              <p>
+                <input type="checkbox" name="alcool[]" id="vodkaId" value="vodka">
+                <label for="vodkaId">Vodka</label>
+              </p>
+              <p>
+                <input type="checkbox" name="alcool[]" id="rhumId" value="rum">
+                <label for="rhumId">Rhum</label>
+              </p>
+              <p>
+                <input type="checkbox" name="alcool[]" id="tequilaId" value="tequila">
+                <label for="tequilaId">Tequila</label>
+              </p>
               <p>
                 <input type="checkbox" name="alcool[]" id="whiskyId" value="whisky">
                 <label for="whiskyId">Tequila</label>
               </p>
-          		<h5>Jus de fruits</h5>
+              <h5>Jus de fruits</h5>
               <p>
-          			<input type="checkbox" name="juice[]" id="pommeId" value="apple/or/apple-juice/or/apple-juice-fresh-pressed/or/apple-juice-hot">
-          			<label for="pommeId">Pomme</label>
-          		</p>
+                <input type="checkbox" name="juice[]" id="pommeId" value="apple/or/apple-juice/or/apple-juice-fresh-pressed/or/apple-juice-hot">
+                <label for="pommeId">Pomme</label>
+              </p>
               <p>
                 <input type="checkbox" name="juice[]" id="orangeId" value="orange-juice">
                 <label for="orangeId">Orange</label>
@@ -73,19 +72,20 @@
                 <input type="checkbox" name="juice[]" id="ananasId" value="pineapple-juice">
                 <label for="ananasId">Ananas</label>
               </p>
-          		<p>
-          			<input type="submit" name="submit" value="mixer">
-          		</p>
-          	</form>
+              <p>
+                <input type="submit" name="submit" value="mixer">
+              </p>
+            </form>
+            </div>
         </div>
       </div>
 
     </div>
   </div>
 
+
   <div class="container">
     <div class="section">
-
       <div class="row center">
         <h3>Notre sélection</h3>
        <?php foreach ($cocktailselection as $cocktailcard): ?>

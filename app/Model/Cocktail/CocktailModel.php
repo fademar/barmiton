@@ -47,7 +47,7 @@ class CocktailModel extends \W\Model\Model
 									'color' 		=> $_cocktail->color,
 									'skill' 		=> $_cocktail->skill->name,
 									'imgurlsmall' 	=> "http://assets.absolutdrinks.com/drinks/300x400/" . $_cocktail->id . "(60).jpg",
-									'imgurlmodal' 	=> "http://assets.absolutdrinks.com/drinks/transparent-background-white/soft-shadow/floor-reflection/450x600/" . $_cocktail->id . ".png",
+									'imgurlmodal' 	=> "http://assets.absolutdrinks.com/drinks/450x600/" . $_cocktail->id . ".png",
 
 				);
 			
@@ -87,7 +87,7 @@ class CocktailModel extends \W\Model\Model
 									'color' 		=> $_cocktail->color,
 									'skill' 		=> $_cocktail->skill->name,
 									'imgurlsmall' 	=> "http://assets.absolutdrinks.com/drinks/" . $_cocktail->id . "(60).jpg",
-									'imgurlmodal' 	=> "http://assets.absolutdrinks.com/drinks/transparent-background-white/soft-shadow/floor-reflection/450x600/" . $_cocktail->id . ".png",
+									'imgurlmodal' 	=> "http://assets.absolutdrinks.com/drinks/450x600/" . $_cocktail->id . ".png",
 								);
 				
 				$_cocktailselection[] = $_cocktailcard;

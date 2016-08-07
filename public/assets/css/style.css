@@ -39,7 +39,7 @@ p {
 }
 
 .header-title {
-  font-family: 'ralewaysemibold';
+  font-family: 'lobster';
   font-size: 10em;
 }
 
@@ -59,7 +59,10 @@ p {
   background: #B5B15C;
 }
 
-
+h3 {
+    font-family: 'Lobster', cursive;
+    margin: 40px 0;
+}
 
 @media only screen and (max-width : 992px) {
   .parallax-container .section {
