@@ -14,7 +14,7 @@ class CocktailsModel extends \W\Model\Model
 	private $_selection; 
 	private $_cocktailselection = array();
 	private $_arraykey = array();
-
+	private $_listenoms = array();
 
 	public function getcocktaillist($urlpart)
 	{
@@ -98,6 +98,49 @@ class CocktailsModel extends \W\Model\Model
 
 
 
+	public function getcocktaillistbyname()
+	{
+		/**************** Récupération des données ******************/
+		$_jsonurl = 'https://addb.absolutdrinks.com/quickSearch/drinks/' . $urlpart . '/?apiKey=2c758736e5f844bdb9d39308df889c6d';
+		$_json = file_get_contents($_jsonurl);
+		$_data = json_decode($_json)->result;
 
+		
+		if (!empty($_data)) {
+
+			/**************** Traitement des données ******************/
+			foreach ($_data as $_cocktail) {
+
+				// echo gettype($_data);
+				// echo "<pre>";
+				// 	print_r($_cocktail);
+				// echo "</pre>";
+				// echo "<hr>";
+
+				$_cocktailcard = array(
+									'id'			=> $_cocktail->id,
+									'name' 			=> $_cocktail->name,
+									'ingredients'	=> $_cocktail->ingredients,
+									'description'	=> $_cocktail->descriptionPlain,
+									'occasions' 	=> $_cocktail->occasions,
+									'taste' 		=> $_cocktail->tastes,
+									'color' 		=> $_cocktail->color,
+									'skill' 		=> $_cocktail->skill->name,
+									'imgurlsmall' 	=> "http://assets.absolutdrinks.com/drinks/300x400/" . $_cocktail->id . "(60).jpg",
+									'imgurlmodal' 	=> "http://assets.absolutdrinks.com/drinks/450x600/" . $_cocktail->id . ".png",
+
+				);
+			
+				$_cocktaillist[] = $_cocktailcard;
+			
+			} // Fin de foreach()	
+		}
+		else {
+			$_cocktaillist = '';
+		}
+				
+		return $_cocktaillist;
+
+	} //fin de function getcocktaillist
 
 } //Fin de classe

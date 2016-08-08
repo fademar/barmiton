@@ -14,7 +14,11 @@
 							
 							<form action="" method="POST">
 								
-								
+								<div class="input-field col s12 l12">
+								    <label>Nom</label>
+								    <input type="text" id="recherchenom" name="nomcocktail">
+								</div>
+
 
 								<div class="input-field col s12 l3">
 								    <label>Couleur</label>
@@ -51,7 +55,7 @@
 								    <select class="browser-default">
 								    	<option value="" disabled selected></option>
 								    	<?php foreach($listeOccasions as $occasion) : ?> 	
-								     		<option value="<?php echo $occasion['skill']?>"><?php echo $difficulte['difficulte']?></option>
+								     		<option value="<?php echo $occasion['occasionuk']?>"><?php echo $occasion['occasionfr']?></option>
 								    	<?php endforeach ?>
 								    </select>
 								</div>

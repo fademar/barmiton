@@ -9,6 +9,9 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="<?= $this->assetUrl('css/vendor/materialize.css') ?>" rel="stylesheet" media="screen,projection"/>
     <link href="<?= $this->assetUrl('css/vendor/hamburgers.min.css') ?>" rel="stylesheet" media="screen,projection"/>
+    <link href="<?= $this->assetUrl('css/vendor/jquery-ui.min.css') ?>" rel="stylesheet" media="screen,projection"/>
+    <link href="<?= $this->assetUrl('css/vendor/jquery-ui.structure.min.css') ?>" rel="stylesheet" media="screen,projection"/>
+    <link href="<?= $this->assetUrl('css/vendor/jquery-ui.theme.min.css') ?>" rel="stylesheet" media="screen,projection"/>
     <link href="<?= $this->assetUrl('css/style.css') ?>" rel="stylesheet" media="screen,projection"/>
 </head>
 <body>
@@ -60,9 +63,10 @@
 
     <!--  Scripts-->
     <script src="<?= $this->assetUrl('js/vendor/jquery-3.1.0.min.js') ?>"></script>
+    <script src="<?= $this->assetUrl('js/vendor/jquery-ui.custom.min.js') ?>"></script>
     <script src="<?= $this->assetUrl('js/vendor/snap.svg.js') ?>"></script>
     <script src="<?= $this->assetUrl('js/vendor/materialize.min.js') ?>"></script>
-    <script src="<?= $this->assetUrl('js/init.js') ?>"></script>
+    <script src="<?= $this->assetUrl('js/main.js') ?>"></script>
 
 </body>
 </html>

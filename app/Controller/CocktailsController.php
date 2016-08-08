@@ -7,6 +7,7 @@ use Model\Cocktails\CocktailsModel;
 use Model\Couleurs\CouleursModel;
 use Model\Gouts\GoutsModel;
 use Model\Difficultes\DifficultesModel;
+use Model\Occasions\OccasionsModel;
 
 class CocktailsController extends Controller
 {
@@ -78,17 +79,20 @@ class CocktailsController extends Controller
 		$difficultedb = new DifficultesModel();
 		$_listeDifficultes = $difficultedb->getDifficultes();
 
+        $occasiondb = new OccasionsModel();
+		$_listeOccasions = $occasiondb->getOccasions();
 
 		$this->show('cocktail/cocktail', [
 											'listeCouleurs' 	=> $_listeCouleurs,
 											'listeGouts' 		=> $_listeGouts,
 											'listeDifficultes' 	=> $_listeDifficultes,
+                                            'listeOccasions'    => $_listeOccasions,
 										 ]);
 	}
 
 
 
-
+	public function 
 
 
 
