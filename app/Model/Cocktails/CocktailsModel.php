@@ -1,21 +1,19 @@
 <?php
 
-namespace Model\Cocktail;
+namespace Model\Cocktails;
 
-class CocktailModel extends \W\Model\Model 
+class CocktailsModel extends \W\Model\Model 
 {
 	
 	private $_jsonurl;
 	private $_json;
 	private $_data;
 	private $_cocktail;
-	private $urlpart;
 	private $_cocktailcard = array();
 	private $_cocktaillist = array();
 	private $_selection; 
 	private $_cocktailselection = array();
 	private $_arraykey = array();
-
 
 
 	public function getcocktaillist($urlpart)
@@ -64,7 +62,7 @@ class CocktailModel extends \W\Model\Model
 	} //fin de function getcocktaillist
 
 
-	/************************ Récupération d'une sélection aléatoire de cocktails *****************************/
+	/************************ Récupération d'une sélection aléatoire de cocktails pour la page d'accueil *****************************/
 	
 	public function getcocktailselection() {
 
@@ -97,6 +95,8 @@ class CocktailModel extends \W\Model\Model
 		return $_cocktailselection;
 
 	} // Fin de fonction
+
+
 
 
 

@@ -2,5 +2,6 @@
 	
 	$w_routes = array(
 		['GET|POST', '/', 'Default#home', 'default_home'],
-		['GET|POST', '/cocktails/', 'Cocktail#searchformhome', 'cocktail_searchformhome'],
+		['GET|POST', '/cocktails/', 'Cocktails#showcocktails', 'cocktails_showcocktails'],
+		['GET|POST', '/cocktails/cocktailliste/', 'Cocktails#searchformhome', 'cocktails_resultat_searchformhome'],
 	);

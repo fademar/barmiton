@@ -3,7 +3,7 @@
 namespace Controller;
 
 use \W\Controller\Controller;
-use Model\Cocktail\CocktailModel;
+use Model\Cocktails\CocktailsModel;
 
 class DefaultController extends Controller
 {
@@ -17,7 +17,7 @@ class DefaultController extends Controller
 
 	public function home()
 	{
-		$_api = new CocktailModel();
+		$_api = new CocktailsModel();
 		$_cocktailselection = $_api->getcocktailselection();
 			
 		$this->show('default/home', ['cocktailselection' => $_cocktailselection]);

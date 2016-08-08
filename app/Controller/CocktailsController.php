@@ -3,9 +3,10 @@
 namespace Controller;
 
 use \W\Controller\Controller;
-use Model\Cocktail\CocktailModel;
+use Model\Cocktails\CocktailsModel;
+use Model\Couleurs\CouleursModel;
 
-class CocktailController extends Controller
+class CocktailsController extends Controller
 {
 	
 	private $_alcools 		= array();
@@ -14,6 +15,7 @@ class CocktailController extends Controller
 	private $_urlpart;
 	private $_cocktaillist 	= array();
 	private $_error;
+	private $_listeCouleurs;
 
 	public function searchformhome()
 	{
@@ -47,17 +49,46 @@ class CocktailController extends Controller
 			}
 			
 
-			$api = new CocktailModel;
+			$api = new CocktailsModel;
 			$_cocktaillist = $api->getcocktaillist($_urlpart);
 		
 		}
 		
 		if (!empty($_cocktaillist)) {
-			$this->show('cocktail/cocktail', ['cocktaillist' => $_cocktaillist, 'error' => '',]);
+			$this->show('cocktail/cocktailliste', ['cocktaillist' => $_cocktaillist, 'error' => '',]);
 		}
 		else {
 			$_error = '<h3 class="center-align">Oups, aucune recette ne correspond à votre recherche !</h3>';
-			$this->show('cocktail/cocktail', ['error' => $_error]);
+			$this->show('cocktail/cocktailliste', ['error' => $_error]);
 		}	
 	}
+
+
+	public function showcocktails() {
+		$couleurdb = new CouleursModel();
+		$_listeCouleurs = $couleurdb->getCouleurs();
+		
+		$this->show('cocktail/cocktail', ['listeCouleurs' => $_listeCouleurs]);
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

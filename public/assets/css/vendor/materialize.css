@@ -4112,8 +4112,9 @@ nav .button-collapse i {
 
 nav .brand-logo {
   position: absolute;
-  color: #fff;
+  color: #ffffff;
   display: inline-block;
+  font-family: 'Lobster', cursive;
   font-size: 2.1rem;
   padding: 0;
   white-space: nowrap;
@@ -4260,8 +4261,8 @@ nav .input-field label.active {
 
 @font-face {
     font-family: 'ralewayblack';
-    src: url('../fonts/raleway/raleway-black-webfont.woff2') format('woff2'),
-         url('../fonts/raleway/raleway-black-webfont.woff') format('woff');
+    src: url('../../fonts/raleway/raleway-black-webfont.woff2') format('woff2'),
+         url('../../fonts/raleway/raleway-black-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -4272,8 +4273,8 @@ nav .input-field label.active {
 
 @font-face {
     font-family: 'ralewaybold';
-    src: url('../fonts/raleway/raleway-bold-webfont.woff2') format('woff2'),
-         url('../fonts/raleway/raleway-bold-webfont.woff') format('woff');
+    src: url('../../fonts/raleway/raleway-bold-webfont.woff2') format('woff2'),
+         url('../../fonts/raleway/raleway-bold-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -4284,8 +4285,8 @@ nav .input-field label.active {
 
 @font-face {
     font-family: 'ralewayextrabold';
-    src: url('../fonts/raleway/raleway-extrabold-webfont.woff2') format('woff2'),
-         url('../fonts/raleway/raleway-extrabold-webfont.woff') format('woff');
+    src: url('../../fonts/raleway/raleway-extrabold-webfont.woff2') format('woff2'),
+         url('../../fonts/raleway/raleway-extrabold-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -4296,8 +4297,8 @@ nav .input-field label.active {
 
 @font-face {
     font-family: 'ralewayextralight';
-    src: url('../fonts/raleway/raleway-extralight-webfont.woff2') format('woff2'),
-         url('../fonts/raleway/raleway-extralight-webfont.woff') format('woff');
+    src: url('../../fonts/raleway/raleway-extralight-webfont.woff2') format('woff2'),
+         url('../../fonts/raleway/raleway-extralight-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -4308,8 +4309,8 @@ nav .input-field label.active {
 
 @font-face {
     font-family: 'ralewayitalic';
-    src: url('../fonts/raleway/raleway-italic-webfont.woff2') format('woff2'),
-         url('../fonts/raleway/raleway-italic-webfont.woff') format('woff');
+    src: url('../../fonts/raleway/raleway-italic-webfont.woff2') format('woff2'),
+         url('../../fonts/raleway/raleway-italic-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -4320,8 +4321,8 @@ nav .input-field label.active {
 
 @font-face {
     font-family: 'ralewaylight';
-    src: url('../fonts/raleway/raleway-light-webfont.woff2') format('woff2'),
-         url('../fonts/raleway/raleway-light-webfont.woff') format('woff');
+    src: url('../../fonts/raleway/raleway-light-webfont.woff2') format('woff2'),
+         url('../../fonts/raleway/raleway-light-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -4332,8 +4333,8 @@ nav .input-field label.active {
 
 @font-face {
     font-family: 'ralewaylight_italic';
-    src: url('../fonts/raleway/raleway-lightitalic-webfont.woff2') format('woff2'),
-         url('../fonts/raleway/raleway-lightitalic-webfont.woff') format('woff');
+    src: url('../../fonts/raleway/raleway-lightitalic-webfont.woff2') format('woff2'),
+         url('../../fonts/raleway/raleway-lightitalic-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -4344,8 +4345,8 @@ nav .input-field label.active {
 
 @font-face {
     font-family: 'ralewaymedium';
-    src: url('../fonts/raleway/raleway-medium-webfont.woff2') format('woff2'),
-         url('../fonts/raleway/raleway-medium-webfont.woff') format('woff');
+    src: url('../../fonts/raleway/raleway-medium-webfont.woff2') format('woff2'),
+         url('../../fonts/raleway/raleway-medium-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -4356,8 +4357,8 @@ nav .input-field label.active {
 
 @font-face {
     font-family: 'ralewaymedium_italic';
-    src: url('../fonts/raleway/raleway-mediumitalic-webfont.woff2') format('woff2'),
-         url('../fonts/raleway/raleway-mediumitalic-webfont.woff') format('woff');
+    src: url('../../fonts/raleway/raleway-mediumitalic-webfont.woff2') format('woff2'),
+         url('../../fonts/raleway/raleway-mediumitalic-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -4368,8 +4369,8 @@ nav .input-field label.active {
 
 @font-face {
     font-family: 'ralewayregular';
-    src: url('../fonts/raleway/raleway-regular-webfont.woff2') format('woff2'),
-         url('../fonts/raleway/raleway-regular-webfont.woff') format('woff');
+    src: url('../../fonts/raleway/raleway-regular-webfont.woff2') format('woff2'),
+         url('../../fonts/raleway/raleway-regular-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -4380,8 +4381,8 @@ nav .input-field label.active {
 
 @font-face {
     font-family: 'ralewaysemibold';
-    src: url('../fonts/raleway/raleway-semibold-webfont.woff2') format('woff2'),
-         url('../fonts/raleway/raleway-semibold-webfont.woff') format('woff');
+    src: url('../../fonts/raleway/raleway-semibold-webfont.woff2') format('woff2'),
+         url('../../fonts/raleway/raleway-semibold-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -4392,8 +4393,8 @@ nav .input-field label.active {
 
 @font-face {
     font-family: 'ralewaythin';
-    src: url('../fonts/raleway/raleway-thin-webfont.woff2') format('woff2'),
-         url('../fonts/raleway/raleway-thin-webfont.woff') format('woff');
+    src: url('../../fonts/raleway/raleway-thin-webfont.woff2') format('woff2'),
+         url('../../fonts/raleway/raleway-thin-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -4405,8 +4406,8 @@ nav .input-field label.active {
 
 @font-face {
     font-family: 'lobster';
-    src: url('../fonts/lobster/lobster_1.3-webfont.woff2') format('woff2'),
-         url('../fonts/lobster/lobster_1.3-webfont.woff') format('woff');
+    src: url('../../fonts/lobster/lobster_1.3-webfont.woff2') format('woff2'),
+         url('../../fonts/lobster/lobster_1.3-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -4414,36 +4415,36 @@ nav .input-field label.active {
 
 /*@font-face {
   font-family: "Roboto";
-  src: local(Roboto Thin), url("../fonts/roboto/Roboto-Thin.eot");
-  src: url("../fonts/roboto/Roboto-Thin.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto/Roboto-Thin.woff2") format("woff2"), url("../fonts/roboto/Roboto-Thin.woff") format("woff"), url("../fonts/roboto/Roboto-Thin.ttf") format("truetype");
+  src: local(Roboto Thin), url("../../fonts/roboto/Roboto-Thin.eot");
+  src: url("../../fonts/roboto/Roboto-Thin.eot?#iefix") format("embedded-opentype"), url("../../fonts/roboto/Roboto-Thin.woff2") format("woff2"), url("../../fonts/roboto/Roboto-Thin.woff") format("woff"), url("../../fonts/roboto/Roboto-Thin.ttf") format("truetype");
   font-weight: 200;
 }
 
 @font-face {
   font-family: "Roboto";
-  src: local(Roboto Light), url("../fonts/roboto/Roboto-Light.eot");
-  src: url("../fonts/roboto/Roboto-Light.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto/Roboto-Light.woff2") format("woff2"), url("../fonts/roboto/Roboto-Light.woff") format("woff"), url("../fonts/roboto/Roboto-Light.ttf") format("truetype");
+  src: local(Roboto Light), url("../../fonts/roboto/Roboto-Light.eot");
+  src: url("../../fonts/roboto/Roboto-Light.eot?#iefix") format("embedded-opentype"), url("../../fonts/roboto/Roboto-Light.woff2") format("woff2"), url("../../fonts/roboto/Roboto-Light.woff") format("woff"), url("../../fonts/roboto/Roboto-Light.ttf") format("truetype");
   font-weight: 300;
 }
 
 @font-face {
   font-family: "Roboto";
-  src: local(Roboto Regular), url("../fonts/roboto/Roboto-Regular.eot");
-  src: url("../fonts/roboto/Roboto-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto/Roboto-Regular.woff2") format("woff2"), url("../fonts/roboto/Roboto-Regular.woff") format("woff"), url("../fonts/roboto/Roboto-Regular.ttf") format("truetype");
+  src: local(Roboto Regular), url("../../fonts/roboto/Roboto-Regular.eot");
+  src: url("../../fonts/roboto/Roboto-Regular.eot?#iefix") format("embedded-opentype"), url("../../fonts/roboto/Roboto-Regular.woff2") format("woff2"), url("../../fonts/roboto/Roboto-Regular.woff") format("woff"), url("../../fonts/roboto/Roboto-Regular.ttf") format("truetype");
   font-weight: 400;
 }
 
 @font-face {
   font-family: "Roboto";
-  src: url("../fonts/roboto/Roboto-Medium.eot");
-  src: url("../fonts/roboto/Roboto-Medium.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto/Roboto-Medium.woff2") format("woff2"), url("../fonts/roboto/Roboto-Medium.woff") format("woff"), url("../fonts/roboto/Roboto-Medium.ttf") format("truetype");
+  src: url("../../fonts/roboto/Roboto-Medium.eot");
+  src: url("../../fonts/roboto/Roboto-Medium.eot?#iefix") format("embedded-opentype"), url("../../fonts/roboto/Roboto-Medium.woff2") format("woff2"), url("../../fonts/roboto/Roboto-Medium.woff") format("woff"), url("../../fonts/roboto/Roboto-Medium.ttf") format("truetype");
   font-weight: 500;
 }
 
 @font-face {
   font-family: "Roboto";
-  src: url("../fonts/roboto/Roboto-Bold.eot");
-  src: url("../fonts/roboto/Roboto-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/roboto/Roboto-Bold.woff2") format("woff2"), url("../fonts/roboto/Roboto-Bold.woff") format("woff"), url("../fonts/roboto/Roboto-Bold.ttf") format("truetype");
+  src: url("../../fonts/roboto/Roboto-Bold.eot");
+  src: url("../../fonts/roboto/Roboto-Bold.eot?#iefix") format("embedded-opentype"), url("../../fonts/roboto/Roboto-Bold.woff2") format("woff2"), url("../../fonts/roboto/Roboto-Bold.woff") format("woff"), url("../../fonts/roboto/Roboto-Bold.ttf") format("truetype");
   font-weight: 700;
 }*/
 
