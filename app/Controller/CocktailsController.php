@@ -5,6 +5,8 @@ namespace Controller;
 use \W\Controller\Controller;
 use Model\Cocktails\CocktailsModel;
 use Model\Couleurs\CouleursModel;
+use Model\Gouts\GoutsModel;
+use Model\Difficultes\DifficultesModel;
 
 class CocktailsController extends Controller
 {
@@ -16,6 +18,8 @@ class CocktailsController extends Controller
 	private $_cocktaillist 	= array();
 	private $_error;
 	private $_listeCouleurs;
+	private $_listeGouts;
+	private $_listeDifficultes;
 
 	public function searchformhome()
 	{
@@ -68,7 +72,18 @@ class CocktailsController extends Controller
 		$couleurdb = new CouleursModel();
 		$_listeCouleurs = $couleurdb->getCouleurs();
 		
-		$this->show('cocktail/cocktail', ['listeCouleurs' => $_listeCouleurs]);
+		$goutdb = new GoutsModel();
+		$_listeGouts = $goutdb->getGouts();
+				
+		$difficultedb = new DifficultesModel();
+		$_listeDifficultes = $difficultedb->getDifficultes();
+
+
+		$this->show('cocktail/cocktail', [
+											'listeCouleurs' 	=> $_listeCouleurs,
+											'listeGouts' 		=> $_listeGouts,
+											'listeDifficultes' 	=> $_listeDifficultes,
+										 ]);
 	}
 
 

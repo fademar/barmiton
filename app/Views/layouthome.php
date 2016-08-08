@@ -63,6 +63,8 @@
     <script src="<?= $this->assetUrl('js/vendor/snap.svg.js') ?>"></script>
     <script src="<?= $this->assetUrl('js/vendor/materialize.min.js') ?>"></script>
     <script src="<?= $this->assetUrl('js/init.js') ?>"></script>
+    <script src="<?= $this->assetUrl('js/functions.js') ?>"></script>
+    <script src="<?= $this->assetUrl('js/svg.js') ?>"></script>
 
 </body>
 </html>
