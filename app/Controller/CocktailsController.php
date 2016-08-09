@@ -31,8 +31,7 @@ class CocktailsController extends Controller
 	private $_couleur;
 	private $_gout;
 	private $_difficulte;
-	private $_occasion;
-
+	private $_occasioncocktailsoccasion;
 
 	public function searchformhome()
 	{
@@ -137,6 +136,17 @@ class CocktailsController extends Controller
 										 ]);
 
 	}
+
+
+
+
+	public function afficherCocktail($id)
+	{
+		$ficheCocktails = new CocktailsModel();
+		$dataCocktail = $ficheCocktails->getcocktaillist($id);
+		$this->show('cocktail/fiche_cocktail', ['dataCocktail' => $dataCocktail]);
+	}
+
 
 
 

@@ -47,7 +47,7 @@
                 <div class="col s12 m7 l3">
                     <div class="card">
                         <div class="card-image">
-                            <img src="<?= $cocktailcard['imgurlsmall']?>">
+                            <a href="<?= $cocktailcard['id']?>"><img src="<?= $cocktailcard['imgurlsmall']?>"></a>
                         </div>
                         <div class="card-action">
                             <div class="card-title grey-text text-darken-4 center-align"><?= $cocktailcard['name']?></div>
@@ -83,7 +83,7 @@
                 <div class="col s12 m7 l3">
                     <div class="card">
                         <div class="card-image">
-                            <img src="<?= $cocktailcard['imgurlsmall']?>">
+                            <a href="<?= $cocktailcard['id']?>"><img src="<?= $cocktailcard['imgurlsmall']?>"></a>
                         </div>
                         <div class="card-action">
                             <div class="card-title grey-text text-darken-4 center-align"><?= $cocktailcard['name']?></div>
@@ -120,7 +120,7 @@
                 <div class="col s12 m7 l3">
                     <div class="card">
                         <div class="card-image">
-                            <img src="<?= $cocktailcard['imgurlsmall']?>">
+                            <a href="<?= $cocktailcard['id']?>"><img src="<?= $cocktailcard['imgurlsmall']?>"></a>
                         </div>
                         <div class="card-action">
                             <div class="card-title grey-text text-darken-4 center-align"><?= $cocktailcard['name']?></div>

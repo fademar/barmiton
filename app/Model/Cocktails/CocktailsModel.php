@@ -28,6 +28,9 @@ class CocktailsModel extends \W\Model\Model
 		$_data = json_decode($_json)->result;
 
 		
+		// var_dump(search(['idCocktailApi', $_cocktail->id]));
+
+
 		if (!empty($_data)) {
 
 			/**************** Traitement des données ******************/
@@ -54,6 +57,7 @@ class CocktailsModel extends \W\Model\Model
 				);
 			
 				$_cocktaillist[] = $_cocktailcard;
+
 			
 			} // Fin de foreach()	
 		}
@@ -61,6 +65,7 @@ class CocktailsModel extends \W\Model\Model
 			$_cocktaillist = '';
 		}
 				
+
 		return $_cocktaillist;
 
 	} //fin de function getcocktaillist

@@ -130,3 +130,8 @@ h2 {
 footer.page-footer {
   margin: 0;
 }
+
+#test {
+      padding: 8%;
+    margin-left: 10%;
+}
