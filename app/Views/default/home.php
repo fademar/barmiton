@@ -1,75 +1,124 @@
-<?php $this->layout('layout', ['title' => 'Accueil']) ?>
+<?php $this->layout('layouthome', ['title' => 'Accueil']) ?>
 
 <?php $this->start('main_content') ?>
-	
-  <div id="index-banner" class="parallax-container">
-    <div class="section no-pad-bot">
-      <div class="container">
-        <br><br>
-        <h1 class="header center white-text">Barmiton</h1>
-        <div class="row center">
-          <h5 class="header col s12 light">Plus de 1000 recettes de cocktails !</h5>
-        </div>
-        <div class="row center">
-          <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Mixez</a>
-        </div>
-        <br><br>
 
-      </div>
+<div class="page vert">
+    <div class="containersvg valign-wrapper"> 
+        <div class="svgbox valign">
+            <svg id="martini" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60.46 100">
+                <title>martini</title>
+            </svg>
+        </div>
+    </div> 
+    <div class="containersvg valign-wrapper">
+        <div class="valign center">
+            <h1>Barmiton</h1>
+            <span class="slogan">Plus de 1000 recettes de cocktails !</span>
+        </div>
+        <div class="clearfix"></div>
     </div>
-    <div class="parallax"><img src="<?= $this->assetUrl('img/mojito.jpeg') ?>" alt="Unsplashed background img 1"></div>
-  </div>
+</div>
 
-
-  <div class="container">
+<div class="container">
     <div class="section">
 
-      <!--   Icon Section   -->
-      <div class="row">
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2>
-            <h5 class="center">Speeds up development</h5>
-
-            <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
-          </div>
+        <!--   Icon Section   -->
+        <div class="row">
+            <div class="col s12">
+                <div class="row center">
+                    <h2>Choisissez vos ingrédients préférés</h2>
+                    <form action="cocktails/cocktailliste/" method="POST">
+                        <h5>Alcools</h5>
+                        <p>
+                            <input type="checkbox" name="alcool[]" id="ginId" value="gin">
+                            <label for="ginId">Gin</label>
+                        </p>
+                        <p>
+                            <input type="checkbox" name="alcool[]" id="vodkaId" value="vodka">
+                            <label for="vodkaId">Vodka</label>
+                        </p>
+                        <p>
+                            <input type="checkbox" name="alcool[]" id="rhumId" value="rum">
+                            <label for="rhumId">Rhum</label>
+                        </p>
+                        <p>
+                            <input type="checkbox" name="alcool[]" id="tequilaId" value="tequila">
+                            <label for="tequilaId">Tequila</label>
+                        </p>
+                        <p>
+                            <input type="checkbox" name="alcool[]" id="whiskyId" value="whisky">
+                            <label for="whiskyId">Tequila</label>
+                        </p>
+                        <h5>Jus de fruits</h5>
+                        <p>
+                            <input type="checkbox" name="juice[]" id="pommeId" value="apple/or/apple-juice/or/apple-juice-fresh-pressed/or/apple-juice-hot">
+                            <label for="pommeId">Pomme</label>
+                        </p>
+                        <p>
+                            <input type="checkbox" name="juice[]" id="orangeId" value="orange-juice">
+                            <label for="orangeId">Orange</label>
+                        </p>
+                        <p>
+                            <input type="checkbox" name="juice[]" id="citronId" value="lemon-juice/or/lime-juice">
+                            <label for="citronId">Citron / Citron vert</label>
+                        </p>
+                        <p>
+                            <input type="checkbox" name="juice[]" id="fruitsrougesId" value="cherry-juice/or/cranberry-juice/or/raspberry-juice/or/strawberry-juice">
+                            <label for="fruitsrougesId">Fruits rouges</label>
+                        </p>
+                        <p>
+                            <input type="checkbox" name="juice[]" id="ananasId" value="pineapple-juice">
+                            <label for="ananasId">Ananas</label>
+                        </p>
+                        <p>
+                            <input type="submit" name="submit" value="mixer">
+                        </p>
+                    </form>
+                </div>
+            </div>
         </div>
-
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons">group</i></h2>
-            <h5 class="center">User Experience Focused</h5>
-
-            <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
-          </div>
-        </div>
-
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons">settings</i></h2>
-            <h5 class="center">Easy to work with</h5>
-
-            <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
-          </div>
-        </div>
-      </div>
 
     </div>
-  </div>
+</div>
 
-  <div class="container">
+
+<div class="container">
     <div class="section">
-
-      <div class="row">
-        <div class="col s12 center">
-          <h3><i class="mdi-content-send brown-text"></i></h3>
-          <h4>Contact Us</h4>
-          <p class="left-align light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
+        <div class="row center">
+            <h2>Notre sélection</h2>
+            <?php foreach ($cocktailselection as $cocktailcard): ?>
+                <div class="col s12 m7 l4">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="<?= $cocktailcard['imgurlsmall']?>">
+                        </div>
+                        <div class="card-action">
+                            <div class="card-title grey-text text-darken-4 center-align"><?= $cocktailcard['name']?></div>
+                            <!-- Modal Trigger -->
+                            <div class="center-align margin-top-20"><button class="btn-floating waves-effect waves-light blue-grey lighten-4 modal-trigger" data-target="modal-<?= $cocktailcard['id']?>"><i class="material-icons">add</i></button></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal Structure -->
+                <div id="modal-<?= $cocktailcard['id']?>" class="modal">
+                    <div class="modal-content">
+                        <h4><?= $cocktailcard['name']?></h4>
+                        <div>
+                            <p><?= $cocktailcard['description']?></p>
+                        </div>
+                        <div>
+                            <img src="<?= $cocktailcard['imgurlmodal']?>">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#!" class="modal-action modal-close red btn-flat">Fermer</a>
+                    </div>
+                </div>
+            <?php endforeach ?>
         </div>
-      </div>
 
     </div>
-  </div>
+</div>
 
 
-<?php $this->stop('main_content') ?>
+    <?php $this->stop('main_content') ?>
