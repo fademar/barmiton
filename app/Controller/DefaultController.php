@@ -8,7 +8,7 @@ use Model\Cocktails\CocktailsModel;
 class DefaultController extends Controller
 {
 	private $_cocktailselection;
-	private $_api;
+	private $_cocktailapi;
 
 	/**
 	 * Page d'accueil par défaut
@@ -17,8 +17,8 @@ class DefaultController extends Controller
 
 	public function home()
 	{
-		$_api = new CocktailsModel();
-		$_cocktailselection = $_api->getcocktailselection();
+		$_cocktailapi		 = new CocktailsModel();
+		$_cocktailselection	 = $_cocktailapi->getCocktailListBy('tout', 'home');
 			
 		$this->show('default/home', ['cocktailselection' => $_cocktailselection]);
 	}

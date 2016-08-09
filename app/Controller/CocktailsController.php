@@ -12,15 +12,27 @@ use Model\Occasions\OccasionsModel;
 class CocktailsController extends Controller
 {
 	
-	private $_alcools 		= array();
+	private $_alcools 			= array();
 	private $_urlpartalcool;
 	private $_urlpartjuice;
 	private $_urlpart;
-	private $_cocktaillist 	= array();
+	private $_cocktaillist 		= array();
 	private $_error;
 	private $_listeCouleurs;
 	private $_listeGouts;
 	private $_listeDifficultes;
+	private $_listeOccasions;
+	private $_formulaire 		= array();
+	private $_form;
+	private $_cocktailscouleur;
+	private $_cocktailsgout;
+	private $_cocktailsoccasion;
+	private $_cocktaildifficulte;
+	private $_couleur;
+	private $_gout;
+	private $_difficulte;
+	private $_occasion;
+
 
 	public function searchformhome()
 	{
@@ -69,7 +81,7 @@ class CocktailsController extends Controller
 	}
 
 
-	public function showcocktails() {
+	public function createform() {
 		$couleurdb = new CouleursModel();
 		$_listeCouleurs = $couleurdb->getCouleurs();
 		
@@ -82,27 +94,49 @@ class CocktailsController extends Controller
         $occasiondb = new OccasionsModel();
 		$_listeOccasions = $occasiondb->getOccasions();
 
-		$this->show('cocktail/cocktail', [
-											'listeCouleurs' 	=> $_listeCouleurs,
-											'listeGouts' 		=> $_listeGouts,
-											'listeDifficultes' 	=> $_listeDifficultes,
-                                            'listeOccasions'    => $_listeOccasions,
-										 ]);
+		$_formulaire = ['couleurs' => $_listeCouleurs, 'gouts' => $_listeGouts, 'difficultes' => $_listeDifficultes, 'occasions' => $_listeOccasions,];
+
+		return $_formulaire;
 	}
 
+	public function showcocktails() {
+
+		// Création du formulaire à partir des données de la dbb
+		$_form = $this->createform();
+
+		// Génération des paramètres aléatoires pour la sélection
+		$couleurdb = new CouleursModel();
+		$_couleur = $couleurdb->getRandomCouleurs();
+		
+		$goutdb = new GoutsModel();
+		$_gout = $goutdb->getRandomGouts();
+				
+		$difficultedb = new DifficultesModel();
+		$_difficulte = $difficultedb->getRandomDifficultes();
+
+        $occasiondb = new OccasionsModel();
+		$_occasion = $occasiondb->getRandomOccasions();
 
 
-	public function 
+		$cocktails = new CocktailsModel();
 
+		$_cocktailscouleur = $cocktails->getCocktailListBy('couleur', $_couleur['champuk']);
 
+		$_cocktailsoccasion = $cocktails->getCocktailListBy('occasion', $_occasion['champuk']);
 
+		if (($_occasion['champfr'] === "apéritif") || ($_occasion['champfr'] === "après-midi")) {$_occasion['champfr'] = 'l\'' . $_occasion['champfr'];}
+		if ($_occasion['champfr'] === "digestif") {$_occasion['champfr'] = 'le ' . $_occasion['champfr'];}
+		if ($_occasion['champfr'] === "soirée") {$_occasion['champfr'] = 'la ' . $_occasion['champfr'];}
 
+		$this->show('cocktail/cocktail', [
+											'form' 				=> $_form, 
+											'cocktailscouleur' 	=> $_cocktailscouleur, 
+											'cocktailsoccasion'	=> $_cocktailsoccasion,
+											'nomcouleur' 		=> $_couleur['champfr'],
+										 	'nommoment'			=> $_occasion['champfr'],
+										 ]);
 
-
-
-
-
-
+	}
 
 
 

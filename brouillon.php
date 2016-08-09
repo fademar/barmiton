@@ -33,3 +33,17 @@
 
 
 	<option value="<?php echo $couleur['color']?>"><?php echo $couleur['couleur']?></option>
+
+
+
+	// /**************** Récupération des données ******************/
+		// if (($param === 'tout') && ($valeur === 'tout')) {
+
+		// 	$_jsonurl = 'https://addb.absolutdrinks.com/drinks/?apiKey=2c758736e5f844bdb9d39308df889c6d';
+		// 	$_json = file_get_contents($_jsonurl);
+		// 	$_data = json_decode($_json)->result;
+
+		// 	$selection = $this->getcocktailselection($_data, 6);
+
+		// 	return $selection;
+		// }

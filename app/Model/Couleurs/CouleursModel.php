@@ -6,7 +6,8 @@ class CouleursModel extends \W\Model\Model
 {
 
 	private $_listeCouleurs;
-
+	private $_arraykey;
+	private $_couleurrandom;
 	/**
 	 * Récupère la liste des couleurs en BDD
 	 */
@@ -18,7 +19,14 @@ class CouleursModel extends \W\Model\Model
 	}
 
 
+	public function getRandomCouleurs() {
 
+		$_listeCouleurs		= $this->findAll();
+		$_arraykey 			= array_rand($_listeCouleurs, 1);
+		$_couleurrandom		= $_listeCouleurs[$_arraykey];
+
+		return $_couleurrandom;
+	}
 
 
 
