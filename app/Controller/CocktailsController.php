@@ -31,8 +31,7 @@ class CocktailsController extends Controller
 	private $_couleur;
 	private $_gout;
 	private $_difficulte;
-	private $_occasion;
-	private $_cocktailsbest;
+
 
 	public function searchformhome()
 	{
@@ -141,6 +140,7 @@ class CocktailsController extends Controller
 										 ]);
 
 	}
+
 
 
 
