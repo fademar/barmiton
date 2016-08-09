@@ -42,8 +42,8 @@
 	<!-- Sélection de cocktails les mieux notés -->
  	<div class="section">
         <div class="row center">
-            <h2>Nos  <?= $nommoment ?> ?</h2>
-            <?php foreach ($cocktailsoccasion as $cocktailcard): ?>
+            <h2>Nos utilisateurs ont aimé</h2>
+            <?php foreach ($cocktailbest as $cocktailcard): ?>
                 <div class="col s12 m7 l3">
                     <div class="card">
                         <div class="card-image">

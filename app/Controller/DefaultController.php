@@ -18,7 +18,7 @@ class DefaultController extends Controller
 	public function home()
 	{
 		$_cocktailapi		 = new CocktailsModel();
-		$_cocktailselection	 = $_cocktailapi->getCocktailListBy('tout', 'home');
+		$_cocktailselection	 = $_cocktailapi->getCocktailListBy('tout', 'home', 6);
 			
 		$this->show('default/home', ['cocktailselection' => $_cocktailselection]);
 	}

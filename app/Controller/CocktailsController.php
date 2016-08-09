@@ -32,7 +32,7 @@ class CocktailsController extends Controller
 	private $_gout;
 	private $_difficulte;
 	private $_occasion;
-
+	private $_cocktailsbest;
 
 	public function searchformhome()
 	{
@@ -105,24 +105,26 @@ class CocktailsController extends Controller
 		$_form = $this->createform();
 
 		// Génération des paramètres aléatoires pour la sélection
-		$couleurdb = new CouleursModel();
-		$_couleur = $couleurdb->getRandomCouleurs();
+		$couleurdb 		= new CouleursModel();
+		$_couleur 		= $couleurdb->getRandomCouleurs();
 		
-		$goutdb = new GoutsModel();
-		$_gout = $goutdb->getRandomGouts();
+		$goutdb 		= new GoutsModel();
+		$_gout 			= $goutdb->getRandomGouts();
 				
-		$difficultedb = new DifficultesModel();
-		$_difficulte = $difficultedb->getRandomDifficultes();
+		$difficultedb 	= new DifficultesModel();
+		$_difficulte 	= $difficultedb->getRandomDifficultes();
 
-        $occasiondb = new OccasionsModel();
-		$_occasion = $occasiondb->getRandomOccasions();
+        $occasiondb 	= new OccasionsModel();
+		$_occasion 		= $occasiondb->getRandomOccasions();
 
 
-		$cocktails = new CocktailsModel();
+		$cocktails 		= new CocktailsModel();
 
-		$_cocktailscouleur = $cocktails->getCocktailListBy('couleur', $_couleur['champuk']);
+		$_cocktailscouleur 	= $cocktails->getCocktailListBy('couleur', $_couleur['champuk'], 4);
 
-		$_cocktailsoccasion = $cocktails->getCocktailListBy('occasion', $_occasion['champuk']);
+		$_cocktailsoccasion = $cocktails->getCocktailListBy('occasion', $_occasion['champuk'], 4);
+
+		$_cocktailsbest 	= $cocktails->getBestCocktails();
 
 		if (($_occasion['champfr'] === "apéritif") || ($_occasion['champfr'] === "après-midi")) {$_occasion['champfr'] = 'l\'' . $_occasion['champfr'];}
 		if ($_occasion['champfr'] === "digestif") {$_occasion['champfr'] = 'le ' . $_occasion['champfr'];}
@@ -130,10 +132,12 @@ class CocktailsController extends Controller
 
 		$this->show('cocktail/cocktail', [
 											'form' 				=> $_form, 
-											'cocktailscouleur' 	=> $_cocktailscouleur, 
+											'cocktailbest'		=> $_cocktailsbest,
 											'cocktailsoccasion'	=> $_cocktailsoccasion,
+											'cocktailscouleur' 	=> $_cocktailscouleur, 
 											'nomcouleur' 		=> $_couleur['champfr'],
 										 	'nommoment'			=> $_occasion['champfr'],
+
 										 ]);
 
 	}
