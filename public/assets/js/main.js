@@ -4,17 +4,11 @@ $(document).ready(function() {
     $('.button-collapse').sideNav();
     $('.parallax').parallax();
     $('.modal-trigger').leanModal();
+    $('select').material_select();
 
 
 
-
-    $('#test').autocomplete({
-    	source : "assets/sources/listenoms.php",
-    	minLength: 1,
-	});
-
-
-
+    
 
 
 

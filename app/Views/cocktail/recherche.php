@@ -7,12 +7,52 @@
 
 		<!--   Icon Section   -->
 		<div class="row">
+				<div class="row">
+					<div class="col s12">
+						<div class="row center">
+							<h2>Nouvelle recherche</h2>
+							
+                            <!-- Formulaire de recherche -->
+
+							<form action="recherche/" method="GET">
+								
+								<div class="input-field col s12 l12">
+								    <label>Nom</label>
+								    <input type="text" id="recherchenom" name="nomcocktail">
+								</div>
+								
+								<?php foreach($form as $key => $value): ?>
+									<div class="input-field col s12 l3">
+                                        <select multiple name="<?= $key?>">
+                                            <option value="" disabled selected></option>
+                                            <?php foreach($value as $champ): ?>     
+                                                <option value="<?php echo $champ['champuk']?>"><?php echo $champ['champfr']?></option>
+                                            <?php endforeach ?>
+                                        </select>
+									    <label><?= $key?></label>
+									</div>
+								<?php endforeach ?>
+								
+                                <button class="btn waves-effect waves-light" type="submit" name="action">Mixer !</button>
+							</form>
+
+						</div>
+					</div>
+				</div>
+		</div>
+	</div>
+
+
+	<div class="section">
+
+		<!--   Icon Section   -->
+		<div class="row">
 			<?= $error; ?>
 			<?php if (!empty($cocktaillist)): ?>
 				<div class="row">
 					<div class="col s12">
 						<div class="row center">
-							<h2>Résultat de recherche</h2>
+							<h2>Résultats de recherche</h2>
 						</div>
 					</div>
 				</div>

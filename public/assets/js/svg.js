@@ -50,7 +50,7 @@ $(document).ready(function() {
 
 			var interval =	setInterval(function(){
 				i++;
-			    if(i === 500){
+			    if(i === 400){
 			        clearInterval(interval);
 			    }		
 				var rbulle 		= getRandom();

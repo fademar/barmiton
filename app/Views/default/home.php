@@ -27,7 +27,7 @@
             <div class="col s12">
                 <div class="row center">
                     <h2>Choisissez vos ingrédients préférés</h2>
-                    <form action="cocktails/cocktailliste/" method="POST">
+                    <form action="recherche/" method="GET">
                         <h5>Alcools</h5>
                         <p>
                             <input type="checkbox" name="alcool[]" id="ginId" value="gin">
@@ -71,7 +71,7 @@
                             <label for="ananasId">Ananas</label>
                         </p>
                         <p>
-                            <input type="submit" name="submit" value="mixer">
+                        <button class="btn waves-effect waves-light" type="submit">Mixer !</button>
                         </p>
                     </form>
                 </div>

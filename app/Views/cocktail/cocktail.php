@@ -12,7 +12,9 @@
 						<div class="row center">
 							<h2>Recherche avancée</h2>
 							
-							<form action="" method="POST">
+                            <!-- Formulaire de recherche -->
+
+							<form action="recherche/" method="GET">
 								
 								<div class="input-field col s12 l12">
 								    <label>Nom</label>
@@ -21,16 +23,17 @@
 								
 								<?php foreach($form as $key => $value): ?>
 									<div class="input-field col s12 l3">
+                                        <select multiple name="<?= $key?>">
+                                            <option value="" disabled selected></option>
+                                            <?php foreach($value as $champ): ?>     
+                                                <option value="<?php echo $champ['champuk']?>"><?php echo $champ['champfr']?></option>
+                                            <?php endforeach ?>
+                                        </select>
 									    <label><?= $key?></label>
-										<select class="browser-default" name="couleur">
-									    	<option value="" disabled selected></option>
-									    	<?php foreach($value as $champ): ?> 	
-									     		<option value="<?php echo $champ['champuk']?>"><?php echo $champ['champfr']?></option>
-									    	<?php endforeach ?>
-								    	</select>
 									</div>
 								<?php endforeach ?>
 								
+                                <button class="btn waves-effect waves-light" type="submit" name="action">Mixer !</button>
 							</form>
 
 						</div>

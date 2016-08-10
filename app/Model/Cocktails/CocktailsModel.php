@@ -22,64 +22,85 @@ class CocktailsModel extends \W\Model\Model
 	private $_bestcocktail;
 	private $_compteurnote = array();
 
-	public function getcocktaildata($id)
+
+
+	/************************ Récupération des données selon le type de cocktail recherché ($param) et la valeur de ce type ($urlpart) *****************************/
+
+
+	public function getCocktailListBy($param, $urlpart)
 	{
-		/**************** Récupération des données ******************/
-		$_jsonurl = 'https://addb.absolutdrinks.com/drinks/' . $id . '/?apiKey=2c758736e5f844bdb9d39308df889c6d';
-		$_json = file_get_contents($_jsonurl);
-		$_data = json_decode($_json)->result;
+		
+		if (($param === 'tout') && ($urlpart === 'home')) {
 
-		$_cocktailapi = $_data[0];
+			$_jsonurl	= 'https://addb.absolutdrinks.com/drinks/?apiKey=2c758736e5f844bdb9d39308df889c6d';
+			$_json 		= file_get_contents($_jsonurl);
+			$_data 		= json_decode($_json)->result;
+			// var_dump($_data);
+			
+			return $_data;
+		}
 
-		$this->setTable('cocktails');
-		$this->setPrimaryKey('idCocktailApi');
+		if ($param === 'drinks') {
+			$_jsonurl	= 'https://addb.absolutdrinks.com/drinks/'. $urlpart .'/?apiKey=2c758736e5f844bdb9d39308df889c6d';
+			$_json 		= file_get_contents($_jsonurl);
+			$_data 		= json_decode($_json)->result;
+			
+			
+			return $_data;
+		}
 
+		if ($param === 'couleur') {
 
-		$_cocktaildb = $this->search(['idCocktailApi' => $id]);
+			$_jsonurl	= 'https://addb.absolutdrinks.com/drinks/colored/'. $urlpart .'/?apiKey=2c758736e5f844bdb9d39308df889c6d';
+			$_json 		= file_get_contents($_jsonurl);
+			$_data 		= json_decode($_json)->result;
+			
+			
+			return $_data;
+		}
+		
+		if ($param === 'occasion') {
+			$_jsonurl 	= 'https://addb.absolutdrinks.com/drinks/for/' . $urlpart . '/?apiKey=2c758736e5f844bdb9d39308df889c6d';
+			$_json 		= file_get_contents($_jsonurl);
+			$_data 		= json_decode($_json)->result;
 
+			
+			return $_data;
+		}
 
-		$_cocktaildata = array(
-							'id'			=> $_cocktailapi->id,
-							'name' 			=> $_cocktailapi->name,
-							'ingredients'	=> $_cocktailapi->ingredients,
-							'description'	=> $_cocktaildb[0]['description'],
-							'occasions' 	=> $_cocktailapi->occasions,
-							'taste' 		=> $_cocktailapi->tastes,
-							'color' 		=> $_cocktailapi->color,
-							'skill' 		=> $_cocktailapi->skill->name,
-							'imgurlsmall' 	=> "http://assets.absolutdrinks.com/drinks/300x400/" . $_cocktailapi->id . "(60).jpg",
-							'imgurlmodal' 	=> "http://assets.absolutdrinks.com/drinks/450x600/" . $_cocktailapi->id . ".png",
+		if ($param === 'difficulte') {
+			$_jsonurl 	= 'https://addb.absolutdrinks.com/drinks/skill/' . $urlpart . '/?apiKey=2c758736e5f844bdb9d39308df889c6d';
+			$_json 		= file_get_contents($_jsonurl);
+			$_data 		= json_decode($_json)->result;
+		
+			return $_data;
+		}
 
-		);
-	
-
-				
-		return $_cocktaildata;
+		if ($param === 'gout') {
+			$_jsonurl 	= 'https://addb.absolutdrinks.com/drinks/tasting/' . $urlpart . '/?apiKey=2c758736e5f844bdb9d39308df889c6d';
+			$_json 		= file_get_contents($_jsonurl);
+			$_data 		= json_decode($_json)->result;
+			
+			return $_data;
+		}
 
 	} //fin de function getcocktaillist
 
 
 
 
+	/************************ Transformation du json et récupération des données en bdd *****************************/
 
-	/************************ Récupération des données selon l'url *****************************/
 
-
-	public function getcocktaillist($urlpart)
+	public function fetchData($data)
 	{
-		/**************** Récupération des données ******************/
-		$_jsonurl = 'https://addb.absolutdrinks.com/drinks/' . $urlpart . '/?apiKey=2c758736e5f844bdb9d39308df889c6d';
-		$_json = file_get_contents($_jsonurl);
-		$_data = json_decode($_json)->result;
-
-		
-		// var_dump(search(['idCocktailApi', $_cocktail->id]));
+	
+		if (!empty($data)) {
 
 
-		if (!empty($_data)) {
 
-			/**************** Traitement des données ******************/
-			foreach ($_data as $_cocktail) {
+			/**************** Enregistrement des données dans un tableau associatif ******************/
+			foreach ($data as $_cocktail) {
 
 				$_cocktailcard = array(
 									'id'			=> $_cocktail->id,
@@ -107,7 +128,51 @@ class CocktailsModel extends \W\Model\Model
 
 		return $_cocktaillist;
 
+	} //fin de function fetchdata
+
+
+
+
+
+	public function getcocktaildata($id)
+	{
+		/**************** Récupération des données ******************/
+		$_jsonurl = 'https://addb.absolutdrinks.com/drinks/' . $id . '/?apiKey=2c758736e5f844bdb9d39308df889c6d';
+		$_json = file_get_contents($_jsonurl);
+		$_data = json_decode($_json)->result;
+
+		$_cocktailapi = $_data[0];
+
+		$this->setTable('cocktails');
+		$_cocktaildb = $this->search(['idCocktailApi' => $id]);
+
+
+
+
+		$_cocktaildata = array(
+							'id'			=> $_cocktailapi->id,
+							'name' 			=> $_cocktailapi->name,
+							'ingredients'	=> $_cocktailapi->ingredients,
+							'description'	=> $_cocktaildb[0]['description'],
+							'occasions' 	=> $_cocktailapi->occasions,
+							'taste' 		=> $_cocktailapi->tastes,
+							'color' 		=> $_cocktailapi->color,
+							'skill' 		=> $_cocktailapi->skill->name,
+							'imgurlsmall' 	=> "http://assets.absolutdrinks.com/drinks/300x400/" . $_cocktailapi->id . "(60).jpg",
+							'imgurlmodal' 	=> "http://assets.absolutdrinks.com/drinks/450x600/" . $_cocktailapi->id . ".png",
+
+		);
+	
+
+				
+		return $_cocktaildata;
+
 	} //fin de function getcocktaillist
+
+
+
+
+
 
 
 	/************************ Récupération d'une sélection aléatoire de cocktails *****************************/
@@ -143,68 +208,7 @@ class CocktailsModel extends \W\Model\Model
 
 
 
-	/************************ Récupération des données selon le type de cocktail recherché ($param) *****************************/
-
-
-	public function getCocktailListBy($param, $valeur, $n)
-	{
-		
-		if (($param === 'tout') && ($valeur === 'home')) {
-
-			$_jsonurl	= 'https://addb.absolutdrinks.com/drinks/?apiKey=2c758736e5f844bdb9d39308df889c6d';
-			$_json 		= file_get_contents($_jsonurl);
-			$_data 		= json_decode($_json)->result;
-			// var_dump($_data);
-
-			$_selection 	= $this->getRandomCocktail($_data, $n);
-			
-			return $_selection;
-		}
-
-		if ($param === 'couleur') {
-
-			$_jsonurl	= 'https://addb.absolutdrinks.com/drinks/colored/'. $valeur .'/?apiKey=2c758736e5f844bdb9d39308df889c6d';
-			$_json 		= file_get_contents($_jsonurl);
-			$_data 		= json_decode($_json)->result;
-			
-			$_selection 	= $this->getRandomCocktail($_data, $n);
-			
-			return $_selection;
-		}
-		
-
-		if ($param === 'occasion') {
-			$_jsonurl 	= 'https://addb.absolutdrinks.com/drinks/for/' . $valeur . '/?apiKey=2c758736e5f844bdb9d39308df889c6d';
-			$_json 		= file_get_contents($_jsonurl);
-			$_data 		= json_decode($_json)->result;
-
-			$_selection = $this->getRandomCocktail($_data, $n);
-			
-			return $_selection;
-		}
-
-		if ($param === 'difficulte') {
-			$_jsonurl 	= 'https://addb.absolutdrinks.com/drinks/skill/' . $valeur . '/?apiKey=2c758736e5f844bdb9d39308df889c6d';
-			$_json 		= file_get_contents($_jsonurl);
-			$_data 		= json_decode($_json)->result;
-
-			$_selection 	= $this->getRandomCocktail($_data, $n);
-			
-			return $_selection;
-		}
-
-		if ($param === 'gout') {
-			$_jsonurl 	= 'https://addb.absolutdrinks.com/drinks/tasting/' . $valeur . '/?apiKey=2c758736e5f844bdb9d39308df889c6d';
-			$_json 		= file_get_contents($_jsonurl);
-			$_data 		= json_decode($_json)->result;
-
-
-			$_selection = $this->getRandomCocktail($_data, $n);
-			
-			return $_selection;
-		}
-
-	} //fin de function getcocktaillist
+	
 
 	
 
