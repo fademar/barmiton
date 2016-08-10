@@ -2,7 +2,7 @@
 
 <?php $this->start('main_content') ?>
 
-<div class="page vert">
+<div class="page cyan darken-1">
     <div class="containersvg valign-wrapper"> 
         <div class="svgbox valign">
             <svg id="martini" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65 100">
