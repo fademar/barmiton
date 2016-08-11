@@ -101,8 +101,9 @@ h2 {
     clear: both;
 }
 
-
-
+.formulaire {
+  margin-bottom: 2em;
+}
 
 @media only screen and (max-width : 992px) {
   .parallax-container .section {

@@ -47,3 +47,62 @@
 
 		// 	return $selection;
 		// }
+
+
+								<?php foreach($form as $key => $value): ?>
+                                    <?php if ($key === 'alcools')?>
+                                        <div class="input-field col s12 l4">
+                                            <select multiple name="<?= $key ?>";> 
+                                                <option value="" selected disabled></option>
+                                                <optgroup>
+                                                    <option value="gin">Gin</option>
+                                                    <option value="rum">Rhum</option>
+                                                    <option value="tequila">Tequila</option>
+                                                    <option value="vodka">Vodka</option>
+                                                    <option value="whisky">Whisky</option>
+                                                </optgroup>
+                                                <optgroup>
+                                                    <?php foreach($value['alcools'] as $champ): ?>     
+                                                        <option value="<?php echo $champ['idIngredientApi']?>"><?php echo $champ['nomIngredient']?></option>
+                                                    <?php endforeach ?>
+                                                </optgroup>
+                                            </select>
+                                            <label><?= $key?></label>
+                                        </div>
+                                    <? endif ?>
+                                    <?php if ($key === 'softs')?>
+                                        <div class="input-field col s12 l4">
+                                            <select multiple name="<?= $key ?>";> 
+                                                <option value="" selected disabled></option>
+                                                    <?php foreach($value['softs'] as $champ): ?>     
+                                                        <option value="<?php echo $champ['idIngredientApi']?>"><?php echo $champ['nomIngredient']?></option>
+                                                    <?php endforeach ?>
+                                                </optgroup>
+                                            </select>
+                                            <label><?= $key?></label>
+                                        </div>
+                                    <? endif ?>
+                                    <?php if ($key === 'épices')?>
+                                        <div class="input-field col s12 l4">
+                                            <select multiple name="<?= $key ?>";> 
+                                                <option value="" selected disabled></option>
+                                                    <?php foreach($value['épices'] as $champ): ?>     
+                                                        <option value="<?php echo $champ['idIngredientApi']?>"><?php echo $champ['nomIngredient']?></option>
+                                                    <?php endforeach ?>
+                                                </optgroup>
+                                            </select>
+                                            <label><?= $key?></label>
+                                        </div>
+                                    <? endif ?>
+                                    <?php if ($key === 'couleurs' || $key === 'difficultes' || $key === 'gouts' || $key === 'occasions'): ?>
+                                        <div class="input-field col s12 l3">
+                                            <select <?php if (($key === 'couleurs') || ($key === 'difficultes')) {echo 'name="'. $key .'"';} else {echo 'multiple name="'. $key .'[]"';}?>> 
+                                                <option value="" selected <?php if (($key === 'gouts') || ($key === 'occasions')) {echo 'disabled';} ?>></option>
+                                                <?php foreach($value as $champ): ?>     
+                                                    <option value="<?php echo $champ['champuk']?>"><?php echo $champ['champfr']?></option>
+                                                <?php endforeach ?>
+                                            </select>
+    									    <label><?= $key?></label>
+    									</div>
+                                    <?php endif ?>
+								<?php endforeach ?>

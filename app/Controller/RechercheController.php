@@ -11,17 +11,19 @@ class RechercheController extends Controller
 {
 
 	private $_alcools 			= array();
-	private $_urlpartalcool;
-	private $_urlpartjuice;
 	private $_urlpart;
+	private $_data;
 	private $_cocktaillist 		= array();
 	private $_error;
 	private $postId;
+	private $_formcontroller;
+	private $_form;
 
-public function searchformhome()
+
+public function searchform()
 	{
-		$cocktailcontroller = new CocktailsController();
-		$_form = $cocktailcontroller->createform();
+		$_formcontroller = new FormController();
+		$_form = $_formcontroller->createSearchForm();
 		
 		$api = new CocktailsModel;
 
@@ -29,38 +31,76 @@ public function searchformhome()
 
 		if ($_GET) {
 			
-			/**************** Construction de l'url pour la requête des alcools ******************/
+			$_urlpart = '';
 
-			if (!empty($_GET['alcool']) && !empty($_GET['juice'])) {
+			/**************** Construction de l'url pour la requête des cocktails ******************/
+
+			if (!empty($_GET['nomcocktail'])) {
+
 				
-				$_alcools = $_GET['alcool'];
-				$_valuesalcool = 'withtype/' . implode('/and/', $_alcools);				
-				$_juices = $_GET['juice'];
-				$_valuesjuice = 'with/' . implode('/and/', $_juices);
-				
-				$_cocktaillist = $api->getcocktaillist($_urlpart);
 
 
 			}
-			
-			if (!empty($_GET['alcool']) && empty($_GET['juice'])) {
 
-				$_alcools = $_GET['alcool'];
-				$_urlpartalcool = 'withtype/' . implode('/and/', $_alcools);				
-				$_urlpart = $_urlpartalcool;
+			if (!empty($_GET['alcoolsprincipaux'])) {
+
+				$_alcools	= $_GET['alcoolsprincipaux'];
+				$_urlpart	.= '/withtype/' . implode('/and/', $_alcools);				
 			}
 			
-			if (empty($_GET['alcool']) && !empty($_GET['juice'])) {
+			if (!empty($_GET['alcools'])) {
 
-				$_juices = $_GET['juice'];
-				$_urlpartjuice = 'with/' . implode('/and/', $_juices);
-				$_urlpart = $_urlpartjuice;
+				$_juices	= $_GET['alcools'];
+				$_urlpart	.= '/with/' . implode('/and/', $_juices);
+			}
+
+			if (!empty($_GET['softs'])) {
+
+				$_juices	= $_GET['softs'];
+				$_urlpart	.= '/with/' . implode('/and/', $_juices);
+			}
+
+			if (!empty($_GET['épices'])) {
+
+				$_juices	= $_GET['épices'];
+				$_urlpart	.= '/with/' . implode('/and/', $_juices);
+			}
+
+			if (!empty($_GET['juice'])) {
+
+				$_juices	= $_GET['juice'];
+				$_urlpart	.= '/with/' . implode('/and/', $_juices);
 			}
 			
+			if (!empty($_GET['couleurs'])) {
+
+				$_couleurs	= $_GET['couleurs'];
+				$_urlpart	.= '/colored/' . $_couleurs;
+			}
+			
+			if (!empty($_GET['gouts'])) {
+
+				$gouts	= $_GET['gouts'];
+				$_urlpart	.= '/tasting/' . implode('/and/', $gouts);
+			}
+
+			if (!empty($_GET['difficultes'])) {
+
+				$_difficultes	= $_GET['difficultes'];
+				$_urlpart	.= '/skill/' . $_difficultes;
+			}
+
+			if (!empty($_GET['occasions'])) {
+
+				$occasions	= $_GET['occasions'];
+				$_urlpart	.= '/for/' . implode('/and/', $occasions);
+			}
+
 
 			$api = new CocktailsModel;
-			$_cocktaillist = $api->getcocktaillist($_urlpart);
-		
+			$_data = $api->getCocktailListBy($_urlpart);
+
+			$_cocktaillist = $api->fetchData($_data);
 		}
 		
 		if (!empty($_cocktaillist)) {

@@ -30,23 +30,23 @@
                     <form action="recherche/" method="GET">
                         <h5>Alcools</h5>
                         <p>
-                            <input type="checkbox" name="alcool[]" id="ginId" value="gin">
+                            <input type="checkbox" name="alcoolsprincipaux[]" id="ginId" value="gin">
                             <label for="ginId">Gin</label>
                         </p>
                         <p>
-                            <input type="checkbox" name="alcool[]" id="vodkaId" value="vodka">
+                            <input type="checkbox" name="alcoolsprincipaux[]" id="vodkaId" value="vodka">
                             <label for="vodkaId">Vodka</label>
                         </p>
                         <p>
-                            <input type="checkbox" name="alcool[]" id="rhumId" value="rum">
+                            <input type="checkbox" name="alcoolsprincipaux[]" id="rhumId" value="rum">
                             <label for="rhumId">Rhum</label>
                         </p>
                         <p>
-                            <input type="checkbox" name="alcool[]" id="tequilaId" value="tequila">
+                            <input type="checkbox" name="alcoolsprincipaux[]" id="tequilaId" value="tequila">
                             <label for="tequilaId">Tequila</label>
                         </p>
                         <p>
-                            <input type="checkbox" name="alcool[]" id="whiskyId" value="whisky">
+                            <input type="checkbox" name="alcoolsprincipaux[]" id="whiskyId" value="whisky">
                             <label for="whiskyId">Tequila</label>
                         </p>
                         <h5>Jus de fruits</h5>
@@ -95,23 +95,8 @@
                         <div class="card-action">
                             <div class="card-title grey-text text-darken-4 center-align"><?= $cocktailcard['name']?></div>
                             <!-- Modal Trigger -->
-                            <div class="center-align margin-top-20"><button class="btn-floating waves-effect waves-light blue-grey lighten-4 modal-trigger" data-target="modal-<?= $cocktailcard['id']?>"><i class="material-icons">add</i></button></div>
+                            <div class="center-align margin-top-20"><button class="btn-floating waves-effect waves-light blue-grey lighten-4" data-target="modal-<?= $cocktailcard['id']?>"><i class="material-icons">add</i></button></div>
                         </div>
-                    </div>
-                </div>
-                <!-- Modal Structure -->
-                <div id="modal-<?= $cocktailcard['id']?>" class="modal">
-                    <div class="modal-content">
-                        <h4><?= $cocktailcard['name']?></h4>
-                        <div>
-                            <p><?= $cocktailcard['description']?></p>
-                        </div>
-                        <div>
-                            <img src="<?= $cocktailcard['imgurlmodal']?>">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <a href="#!" class="modal-action modal-close red btn-flat">Fermer</a>
                     </div>
                 </div>
             <?php endforeach ?>

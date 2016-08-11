@@ -14,26 +14,53 @@
 							
                             <!-- Formulaire de recherche -->
 
-							<form action="recherche/" method="GET">
+							<form action="../recherche/" method="GET">
 								
-								<div class="input-field col s12 l12">
+								<!-- <div class="input-field col s12 l12">
 								    <label>Nom</label>
 								    <input type="text" id="recherchenom" name="nomcocktail">
-								</div>
+								</div> -->
 								
-								<?php foreach($form as $key => $value): ?>
-									<div class="input-field col s12 l3">
-                                        <select multiple name="<?= $key?>">
-                                            <option value="" disabled selected></option>
+                                <div class="input-field col s12 l3">
+                                    <select name="alcoolsprincipaux[]" multiple>
+                                        <option value="" disabled selected></option>
+                                        <option value="gin">Gin</option>
+                                        <option value="rum">Rhum</option>
+                                        <option value="tequila">Tequila</option>
+                                        <option value="vodka">Vodka</option>
+                                        <option value="whisky">Whisky</option>
+                                    </select>
+                                    <label>alcools principaux</label>
+                                </div>
+
+                                <?php foreach($form as $key => $value): ?>
+                                    <?php if ($key === 'alcools' || $key === 'softs' || $key === 'épices'): ?>                                          
+                                        <div class="input-field col s12 l3">
+                                            <select multiple name="<?= $key ?>[]";> 
+                                                <option value="" selected disabled></option>
+                                                    
+                                                    <?php foreach($value as $champ): ?>     
+                                                        <option value="<?php echo $champ['idIngredientApi']?>"><?php echo $champ['nomIngredient']?></option>
+                                                    <?php endforeach ?>
+                                            </select>
+                                            <label><?php if ($key === 'alcools') {echo "autres alcools/liqueurs";} else {echo $key;} ?></label>
+                                        </div>
+                                    <?php endif ?>
+
+                                    <?php if ($key === 'couleurs' || $key === 'difficultes' || $key === 'gouts' || $key === 'occasions'): ?>
+                                    <div class="input-field col s12 l3">
+                                        <select <?php if (($key === 'couleurs') || ($key === 'difficultes')) {echo 'name="'. $key .'"';} else {echo 'multiple name="'. $key .'[]"';}?>> 
+                                            <option value="" selected <?php if (($key === 'gouts') || ($key === 'occasions')) {echo 'disabled';} ?>></option>
                                             <?php foreach($value as $champ): ?>     
                                                 <option value="<?php echo $champ['champuk']?>"><?php echo $champ['champfr']?></option>
                                             <?php endforeach ?>
                                         </select>
-									    <label><?= $key?></label>
-									</div>
-								<?php endforeach ?>
+                                        <label><?= $key?></label>
+                                    </div>
+                                    <?php endif ?>
+                                <?php endforeach ?>
 								
-                                <button class="btn waves-effect waves-light" type="submit" name="action">Mixer !</button>
+                                <button class="btn waves-effect waves-light" type="submit">Mixer !</button>
 							</form>
 
 						</div>

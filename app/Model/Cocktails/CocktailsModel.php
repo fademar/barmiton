@@ -27,62 +27,21 @@ class CocktailsModel extends \W\Model\Model
 	/************************ Récupération des données selon le type de cocktail recherché ($param) et la valeur de ce type ($urlpart) *****************************/
 
 
-	public function getCocktailListBy($param, $urlpart)
+	public function getCocktailListBy($urlpart)
 	{
 		
-		if (($param === 'tout') && ($urlpart === 'home')) {
-
+		if ($urlpart === 'all') {
 			$_jsonurl	= 'https://addb.absolutdrinks.com/drinks/?apiKey=2c758736e5f844bdb9d39308df889c6d';
-			$_json 		= file_get_contents($_jsonurl);
-			$_data 		= json_decode($_json)->result;
-			// var_dump($_data);
-			
-			return $_data;
 		}
-
-		if ($param === 'drinks') {
-			$_jsonurl	= 'https://addb.absolutdrinks.com/drinks/'. $urlpart .'/?apiKey=2c758736e5f844bdb9d39308df889c6d';
+		else 
+		{
+			$_jsonurl	= 'https://addb.absolutdrinks.com/drinks'. $urlpart .'/?apiKey=2c758736e5f844bdb9d39308df889c6d';
+		}
 			$_json 		= file_get_contents($_jsonurl);
 			$_data 		= json_decode($_json)->result;
 			
 			
 			return $_data;
-		}
-
-		if ($param === 'couleur') {
-
-			$_jsonurl	= 'https://addb.absolutdrinks.com/drinks/colored/'. $urlpart .'/?apiKey=2c758736e5f844bdb9d39308df889c6d';
-			$_json 		= file_get_contents($_jsonurl);
-			$_data 		= json_decode($_json)->result;
-			
-			
-			return $_data;
-		}
-		
-		if ($param === 'occasion') {
-			$_jsonurl 	= 'https://addb.absolutdrinks.com/drinks/for/' . $urlpart . '/?apiKey=2c758736e5f844bdb9d39308df889c6d';
-			$_json 		= file_get_contents($_jsonurl);
-			$_data 		= json_decode($_json)->result;
-
-			
-			return $_data;
-		}
-
-		if ($param === 'difficulte') {
-			$_jsonurl 	= 'https://addb.absolutdrinks.com/drinks/skill/' . $urlpart . '/?apiKey=2c758736e5f844bdb9d39308df889c6d';
-			$_json 		= file_get_contents($_jsonurl);
-			$_data 		= json_decode($_json)->result;
-		
-			return $_data;
-		}
-
-		if ($param === 'gout') {
-			$_jsonurl 	= 'https://addb.absolutdrinks.com/drinks/tasting/' . $urlpart . '/?apiKey=2c758736e5f844bdb9d39308df889c6d';
-			$_json 		= file_get_contents($_jsonurl);
-			$_data 		= json_decode($_json)->result;
-			
-			return $_data;
-		}
 
 	} //fin de function getcocktaillist
 
@@ -97,22 +56,13 @@ class CocktailsModel extends \W\Model\Model
 	
 		if (!empty($data)) {
 
-
-
 			/**************** Enregistrement des données dans un tableau associatif ******************/
 			foreach ($data as $_cocktail) {
 
 				$_cocktailcard = array(
 									'id'			=> $_cocktail->id,
 									'name' 			=> $_cocktail->name,
-									'ingredients'	=> $_cocktail->ingredients,
-									'description'	=> $_cocktail->descriptionPlain,
-									'occasions' 	=> $_cocktail->occasions,
-									'taste' 		=> $_cocktail->tastes,
-									'color' 		=> $_cocktail->color,
-									'skill' 		=> $_cocktail->skill->name,
 									'imgurlsmall' 	=> "http://assets.absolutdrinks.com/drinks/300x400/" . $_cocktail->id . "(60).jpg",
-									'imgurlmodal' 	=> "http://assets.absolutdrinks.com/drinks/450x600/" . $_cocktail->id . ".png",
 
 				);
 			
@@ -171,10 +121,6 @@ class CocktailsModel extends \W\Model\Model
 
 
 
-
-
-
-
 	/************************ Récupération d'une sélection aléatoire de cocktails *****************************/
 	
 	public function getRandomCocktail($data, $n) {
@@ -187,14 +133,8 @@ class CocktailsModel extends \W\Model\Model
 				$_cocktailcard = array(
 									'id'			=> $_cocktail->id,
 									'name' 			=> $_cocktail->name,
-									'ingredients'	=> $_cocktail->ingredients,
-									'description'	=> $_cocktail->descriptionPlain,
 									'occasions' 	=> $_cocktail->occasions,
-									'taste' 		=> $_cocktail->tastes,
-									'color' 		=> $_cocktail->color,
-									'skill' 		=> $_cocktail->skill->name,
 									'imgurlsmall' 	=> "http://assets.absolutdrinks.com/drinks/" . $_cocktail->id . "(60).jpg",
-									'imgurlmodal' 	=> "http://assets.absolutdrinks.com/drinks/450x600/" . $_cocktail->id . ".png",
 								);
 				
 				$_cocktailselection[] = $_cocktailcard;
@@ -207,10 +147,7 @@ class CocktailsModel extends \W\Model\Model
 
 
 
-
-	
-
-	
+	/************************ Récupération d'une sélection des cocktails les mieux notés *****************************/
 
 	public function getBestCocktails() {
 		
@@ -232,14 +169,7 @@ class CocktailsModel extends \W\Model\Model
 				$_cocktailcard = array(
 										'id'			=> $_cocktail->id,
 										'name' 			=> $_cocktail->name,
-										'ingredients'	=> $_cocktail->ingredients,
-										'description'	=> $_bestcocktail['description'],
-										'occasions' 	=> $_cocktail->occasions,
-										'taste' 		=> $_cocktail->tastes,
-										'color' 		=> $_cocktail->color,
-										'skill' 		=> $_cocktail->skill->name,
 										'imgurlsmall' 	=> "http://assets.absolutdrinks.com/drinks/300x400/" . $_cocktail->id . "(60).jpg",
-										'imgurlmodal' 	=> "http://assets.absolutdrinks.com/drinks/450x600/" . $_cocktail->id . ".png",
 									);
 				
 				$_cocktaillist[] = $_cocktailcard;
