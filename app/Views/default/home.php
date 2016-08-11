@@ -27,7 +27,7 @@
             <div class="col s12">
                 <div class="row center">
                     <h2>Choisissez vos ingrédients préférés</h2>
-                    <form action="recherche/" method="GET">
+                    <form action="recherche/" method="POST">
                         <h5>Alcools</h5>
                         <p>
                             <input type="checkbox" name="alcoolsprincipaux[]" id="ginId" value="gin">

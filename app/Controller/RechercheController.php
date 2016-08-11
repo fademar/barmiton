@@ -27,72 +27,68 @@ public function searchform()
 		
 		$api = new CocktailsModel;
 
-		if(!$_GET) {$this->redirectToRoute('cocktails_showcocktails');}
+		if(!$_POST) {$this->redirectToRoute('cocktails_showcocktails');}
 
-		if ($_GET) {
+		if ($_POST) {
 			
 			$_urlpart = '';
 
 			/**************** Construction de l'url pour la requête des cocktails ******************/
 
-			if (!empty($_GET['nomcocktail'])) {
-
-				
+			if (!empty($_POST['']))
 
 
-			}
+			if (!empty($_POST['alcoolsprincipaux'])) {
 
-			if (!empty($_GET['alcoolsprincipaux'])) {
-
-				$_alcools	= $_GET['alcoolsprincipaux'];
-				$_urlpart	.= '/withtype/' . implode('/and/', $_alcools);				
+				$_alcoolsprincipaux	 = $_POST['alcoolsprincipaux'];
+				$_urlpart			.= '/withtype/' . implode('/and/', $_alcoolsprincipaux);				
 			}
 			
-			if (!empty($_GET['alcools'])) {
+			if (!empty($_POST['alcools'])) {
 
-				$_juices	= $_GET['alcools'];
-				$_urlpart	.= '/with/' . implode('/and/', $_juices);
+				$_alcools	= $_POST['alcools'];
+				$_urlpart	.= '/with/' . implode('/and/', $_alcools);
 			}
 
-			if (!empty($_GET['softs'])) {
+			if (!empty($_POST['softs'])) {
 
-				$_juices	= $_GET['softs'];
-				$_urlpart	.= '/with/' . implode('/and/', $_juices);
+				$_softs	= $_POST['softs'];
+				$_urlpart	.= '/with/' . implode('/and/', $_softs);
 			}
 
-			if (!empty($_GET['épices'])) {
+			if (!empty($_POST['épices'])) {
 
-				$_juices	= $_GET['épices'];
-				$_urlpart	.= '/with/' . implode('/and/', $_juices);
+				$_epices	= $_POST['épices'];
+				$_urlpart	.= '/with/' . implode('/and/', $_epices);
 			}
 
-			if (!empty($_GET['juice'])) {
+			if (!empty($_POST['juice'])) {
 
-				$_juices	= $_GET['juice'];
+				$_juices	= $_POST['juice'];
 				$_urlpart	.= '/with/' . implode('/and/', $_juices);
 			}
 			
-			if (!empty($_GET['couleurs'])) {
+			if (!empty($_POST['couleurs'])) {
 
-				$_couleurs	= $_GET['couleurs'];
+				$_couleurs	= $_POST['couleurs'];
 				$_urlpart	.= '/colored/' . $_couleurs;
 			}
 			
-			if (!empty($_GET['gouts'])) {
+			if (!empty($_POST['gouts'])) {
 
-				$gouts	= $_GET['gouts'];
+				$gouts	= $_POST['gouts'];
 				$_urlpart	.= '/tasting/' . implode('/and/', $gouts);
 			}
 
-			if (!empty($_GET['difficultes'])) {
+			if (!empty($_POST['difficultes'])) {
 
-				$_difficultes	= $_GET['difficultes'];
+				$_difficultes	= $_POST['difficultes'];
 				$_urlpart	.= '/skill/' . $_difficultes;
 			}
 
-			if (!empty($_GET['occasions'])) {
+			if (!empty($_POST['occasions'])) {
 
-				$occasions	= $_GET['occasions'];
+				$occasions	= $_POST['occasions'];
 				$_urlpart	.= '/for/' . implode('/and/', $occasions);
 			}
 

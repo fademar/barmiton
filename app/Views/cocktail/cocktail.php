@@ -13,14 +13,18 @@
 							<h2>Recherche avancée</h2>
                             
 
+
                             <!-- Formulaire de recherche -->
 
-                            <form action="../recherche/" method="GET" class="formulaire">
+                                
+
+                            <form action="../recherche/" method="POST" id="formFiltres" class="formulaire">
                                 
                                 <div class="input-field col s12">
-                                    <input type="text" id="autocomplete-input" name="nomcocktail" class="autocomplete formnom">
+                                    <input type="text" id="autocomplete-input" name="nomcocktail" class="autocomplete">
                                     <label for="autocomplete-input">Nom</label>
                                 </div>
+
 								
                                 <div class="input-field col s12 l3">
                                     <select name="alcoolsprincipaux[]" multiple>
@@ -61,7 +65,7 @@
                                     <?php endif ?>
                                 <?php endforeach ?>
 								
-                                <button class="btn waves-effect waves-light" type="submit">Mixer !</button>
+                                <button class="btn waves-effect waves-light" type="submit" name="mixer">Mixer !</button>
 							</form>
 
 						</div>
