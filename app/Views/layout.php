@@ -62,10 +62,9 @@
 
 
     <!--  Scripts-->
-    <script src="<?= $this->assetUrl('js/vendor/jquery-3.1.0.min.js') ?>"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
-    <script src="<?= $this->assetUrl('js/vendor/snap.svg.js') ?>"></script>
-    <script src="<?= $this->assetUrl('js/vendor/materialize.js') ?>"></script>
+    <script src="<?= $this->assetUrl('js/vendor/jquery-3.1.0.min.js') ?>"></script> 
+    <script src="<?= $this->assetUrl('js/vendor/materialize.min.js') ?>"></script>
+    <script src="<?= $this->assetUrl('js/initmaterialize.js') ?>"></script>
     <script src="<?= $this->assetUrl('js/main.js') ?>"></script>
 
 </body>

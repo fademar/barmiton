@@ -112,7 +112,9 @@ h3.form {
 
 }
 
-
+.ajout-ingredient {
+  text-align: center;
+}
 
 @media only screen and (max-width : 992px) {
   .parallax-container .section {

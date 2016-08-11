@@ -21,10 +21,9 @@
                             <form action="../recherche/" method="POST" id="formFiltres" class="formulaire">
                                 
                                 <div class="input-field col s12">
-                                    <input type="text" id="autocompletename" name="nomcocktail" class="autocomp">
-                                    <label for="autocompletename">Nom</label>
+                                    <input type="text" id="autocomplete-name" class="autocomplete">
+                                    <label for="autocomplete-name">Nom du cocktail</label>
                                 </div>
-
 								
                                 <div class="input-field col s12 l3">
                                     <select name="alcoolsprincipaux[]" multiple>
@@ -57,7 +56,7 @@
                                         <select <?php if (($key === 'couleurs') || ($key === 'difficultes')) {echo 'name="'. $key .'"';} else {echo 'multiple name="'. $key .'[]"';}?>> 
                                             <option value="" selected <?php if (($key === 'gouts') || ($key === 'occasions')) {echo 'disabled';} ?>></option>
                                             <?php foreach($value as $champ): ?>     
-                                                <option value="<?php echo $champ['champuk'];?>"><?php echo (mb_strtolower($champ['champfr'], 'UTF-8')); ?></option>
+                                                <option value="<?php echo $champ['champuk'];?>"><?php echo (mb_strtolower($champ['champfr'])); ?></option>
                                             <?php endforeach ?>
                                         </select>
                                         <label><?= $key?></label>

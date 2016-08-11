@@ -28,7 +28,37 @@
                 <div class="row center">
                     <h2>Choisissez vos ingrédients préférés</h2>
                     <form action="recherche/" method="POST">
-                        <h5>Alcools</h5>
+                        
+                        <div id="formulaire-home" class="row">       
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="text" name=ingredients[] class="autocompletehome">
+                                </div>
+                            </div>    
+                        </div>
+
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="row">
+                                    <div id="plus-ingredient" class="btn-floating waves-effect waves-light teal lighten-3"><i class="material-icons">add</i></a>
+                                </div>
+                                <div class="row center">
+                                    <p class="center">ajouter un ingrédient</p>
+                                </div>
+                            </div>
+                        </div>
+                    
+
+
+                        <button class="btn btn-large waves-effect waves-light" type="submit">Mixer !</button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                        <!-- <h5>Alcools</h5>
                         <p>
                             <input type="checkbox" name="alcoolsprincipaux[]" id="ginId" value="gin">
                             <label for="ginId">Gin</label>
@@ -70,19 +100,9 @@
                             <input type="checkbox" name="juice[]" id="ananasId" value="pineapple-juice">
                             <label for="ananasId">Ananas</label>
                         </p>
-                        <p>
-                        <button class="btn waves-effect waves-light" type="submit">Mixer !</button>
-                        </p>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
+                        <p> -->
 
 
-<div class="container">
     <div class="section">
         <div class="row center">
             <h2>Notre sélection</h2>
@@ -106,4 +126,4 @@
 </div>
 
 
-    <?php $this->stop('main_content') ?>
+<?php $this->stop('main_content') ?>

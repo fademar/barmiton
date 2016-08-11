@@ -4,6 +4,7 @@ namespace Controller;
 
 use \W\Controller\Controller;
 use Controller\CocktailsController;
+use Model\Ingredients\IngredientsModel;
 use Model\Cocktails\CocktailsModel;
 
 
@@ -43,6 +44,21 @@ public function searchform()
 
 			}
 			else {
+
+				if (!empty($_POST['ingredients'])) {
+					
+					foreach ($_POST['ingredients'] as $nomingredient) {
+						var_dump($nomingredient);
+
+						$_ingredientsdb		= new IngredientsModel();
+						$_idIngredient 		= $_ingredientsdb->getId($nomingredient);
+						$_tableauIds[]		= $_idIngredient;
+					}
+
+					var_dump($_tableauIds);
+					// $_urlpart		.= '/with/' . implode('/and/', $_idIngredient[]);
+
+				}
 
 
 				if (!empty($_POST['alcoolsprincipaux'])) {
@@ -104,15 +120,16 @@ public function searchform()
 				$_data = $api->getCocktailListBy($_urlpart);
 
 				$_cocktaillist = $api->fetchData($_data);
-			}
+				
 		
-			if (!empty($_cocktaillist)) {
-				$this->show('cocktail/recherche', ['cocktaillist' => $_cocktaillist, 'error' => '', 'form' => $_form]);
+				if (!empty($_cocktaillist)) {
+					$this->show('cocktail/recherche', ['cocktaillist' => $_cocktaillist, 'error' => '', 'form' => $_form]);
+				}
+				else {
+					$_error = '<h3 class="center-align">Oups, aucune recette ne correspond à votre recherche !</h3>';
+					$this->show('cocktail/recherche', ['error' => $_error, 'form' => $_form]);
+				}	
 			}
-			else {
-				$_error = '<h3 class="center-align">Oups, aucune recette ne correspond à votre recherche !</h3>';
-				$this->show('cocktail/recherche', ['error' => $_error, 'form' => $_form]);
-			}	
 		}
 	}
 
