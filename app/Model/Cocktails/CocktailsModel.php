@@ -13,7 +13,9 @@ class CocktailsModel extends \W\Model\Model
 	private $_cocktaildb;
 
 	private $_cocktailcard = array();
+	private $_datafetched = array();
 	private $_cocktaillist = array();
+
 	private $_selection; 
 	private $_cocktailselection = array();
 	private $_arraykey = array();
@@ -23,97 +25,26 @@ class CocktailsModel extends \W\Model\Model
 	private $_compteurnote = array();
 
 
+	/************************ Récupération des données selon l'url *****************************/
 
-	/************************ Récupération des données selon le type de cocktail recherché ($param) et la valeur de ce type ($urlpart) *****************************/
 
-
-	public function getCocktailListBy($param, $urlpart)
+	public function getCocktailList($urlpart)
 	{
-		
-		if (($param === 'tout') && ($urlpart === 'home')) {
+		$_jsonurl = 'https://addb.absolutdrinks.com/drinks/' . $urlpart . '/?pageSize=1500&apiKey=2c758736e5f844bdb9d39308df889c6d';
 
-			$_jsonurl	= 'https://addb.absolutdrinks.com/drinks/?apiKey=2c758736e5f844bdb9d39308df889c6d';
-			$_json 		= file_get_contents($_jsonurl);
-			$_data 		= json_decode($_json)->result;
-			// var_dump($_data);
-			
-			return $_data;
-		}
+		/**************** Récupération des données ******************/
+		$_json = file_get_contents($_jsonurl);
+		$_data = json_decode($_json)->result;
 
-		if ($param === 'drinks') {
-			$_jsonurl	= 'https://addb.absolutdrinks.com/drinks/'. $urlpart .'/?apiKey=2c758736e5f844bdb9d39308df889c6d';
-			$_json 		= file_get_contents($_jsonurl);
-			$_data 		= json_decode($_json)->result;
-			
-			
-			return $_data;
-		}
-
-		if ($param === 'couleur') {
-
-			$_jsonurl	= 'https://addb.absolutdrinks.com/drinks/colored/'. $urlpart .'/?apiKey=2c758736e5f844bdb9d39308df889c6d';
-			$_json 		= file_get_contents($_jsonurl);
-			$_data 		= json_decode($_json)->result;
-			
-			
-			return $_data;
-		}
-		
-		if ($param === 'occasion') {
-			$_jsonurl 	= 'https://addb.absolutdrinks.com/drinks/for/' . $urlpart . '/?apiKey=2c758736e5f844bdb9d39308df889c6d';
-			$_json 		= file_get_contents($_jsonurl);
-			$_data 		= json_decode($_json)->result;
-
-			
-			return $_data;
-		}
-
-		if ($param === 'difficulte') {
-			$_jsonurl 	= 'https://addb.absolutdrinks.com/drinks/skill/' . $urlpart . '/?apiKey=2c758736e5f844bdb9d39308df889c6d';
-			$_json 		= file_get_contents($_jsonurl);
-			$_data 		= json_decode($_json)->result;
-		
-			return $_data;
-		}
-
-		if ($param === 'gout') {
-			$_jsonurl 	= 'https://addb.absolutdrinks.com/drinks/tasting/' . $urlpart . '/?apiKey=2c758736e5f844bdb9d39308df889c6d';
-			$_json 		= file_get_contents($_jsonurl);
-			$_data 		= json_decode($_json)->result;
-			
-			return $_data;
-		}
-
-	} //fin de function getcocktaillist
-
-
-
-
-	/************************ Transformation du json et récupération des données en bdd *****************************/
-
-
-	public function fetchData($data)
-	{
-	
-		if (!empty($data)) {
-
-
+		if (!empty($_data)) {
 
 			/**************** Enregistrement des données dans un tableau associatif ******************/
-			foreach ($data as $_cocktail) {
+			foreach ($_data as $_cocktail) {
 
 				$_cocktailcard = array(
 									'id'			=> $_cocktail->id,
 									'name' 			=> $_cocktail->name,
-									'ingredients'	=> $_cocktail->ingredients,
-									'description'	=> $_cocktail->descriptionPlain,
-									'occasions' 	=> $_cocktail->occasions,
-									'taste' 		=> $_cocktail->tastes,
-									'color' 		=> $_cocktail->color,
-									'skill' 		=> $_cocktail->skill->name,
-									'imgurlsmall' 	=> "http://assets.absolutdrinks.com/drinks/300x400/" . $_cocktail->id . "(60).jpg",
-									'imgurlmodal' 	=> "http://assets.absolutdrinks.com/drinks/450x600/" . $_cocktail->id . ".png",
-
+									'imgurlsmall' 	=> "http://assets.absolutdrinks.com/drinks/450x600/" . $_cocktail->id . "png",
 				);
 			
 				$_cocktaillist[] = $_cocktailcard;
@@ -125,15 +56,11 @@ class CocktailsModel extends \W\Model\Model
 			$_cocktaillist = '';
 		}
 				
+		return $_cocktaillist;	
 
-		return $_cocktaillist;
+	}
 
-	} //fin de function fetchdata
-
-
-
-
-
+	
 	public function getcocktaildata($id)
 	{
 		/**************** Récupération des données ******************/
@@ -171,34 +98,18 @@ class CocktailsModel extends \W\Model\Model
 
 
 
-
-
-
-
 	/************************ Récupération d'une sélection aléatoire de cocktails *****************************/
 	
-	public function getRandomCocktail($data, $n) {
+	public function getRandomSelection($data, $n) {
 
 		$_arraykey = array_rand($data, $n); // Je passe en paramètre les données Json et le nombre de cocktails à montrer
 			
 		foreach ($_arraykey as $datakey) {
-			 	$_cocktail = $data[$datakey];			
-	
-				$_cocktailcard = array(
-									'id'			=> $_cocktail->id,
-									'name' 			=> $_cocktail->name,
-									'ingredients'	=> $_cocktail->ingredients,
-									'description'	=> $_cocktail->descriptionPlain,
-									'occasions' 	=> $_cocktail->occasions,
-									'taste' 		=> $_cocktail->tastes,
-									'color' 		=> $_cocktail->color,
-									'skill' 		=> $_cocktail->skill->name,
-									'imgurlsmall' 	=> "http://assets.absolutdrinks.com/drinks/" . $_cocktail->id . "(60).jpg",
-									'imgurlmodal' 	=> "http://assets.absolutdrinks.com/drinks/450x600/" . $_cocktail->id . ".png",
-								);
-				
-				$_cocktailselection[] = $_cocktailcard;
-				
+
+			$_cocktail = $data[$datakey];			
+
+			$_cocktailselection[] = $_cocktail;
+						
 		} // Fin de foreach ($_arraykey as $datakey)
 
 		return $_cocktailselection;

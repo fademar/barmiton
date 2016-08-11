@@ -32,7 +32,7 @@ class CocktailsController extends Controller
 	// Création du formulaire de recherche avancée à partir des données de la bdd
 
 
-	public function createform() {
+	public function createForm() {
 		$couleurdb = new CouleursModel();
 		$_listeCouleurs = $couleurdb->getCouleurs();
 		
@@ -53,10 +53,10 @@ class CocktailsController extends Controller
 
 	// Construction de la page cocktails avec le formulaire de recherche avancée et les sélections de cocktails
 
-	public function showcocktails() {
+	public function showCocktails() {
 
 		// Création du formulaire à partir des données de la dbb
-		$_form = $this->createform();
+		$_form = $this->createForm();
 
 		// Génération des paramètres aléatoires pour la sélection
 		$couleurdb 		= new CouleursModel();
@@ -74,11 +74,11 @@ class CocktailsController extends Controller
 
 		$cocktails 		= new CocktailsModel();
 
-		$_cocktailscouleur 	= $cocktails->getCocktailListBy('couleur', $_couleur['champuk']);
-		$_cocktailscouleur = $cocktails->getRandomCocktail($_cocktailscouleur, 4);
+		$_cocktailscouleur 	= $cocktails->getCocktailList('colored/' . $_couleur['champuk']);
+		$_cocktailscouleur = $cocktails->getRandomSelection($_cocktailscouleur, 4);
 
-		$_cocktailsoccasion = $cocktails->getCocktailListBy('occasion', $_occasion['champuk']);
-		$_cocktailsoccasion = $cocktails->getRandomCocktail($_cocktailsoccasion, 4);
+		$_cocktailsoccasion = $cocktails->getCocktailList('for/' . $_occasion['champuk']);
+		$_cocktailsoccasion = $cocktails->getRandomSelection($_cocktailsoccasion, 4);
 
 		$_cocktailsbest 	= $cocktails->getBestCocktails();
 
@@ -86,9 +86,6 @@ class CocktailsController extends Controller
 		if ($_occasion['champfr'] === "digestif") {$_occasion['champfr'] = 'le ' . $_occasion['champfr'];}
 		if ($_occasion['champfr'] === "soirée") {$_occasion['champfr'] = 'la ' . $_occasion['champfr'];}
 
-		$fichecocktail = new CocktailsModel2();
-		$data = $fichecocktail->getcocktaildata();
-	
 
 		$this->show('cocktail/cocktail', [
 											'form' 				=> $_form, 

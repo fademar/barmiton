@@ -47,3 +47,42 @@
 
 		// 	return $selection;
 		// }
+
+
+
+
+		/************************ Transformation du json et récupération des données en bdd *****************************/
+
+	public function fetchData($data)
+	{
+		if (!empty($data)) {
+
+			/**************** Enregistrement des données dans un tableau associatif ******************/
+			foreach ($data as $_cocktail) {
+
+				$_cocktailcard = array(
+									'id'			=> $_cocktail->id,
+									'name' 			=> $_cocktail->name,
+									'ingredients'	=> $_cocktail->ingredients,
+									'description'	=> $_cocktail->descriptionPlain,
+									'occasions' 	=> $_cocktail->occasions,
+									'taste' 		=> $_cocktail->tastes,
+									'color' 		=> $_cocktail->color,
+									'skill' 		=> $_cocktail->skill->name,
+									'imgurlsmall' 	=> "http://assets.absolutdrinks.com/drinks/300x400/" . $_cocktail->id . "(60).jpg",
+									'imgurlmodal' 	=> "http://assets.absolutdrinks.com/drinks/450x600/" . $_cocktail->id . ".png",
+
+				);
+			
+				$_datafetched[] = $_cocktailcard;
+
+			
+			} // Fin de foreach()	
+		}
+		else {
+			$_datafetched = '';
+		}
+				
+		return $_datafetched;
+
+	} //fin de function fetchdata
