@@ -14,12 +14,13 @@
 							
                             <!-- Formulaire de recherche -->
 
-							<form action="../recherche/" method="GET">
-								
-								<!-- <div class="input-field col s12 l12">
-								    <label>Nom</label>
-								    <input type="text" id="recherchenom" name="nomcocktail">
-								</div> -->
+							 <form action="../recherche/" method="POST" id="formFiltres" class="formulaire">
+                                
+                                <div class="input-field col s12">
+                                    <input type="text" id="autocomplete-name" name="nomcocktail" class="autocomplete">
+                                    <label for="autocomplete-input">Nom</label>
+                                </div>
+
 								
                                 <div class="input-field col s12 l3">
                                     <select name="alcoolsprincipaux[]" multiple>
@@ -38,7 +39,6 @@
                                         <div class="input-field col s12 l3">
                                             <select multiple name="<?= $key ?>[]";> 
                                                 <option value="" selected disabled></option>
-                                                    
                                                     <?php foreach($value as $champ): ?>     
                                                         <option value="<?php echo $champ['idIngredientApi']?>"><?php echo $champ['nomIngredient']?></option>
                                                     <?php endforeach ?>
@@ -46,7 +46,7 @@
                                             <label><?php if ($key === 'alcools') {echo "autres alcools/liqueurs";} else {echo $key;} ?></label>
                                         </div>
                                     <?php endif ?>
-
+                                
                                     <?php if ($key === 'couleurs' || $key === 'difficultes' || $key === 'gouts' || $key === 'occasions'): ?>
                                     <div class="input-field col s12 l3">
                                         <select <?php if (($key === 'couleurs') || ($key === 'difficultes')) {echo 'name="'. $key .'"';} else {echo 'multiple name="'. $key .'[]"';}?>> 
@@ -60,7 +60,7 @@
                                     <?php endif ?>
                                 <?php endforeach ?>
 								
-                                <button class="btn waves-effect waves-light" type="submit">Mixer !</button>
+                                <button class="btn waves-effect waves-light" type="submit" name="mixer">Mixer !</button>
 							</form>
 
 						</div>

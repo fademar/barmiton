@@ -21,19 +21,19 @@
                             <form action="../recherche/" method="POST" id="formFiltres" class="formulaire">
                                 
                                 <div class="input-field col s12">
-                                    <input type="text" id="autocomplete-input" name="nomcocktail" class="autocomplete">
-                                    <label for="autocomplete-input">Nom</label>
+                                    <input type="text" id="autocompletename" name="nomcocktail" class="autocomp">
+                                    <label for="autocompletename">Nom</label>
                                 </div>
 
 								
                                 <div class="input-field col s12 l3">
                                     <select name="alcoolsprincipaux[]" multiple>
                                         <option value="" disabled selected></option>
-                                        <option value="gin">Gin</option>
-                                        <option value="rum">Rhum</option>
-                                        <option value="tequila">Tequila</option>
-                                        <option value="vodka">Vodka</option>
-                                        <option value="whisky">Whisky</option>
+                                        <option value="gin">gin</option>
+                                        <option value="rum">rhum</option>
+                                        <option value="tequila">tequila</option>
+                                        <option value="vodka">vodka</option>
+                                        <option value="whisky">whisky</option>
                                     </select>
                                     <label>alcools principaux</label>
                                 </div>
@@ -45,7 +45,7 @@
                                                 <option value="" selected disabled></option>
                                                     
                                                     <?php foreach($value as $champ): ?>     
-                                                        <option value="<?php echo $champ['idIngredientApi']?>"><?php echo $champ['nomIngredient']?></option>
+                                                        <option value="<?php echo $champ['idIngredientApi']?>"><?php echo (mb_strtolower($champ['nomIngredient'], 'UTF-8')); ?></option>
                                                     <?php endforeach ?>
                                             </select>
                                             <label><?php if ($key === 'alcools') {echo "autres alcools/liqueurs";} else {echo $key;} ?></label>
@@ -57,7 +57,7 @@
                                         <select <?php if (($key === 'couleurs') || ($key === 'difficultes')) {echo 'name="'. $key .'"';} else {echo 'multiple name="'. $key .'[]"';}?>> 
                                             <option value="" selected <?php if (($key === 'gouts') || ($key === 'occasions')) {echo 'disabled';} ?>></option>
                                             <?php foreach($value as $champ): ?>     
-                                                <option value="<?php echo $champ['champuk']?>"><?php echo $champ['champfr']?></option>
+                                                <option value="<?php echo $champ['champuk'];?>"><?php echo (mb_strtolower($champ['champfr'], 'UTF-8')); ?></option>
                                             <?php endforeach ?>
                                         </select>
                                         <label><?= $key?></label>

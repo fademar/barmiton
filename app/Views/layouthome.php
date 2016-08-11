@@ -61,7 +61,7 @@
     <!--  Scripts-->
     <script src="<?= $this->assetUrl('js/vendor/jquery-3.1.0.min.js') ?>"></script>
     <script src="<?= $this->assetUrl('js/vendor/snap.svg.js') ?>"></script>
-    <script src="<?= $this->assetUrl('js/vendor/materialize.min.js') ?>"></script>
+    <script src="<?= $this->assetUrl('js/vendor/materialize.js') ?>"></script>
     <script src="<?= $this->assetUrl('js/functions.js') ?>"></script>
     <script src="<?= $this->assetUrl('js/svg.js') ?>"></script>
     <script src="<?= $this->assetUrl('js/main.js') ?>"></script>
