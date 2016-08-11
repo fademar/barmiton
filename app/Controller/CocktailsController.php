@@ -86,7 +86,9 @@ class CocktailsController extends Controller
 		if ($_occasion['champfr'] === "digestif") {$_occasion['champfr'] = 'le ' . $_occasion['champfr'];}
 		if ($_occasion['champfr'] === "soirée") {$_occasion['champfr'] = 'la ' . $_occasion['champfr'];}
 
-
+		$fichecocktail = new CocktailsModel2();
+		$data = $fichecocktail->getcocktaildata();
+	
 
 		$this->show('cocktail/cocktail', [
 											'form' 				=> $_form, 
