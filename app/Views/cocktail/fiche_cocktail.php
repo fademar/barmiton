@@ -1,16 +1,25 @@
 <?php $this->layout('layout', ['title' => 'Cocktails']) ?>
 
 <?php $this->start('main_content') ?>
+
   
    <div id="test" class="row">
+      <h1 id="h1FicheCocktail">Cocktail <?= $dataCocktail['name']?></h1>
         <div class="col s12 m5">
           <div class="card">
             <div class="card-image">
-              <img id="gg" src="http://assets.absolutdrinks.com/drinks/solid-background-black/soft-shadow/floor-reflection/415x655/golden-gleam(85).jpg">
-              <span class="card-title"><?= $dataCocktail[0]['name']?></span>
+              <img src="<?= $dataCocktail['imgurlsmall']?>"></a>
+              <span id="imageCocktail" class="card-title"><?= $dataCocktail['name']?></span>
             </div>
             <div class="card-content">
-              <p><?= $dataCocktail[0]['description']?></p>
+              <h3>Ingrédients</h3>
+              <p><?php
+
+                foreach($dataCocktail['ingredients'] as $element){
+                    echo $element . '<br />';
+                }
+
+               ?></p>
             </div>
             <div class="card-action">
               <a href="#">Ajouter aux favoris</a>
@@ -22,7 +31,7 @@
           <div class="card blue-grey darken-1">
             <div class="card-content white-text">
               <span class="card-title">Recette</span>
-            <p>Remplissez un verre à mélanger avec des glaçons. <br> Ajouter tous les ingrédients. <br> Mélangez et verser dans un verre à cocktail froid.</p>
+            <p><?= $dataCocktail['description']?></p>
             </div>
             <div class="card-action">
               <div class="rating">

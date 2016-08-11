@@ -142,6 +142,13 @@ class CocktailsController extends Controller
 	}
 
 
+public function afficherCocktail($id)
+	{
+		$ficheCocktails = new CocktailsModel();
+		$dataCocktail = $ficheCocktails->getcocktaildata($id);
+		$this->show('cocktail/fiche_cocktail', ['dataCocktail' => $dataCocktail]);
+
+	}
 
 
 

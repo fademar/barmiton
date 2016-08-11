@@ -83,7 +83,7 @@ h1 {
     color: #F0F4F7;
 }
 
-h2 {
+h2, #h1FicheCocktail {
     font-family: 'Lobster', cursive;
     font-size: 3em;
     color: #2ab8ac;
@@ -134,4 +134,12 @@ footer.page-footer {
 #test {
       padding: 8%;
     margin-left: 10%;
+}
+
+#h1FicheCocktail {
+    margin-left: 20%;
+}
+
+#imageCocktail {
+  background: #2ab8ac;
 }
