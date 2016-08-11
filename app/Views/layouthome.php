@@ -19,8 +19,8 @@
                 <ul class="right hide-on-med-and-down">
                     <li><a href="#">&Agrave; propos</a></li>
                     <li><a href="<?= $this->url("cocktails_showcocktails");?> ">Cocktails</a></li>
-                    <li><a href="#">S'inscrire</a></li>
-                    <li><a href="#">Se connecter</a></li>
+                    <li><a href="users/inscription/">S'inscrire</a></li>
+                    <li><a href="users/connexion/">Se connecter</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
 

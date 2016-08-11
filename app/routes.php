@@ -7,4 +7,7 @@ $w_routes = array(
 	['GET', '/cocktails/[:id]', 'Cocktails#afficherCocktail', 'cocktails_afficher_cocktail'],
 	['GET', '/cocktails/[:id]', 'Cocktails#afficherIngredients', 'cocktails_afficher_ingredients'],
 
-);
+
+		['GET|POST', '/users/inscription/', 'Users#usersinscription', 'users_usersinscription'],
+		['GET|POST', '/users/connexion/', 'Users#usersconnexion', 'users_usersconnexion'],
+	);

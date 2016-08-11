@@ -21,6 +21,5 @@ $w_config = [
 	// configuration globale
 	'site_name'	=> '', 								// contiendra le nom du site
 ];
-// Coucou les enculés
 require('routes.php');
 

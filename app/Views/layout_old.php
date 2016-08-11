@@ -5,7 +5,11 @@
 	<title><?= $this->e($title) ?></title>
 
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/style.css') ?>">
+
+	
+
 </head>
+
 <body>
 	<div class="container">
 		<header>
