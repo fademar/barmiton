@@ -66,7 +66,7 @@ $(document).ready(function() {
 		    prefetch: 'http://localhost/barmiton/public/data/fruits/'
 		},
 		{
-		    name: 'épices',
+		    name: 'epices',
 		    prefetch: 'http://localhost/barmiton/public/data/epices/'
 		},
 	]);
