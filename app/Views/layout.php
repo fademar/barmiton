@@ -13,27 +13,8 @@
     <link href="<?= $this->assetUrl('css/vendor/jquery-ui.structure.min.css') ?>" rel="stylesheet" media="screen,projection"/>
     <link href="<?= $this->assetUrl('css/vendor/jquery-ui.theme.min.css') ?>" rel="stylesheet" media="screen,projection"/>
     <link href="<?= $this->assetUrl('css/style.css') ?>" rel="stylesheet" media="screen,projection"/>
-</head>
-<body>
-    <div class="navbar-fixed">
-        <nav class="vert" role="navigation">
-            <div class="nav-wrapper container">
-                <a id="logo-container" href="<?= $this->url("default_home"); ?>" class="brand-logo">Barmiton</a>
-                <ul class="right hide-on-med-and-down">
-                    <li><a href="#">&Agrave; propos</a></li>
-                    <li><a href="<?= $this->url("cocktails_showcocktails");?> ">Cocktails</a></li>
-                    <li><a href="users/inscription/">S'inscrire</a></li>
-                    <li><a href="users/connexion/">Se connecter</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
 
-                <ul id="nav-mobile" class="side-nav">
-                    <li><a href="#">Navbar Link</a></li>
-                </ul>
-                <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-            </div>
-        </nav>
-    </div>
+   
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="<?= $this->assetUrl('css/materialize.css') ?>" rel="stylesheet" media="screen,projection"/>
@@ -143,6 +124,26 @@
     }
   </script>
 
+   <div class="navbar-fixed">
+        <nav class="vert" role="navigation">
+            <div class="nav-wrapper container">
+                <a id="logo-container" href="<?= $this->url("default_home"); ?>" class="brand-logo">Barmiton</a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="#">&Agrave; propos</a></li>
+                    <li><a href="<?= $this->url("cocktails_showcocktails");?> ">Cocktails</a></li>
+                    <li><a href="users/inscription/">S'inscrire</a></li>
+                    <li><a href="users/connexion/">Se connecter</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+
+                <ul id="nav-mobile" class="side-nav">
+                    <li><a href="#">Navbar Link</a></li>
+                </ul>
+                <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+            </div>
+        </nav>
+    </div>
+
   <div
     class="fb-like"
     data-share="true"
@@ -156,19 +157,7 @@
   <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
 
 
-  <nav class="white" role="navigation">
-    <div class="nav-wrapper container">
-      <a id="logo-container" href="#" class="brand-logo">Barmiton</a>
-
-      <ul class="right hide-on-med-and-down">
-        <li><a href="#">Navbar Link</a></li>
-      </ul>
-
-      <ul id="nav-mobile" class="side-nav">
-        <li><a href="#">Navbar Link</a></li>
-      </ul>
-      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-  </nav>
+  
   
   <?= $this->section('main_content') ?>
 

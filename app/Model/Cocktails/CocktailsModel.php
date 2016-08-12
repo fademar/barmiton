@@ -46,17 +46,18 @@ class CocktailsModel extends \W\Model\Model
 			
 			$recupDose = $value->textPlain;			
 			$dose = substr($recupDose, 0, 1);
+			$int = (int)$dose;
+			
 
 			$ingredientsDb = $this->search(['idIngredientsApi' => $idIngredient]);
 			// var_dump($ingredientsDb);
 
-			if ($dose = "I") {
-				$dose = 1;
-			}
 
 			if ($dose > 1) {
 				$phrase = $dose . ' doses de ' . $ingredientsDb[0]['nomIngredient'];
-			} else {
+			}  elseif (!is_numeric($dose)) {
+				$phrase = $ingredientsDb[0]['nomIngredient'];
+			}  else {
 				$phrase = $dose . ' dose de ' . $ingredientsDb[0]['nomIngredient'];
 			}
 
