@@ -13,9 +13,11 @@ $(document).ready(function() {
     	minLength: 1,
 	});
 
-
-
-
+    $(':radio').change(
+  function(){
+    $('.choice').text( $(this).val() + ' stars' );
+  } 
+)
 
 
 

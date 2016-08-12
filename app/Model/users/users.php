@@ -15,14 +15,7 @@ class users
 		private $_email;
 		
 	//Mise en place de mon constructeur
-	public function __construct(
-		$id_membre
-		$pseudo,
-		$nom,
-		$prenom,
-		$motDePasse,
-		$email
-		)
+	public function __construct($id_membre,	$pseudo, $nom, $prenom,	$motDePasse, $email)
 
 		{
 			$this->_id_membre		= $id_membre

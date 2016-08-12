@@ -8,6 +8,8 @@ use Model\Couleurs\CouleursModel;
 use Model\Gouts\GoutsModel;
 use Model\Difficultes\DifficultesModel;
 use Model\Occasions\OccasionsModel;
+use Model\Favoris\FavorisModel;
+use Model\Notes\NotesModel;
 
 class CocktailsController extends Controller
 {
@@ -146,6 +148,70 @@ public function afficherCocktail($id)
 	{
 		$ficheCocktails = new CocktailsModel();
 		$dataCocktail = $ficheCocktails->getcocktaildata($id);
+
+
+		// Ajout des favoris
+
+		if($_POST) {
+
+		$objetFavoris = new FavorisModel();
+		$objetFavoris->setTable('favoris');
+
+			if (isset($_POST['ajouterFavoris']))
+			{
+				
+				$User = $this->getUser();
+				$idMembres = $User['id'];
+
+				$data = array(
+
+					'iddrink' => $id,
+					'idMembres' => $idMembres
+				);
+				
+
+				$objetFavoris->insert($data);
+
+				$this->redirectToRoute('cocktails_showcocktails');
+				
+			}
+
+		}
+
+
+		// Ajout des notes
+
+		echo $_POST['note'];
+
+		if($_POST) {
+
+		// $objetNotes = new NotesModel();
+		// $objetNotes->setTable('cocktails');
+
+			if (isset($_POST['noter']))
+			{
+
+				$note = $_POST['note'];
+
+				// Récupérer la note du cocktail en question dans la BDD 
+				// Addition la note de la BDD au $note 
+				// Renvoyer cette valeur à la BDD (c'est dans cocktailmodel)
+				// ne pas oublier d'incrémenter le compteur de notes
+
+
+
+				$data = array(
+					'note' => $note,
+				);
+				
+
+				$objetNotes->insert($data);
+
+				$this->redirectToRoute('cocktails_showcocktails');
+				
+			}
+
+		}
 		$this->show('cocktail/fiche_cocktail', ['dataCocktail' => $dataCocktail]);
 
 	}

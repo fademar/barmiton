@@ -7,18 +7,20 @@
 
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="<?= $this->assetUrl('css/vendor/materialize.css') ?>" rel="stylesheet" media="screen,projection"/>
     <link href="<?= $this->assetUrl('css/vendor/hamburgers.min.css') ?>" rel="stylesheet" media="screen,projection"/>
     <link href="<?= $this->assetUrl('css/vendor/jquery-ui.min.css') ?>" rel="stylesheet" media="screen,projection"/>
     <link href="<?= $this->assetUrl('css/vendor/jquery-ui.structure.min.css') ?>" rel="stylesheet" media="screen,projection"/>
     <link href="<?= $this->assetUrl('css/vendor/jquery-ui.theme.min.css') ?>" rel="stylesheet" media="screen,projection"/>
     <link href="<?= $this->assetUrl('css/style.css') ?>" rel="stylesheet" media="screen,projection"/>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
    
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="<?= $this->assetUrl('css/materialize.css') ?>" rel="stylesheet" media="screen,projection"/>
   <link href="<?= $this->assetUrl('css/style.css') ?>" rel="stylesheet" media="screen,projection"/>
+
+
+  <!-- Compiled and minified JavaScript -->
 
   
 
@@ -161,8 +163,6 @@
   
   <?= $this->section('main_content') ?>
 
-    <?= $this->section('main_content') ?>
-
     <footer class="page-footer teal lighten-1">
         <div class="container">
             <div class="row">
@@ -191,7 +191,6 @@
     <script src="<?= $this->assetUrl('js/vendor/jquery-3.1.0.min.js') ?>"></script>
     <script src="<?= $this->assetUrl('js/vendor/jquery-ui.custom.min.js') ?>"></script>
     <script src="<?= $this->assetUrl('js/vendor/snap.svg.js') ?>"></script>
-    <script src="<?= $this->assetUrl('js/vendor/materialize.min.js') ?>"></script>
     <script src="<?= $this->assetUrl('js/main.js') ?>"></script>
 
 </body>
