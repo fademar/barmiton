@@ -1,149 +1,82 @@
-/* Custom Stylesheet */
-/**
- * Use this file to override Materialize files so you can update
- * the core Materialize files in the future
- *
- * Made By MaterializeCSS.com
- */
+/********************* Style autocomplétion Typeahead ***********************/
 
 
-nav ul a,
-nav .brand-logo {
-  color: #444;
+.typeahead,
+.tt-query,
+.tt-hint {
+  width: 396px;
+  height: 30px;
+  padding: 8px 12px;
+  font-size: 24px;
+  line-height: 30px;
+  border: 2px solid #ccc;
+  -webkit-border-radius: 8px;
+     -moz-border-radius: 8px;
+          border-radius: 8px;
+  outline: none;
 }
 
-p {
-  line-height: 2rem;
+.typeahead {
+  background-color: #fff;
 }
 
-.button-collapse {
-  color: #26a69a;
+.typeahead:focus {
+  border: 2px solid #0097cf;
 }
 
-.parallax-container {
-  min-height: 700px;
-  line-height: 0;
-  height: auto;
-  color: rgba(255,255,255,.9);
+.tt-query {
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
-.parallax-container .section {
-  width: 100%;
+.tt-hint {
+  color: #999
 }
 
-.margin-top-20 {
-  margin: 20px 0 0 0;
+.tt-menu {
+  width: 422px;
+  margin: 12px 0;
+  padding: 8px 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-border-radius: 8px;
+     -moz-border-radius: 8px;
+          border-radius: 8px;
+  -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+     -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+          box-shadow: 0 5px 10px rgba(0,0,0,.2);
 }
 
-.container-title {
-  min-height: 700px;
+.tt-suggestion {
+  padding: 3px 20px;
+  font-size: 18px;
+  line-height: 24px;
 }
 
-.header-title {
-  font-family: 'lobster';
-  font-size: 10em;
+.tt-suggestion:hover {
+  cursor: pointer;
+  color: #fff;
+  background-color: #0097cf;
 }
 
-.header-subtitle {
-  font-family: 'ralewaymedium';
-}
-
-.material-icons.md-36 {
-  font-size: 36px; 
-}
-
-.vert {
-  background: #2ab8ac;
-}
-
-.vert-dark {
-  background: #B5B15C;
-}
-
-/******************* css tiré de shaker ********************/
-
-.containersvg {
-    width: 45vw;
-    height: 100vh;
-    float: left;
-}
-
-.svgbox {
-    width: 60%;
-    margin: 0 auto;
-}
-
-.page {
-    overflow: auto;
-}
-
-h1 {
-    font-family: 'Lobster', cursive;
-    font-size: 9em;
-    color: #F0F4F7;
-}
-
-h2 {
-    font-family: 'Lobster', cursive;
-    font-size: 3em;
-    color: #2ab8ac;
-}
-
-.slogan {
-    font-family: 'Lobster', cursive;
-    font-size: 3em;
-    margin: 40px 0;
-    color: #B8FCED;
-}
-
-
-.clearfix {
-    clear: both;
-}
-
-.formulaire {
-  padding-bottom: 2em;
-}
-
-
-h3.form {
-    font-family: 'ralewaymedium';
-    font-size: 1.3em;
+.tt-suggestion.tt-cursor {
+  color: #fff;
+  background-color: #0097cf;
 
 }
 
-.ajout-ingredient {
-  text-align: center;
-}
-
-@media only screen and (max-width : 992px) {
-  .parallax-container .section {
-    position: absolute;
-    top: 40%;
-  }
-  #index-banner .section {
-    top: 10%;
-  }
-}
-
-@media only screen and (max-width : 600px) {
-  #index-banner .section {
-    top: 0;
-  }
-}
-
-.icon-block {
-  padding: 0 15px;
-}
-.icon-block .material-icons {
-  font-size: inherit;
-}
-
-footer.page-footer {
+.tt-suggestion p {
   margin: 0;
 }
 
-#test {
-      padding: 8%;
-    margin-left: 10%;
+.gist {
+  font-size: 14px;
+}
+
+#multiple-datasets .ingredients {
+  margin: 0 20px 5px 20px;
+  padding: 3px 0;
+  border-bottom: 1px solid #ccc;
 }

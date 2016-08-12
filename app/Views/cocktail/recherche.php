@@ -40,7 +40,7 @@
                                             <select multiple name="<?= $key ?>[]";> 
                                                 <option value="" selected disabled></option>
                                                     <?php foreach($value as $champ): ?>     
-                                                        <option value="<?php echo $champ['idIngredientApi']?>"><?php echo $champ['nomIngredient']?></option>
+                                                        <option value="<?php echo $champ['idIngredientsApi']?>"><?php echo $champ['nomIngredient']?></option>
                                                     <?php endforeach ?>
                                             </select>
                                             <label><?php if ($key === 'alcools') {echo "autres alcools/liqueurs";} else {echo $key;} ?></label>

@@ -16,7 +16,7 @@
 
                             <!-- Formulaire de recherche -->
 
-                                
+ 
 
                             <form action="../recherche/" method="POST" id="formFiltres" class="formulaire">
                                 
@@ -44,7 +44,7 @@
                                                 <option value="" selected disabled></option>
                                                     
                                                     <?php foreach($value as $champ): ?>     
-                                                        <option value="<?php echo $champ['idIngredientApi']?>"><?php echo (mb_strtolower($champ['nomIngredient'], 'UTF-8')); ?></option>
+                                                        <option value="<?php echo $champ['idIngredientsApi']?>"><?php echo (mb_strtolower($champ['nomIngredient'], 'UTF-8')); ?></option>
                                                     <?php endforeach ?>
                                             </select>
                                             <label><?php if ($key === 'alcools') {echo "autres alcools/liqueurs";} else {echo $key;} ?></label>

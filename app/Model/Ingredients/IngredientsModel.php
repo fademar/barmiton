@@ -9,7 +9,8 @@ class IngredientsModel extends \W\Model\Model
 	private $_alcools;
 	private $_softs;
 	private $_epices;
-	private $_ingredient; 
+	private $_ingredient;
+	private $_fruits;
 
 	public function getId($nom) {
 	
@@ -31,7 +32,6 @@ class IngredientsModel extends \W\Model\Model
 
 	}
 
-
 	public function getSofts() {
 
 		$this->setTable('softs');
@@ -51,6 +51,14 @@ class IngredientsModel extends \W\Model\Model
 		return $_epices;
 	}
 
+	public function getFruits() {
+
+		$this->setTable('fruits');
+
+		$_fruits = $this->findAll();
+
+		return $_fruits;
+	}
 
 
 
