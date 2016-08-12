@@ -12,7 +12,8 @@ class DefaultController extends Controller
 	 */
 	public function home()
 	{
-		$this->show('default/home');
+		$loggedUser = $this -> getUser();
+		$this->show('default/home', ['loggedUser'=>$loggedUser]);
 	}
 
 }

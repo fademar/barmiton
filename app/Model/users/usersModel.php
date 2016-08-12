@@ -1,21 +1,7 @@
 <?php
-namespace Model\users;
+namespace Model\Users;
 
-class usersModel extends \W\Model\users
+class UsersModel extends \W\Model\UsersModel
 {
-	public function getInscription($idMembreInscrit)
-	{
-		$inscription = $this->find($idMembreInscrit);
-
-		$utilisateur = new Membre (
-			$inscription['id_membre'],
-			$inscription['pseudo'],
-			$inscription['nom'],
-			$inscription['prenom'],
-			$inscription['motDePasse'],
-			$inscription['email']
-		);
-		
-		return $utilisateur;
-	}
+	
 }
