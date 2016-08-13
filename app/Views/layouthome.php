@@ -81,12 +81,12 @@
             <div class="container">
                 <div class="row">
                     <div class="footer-col col-md-4">
-                        <h3>Location</h3>
-                        <p>3481 Melrose Place
-                            <br>Beverly Hills, CA 90210</p>
+                        <h3>Contact</h3>
+                        <p>18 rue Geoffroy L'Asnier
+                            <br>75015 Paris</p>
                     </div>
                     <div class="footer-col col-md-4">
-                        <h3>Around the Web</h3>
+                        <h3></h3>
                         <ul class="list-inline">
                             <li>
                                 <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
@@ -106,8 +106,8 @@
                         </ul>
                     </div>
                     <div class="footer-col col-md-4">
-                        <h3>About Freelancer</h3>
-                        <p>Freelance is a free to use, open source Bootstrap theme created by <a href="http://startbootstrap.com">Start Bootstrap</a>.</p>
+                        <h3>Barmiton</h3>
+                        <p>Barmiton est le projet de fin de formation de Pierre Météyé, Thibault Pezeron et Fabrice Demarthon, étudiants à l'Ecole Webforce3</p>
                     </div>
                 </div>
             </div>

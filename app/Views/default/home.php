@@ -16,9 +16,9 @@
                 </div>
                 <div class="col-lg-6 pull-left parent">
                     <div class="intro-text">
-                        <span class="name">Start Bootstrap</span>
+                        <span class="name">Barmiton</span>
                         <hr class="glass-light">
-                        <span class="skills">Web Developer - Graphic Artist - User Experience Designer</span>
+                        <span class="skills">Plus de 1000 recettes de cocktails !</span>
                     </div>
                     <div class="intro-text">
                         <button type="button" class="btn btn-primary btn-lg"><a href="#recherche">Commencer !</a></button>
@@ -39,17 +39,15 @@
             </div>
             <div class="row">
                 <form action="recherche/" method="POST">    
-                    <div class="col-lg-12 text-center">
-                        <div id="multiple-datasets">
+                        <div class="col-lg-12 text-center fieldcontainer">
+                            <div class="fieldinput">
                                 <input class="typeahead" type="text" name="ingredients[]" placeholder="">
+                                <a href="javascript:void(0);" class="btn-ajouter" title="ajouter un champ"><i class="fa fa-plus-circle"></i></a>
+                            </div>
                         </div>
-                        <span class="btn btn-default btn-xs btn-ajouter"><i class="fa fa-plus-circle"></i>ajouter</span>
-                    </div>
-                    <div class="col-lg-8 col-lg-offset-2 text-center">
-                        <a href="#" class="btn btn-primary btn-lg">
-                            <i class="fa fa-glass"></i> Mixer
-                        </a>
-                    </div>
+                        <div class="col-lg-12 text-center">
+                            <button type="submit" class="btn btn-primary btn-lg">Mixer</button>
+                        </div>
                 </form>
             </div>
         </div>
@@ -60,7 +58,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>Notre sélection</h2>
+                    <h2>Nos suggestions</h2>
                     <hr class="glass-grey">
                 </div>
             </div>

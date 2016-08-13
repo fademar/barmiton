@@ -1,3 +1,5 @@
+// FONCTIONS SVG
+
 // Renvoie un nombre entre 0 et 1
 function getRandom() {
   random = Math.random()
@@ -18,8 +20,6 @@ function getRandomInt(min, max) {
 
   return random;
 }
-
-
 
 // Fonction de détermination si un point est dans un triangle
 

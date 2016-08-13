@@ -208,9 +208,13 @@ section.greenband {
     padding-top: 75px;
   }
 }
-#portfolio .portfolio-item {
+.portfolio-item {
   margin: 0 0 15px;
   right: 0;
+}
+.portfolio-item h3 {
+  text-align: center;
+  margin: 10px 0 20px 0;
 }
 #portfolio .portfolio-item .portfolio-link {
   display: block;
@@ -534,7 +538,6 @@ fieldset[disabled] .btn-success.active {
 
 .typeahead {
   background-color: #fff;
-  margin: 50px 0;
 }
 
 .typeahead:focus {
@@ -601,8 +604,3 @@ fieldset[disabled] .btn-success.active {
     /*position: relative;     create positioning context for svg */
 /*}*/
 
-.parent {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}

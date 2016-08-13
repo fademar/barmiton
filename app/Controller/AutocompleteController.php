@@ -22,7 +22,18 @@ class AutocompleteController extends Controller {
 	private $_epicesdb;
 	private $_epicestab;
 	private $_epicesjson;
+	private $_principaux;
+	private $_principauxjson;
 
+	// Json alcools principa
+	public function autoCompletePrincipaux(){
+
+		$_principaux = [["ingredients"=>"Gin"],["ingredients"=>"Rhum"],["ingredients"=>"Tequila"],["ingredients"=>"Vodka"],["ingredients"=>"Whisky"]];
+
+		$_principauxjson = $this->showJson($_principaux);
+
+		$this->show('data/alcoolsprincipaux', ['principaux' => $_principauxjson]);
+	}
 
 	// Json alcools
 	public function autoCompleteAlcools() {
@@ -60,7 +71,7 @@ class AutocompleteController extends Controller {
 	public function autoCompleteFruits() {
 
 		$_ingredientsdb = new IngredientsModel();
-		$_fruitsdb = $_ingredientsdb->getSofts();
+		$_fruitsdb = $_ingredientsdb->getFruits();
 		
 		foreach ($_fruitsdb as $value) {
 			$_fruitstab[]['ingredients'] = $value['nomIngredient'];

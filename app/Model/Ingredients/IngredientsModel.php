@@ -17,12 +17,12 @@ class IngredientsModel extends \W\Model\Model
 	
 		$this->setTable('ingredients');
 		
-		$_ingredient = $this->search(['nomIngredient' => $nom]);
-		$_id = $_ingredient[0]['idIngredientsApi'];
+		$_ingredient 	= $this->search(['nomIngredient' => $nom]);
+		$_id 			= $_ingredient[0]['idIngredientsApi'];
 
 		return $_id;
-	}
-
+	
+}
 	public function getAlcools() {
 
 		$this->setTable('alcools');
