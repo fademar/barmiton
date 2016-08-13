@@ -68,6 +68,7 @@ $(document).ready(function() {
 		divers.initialize();
 
 		$('.typeahead').typeahead({
+		  minLength: 2,
 		  highlight: true
 		},
 		{
