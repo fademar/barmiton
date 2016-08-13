@@ -12,7 +12,7 @@
     <title><?= $this->e($title) ?></title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="<?= $this->assetUrl('vendor/bootstrap/css/bootstrap.min.css') ?>" rel="stylesheet">
+    <link href="<?= $this->assetUrl('vendor/bootstrap/css/bootstrap.css') ?>" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="<?= $this->assetUrl('vendor/font-awesome/css/font-awesome.min.css') ?>" rel="stylesheet" type="text/css">
@@ -52,9 +52,6 @@
                     </li>
                     <li class="page-scroll">
                         <a href="<?= $this->url('cocktails_showcocktails') ?>">Cocktails</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#">S'inscrire</a>
                     </li>
                     <li class="page-scroll">
                         <a href="#">Se connecter</a>

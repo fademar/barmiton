@@ -6,15 +6,15 @@
  <!-- Header -->
     <header>
         <div class="container">
-            <div class="row clear">
-                <div class="col-lg-6 pull-left">
+            <div class="row">
+                <div class="col-lg-6">
                     <div class="svgbox">
                         <svg id="martini" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 65 100">
                             <title>martini</title>
                         </svg>
                     </div>
                 </div>
-                <div class="col-lg-6 pull-left parent">
+                <div class="col-lg-6">
                     <div class="intro-text">
                         <span class="name">Barmiton</span>
                         <hr class="glass-light">
@@ -52,6 +52,7 @@
             </div>
         </div>
     </section>
+
 
     <!-- Section de sélection -->
     <section class="greyband" id="about">

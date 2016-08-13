@@ -2,29 +2,16 @@
 
 <?php $this->start('main_content') ?>
 
-<div class="container">
-	<div class="section">
-
-		<!--   Icon Section   -->
-		<div class="row">
-				<div class="row">
-					<div class="col s12">
-						<div class="row center">
-							<h2>Recherche avancée</h2>
-                            
-
-
-                            <!-- Formulaire de recherche -->
-
- 
-
-                            <form action="../recherche/" method="POST" id="formFiltres" class="formulaire">
+<!-- Header -->
+        <div id="advancesearch" class="container">
+            <div class="row">
+                <form action="../recherche/" method="POST" id="formFiltres" class="formulaire">
                                 
-                                <div class="input-field col s12">
-                                    <input type="text" id="autocomplete-name" class="autocomplete">
+                                <div class="form-group">
+                                    <input type="text" id="autocomplete-name" class="form-control">
                                     <label for="autocomplete-name">Nom du cocktail</label>
                                 </div>
-								
+                                
                                 <div class="input-field col s12 l3">
                                     <select name="alcoolsprincipaux[]" multiple>
                                         <option value="" disabled selected></option>
@@ -63,10 +50,53 @@
                                     </div>
                                     <?php endif ?>
                                 <?php endforeach ?>
-								
+                                
                                 <button class="btn waves-effect waves-light" type="submit" name="mixer">Mixer !</button>
-							</form>
+                            </form>
+            </div>
+        </div>
 
+
+
+
+<div class="container">
+	<div class="section">
+
+		<!--   Icon Section   -->
+		<div class="container">
+				<div class="row">
+					<div class="col s12">
+						<div class="row center">
+							<h2>Recherche avancée</h2>
+                            
+
+
+                            <!-- Formulaire de recherche -->
+
+ 
+                            
+
+                            <form>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Email address</label>
+                                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Password</label>
+                                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputFile">File input</label>
+                                    <input type="file" id="exampleInputFile">
+                                    <p class="help-block">Example block-level help text here.</p>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox"> Check me out
+                                    </label>
+                                </div>
+                                <button type="submit" class="btn btn-default">Submit</button>
+                            </form>
 						</div>
 					</div>
 				</div>

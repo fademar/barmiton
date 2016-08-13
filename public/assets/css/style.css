@@ -3,6 +3,10 @@
  * Copyright 2013-2016 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
+
+@import 'https://fonts.googleapis.com/css?family=Lobster';
+
+
 body {
   font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   overflow-x: hidden;
@@ -18,7 +22,7 @@ a:hover,
 a:focus,
 a:active,
 a.active {
-  color: #18BC9C;
+  color: #EC644B;
   outline: none;
 }
 h1,
@@ -56,7 +60,7 @@ hr.glass-light {
   border-color: white;
 }
 hr.glass-light:after {
-  background-color: #18BC9C;
+  background-color: #EF626C;
   color: white;
 }
 hr.glass-primary {
@@ -70,7 +74,7 @@ hr.glass-grey {
   border-color: #2C3E50;
 }
 hr.glass-grey:after {
-  background-color: #ECF0F1;
+  background-color: #F6E8EA;
   color: #2C3E50;
 }
 .img-centered {
@@ -78,7 +82,7 @@ hr.glass-grey:after {
 }
 header {
   text-align: center;
-  background: #18BC9C;
+  background: #EF626C;
   color: white;
 }
 header .container {
@@ -91,9 +95,7 @@ header img {
 }
 header .intro-text .name {
   display: block;
-  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  text-transform: uppercase;
-  font-weight: 700;
+  font-family: "Lobster", cursive;
   font-size: 2em;
 }
 header .intro-text .skills {
@@ -102,7 +104,7 @@ header .intro-text .skills {
 }
 @media (min-width: 768px) {
   header .container {
-    padding-top: 200px;
+    padding-top: 150px;
     padding-bottom: 100px;
   }
   header .intro-text .name {
@@ -111,12 +113,14 @@ header .intro-text .skills {
   header .intro-text .skills {
     font-size: 1.75em;
   }
+  #advancesearch {
+    padding-top: 150px;
+    padding-bottom: 100px;
+  }
 }
 .navbar-custom {
-  background: #2C3E50;
+  background: #22264B;
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  text-transform: uppercase;
-  font-weight: 700;
   border: none;
 }
 .navbar-custom a:focus {
@@ -124,6 +128,10 @@ header .intro-text .skills {
 }
 .navbar-custom .navbar-brand {
   color: white;
+}
+
+.navbar-brand {
+  font-family: "Lobster", cursive;
 }
 .navbar-custom .navbar-brand:hover,
 .navbar-custom .navbar-brand:focus,
@@ -134,11 +142,16 @@ header .intro-text .skills {
 .navbar-custom .navbar-nav {
   letter-spacing: 1px;
 }
+
+.navbar-custom .navbar-nav li {
+  text-transform: uppercase;
+  font-weight: 700;
+}
 .navbar-custom .navbar-nav li a {
   color: white;
 }
 .navbar-custom .navbar-nav li a:hover {
-  color: #18BC9C;
+  color: #ff6b57;
   outline: none;
 }
 .navbar-custom .navbar-nav li a:focus,
@@ -147,13 +160,13 @@ header .intro-text .skills {
 }
 .navbar-custom .navbar-nav li.active a {
   color: white;
-  background: #18BC9C;
+  background: #ff6b57;
 }
 .navbar-custom .navbar-nav li.active a:hover,
 .navbar-custom .navbar-nav li.active a:focus,
 .navbar-custom .navbar-nav li.active a:active {
   color: white;
-  background: #18BC9C;
+  background: #ff6b57;
 }
 .navbar-custom .navbar-toggle {
   color: white;
@@ -163,9 +176,9 @@ header .intro-text .skills {
 }
 .navbar-custom .navbar-toggle:hover,
 .navbar-custom .navbar-toggle:focus {
-  background-color: #18BC9C;
+  background-color: #32526e;
   color: white;
-  border-color: #18BC9C;
+  border-color: #ff6b57;
 }
 @media (min-width: 768px) {
   .navbar-custom {
@@ -195,10 +208,10 @@ section h2 {
   font-size: 3em;
 }
 section.greyband {
-  background: #ECF0F1;
+  background: #F6E8EA;
 }
 section.greenband {
-  background: #18BC9C;
+  background: #BAD1CD;
 }
 @media (max-width: 767px) {
   section {
@@ -317,14 +330,14 @@ footer h3 {
 }
 footer .footer-above {
   padding-top: 50px;
-  background-color: #2C3E50;
+  background-color: #2A2E54;
 }
 footer .footer-col {
   margin-bottom: 50px;
 }
 footer .footer-below {
   padding: 25px 0;
-  background-color: #233140;
+  background-color: #22264B;
 }
 .btn-outline {
   color: white;
@@ -347,6 +360,7 @@ footer .footer-below {
   background-color: #2C3E50;
   border-color: #2C3E50;
   font-weight: 700;
+
 }
 .btn-primary:hover,
 .btn-primary:focus,
@@ -356,6 +370,7 @@ footer .footer-below {
   color: white;
   background-color: #1a242f;
   border-color: #161f29;
+
 }
 .btn-primary:active,
 .btn-primary.active,
@@ -541,7 +556,7 @@ fieldset[disabled] .btn-success.active {
 }
 
 .typeahead:focus {
-  border: 3px solid #18BC9C;
+  border: 3px solid #354458;
 }
 
 .tt-query {
@@ -572,12 +587,12 @@ fieldset[disabled] .btn-success.active {
 .tt-suggestion:hover {
   cursor: pointer;
   color: #fff;
-  background-color: #18BC9C;
+  background-color: #EB7260;
 }
 
 .tt-suggestion.tt-cursor {
   color: #fff;
-  background-color: #18BC9C;
+  background-color: #EB7260;
 
 }
 
@@ -595,12 +610,7 @@ fieldset[disabled] .btn-success.active {
 
 
 
-/*.svgbox {*/
-    /*height: 0;              collapse the container's height */
-    /*width: 50%;     specify any width you want (a percentage value, basically) */
-    /* apply a padding using the following formula */
-    /* this formula makes sure the aspect ratio of the container equals that of the svg graphic */
-    /*padding-top: 77%;*/
-    /*position: relative;     create positioning context for svg */
-/*}*/
+.svgbox {
+  width: 85%;
+}
 
