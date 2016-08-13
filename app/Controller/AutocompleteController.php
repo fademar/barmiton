@@ -11,7 +11,7 @@ class AutocompleteController extends Controller {
 	private $_ingredientsdb;
 	private $_alcoolsnoms;
 	private $_alcoolsdb;
-	private $_alcoolstab;
+	private $_alcoolstab = array();
 	private $_alcoolsjson;
 	private $_softsdb;
 	private $_softstab;
@@ -30,8 +30,8 @@ class AutocompleteController extends Controller {
 		$_ingredientsdb = new IngredientsModel();
 		$_alcoolsdb = $_ingredientsdb->getAlcools();
 		
-		foreach ($_alcoolsdb as $value) {
-			$_alcoolstab[] = $value['nomIngredient'];
+		foreach ($_alcoolsdb as $value) {			
+			$_alcoolstab[]['ingredients'] = $value['nomIngredient'];
 		}
 
 		$_alcoolsjson = $this->showJson($_alcoolstab);
@@ -45,9 +45,9 @@ class AutocompleteController extends Controller {
 		
 		$_ingredientsdb = new IngredientsModel();
 		$_softsdb = $_ingredientsdb->getSofts();
-		
+
 		foreach ($_softsdb as $value) {
-			$_softstab[] = $value['nomIngredient'];
+			$_softstab[]['ingredients'] = $value['nomIngredient'];
 		}
 
 		$_softsjson = $this->showJson($_softstab);
@@ -63,7 +63,7 @@ class AutocompleteController extends Controller {
 		$_fruitsdb = $_ingredientsdb->getSofts();
 		
 		foreach ($_fruitsdb as $value) {
-			$_fruitstab[] = $value['nomIngredient'];
+			$_fruitstab[]['ingredients'] = $value['nomIngredient'];
 		}
 
 		$_fruitsjson = $this->showJson($_fruitstab);
@@ -81,7 +81,7 @@ class AutocompleteController extends Controller {
 		$_epicesdb = $_ingredientsdb->getEpices();
 		
 		foreach ($_epicesdb as $value) {
-			$_epicestab[] = $value['nomIngredient'];
+			$_epicestab[]['ingredients'] = $value['nomIngredient'];
 		}
 
 		$_epicesjson = $this->showJson($_epicestab);
@@ -89,7 +89,21 @@ class AutocompleteController extends Controller {
 		$this->show('data/epices', ['epicesjson' => $_epicesjson]);
 	}
 
+	// Json divers
+	
+	public function autoCompleteDivers() {
 
+		$_ingredientsdb = new IngredientsModel();
+		$_diversdb = $_ingredientsdb->getDivers();
+		
+		foreach ($_diversdb as $value) {
+			$_diverstab[]['ingredients'] = $value['nomIngredient'];
+		}
+
+		$_diversjson = $this->showJson($_diverstab);
+
+		$this->show('data/divers', ['diversjson' => $_diversjson]);
+	}
 
 
 }

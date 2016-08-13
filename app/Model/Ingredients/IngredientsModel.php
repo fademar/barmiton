@@ -11,6 +11,7 @@ class IngredientsModel extends \W\Model\Model
 	private $_epices;
 	private $_ingredient;
 	private $_fruits;
+	private $_divers;
 
 	public function getId($nom) {
 	
@@ -60,6 +61,14 @@ class IngredientsModel extends \W\Model\Model
 		return $_fruits;
 	}
 
+	public function getDivers() {
+
+		$this->setTable('divers');
+
+		$_divers = $this->findAll();
+
+		return $_divers;
+	}
 
 
 } // fin de classe
