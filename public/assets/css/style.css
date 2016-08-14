@@ -153,7 +153,7 @@ header .intro-text .skills {
   color: white;
 }
 .navbar-custom .navbar-nav li a:hover {
-  color: #ff6b57;
+  color: #EF626C;
   outline: none;
 }
 .navbar-custom .navbar-nav li a:focus,
@@ -162,13 +162,13 @@ header .intro-text .skills {
 }
 .navbar-custom .navbar-nav li.active a {
   color: white;
-  background: #ff6b57;
+  background: #EF626C;
 }
 .navbar-custom .navbar-nav li.active a:hover,
 .navbar-custom .navbar-nav li.active a:focus,
 .navbar-custom .navbar-nav li.active a:active {
   color: white;
-  background: #ff6b57;
+  background: #EF626C;
 }
 .navbar-custom .navbar-toggle {
   color: white;
@@ -180,7 +180,7 @@ header .intro-text .skills {
 .navbar-custom .navbar-toggle:focus {
   background-color: #32526e;
   color: white;
-  border-color: #ff6b57;
+  border-color: #EF626C;
 }
 @media (min-width: 768px) {
   .navbar-custom {
@@ -215,7 +215,10 @@ section#selection {
 section#contact {
   background: #BAD1CD;
 }
-
+section#fiche .container {
+  padding-top: 100px;
+  padding-bottom: 50px;
+}
 
 @media (max-width: 767px) {
   section {
@@ -545,9 +548,10 @@ fieldset[disabled] .btn-success.active {
 .tt-query,
 .tt-hint {
   width: 500px;
-  height: 50px;
+  height: 80px;
   padding: 8px 12px;
-  font-size: 24px;
+  font-size: 4em;
+  color: #22264B;
   line-height: 30px;
   border: 2px solid #ccc;
   border-radius: 8px;
@@ -619,8 +623,15 @@ fieldset[disabled] .btn-success.active {
 }
 
 .btn-ajouter {
-  font-size: 2em;
+  font-size: 3em;
   color: #22264B;
+  line-height: 30px;
+}
+
+.btn-ajouterfalse {
+  font-size: 3em;
+  color: #ffffff;
+  line-height: 30px;
 }
 
 .fieldinput {

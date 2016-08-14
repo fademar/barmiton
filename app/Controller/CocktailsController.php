@@ -115,7 +115,7 @@ class CocktailsController extends Controller
 
 	// Ajout des notes
 
-		echo $_POST['note'];
+		// echo $_POST['note'];
 
 		if($_POST) {
 

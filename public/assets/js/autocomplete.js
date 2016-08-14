@@ -6,7 +6,8 @@ $(document).ready(function() {
 		  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('ingredients'),
 		  queryTokenizer: Bloodhound.tokenizers.whitespace,
 		  prefetch: {
-		  				url:'data/alcoolsprincipaux/'
+		  				url:'data/alcoolsprincipaux/',
+		  				cache: false
 					}	  
 		});
 

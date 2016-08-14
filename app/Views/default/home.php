@@ -28,7 +28,7 @@
         </div>
     </header>
     
-    <!-- About Section -->
+    <!-- section de recherche -->
     <section id="recherche">
         <div class="container">
             <div class="row">
@@ -40,14 +40,13 @@
             <div class="row">
                 <form action="recherche/" method="POST">    
                         <div id="" class="col-xs-12 .col-md-12 text-center">
-                            <div class="col-md-6 col-md-offset-3">
                                 <div class="fieldcontainer">
                                     <div>
+                                        <i class="fa fa-plus-circle btn-ajouterfalse"></i>
                                         <input class="typeaheadhome" type="text" name="ingredients[]" placeholder="">
                                         <a href="javascript:void(0);" class="btn-ajouter" title="ajouter un champ"><i class="fa fa-plus-circle"></i></a>
                                     </div>
                                 </div>
-                            </div>
                         </div>
                         <div class="col-lg-12 text-center">
                             <button type="submit" class="btn btn-primary btn-lg">Mixer</button>

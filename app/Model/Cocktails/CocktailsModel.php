@@ -84,25 +84,54 @@ class CocktailsModel extends \W\Model\Model
 
 
 
-	public function getcocktaildata($id)
+	
+	public function getcocktaildata($urlpart)
 	{
 		/**************** Récupération des données ******************/
-		$_jsonurl = 'https://addb.absolutdrinks.com/drinks/' . $id . '/?apiKey=2c758736e5f844bdb9d39308df889c6d';
+		$_jsonurl = 'https://addb.absolutdrinks.com/drinks/' . $urlpart . '/?apiKey=2c758736e5f844bdb9d39308df889c6d';
 		$_json = file_get_contents($_jsonurl);
 		$_data = json_decode($_json)->result;
 
-		$_cocktailapi = $_data[0];
+		$_cocktailapi 	= $_data[0];
+		$_ingredientapi = $_cocktailapi->ingredients;
 
 		$this->setTable('cocktails');
-		$_cocktaildb = $this->search(['idCocktailApi' => $id]);
+		$_cocktaildb = $this->search(['idCocktailApi' => $urlpart]);
+
+		$this->setTable('ingredients');
+
+		foreach ($_ingredientapi as $value) {
+
+			// var_dump($value);
+
+			$idIngredient = $value->id;
+			
+			$recupDose = $value->textPlain;			
+			$dose = substr($recupDose, 0, 1);
+			$int = (int)$dose;
+			
+
+			$ingredientsDb = $this->search(['idIngredientsApi' => $idIngredient]);
+			// var_dump($ingredientsDb);
 
 
+			if ($dose > 1) {
+				$phrase = $dose . ' doses de ' . $ingredientsDb[0]['nomIngredient'];
+			}  elseif (!is_numeric($dose)) {
+				$phrase = $ingredientsDb[0]['nomIngredient'];
+			}  else {
+				$phrase = $dose . ' dose de ' . $ingredientsDb[0]['nomIngredient'];
+			}
 
+
+			$tableauPhrase[] = $phrase;
+
+		}
 
 		$_cocktaildata = array(
 							'id'			=> $_cocktailapi->id,
 							'name' 			=> $_cocktailapi->name,
-							'ingredients'	=> $_cocktailapi->ingredients,
+							'ingredients'	=> $tableauPhrase,
 							'description'	=> $_cocktaildb[0]['description'],
 							'occasions' 	=> $_cocktailapi->occasions,
 							'taste' 		=> $_cocktailapi->tastes,
@@ -117,7 +146,7 @@ class CocktailsModel extends \W\Model\Model
 				
 		return $_cocktaildata;
 
-	} //fin de function getcocktaillist
+	} //fin de function getcocktaildata
 
 
 
@@ -191,6 +220,47 @@ class CocktailsModel extends \W\Model\Model
 
 		return $_noms;
 	}
+
+
+	public function getIngredients($id)
+	{
+		/**************** Récupération des données ******************/
+		$_jsonurl = 'https://addb.absolutdrinks.com/drinks/' . $id . '/?apiKey=2c758736e5f844bdb9d39308df889c6d';
+		$_json = file_get_contents($_jsonurl);
+		$_data = json_decode($_json)->result;
+
+		$_cocktailapi = $_data[0];
+
+		$this->setTable('ingredients');
+		$this->setPrimaryKey('idIngredientsApi');
+
+
+		$_cocktaildb = $this->search(['idIngredientsApi' => $id]);
+		
+
+		$_cocktaildata = array(
+							'id'			=> $_cocktailapi->id,
+							'name' 			=> $_cocktailapi->name,
+							'ingredients'	=> $_cocktaildb[0]['nomIngredient'],
+							'description'	=> $_cocktailapi->description,
+							'occasions' 	=> $_cocktailapi->occasions,
+							'taste' 		=> $_cocktailapi->tastes,
+							'color' 		=> $_cocktailapi->color,
+							'skill' 		=> $_cocktailapi->skill->name,
+							'imgurlsmall' 	=> "http://assets.absolutdrinks.com/drinks/300x400/" . $_cocktailapi->id . "(60).jpg",
+							'imgurlmodal' 	=> "http://assets.absolutdrinks.com/drinks/450x600/" . $_cocktailapi->id . ".png",
+
+		);
+	
+
+				
+		return $_cocktaildata;
+
+	} //fin de function getIngredients
+
+
+
+
 
 
 } //Fin de classe
