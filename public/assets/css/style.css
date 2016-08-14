@@ -22,7 +22,7 @@ a:hover,
 a:focus,
 a:active,
 a.active {
-  color: #EC644B;
+  color: #EF626C;
   outline: none;
 }
 h1,
@@ -31,9 +31,8 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  text-transform: uppercase;
-  font-weight: 700;
+  font-family: "Lobster", cursive;
+  color: #22264B;
 }
 hr.glass-light,
 hr.glass-primary,
@@ -64,26 +63,29 @@ hr.glass-light:after {
   color: white;
 }
 hr.glass-primary {
-  border-color: #2C3E50;
+  border-color: #22264B;
 }
 hr.glass-primary:after {
   background-color: white;
-  color: #2C3E50;
+  color: #22264B;
 }
 hr.glass-grey {
-  border-color: #2C3E50;
+  border-color: #22264B;
 }
 hr.glass-grey:after {
-  background-color: #F6E8EA;
-  color: #2C3E50;
+  background-color: #FAF7FA;
+  color: #22264B;
 }
 .img-centered {
   margin: 0 auto;
 }
-header {
+header#home {
   text-align: center;
   background: #EF626C;
   color: white;
+}
+header#recherche {
+  background: #EF626C;
 }
 header .container {
   padding-top: 100px;
@@ -207,12 +209,14 @@ section h2 {
   margin: 0;
   font-size: 3em;
 }
-section.greyband {
-  background: #F6E8EA;
+section#selection {
+  background: #FAF7FA;
 }
-section.greenband {
+section#contact {
   background: #BAD1CD;
 }
+
+
 @media (max-width: 767px) {
   section {
     padding: 75px 0;
@@ -357,8 +361,8 @@ footer .footer-below {
 }
 .btn-primary {
   color: white;
-  background-color: #2C3E50;
-  border-color: #2C3E50;
+  background-color: #22264B;
+  border-color: #22264B;
   font-weight: 700;
 
 }
@@ -396,7 +400,7 @@ fieldset[disabled] .btn-primary.active {
   border-color: #2C3E50;
 }
 .btn-primary .badge {
-  color: #2C3E50;
+  color: #22264B;
   background-color: white;
 }
 .btn-success {
@@ -537,7 +541,7 @@ fieldset[disabled] .btn-success.active {
 /********* TYPEAHEAD CSS ************/
 
 
-.typeahead,
+.typeahead, .typeaheadhome,
 .tt-query,
 .tt-hint {
   width: 500px;
@@ -551,12 +555,12 @@ fieldset[disabled] .btn-success.active {
   text-align: center;
 }
 
-.typeahead {
+.typeahead, .typeaheadhome {
   background-color: #fff;
 }
 
-.typeahead:focus {
-  border: 3px solid #354458;
+.typeahead:focus, .typeaheadhome:focus {
+  border: 3px solid #22264B;
 }
 
 .tt-query {
@@ -587,12 +591,12 @@ fieldset[disabled] .btn-success.active {
 .tt-suggestion:hover {
   cursor: pointer;
   color: #fff;
-  background-color: #EB7260;
+  background-color: #EF626C;
 }
 
 .tt-suggestion.tt-cursor {
   color: #fff;
-  background-color: #EB7260;
+  background-color: #EF626C;
 
 }
 
@@ -614,3 +618,23 @@ fieldset[disabled] .btn-success.active {
   width: 85%;
 }
 
+.btn-ajouter {
+  font-size: 2em;
+  color: #22264B;
+}
+
+.fieldinput {
+  height: 80px;
+}
+.fieldmiddle {
+  width: 60%;
+}
+.fieldright {
+  width: 40%;
+}
+
+/******** SVG CSS **********/
+
+#submitbtn {
+  padding: 30px 0;
+}

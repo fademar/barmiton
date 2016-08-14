@@ -4,6 +4,8 @@ namespace Controller;
 
 use \W\Controller\Controller;
 use Model\Ingredients\IngredientsModel;
+use Model\Cocktails\CocktailsModel;
+
 
 
 class AutocompleteController extends Controller {
@@ -24,6 +26,11 @@ class AutocompleteController extends Controller {
 	private $_epicesjson;
 	private $_principaux;
 	private $_principauxjson;
+	private $_api;
+	private $_nomsapi;
+	private $_nomsdata;
+	private $_nomsjson;
+
 
 	// Json alcools principa
 	public function autoCompletePrincipaux(){
@@ -116,6 +123,21 @@ class AutocompleteController extends Controller {
 		$this->show('data/divers', ['diversjson' => $_diversjson]);
 	}
 
+
+	// Json Noms des cocktails
+
+	public function autoCompleteNoms() {
+		$_cocktailsdb = new CocktailsModel();
+
+		$_nomsdb	= $_cocktailsdb->getCocktails();
+
+		foreach ($_nomsdb as $value) {
+			$_nomstab[] = $value['nomCocktail'];
+		}
+		$_nomsjson 	= $this->showJson($_nomstab);
+
+		$this->show('data/noms', ['nomsjson' => $_nomsjson]);
+	}
 
 }
 

@@ -1,3 +1,26 @@
+<div class="col-xs-12 col-md-4">
+                        <label for="difficultesId">Difficultés</label>
+                        <select id="difficultesId" name="difficultes" class="form-control selectpicker" title="Choisissez une option"> 
+                            <?php foreach($form['difficultes'] as $champ): ?>     
+                                <option value="<?php echo $champ['champuk']?>"><?php echo (mb_strtolower($champ['champfr'], 'UTF-8')); ?></option>
+                            <?php endforeach ?>
+                        </select>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <?php foreach ($cocktaillist as $cocktailcard): ?>
 					<div class="col s12 m7 l3">
 						<div class="card">

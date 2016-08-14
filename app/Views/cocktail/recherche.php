@@ -1,123 +1,136 @@
-<?php $this->layout('layout', ['title' => 'Cocktails']) ?>
+<?php $this->layout('layout', ['title' => 'Recherche']) ?>
 
 <?php $this->start('main_content') ?>
 
-<div class="container">
-	<div class="section">
+<header id="recherche">
+    <div class="container">
+        <div class="row center">
+            <h2>Nouvelle recherche</h2>
+            <form action="../recherche/" method="POST">
 
-		<!--   Icon Section   -->
-		<div class="row">
-				<div class="row">
-					<div class="col s12">
-						<div class="row center">
-							<h2>Nouvelle recherche</h2>
-							
-                            <!-- Formulaire de recherche -->
-
-							 <form action="../recherche/" method="POST" id="formFiltres" class="formulaire">
-                                
-                                <div class="input-field col s12">
-                                    <input type="text" id="autocomplete-name" name="nomcocktail" class="autocomplete">
-                                    <label for="autocomplete-input">Nom</label>
-                                </div>
-
-								
-                                <div class="input-field col s12 l3">
-                                    <select name="alcoolsprincipaux[]" multiple>
-                                        <option value="" disabled selected></option>
-                                        <option value="gin">Gin</option>
-                                        <option value="rum">Rhum</option>
-                                        <option value="tequila">Tequila</option>
-                                        <option value="vodka">Vodka</option>
-                                        <option value="whisky">Whisky</option>
-                                    </select>
-                                    <label>alcools principaux</label>
-                                </div>
-
-                                <?php foreach($form as $key => $value): ?>
-                                    <?php if ($key === 'alcools' || $key === 'softs' || $key === 'épices'): ?>                                          
-                                        <div class="input-field col s12 l3">
-                                            <select multiple name="<?= $key ?>[]";> 
-                                                <option value="" selected disabled></option>
-                                                    <?php foreach($value as $champ): ?>     
-                                                        <option value="<?php echo $champ['idIngredientsApi']?>"><?php echo $champ['nomIngredient']?></option>
-                                                    <?php endforeach ?>
-                                            </select>
-                                            <label><?php if ($key === 'alcools') {echo "autres alcools/liqueurs";} else {echo $key;} ?></label>
-                                        </div>
-                                    <?php endif ?>
-                                
-                                    <?php if ($key === 'couleurs' || $key === 'difficultes' || $key === 'gouts' || $key === 'occasions'): ?>
-                                    <div class="input-field col s12 l3">
-                                        <select <?php if (($key === 'couleurs') || ($key === 'difficultes')) {echo 'name="'. $key .'"';} else {echo 'multiple name="'. $key .'[]"';}?>> 
-                                            <option value="" selected <?php if (($key === 'gouts') || ($key === 'occasions')) {echo 'disabled';} ?>></option>
-                                            <?php foreach($value as $champ): ?>     
-                                                <option value="<?php echo $champ['champuk']?>"><?php echo $champ['champfr']?></option>
-                                            <?php endforeach ?>
-                                        </select>
-                                        <label><?= $key?></label>
-                                    </div>
-                                    <?php endif ?>
-                                <?php endforeach ?>
-								
-                                <button class="btn waves-effect waves-light" type="submit" name="mixer">Mixer !</button>
-							</form>
-
-						</div>
-					</div>
-				</div>
-		</div>
-	</div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-6">
+                        <div class="form-group">
+                            <label for="alcoolsprincipauxId">Alcools principaux</label>
+                            <select id="alcoolsprincipauxId" name="alcoolprincipal[]" class="form-control selectpicker" multiple title="Choisissez une ou plusieurs options">    
+                                <option value="gin">gin</option>
+                                <option value="rum">rhum</option>
+                                <option value="tequila">tequila</option>
+                                <option value="vodka">vodka</option>
+                                <option value="whisky">whisky</option>
+                            </select>
+                        </div>
+                    </div>
 
 
-	<div class="section">
+                    <div class="col-xs-12 col-md-6">
+                        <label for="alcoolsId">Autres alcools/liqueurs</label>
+                        <select id="alcoolsId" name="alcools[]" class="form-control selectpicker" multiple data-live-search="true" title="Choisissez une ou plusieurs options"> 
+                            <?php foreach($form['alcools'] as $champ): ?>     
+                                <option value="<?php echo $champ['idIngredientsApi']?>"><?php echo (mb_strtolower($champ['nomIngredient'], 'UTF-8')); ?></option>
+                            <?php endforeach ?>
+                        </select>
+                    </div>
+                </div>
 
-		<!--   Icon Section   -->
-		<div class="row">
-			<?= $error; ?>
-			<?php if (!empty($cocktaillist)): ?>
-				<div class="row">
-					<div class="col s12">
-						<div class="row center">
-							<h2>Résultats de recherche</h2>
-						</div>
-					</div>
-				</div>
-				<?php foreach ($cocktaillist as $cocktailcard): ?>
-					<div class="col s12 m7 l3">
-						<div class="card">
-							<div class="card-image">
-								<img src="<?= $cocktailcard['imgurlsmall']?>">
-							</div>
-							<div class="card-action">
-								<div class="card-title grey-text text-darken-4 center-align"><?= $cocktailcard['name']?></div>
-								<!-- Modal Trigger -->
-								<div class="center-align margin-top-20"><button class="btn-floating waves-effect waves-light blue-grey lighten-4 modal-trigger" data-target="modal-<?= $cocktailcard['id']?>"><i class="material-icons">add</i></button></div>
-							</div>
-						</div>
-					</div>
-					<!-- Modal Structure -->
-					<div id="modal-<?= $cocktailcard['id']?>" class="modal">
-						<div class="modal-content">
-							<h4><?= $cocktailcard['name']?></h4>
-							<div>
-								<p><?= $cocktailcard['description']?></p>
-							</div>
-							<div>
-								<img src="<?= $cocktailcard['imgurlmodal']?>">
-							</div>
-						</div>
-						<div class="modal-footer">
-							<a href="#!" class="modal-action modal-close red btn-flat">Fermer</a>
-						</div>
-					</div>
-				<?php endforeach ?>
-			<?php endif ?>
+                <div class="row">
+                    <div class="col-xs-12 col-md-6">
+                        <label for="softsId">Softs</label>
+                        <select id="softsId" name="softs[]" class="form-control selectpicker" multiple title="Choisissez une ou plusieurs options"> 
+                            <?php foreach($form['softs'] as $champ): ?>     
+                                <option value="<?php echo $champ['idIngredientsApi']?>"><?php echo (mb_strtolower($champ['nomIngredient'], 'UTF-8')); ?></option>
+                            <?php endforeach ?>
+                        </select>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                        <label for="softsId">Fruits/Jus de fruits</label>
+                        <select id="softsId" name="fruits[]" class="form-control selectpicker" multiple title="Choisissez une ou plusieurs options"> 
+                            <?php foreach($form['fruits'] as $champ): ?>     
+                                <option value="<?php echo $champ['idIngredientsApi']?>"><?php echo (mb_strtolower($champ['nomIngredient'], 'UTF-8')); ?></option>
+                            <?php endforeach ?>
+                        </select>
+                    </div>
+                </div>
 
-		</div>
-	</div>
-</div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-4">
+                        <label for="goutsId">Goûts</label>
+                        <select id="goutsId" name="gouts[]" class="form-control selectpicker" multiple title="Choisissez une ou plusieurs options"> 
+                            <?php foreach($form['gouts'] as $champ): ?>     
+                                <option value="<?php echo $champ['champuk']?>"><?php echo (mb_strtolower($champ['champfr'], 'UTF-8')); ?></option>
+                            <?php endforeach ?>
+                        </select>
+                    </div>
+                    <div class="col-xs-12 col-md-4">
+                        <label for="occasionsId">Occasions</label>
+                        <select id="occasionsId" name="occasions[]" class="form-control selectpicker" multiple title="Choisissez une ou plusieurs options"> 
+                            <?php foreach($form['occasions'] as $champ): ?>     
+                                <option value="<?php echo $champ['champuk']?>"><?php echo (mb_strtolower($champ['champfr'], 'UTF-8')); ?></option>
+                            <?php endforeach ?>
+                        </select>
+                    </div>
+                    <div class="col-xs-12 col-md-4">
+                        <label for="difficultesId">Niveau</label>
+                        <div class="radio">
+                            <label>
+                            <input type="radio" name="difficultes" id="optionsRadios1" value="easy">
+                                Facile
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="difficultes" id="optionsRadios2" value="average">
+                                    Moyen
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="difficultes" id="optionsRadios3" value="advanced">
+                                Difficile
+                            </label>
+                        </div>
+                    </div>
+                </div>
 
+                <div id="submitbtn" class="col-xs-12 col-md-12 text-center">
+                    <button class="btn btn-primary btn-lg" type="submit">Mixer !</button>                 
+                </div>
+            </form>
+        </div>
+    </div>
+</header>
+
+
+
+<!-- Sélection des meilleurs cocktails -->
+<section id="results">
+    <div class="container">
+        <?php if (empty($error)) : ?>
+	        <div class="row">
+	            <div class="col-xs-12 col-md-12 text-center">
+	                <h2>Nous vous proposons <?php echo $nbcocktails ?> cocktails</h2>
+	                <hr class="glass-primary">
+	            </div>
+	        </div>
+	        <div class="row">
+	            <?php foreach ($cocktaillist as $cocktailcard): ?>
+	                <div class="col-xs-6 col-md-3 portfolio-item">     
+	                    <a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $cocktailcard['id']]); ?>">
+	                        <img src="<?= $cocktailcard['imgurlsmall']?>" class="img-responsive img-rounded img-thumbnail" alt="">
+	                        <h3><?= $cocktailcard['name']?></h3>
+	                    </a>
+	                </div>
+	            <?php endforeach ?>
+	        </div>
+		<?php else : ?>
+			<div class="row">
+	            <div class="col-xs-12 col-md-12 text-center">
+	                <h2><?php echo $error ?></h2>
+	            </div>
+	        </div>
+	      <?php endif ?>
+    </div>
+</section>
 
 
 

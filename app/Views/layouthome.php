@@ -129,7 +129,7 @@
 
 
     <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js" integrity="sha256-C6CB9UYIS9UJeqinPHWTHVqh/E1uhG5Twh+Y5qFQmYg=" crossorigin="anonymous"></script>    
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>    
     <!-- Bootstrap Core JavaScript -->
     <script src="<?= $this->assetUrl('vendor/bootstrap/js/bootstrap.min.js') ?>"></script>
 
@@ -160,6 +160,9 @@
 
     <!-- Création du SVG de la home -->
     <script src="<?= $this->assetUrl('js/svg.js') ?>"></script>
+
+    <!-- Autocomplete du Typeahead -->
+    <script src="<?= $this->assetUrl('js/autocomplete.js') ?>"></script>
 
     <!-- Main -->
     <script src="<?= $this->assetUrl('js/main.js') ?>"></script>

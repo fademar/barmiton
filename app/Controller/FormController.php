@@ -33,6 +33,7 @@ class FormController extends Controller
 		$_listeAlcools		= $_ingredientsdb->getAlcools();
 		$_listeSofts 		= $_ingredientsdb->getSofts();
 		$_listeEpices 		= $_ingredientsdb->getEpices();
+		$_listeFruits		= $_ingredientsdb->getFruits();
 
 		$_couleurdb			= new CouleursModel();
 		$_listeCouleurs 	= $_couleurdb->getCouleurs();
@@ -49,6 +50,7 @@ class FormController extends Controller
 		$_formulaire 		=  [
 								'alcools' 		=> $_listeAlcools, 
 								'softs' 		=> $_listeSofts,
+								'fruits'		=> $_listeFruits,
 								'épices'		=> $_listeEpices, 
 								'couleurs' 		=> $_listeCouleurs,
 								'gouts' 		=> $_listeGouts, 

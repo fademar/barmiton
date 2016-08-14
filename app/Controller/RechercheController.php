@@ -19,7 +19,7 @@ class RechercheController extends Controller
 	private $postId;
 	private $_formcontroller;
 	private $_form;
-
+	private $_nbcocktails;
 
 public function searchform()
 	{
@@ -36,113 +36,103 @@ public function searchform()
 
 			/**************** Construction de l'url pour la requête des cocktails ******************/
 
-			if (!empty($_POST['nomcocktail'])) {
-
+			if (!empty($_POST['ingredients'])) {
 				
+				foreach ($_POST['ingredients'] as $nomingredient) {
 
 
+					if (($nomingredient === 'Gin') || ($nomingredient === 'Rhum') || ($nomingredient === 'Tequila') || ($nomingredient === 'Vodka') || ($nomingredient === 'Whisky')) 
+					{
 
+						if ($nomingredient === 'Rhum') {
+							$nomingredient = 'rum'; 
+							$_urlpart .= '/withtype/' . $nomingredient;
+						}							
+						else {
+							$nomingredient = strtolower($nomingredient);
+							$_urlpart .= '/withtype/' . $nomingredient;
+						}
+					}
+					else {
+						$_ingredientsdb		= new IngredientsModel();
+						$_idIngredient 		= $_ingredientsdb->getId($nomingredient);
+						$_tableauIds[]		= $_idIngredient;							
+						$_urlpart		.= '/with/' . implode('/and/', $_tableauIds);
+					}
+				
+				}
+
+			}
+
+
+			if (!empty($_POST['alcoolsprincipaux'])) {
+
+				$_alcoolsprincipaux	 = $_POST['alcoolsprincipaux'];
+				$_urlpart			.= '/withtype/' . implode('/and/', $_alcoolsprincipaux);				
+			}
+			
+			if (!empty($_POST['alcools'])) {
+
+				$_alcools	= $_POST['alcools'];
+				$_urlpart	.= '/with/' . implode('/and/', $_alcools);
+			}
+
+			if (!empty($_POST['softs'])) {
+
+				$_softs	= $_POST['softs'];
+				$_urlpart	.= '/with/' . implode('/and/', $_softs);
+			}
+
+			if (!empty($_POST['epices'])) {
+
+				$_epices	= $_POST['epices'];
+				$_urlpart	.= '/with/' . implode('/and/', $_epices);
+			}
+
+			if (!empty($_POST['fruits'])) {
+
+				$_fruits	= $_POST['fruits'];
+				$_urlpart	.= '/with/' . implode('/and/', $_fruits);
+			}
+			
+			if (!empty($_POST['couleurs'])) {
+
+				$_couleurs	= $_POST['couleurs'];
+				$_urlpart	.= '/colored/' . $_couleurs;
+			}
+			
+			if (!empty($_POST['gouts'])) {
+
+				$gouts	= $_POST['gouts'];
+				$_urlpart	.= '/tasting/' . implode('/and/', $gouts);
+			}
+
+			if (!empty($_POST['difficultes'])) {
+
+				$_difficultes	= $_POST['difficultes'];
+				$_urlpart	.= '/skill/' . $_difficultes;
+			}
+
+			if (!empty($_POST['occasions'])) {
+
+				$occasions	= $_POST['occasions'];
+				$_urlpart	.= '/for/' . implode('/and/', $occasions);
+			}
+
+
+			$api = new CocktailsModel;
+			$_data = $api->getCocktailListBy($_urlpart);
+
+			$_cocktaillist = $api->fetchData($_data);
+	
+			if (!empty($_cocktaillist)) {
+				$_nbcocktails = sizeof($_cocktaillist);
+				$this->show('cocktail/recherche', ['cocktaillist' => $_cocktaillist, 'error' => '', 'form' => $_form, 'nbcocktails' => $_nbcocktails]);
 			}
 			else {
-
-				if (!empty($_POST['ingredients'])) {
-					
-					foreach ($_POST['ingredients'] as $nomingredient) {
-
-
-						if (($nomingredient === 'Gin') || ($nomingredient === 'Rhum') || ($nomingredient === 'Tequila') || ($nomingredient === 'Vodka') || ($nomingredient === 'Whisky')) 
-						{
-
-							if ($nomingredient === 'Rhum') {
-								$nomingredient = 'rum'; 
-								$_urlpart .= '/withtype/' . $nomingredient;
-							}							
-							else {
-								$nomingredient = strtolower($nomingredient);
-								$_urlpart .= '/withtype/' . $nomingredient;
-							}
-						}
-						else {
-							$_ingredientsdb		= new IngredientsModel();
-							$_idIngredient 		= $_ingredientsdb->getId($nomingredient);
-							$_tableauIds[]		= $_idIngredient;							
-							$_urlpart		.= '/with/' . implode('/and/', $_tableauIds);
-						}
-					
-					}
-
-				}
-
-
-				if (!empty($_POST['alcoolsprincipaux'])) {
-
-					$_alcoolsprincipaux	 = $_POST['alcoolsprincipaux'];
-					$_urlpart			.= '/withtype/' . implode('/and/', $_alcoolsprincipaux);				
-				}
-				
-				if (!empty($_POST['alcools'])) {
-
-					$_alcools	= $_POST['alcools'];
-					$_urlpart	.= '/with/' . implode('/and/', $_alcools);
-				}
-
-				if (!empty($_POST['softs'])) {
-
-					$_softs	= $_POST['softs'];
-					$_urlpart	.= '/with/' . implode('/and/', $_softs);
-				}
-
-				if (!empty($_POST['épices'])) {
-
-					$_epices	= $_POST['épices'];
-					$_urlpart	.= '/with/' . implode('/and/', $_epices);
-				}
-
-				if (!empty($_POST['juice'])) {
-
-					$_juices	= $_POST['juice'];
-					$_urlpart	.= '/with/' . implode('/and/', $_juices);
-				}
-				
-				if (!empty($_POST['couleurs'])) {
-
-					$_couleurs	= $_POST['couleurs'];
-					$_urlpart	.= '/colored/' . $_couleurs;
-				}
-				
-				if (!empty($_POST['gouts'])) {
-
-					$gouts	= $_POST['gouts'];
-					$_urlpart	.= '/tasting/' . implode('/and/', $gouts);
-				}
-
-				if (!empty($_POST['difficultes'])) {
-
-					$_difficultes	= $_POST['difficultes'];
-					$_urlpart	.= '/skill/' . $_difficultes;
-				}
-
-				if (!empty($_POST['occasions'])) {
-
-					$occasions	= $_POST['occasions'];
-					$_urlpart	.= '/for/' . implode('/and/', $occasions);
-				}
-
-
-				$api = new CocktailsModel;
-				$_data = $api->getCocktailListBy($_urlpart);
-
-				$_cocktaillist = $api->fetchData($_data);
-				
-		
-				if (!empty($_cocktaillist)) {
-					$this->show('cocktail/recherche', ['cocktaillist' => $_cocktaillist, 'error' => '', 'form' => $_form]);
-				}
-				else {
-					$_error = '<h3 class="center-align">Oups, aucune recette ne correspond à votre recherche !</h3>';
-					$this->show('cocktail/recherche', ['error' => $_error, 'form' => $_form]);
-				}	
-			}
+				$_error = 'Oups, aucune recette ne correspond à votre recherche !';
+				$this->show('cocktail/recherche', ['error' => $_error, 'form' => $_form]);
+			}	
 		}
 	}
 

@@ -31,11 +31,11 @@ class CocktailsModel extends \W\Model\Model
 	{
 		
 		if ($urlpart === 'all') {
-			$_jsonurl	= 'https://addb.absolutdrinks.com/drinks/?apiKey=2c758736e5f844bdb9d39308df889c6d';
+			$_jsonurl	= 'https://addb.absolutdrinks.com/drinks/?pageSize=200&apiKey=2c758736e5f844bdb9d39308df889c6d';
 		}
 		else 
 		{
-			$_jsonurl	= 'https://addb.absolutdrinks.com/drinks'. $urlpart .'/?apiKey=2c758736e5f844bdb9d39308df889c6d';
+			$_jsonurl	= 'https://addb.absolutdrinks.com/drinks'. $urlpart .'/?pageSize=200&apiKey=2c758736e5f844bdb9d39308df889c6d';
 		}
 			$_json 		= file_get_contents($_jsonurl);
 			$_data 		= json_decode($_json)->result;
@@ -134,7 +134,7 @@ class CocktailsModel extends \W\Model\Model
 									'id'			=> $_cocktail->id,
 									'name' 			=> $_cocktail->name,
 									'occasions' 	=> $_cocktail->occasions,
-									'imgurlsmall' 	=> "http://assets.absolutdrinks.com/drinks/" . $_cocktail->id . "(60).jpg",
+									'imgurlsmall' 	=> "http://assets.absolutdrinks.com/drinks/300x400/" . $_cocktail->id . "(60).jpg",
 								);
 				
 				$_cocktailselection[] = $_cocktailcard;
@@ -183,6 +183,14 @@ class CocktailsModel extends \W\Model\Model
 	} //fin de function getbestcocktail
 
 
+
+	public function getCocktails() {
+
+		$this->setTable('cocktails');
+		$_noms = $this->findAll();
+
+		return $_noms;
+	}
 
 
 } //Fin de classe
