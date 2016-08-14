@@ -39,16 +39,16 @@
                 </div>
                 <div class="center-block">
                     <form action="recherche/" method="POST">    
-                        <div id="" class="col-xs-12 .col-md-12">
+                        <div id="" class="col-xs-12 col-md-12 text-center">
                             <div class="fieldcontainer">
-                                <div class="valign-wrapper">
-                                    <i class="fa fa-plus-circle btn-ajouterfalse valign"></i>
-                                    <input class="typeaheadhome valign" type="text" name="ingredients[]" placeholder="">
-                                    <a href="javascript:void(0);" class="btn-ajouter valign" title="ajouter un champ"><i class="fa fa-plus-circle"></i></a>
+                                <div>
+                                    <i class="fa fa-plus-circle btn-ajouterfalse"></i>
+                                    <input class="typeaheadhome" type="text" name="ingredients[]" placeholder="">
+                                    <a href="javascript:void(0);" class="btn-ajouter" title="ajouter un champ"><i class="fa fa-plus-circle"></i></a>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-12 text-center">
+                        <div class="col-xs-12 col-md-12 text-center">
                             <button type="submit" class="btn btn-primary btn-lg">Mixer</button>
                         </div>
                     </form>
