@@ -102,18 +102,30 @@ header .intro-text .name {
 }
 header .intro-text .skills {
   font-size: 1.25em;
-  font-weight: 300;
 }
+header .btn-begin {
+  margin-top: 60px;
+} 
+
+header .btn-begin a {
+  color: #ffffff;
+}
+header .btn-begin a:hover {
+  color: #EF626C;
+  outline: none;
+  text-transform: none;
+}
+
 @media (min-width: 768px) {
   header .container {
     padding-top: 150px;
     padding-bottom: 100px;
   }
   header .intro-text .name {
-    font-size: 4.75em;
+    font-size: 7em;
   }
   header .intro-text .skills {
-    font-size: 1.75em;
+    font-size: 2em;
   }
   #advancesearch {
     padding-top: 150px;
@@ -616,8 +628,6 @@ fieldset[disabled] .btn-success.active {
 
 /******** SVG CSS **********/
 
-
-
 .svgbox {
   width: 85%;
 }
@@ -634,18 +644,31 @@ fieldset[disabled] .btn-success.active {
   line-height: 30px;
 }
 
-.fieldinput {
-  height: 80px;
-}
-.fieldmiddle {
-  width: 60%;
-}
-.fieldright {
-  width: 40%;
-}
-
-/******** SVG CSS **********/
-
 #submitbtn {
   padding: 30px 0;
+}
+
+/******** Alignement vertical **********/
+
+
+.parent {
+  position: relative;
+}
+.child {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.valign-wrapper {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+       -ms-flex-align: center;
+          align-items: center;
+}
+
+.valign-wrapper .valign {
+  display: block;
 }
