@@ -35,7 +35,12 @@ class AutocompleteController extends Controller {
 	// Json alcools principa
 	public function autoCompletePrincipaux(){
 
-		$_principaux = [["ingredients"=>"Gin"],["ingredients"=>"Rhum"],["ingredients"=>"Tequila"],["ingredients"=>"Vodka"],["ingredients"=>"Whisky"]];
+		$_principaux = [
+						['id' => 'gin', 'ingredient'=>'Gin'],
+						['id' => 'rum', 'ingredient'=>'Rhum'],
+						['id' => 'tequila', 'ingredient'=>'Tequila'],
+						['id' => 'vodka', 'ingredient'=>'Vodka'],
+						['id' => 'whisky', 'ingredient'=>'Whisky']];
 
 		$_principauxjson = $this->showJson($_principaux);
 
@@ -49,9 +54,8 @@ class AutocompleteController extends Controller {
 		$_alcoolsdb = $_ingredientsdb->getAlcools();
 		
 		foreach ($_alcoolsdb as $value) {			
-			$_alcoolstab[]['ingredients'] = $value['nomIngredient'];
+			$_alcoolstab[] = ['id'=> $value['idIngredientsApi'], 'ingredient' => $value['nomIngredient']];
 		}
-
 		$_alcoolsjson = $this->showJson($_alcoolstab);
 
 		$this->show('data/alcools', ['alcoolsjson' => $_alcoolsjson]);
@@ -65,7 +69,7 @@ class AutocompleteController extends Controller {
 		$_softsdb = $_ingredientsdb->getSofts();
 
 		foreach ($_softsdb as $value) {
-			$_softstab[]['ingredients'] = $value['nomIngredient'];
+			$_softstab[] = ['id'=> $value['idIngredientsApi'], 'ingredient' => $value['nomIngredient']];
 		}
 
 		$_softsjson = $this->showJson($_softstab);
@@ -81,7 +85,7 @@ class AutocompleteController extends Controller {
 		$_fruitsdb = $_ingredientsdb->getFruits();
 		
 		foreach ($_fruitsdb as $value) {
-			$_fruitstab[]['ingredients'] = $value['nomIngredient'];
+			$_fruitstab[] = ['id'=> $value['idIngredientsApi'], 'ingredient' => $value['nomIngredient']];
 		}
 
 		$_fruitsjson = $this->showJson($_fruitstab);
@@ -99,7 +103,7 @@ class AutocompleteController extends Controller {
 		$_epicesdb = $_ingredientsdb->getEpices();
 		
 		foreach ($_epicesdb as $value) {
-			$_epicestab[]['ingredients'] = $value['nomIngredient'];
+			$_epicestab[] = ['id'=> $value['idIngredientsApi'], 'ingredient' => $value['nomIngredient']];
 		}
 
 		$_epicesjson = $this->showJson($_epicestab);
@@ -115,7 +119,7 @@ class AutocompleteController extends Controller {
 		$_diversdb = $_ingredientsdb->getDivers();
 		
 		foreach ($_diversdb as $value) {
-			$_diverstab[]['ingredients'] = $value['nomIngredient'];
+			$_diverstab[] = ['id'=> $value['idIngredientsApi'], 'ingredient' => $value['nomIngredient']];
 		}
 
 		$_diversjson = $this->showJson($_diverstab);

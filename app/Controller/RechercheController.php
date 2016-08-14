@@ -38,29 +38,20 @@ public function searchform()
 
 			if (!empty($_POST['ingredients'])) {
 				
-				foreach ($_POST['ingredients'] as $nomingredient) {
+				foreach ($_POST['ingredients'] as $ingredient) {
 
-
-					if (($nomingredient === 'Gin') || ($nomingredient === 'Rhum') || ($nomingredient === 'Tequila') || ($nomingredient === 'Vodka') || ($nomingredient === 'Whisky')) 
+					if (($ingredient === 'gin') || ($ingredient === 'rum') || ($ingredient === 'tequila') || ($ingredient === 'vodka') || ($ingredient === 'whisky')) 
 					{
 
-						if ($nomingredient === 'Rhum') {
-							$nomingredient = 'rum'; 
-							$_urlpart .= '/withtype/' . $nomingredient;
-						}							
-						else {
-							$nomingredient = strtolower($nomingredient);
-							$_urlpart .= '/withtype/' . $nomingredient;
-						}
+						$_urlpart .= '/withtype/' . $ingredient;
+
 					}
 					else {
-						$_ingredientsdb		= new IngredientsModel();
-						$_idIngredient 		= $_ingredientsdb->getId($nomingredient);
-						$_tableauIds[]		= $_idIngredient;							
-						$_urlpart		.= '/with/' . implode('/and/', $_tableauIds);
+						$_urlpart		.= '/with/' . $ingredient;
 					}
 				
 				}
+													var_dump($_urlpart);
 
 			}
 

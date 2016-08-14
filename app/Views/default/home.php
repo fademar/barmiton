@@ -8,14 +8,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-md-12 valign-wrapper">
-                    <div class="col-lg-6 valign">
+                    <div class="col-xs-12 col-md-6 valign">
                         <div class="svgbox">
-                            <svg id="martini" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 65 100">
+                            <svg id="martini" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 65 100" preserveAspectRatio="xMinYMin meet">
                                 <title>martini</title>
                             </svg>
                         </div>
                     </div>
-                    <div class="col-lg-6 valign">
+                    <div class="col-xs-12 col-md-6 valign">
                         <div class="intro-text">
                             <span class="name">Barmiton</span>
                             <hr class="glass-light">
@@ -33,26 +33,33 @@
     <!-- section de recherche -->
     <section id="recherche">
         <div class="container">
-                <div class="col-xs-12 col-md-12 text-center">
-                    <h2>Choissisez vos ingrédients préférés</h2>
-                    <hr class="glass-primary">
-                </div>
-                <div class="center-block">
-                    <form action="recherche/" method="POST">    
-                        <div id="" class="col-xs-12 col-md-12 text-center">
+            <div class="col-xs-12 col-md-12 text-center">
+                <h2>Choisissez vos ingrédients préférés</h2>
+                <hr class="glass-primary">
+            </div>
+            <div class="center-block">
+                <form action="recherche/" method="POST">    
+                    <div class="col-xs-12 col-md-12">
+                        <div class="col-md-6 col-md-offset-3">                         
                             <div class="fieldcontainer">
+                                <div class="input-group">
+                                    <input id="ingredient1" class="typeaheadhome" type="text" placeholder="">
+                                    <span class="input-group-addon"><a href="javascript:void(0);" class="btn-ajouter" title="ajouter un champ"><i class="fa fa-plus-circle"></i></a></span>
+                                </div>
+                            </div>
+                            <div class="results">
                                 <div>
-                                    <i class="fa fa-plus-circle btn-ajouterfalse"></i>
-                                    <input class="typeaheadhome" type="text" name="ingredients[]" placeholder="">
-                                    <a href="javascript:void(0);" class="btn-ajouter" title="ajouter un champ"><i class="fa fa-plus-circle"></i></a>
+                                    <input id="ingredientId1" type="hidden" name="ingredients[]" value="">
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xs-12 col-md-12 text-center">
-                            <button type="submit" class="btn btn-primary btn-lg">Mixer</button>
-                        </div>
-                    </form>
-                </div>
+                        
+                    </div>
+                    <div class="col-xs-12 col-md-12 text-center">
+                        <button type="submit" class="btn btn-primary btn-lg">Mixer</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </section>
 

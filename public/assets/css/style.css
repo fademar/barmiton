@@ -83,9 +83,11 @@ header#home {
   text-align: center;
   background: #EF626C;
   color: white;
+  height: 100vh;
 }
 header#recherche {
   background: #EF626C;
+
 }
 header .container {
   padding-top: 100px;
@@ -118,7 +120,7 @@ header .btn-begin a:hover {
 
 @media (min-width: 768px) {
   header .container {
-    padding-top: 150px;
+    padding-top: 120px;
     padding-bottom: 100px;
   }
   header .intro-text .name {
@@ -231,6 +233,10 @@ section#fiche .container {
   padding-top: 100px;
   padding-bottom: 50px;
 }
+section#recherche {
+  height: 80vh;
+}
+
 
 @media (max-width: 767px) {
   section {
@@ -559,12 +565,11 @@ fieldset[disabled] .btn-success.active {
 .typeahead, .typeaheadhome,
 .tt-query,
 .tt-hint {
-  width: 100%;
-  height: 10%;
+  width: 465px;
+  height: 60px;
   font-size: 2em;
   color: #22264B;
-  line-height: 30px;
-  border: 2px solid #ccc;
+  border: 1px solid #ccc;
   border-radius: 8px;
   outline: none;
   text-align: center;
@@ -587,7 +592,7 @@ fieldset[disabled] .btn-success.active {
 }
 
 .tt-menu {
-  width: 100%;
+  width: 465px;
   margin: 12px 0;
   padding: 8px 0;
   background-color: #fff;
@@ -595,6 +600,7 @@ fieldset[disabled] .btn-success.active {
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   box-shadow: 0 5px 10px rgba(0,0,0,.2);
+  text-align: center;
 }
 
 .tt-suggestion {
@@ -628,7 +634,7 @@ fieldset[disabled] .btn-success.active {
 /******** SVG CSS **********/
 
 .svgbox {
-  width: 85%;
+  height: 80vh;
 }
 
 .btn-ajouter {
@@ -637,11 +643,6 @@ fieldset[disabled] .btn-success.active {
   line-height: 30px;
 }
 
-.btn-ajouterfalse {
-  font-size: 3em;
-  color: #ffffff;
-  line-height: 30px;
-}
 
 #submitbtn {
   padding: 30px 0;
@@ -650,11 +651,24 @@ fieldset[disabled] .btn-success.active {
 /******** Alignement vertical **********/
 
 
-.parent {
-  position: relative;
+.valign-wrapper {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
-.child {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+
+.valign-wrapper .valign {
+  display: block;
+}
+
+.svgbox {
+  display: inline-block;
+  position: relative;
+  width: 70%;
+  padding-bottom: 100%;
+  vertical-align: middle;
+  overflow: hidden;
 }

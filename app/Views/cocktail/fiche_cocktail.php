@@ -8,7 +8,7 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-md-12 text-center">
-                <h2>Cocktail <?= $dataCocktail['name']?></h2>
+                <h2><?= $dataCocktail['name']?></h2>
                 <hr class="glass-primary">
             </div>
         </div>
