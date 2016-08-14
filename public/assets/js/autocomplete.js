@@ -121,7 +121,7 @@ $(document).ready(function() {
 	var maxField = 5; // Limite de nombre de champs
     var btnajouter = $('.btn-ajouter'); // Bouton ajouter
     var fieldcontainer = $('.fieldcontainer'); // Conteneur de champ
-    var fieldHTML = '<input class="typeaheadhome" type="text" name="ingredients[]" value="" placeholder=""><a href="javascript:void(0);" class="btn-remove" title="supprimer un champ"><i class="fa fa-times"></i></a>'; //Nouveau champ html 
+    var fieldHTML = '<div><input class="typeaheadhome" type="text" name="ingredients[]" value="" placeholder=""><a href="javascript:void(0);" class="btn-remove" title="supprimer un champ"><i class="fa fa-times"></i></a></div>'; //Nouveau champ html 
     var i = 1; //Initialisation du compteur de champ
     $(btnajouter).on('click', function(){
         if(i < maxField){

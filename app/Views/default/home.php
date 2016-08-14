@@ -32,20 +32,20 @@
     <section id="recherche">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 text-center">
+                <div class="col-xs-12 col-md-12 text-center">
                     <h2>Choissisez vos ingrédients préférés</h2>
                     <hr class="glass-primary">
                 </div>
             </div>
             <div class="row">
                 <form action="recherche/" method="POST">    
-                        <div class="col-lg-12 text-center fieldcontainer">
-                            <div class="fieldinput col_lg-12">
-                                <div id="typeaheadhome" class="fieldmiddle col-lg-6">
-                                    <input class="typeaheadhome" type="text" name="ingredients[]" placeholder="">
-                                </div>
-                                <div class="fieldright col-lg-6">
-                                    <a href="javascript:void(0);" class="btn-ajouter" title="ajouter un champ"><i class="fa fa-plus-circle"></i></a>
+                        <div id="" class="col-xs-12 .col-md-12 text-center">
+                            <div class="col-md-6 col-md-offset-3">
+                                <div class="fieldcontainer">
+                                    <div>
+                                        <input class="typeaheadhome" type="text" name="ingredients[]" placeholder="">
+                                        <a href="javascript:void(0);" class="btn-ajouter" title="ajouter un champ"><i class="fa fa-plus-circle"></i></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -68,14 +68,16 @@
                 </div>
             </div>
             <div class="row">
-                <?php foreach ($cocktailselection as $cocktailcard): ?>
-                    <div class="col-xs-6 col-md-4 portfolio-item">     
-                        <a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $cocktailcard['id']]); ?>">
-                            <img src="<?= $cocktailcard['imgurlsmall']?>" class="" alt="">
-                            <h3><?= $cocktailcard['name']?></h3>
-                        </a>
-                    </div>
-                <?php endforeach ?>
+                <div class="col-xs-12 col-md-12 text-center">
+                    <?php foreach ($cocktailselection as $cocktailcard): ?>
+                        <div class="col-xs-6 col-md-4 portfolio-item">     
+                            <a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $cocktailcard['id']]); ?>">
+                                <img src="<?= $cocktailcard['imgurlsmall']?>" class="img-responsive img-rounded img-thumbnail" alt="">
+                                <h3><?= $cocktailcard['name']?></h3>
+                            </a>
+                        </div>
+                    <?php endforeach ?>
+                </div>
             </div>
         </div>
     </section>
