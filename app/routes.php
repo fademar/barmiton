@@ -12,5 +12,8 @@
 		['GET|POST', '/data/divers/', 'Autocomplete#autoCompleteDivers', 'autocomplete_divers'],
 		['GET|POST', '/data/alcoolsprincipaux/', 'Autocomplete#autoCompletePrincipaux', 'autocomplete_alcoolsprincipaux'],
 		['GET|POST', '/data/noms/', 'Autocomplete#autoCompleteNoms', 'autocomplete_noms'],
-
+		['GET|POST', '/users/inscription/', 'Users#UsersInscription', 'Users_UsersInscription'],
+		['GET|POST', '/users/connexion/', 'Users#UsersConnexion', 'Users_UsersConnexion'],
+		['GET|POST', '/users/deconnexion/', 'Users#UsersDeconnexion', 'Users_UsersDeconnexion'],
+		['GET|POST', '/users/profil/', 'Users#UsersProfil', 'Users_UsersProfil'],
 	);
