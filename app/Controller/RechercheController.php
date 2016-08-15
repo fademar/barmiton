@@ -165,16 +165,18 @@ public function searchform()
 
 			$api = new CocktailsModel;
 			$_data = $api->getCocktailListBy($_urlpart);
-
 			$_cocktaillist = $api->fetchData($_data);
-	
+
 			if (!empty($_cocktaillist)) {
-				$_nbcocktails = sizeof($_cocktaillist);
-				$this->show('cocktail/recherche', ['cocktaillist' => $_cocktaillist, 'error' => '', 'form' => $_form, 'nbcocktails' => $_nbcocktails]);
+				$this->show('cocktail/recherche', [
+													'cocktaillist' => $_cocktaillist, 
+													'error' => '', 
+													'form' => $_form, 
+													'nbcocktails' => $_data['totalresult']]);
 			}
 			else {
-				$_error = '<p>Oups, aucune recette ne correspond à votre recherche !</p>
-							<p>Nous vous suggérons :</p>';
+				$_error = '<div class="oops">Oups, aucune recette ne correspond à votre recherche !</div>
+							<div class="oops">Nous vous suggérons :</div>';
 				
 				foreach ($_urloops as $categorie => $tabingredients) {
 					
@@ -183,14 +185,41 @@ public function searchform()
 						foreach ($taburl as $url) {
 							$api 							= new CocktailsModel;
 							$_data 							= $api->getCocktailListBy($url);
-							$db 							= new IngredientsModel();
-							$nomingredient					= $db->getName($idingredient);
-							$_cocktailoops[$nomingredient]	= $api->getRandomCocktail($_data, 4);;		
+							
+							switch($idingredient) //Changement des noms des alcools principaux
+							{
+								case 'gin' : 
+									$nomingredient = 'Gin';
+									break;
+								case 'rum' :
+									$nomingredient = 'Rhum';
+									break;
+								case 'tequila' : 
+									$nomingredient = 'Tequila';
+									break;
+								case 'vodka' : 
+									$nomingredient = 'Vodka';
+									break;
+								case 'whisky' : 
+									$nomingredient = 'Whisky';
+									break;
+								default : 
+									$db 			= new IngredientsModel();
+									$nomingredient	= $db->getName($idingredient);
+							}
+
+							if (count($_data['list']) > 4) {
+								$_cocktailoops[$nomingredient]	= $api->getRandomCocktail($_data, 4);;		
+							}
+							else {
+								$_cocktailoops[$nomingredient]	= $api->fetchData($_data);
+							}
 						}
 					}
 				}
 
 				$this->show('cocktail/recherche', [
+													'totalresult'	=> $_data['totalresult'],
 													'error' 		=> $_error, 
 													'form' 			=> $_form,
 													'cocktailoops' 	=> $_cocktailoops,

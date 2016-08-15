@@ -183,7 +183,7 @@
 
   <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button> -->
     <!-- Navigation -->
-    <nav id="mainNav" class="navbar navbar-default navbar-custom">
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
@@ -217,9 +217,6 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
-
-    <a href="<?php echo $this->url("Users_UsersConnexion"); ?>">Se Connecter</a>
-    <a href="<?php echo $this->url("Users_UsersDeconnexion"); ?>">Se Déconnecter</a>
 
     <?= $this->section('main_content') ?>
 

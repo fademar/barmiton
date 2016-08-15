@@ -36,7 +36,7 @@
                 <div class="row">
                     <div class="col-xs-12 col-md-6">
                         <label for="softsId">Softs</label>
-                        <select id="softsId" name="softs[]" class="form-control selectpicker" multiple title="Choisissez une ou plusieurs options"> 
+                        <select id="softsId" name="softs[]" class="form-control selectpicker" multiple data-live-search="true" title="Choisissez une ou plusieurs options"> 
                             <?php foreach($form['softs'] as $champ): ?>     
                                 <option value="<?php echo $champ['idIngredientsApi']?>"><?php echo (mb_strtolower($champ['nomIngredient'], 'UTF-8')); ?></option>
                             <?php endforeach ?>
@@ -44,7 +44,7 @@
                     </div>
                     <div class="col-xs-12 col-md-6">
                         <label for="softsId">Fruits/Jus de fruits</label>
-                        <select id="softsId" name="fruits[]" class="form-control selectpicker" multiple title="Choisissez une ou plusieurs options"> 
+                        <select id="softsId" name="fruits[]" class="form-control selectpicker" multiple data-live-search="true" title="Choisissez une ou plusieurs options"> 
                             <?php foreach($form['fruits'] as $champ): ?>     
                                 <option value="<?php echo $champ['idIngredientsApi']?>"><?php echo (mb_strtolower($champ['nomIngredient'], 'UTF-8')); ?></option>
                             <?php endforeach ?>
@@ -87,7 +87,7 @@
         <?php if (empty($error)) : ?>
 	        <div class="row">
 	            <div class="col-xs-12 col-md-12 text-center">
-	                <h2>Nous vous proposons <?php echo $nbcocktails ?> cocktails</h2>
+	                <h2>Nous vous proposons <?php if ($nbcocktails > 1) {echo $nbcocktails . ' cocktails'; } else {echo 'un cocktail';} ?> </h2>
 	                <hr class="glass-primary">
 	            </div>
 	        </div>
@@ -115,7 +115,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-xs-12 col-md-12 text-center">
-                                <h2>Des cocktails composés de <?= $nom ?></h2>
+                                <h2>Des cocktails composés <?php if ((substr($nom, 0, 1) === 'A') || (substr($nom, 0, 1) === 'E') || (substr($nom, 0, 1) === 'I') || (substr($nom, 0, 1) === 'O') || (substr($nom, 0, 1) === 'U')) { echo "d'" . $nom; } else { echo "de " . $nom;}?></h2>
                                 <hr class="glass-primary">
                             </div>
                         </div>

@@ -31,15 +31,17 @@ class CocktailsModel extends \W\Model\Model
 	{
 		
 		if ($urlpart === 'all') {
-			$_jsonurl	= 'https://addb.absolutdrinks.com/drinks/?pageSize=200&apiKey=2c758736e5f844bdb9d39308df889c6d';
+			$_jsonurl		= 'https://addb.absolutdrinks.com/drinks/?apiKey=2c758736e5f844bdb9d39308df889c6d';
 		}
 		else 
 		{
-			$_jsonurl	= 'https://addb.absolutdrinks.com/drinks'. $urlpart .'/?pageSize=200&apiKey=2c758736e5f844bdb9d39308df889c6d';
+			$_jsonurl		= 'https://addb.absolutdrinks.com/drinks'. $urlpart .'/?apiKey=2c758736e5f844bdb9d39308df889c6d';
 		}
-			$_json 		= file_get_contents($_jsonurl);
-			$_data 		= json_decode($_json)->result;
-			
+			$_json 			= file_get_contents($_jsonurl);
+
+			$_list			= json_decode($_json)->result;
+			$_totalresult 	= json_decode($_json)->totalResult;
+			$_data 			= ["list" => $_list, 'totalresult' => $_totalresult];
 			
 			return $_data;
 
@@ -57,11 +59,12 @@ class CocktailsModel extends \W\Model\Model
 		if (!empty($data)) {
 
 			/**************** Enregistrement des données dans un tableau associatif ******************/
-			foreach ($data as $_cocktail) {
+			foreach ($data['list'] as $_cocktail) {
 
 				$_cocktailcard = array(
 									'id'			=> $_cocktail->id,
-									'name' 			=> $_cocktail->name,
+									'name' 			=> $_cocktail->name,										
+									'occasions' 	=> $_cocktail->occasions,
 									'imgurlsmall' 	=> "http://assets.absolutdrinks.com/drinks/300x400/" . $_cocktail->id . "(60).jpg",
 
 				);
@@ -155,7 +158,7 @@ class CocktailsModel extends \W\Model\Model
 	public function getRandomCocktail($data, $n) {
 
 		$_arraykey = array_rand($data, $n); // Je passe en paramètre les données Json et le nombre de cocktails à montrer
-			
+		
 		foreach ($_arraykey as $datakey) {
 			 	$_cocktail = $data[$datakey];			
 	

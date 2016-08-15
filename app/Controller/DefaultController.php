@@ -21,7 +21,7 @@ class DefaultController extends Controller
 	{
 		$_cocktailapi		 = new CocktailsModel();
 		$_cocktailselection	 = $_cocktailapi->getCocktailListBy('all');
-		$_cocktailselection	 = $_cocktailapi->getRandomCocktail($_cocktailselection, 6);
+		$_cocktailselection	 = $_cocktailapi->getRandomCocktail($_cocktailselection['list'], 6);
 	
 		//$_autocomplete = new AutocompleteController();
 		//$_autocomplete->autoComplete();
