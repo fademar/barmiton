@@ -1,0 +1,149 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
+
+nav ul a,
+nav .brand-logo {
+  color: #444;
+}
+
+p {
+  line-height: 2rem;
+}
+
+.button-collapse {
+  color: #26a69a;
+}
+
+.parallax-container {
+  min-height: 700px;
+  line-height: 0;
+  height: auto;
+  color: rgba(255,255,255,.9);
+}
+
+.parallax-container .section {
+  width: 100%;
+}
+
+.margin-top-20 {
+  margin: 20px 0 0 0;
+}
+
+.container-title {
+  min-height: 700px;
+}
+
+.header-title {
+  font-family: 'lobster';
+  font-size: 10em;
+}
+
+.header-subtitle {
+  font-family: 'ralewaymedium';
+}
+
+.material-icons.md-36 {
+  font-size: 36px; 
+}
+
+.vert {
+  background: #2ab8ac;
+}
+
+.vert-dark {
+  background: #B5B15C;
+}
+
+/******************* css tiré de shaker ********************/
+
+.containersvg {
+    width: 45vw;
+    height: 100vh;
+    float: left;
+}
+
+.svgbox {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.page {
+    overflow: auto;
+}
+
+h1 {
+    font-family: 'Lobster', cursive;
+    font-size: 9em;
+    color: #F0F4F7;
+}
+
+h2 {
+    font-family: 'Lobster', cursive;
+    font-size: 3em;
+    color: #2ab8ac;
+}
+
+.slogan {
+    font-family: 'Lobster', cursive;
+    font-size: 3em;
+    margin: 40px 0;
+    color: #B8FCED;
+}
+
+
+.clearfix {
+    clear: both;
+}
+
+.formulaire {
+  padding-bottom: 2em;
+}
+
+
+h3.form {
+    font-family: 'ralewaymedium';
+    font-size: 1.3em;
+
+}
+
+.ajout-ingredient {
+  text-align: center;
+}
+
+@media only screen and (max-width : 992px) {
+  .parallax-container .section {
+    position: absolute;
+    top: 40%;
+  }
+  #index-banner .section {
+    top: 10%;
+  }
+}
+
+@media only screen and (max-width : 600px) {
+  #index-banner .section {
+    top: 0;
+  }
+}
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+  font-size: inherit;
+}
+
+footer.page-footer {
+  margin: 0;
+}
+
+#test {
+      padding: 8%;
+    margin-left: 10%;
+}

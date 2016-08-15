@@ -2,123 +2,147 @@
 
 <?php $this->start('main_content') ?>
 
-<div class="page vert">
-    <div class="containersvg valign-wrapper"> 
-        <div class="svgbox valign">
-            <svg id="martini" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65 100">
-                <title>martini</title>
-            </svg>
-        </div>
-    </div> 
-    <div class="containersvg valign-wrapper">
-        <div class="valign center">
-            <h1>Barmiton</h1>
-            <span class="slogan">Plus de 1000 recettes de cocktails !</span>
-        </div>
-        <div class="clearfix"></div>
-    </div>
-</div>
 
-<div class="container">
-    <div class="section">
+ <!-- Header -->
+    <header id="home">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-md-12 valign-wrapper">
+                    <div class="col-xs-12 col-md-6 valign">
+                        <div class="svgbox">
+                            <svg id="martini" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 65 100" preserveAspectRatio="xMinYMin meet">
+                                <title>martini</title>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6 valign">
+                        <div class="intro-text">
+                            <span class="name">Barmiton</span>
+                            <hr class="glass-light">
+                            <span class="skills">Plus de 1000 recettes de cocktails !</span>
+                        </div>
+                        <div class="btn-begin">
+                            <button type="button" class="btn btn-primary btn-lg"><a href="#recherche">Commencer !</a></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- section de recherche -->
+    <section id="recherche">
+        <div class="container">
+            <div class="col-xs-12 col-md-12 text-center">
+                <h2>Choisissez vos ingrédients préférés</h2>
+                <hr class="glass-primary">
+            </div>
+            <div class="center-block">
+                <form action="recherche/" method="POST">    
+                    <div class="col-xs-12 col-md-12">
+                        <div class="col-md-6 col-md-offset-3">                         
+                            <div class="fieldcontainer">
+                                <div class="input-group">
+                                    <input id="ingredient1" class="typeaheadhome" type="text" placeholder="">
+                                    <span class="input-group-addon"><a href="javascript:void(0);" class="btn-ajouter" title="ajouter un champ"><i class="fa fa-plus-circle"></i></a></span>
+                                </div>
+                            </div>
+                            <div class="results">
+                                <div>
+                                    <input id="ingredientId1" type="hidden" name="ingredients[]" value="">
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="col-xs-12 col-md-12 text-center">
+                        <button type="submit" class="btn btn-primary btn-lg">Mixer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
 
-        <!--   Icon Section   -->
-        <div class="row">
-            <div class="col s12">
-                <div class="row center">
-                    <h2>Choisissez vos ingrédients préférés</h2>
-                    <form action="cocktails/cocktailliste/" method="POST">
-                        <h5>Alcools</h5>
-                        <p>
-                            <input type="checkbox" name="alcool[]" id="ginId" value="gin">
-                            <label for="ginId">Gin</label>
-                        </p>
-                        <p>
-                            <input type="checkbox" name="alcool[]" id="vodkaId" value="vodka">
-                            <label for="vodkaId">Vodka</label>
-                        </p>
-                        <p>
-                            <input type="checkbox" name="alcool[]" id="rhumId" value="rum">
-                            <label for="rhumId">Rhum</label>
-                        </p>
-                        <p>
-                            <input type="checkbox" name="alcool[]" id="tequilaId" value="tequila">
-                            <label for="tequilaId">Tequila</label>
-                        </p>
-                        <p>
-                            <input type="checkbox" name="alcool[]" id="whiskyId" value="whisky">
-                            <label for="whiskyId">Tequila</label>
-                        </p>
-                        <h5>Jus de fruits</h5>
-                        <p>
-                            <input type="checkbox" name="juice[]" id="pommeId" value="apple/or/apple-juice/or/apple-juice-fresh-pressed/or/apple-juice-hot">
-                            <label for="pommeId">Pomme</label>
-                        </p>
-                        <p>
-                            <input type="checkbox" name="juice[]" id="orangeId" value="orange-juice">
-                            <label for="orangeId">Orange</label>
-                        </p>
-                        <p>
-                            <input type="checkbox" name="juice[]" id="citronId" value="lemon-juice/or/lime-juice">
-                            <label for="citronId">Citron / Citron vert</label>
-                        </p>
-                        <p>
-                            <input type="checkbox" name="juice[]" id="fruitsrougesId" value="cherry-juice/or/cranberry-juice/or/raspberry-juice/or/strawberry-juice">
-                            <label for="fruitsrougesId">Fruits rouges</label>
-                        </p>
-                        <p>
-                            <input type="checkbox" name="juice[]" id="ananasId" value="pineapple-juice">
-                            <label for="ananasId">Ananas</label>
-                        </p>
-                        <p>
-                            <input type="submit" name="submit" value="mixer">
-                        </p>
+
+    <!-- Section de sélection -->
+    <section id="selection">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-md-12 text-center">
+                    <h2>Nos suggestions</h2>
+                    <hr class="glass-grey">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-md-12 text-center">
+                    <?php foreach ($cocktailselection as $cocktailcard): ?>
+                        <div class="col-xs-6 col-md-4 portfolio-item">     
+                            <a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $cocktailcard['id']]); ?>">
+                                <img src="<?= $cocktailcard['imgurlsmall']?>" class="img-responsive img-rounded img-thumbnail" alt="">
+                                <h3><?= $cocktailcard['name']?></h3>
+                            </a>
+                        </div>
+                    <?php endforeach ?>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-md-12 text-center">
+                    <h2>Contactez-nous</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
+                    <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
+                    <form name="sentMessage" id="contactForm" novalidate>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Nom</label>
+                                <input type="text" class="form-control" placeholder="Name" id="name" required data-validation-required-message="Please enter your name.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Email</label>
+                                <input type="email" class="form-control" placeholder="Email Address" id="email" required data-validation-required-message="Please enter your email address.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Téléphone</label>
+                                <input type="tel" class="form-control" placeholder="Phone Number" id="phone" required data-validation-required-message="Please enter your phone number.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Message</label>
+                                <textarea rows="5" class="form-control" placeholder="Message" id="message" required data-validation-required-message="Please enter a message."></textarea>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <br>
+                        <div id="success"></div>
+                        <div class="row">
+                            <div class="form-group col-xs-12">
+                                <button type="submit" class="btn btn-success btn-lg">Send</button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
-
-    </div>
-</div>
+    </section>
 
 
-<div class="container">
-    <div class="section">
-        <div class="row center">
-            <h2>Notre sélection</h2>
-            <?php foreach ($cocktailselection as $cocktailcard): ?>
-                <div class="col s12 m7 l4">
-                    <div class="card">
-                        <div class="card-image">
-                            <img src="<?= $cocktailcard['imgurlsmall']?>">
-                        </div>
-                        <div class="card-action">
-                            <div class="card-title grey-text text-darken-4 center-align"><?= $cocktailcard['name']?></div>
-                            <!-- Modal Trigger -->
-                            <div class="center-align margin-top-20"><button class="btn-floating waves-effect waves-light blue-grey lighten-4 modal-trigger" data-target="modal-<?= $cocktailcard['id']?>"><i class="material-icons">add</i></button></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Modal Structure -->
-                <div id="modal-<?= $cocktailcard['id']?>" class="modal">
-                    <div class="modal-content">
-                        <h4><?= $cocktailcard['name']?></h4>
-                        <div>
-                            <p><?= $cocktailcard['description']?></p>
-                        </div>
-                        <div>
-                            <img src="<?= $cocktailcard['imgurlmodal']?>">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <a href="#!" class="modal-action modal-close red btn-flat">Fermer</a>
-                    </div>
-                </div>
-            <?php endforeach ?>
-        </div>
-
-    </div>
-</div>
-
-
-    <?php $this->stop('main_content') ?>
+<?php $this->stop('main_content') ?>
