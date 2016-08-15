@@ -218,6 +218,8 @@
         <!-- /.container-fluid -->
     </nav>
 
+    <a href="<?php echo $this->url("Users_UsersConnexion"); ?>">Se Connecter</a>
+    <a href="<?php echo $this->url("Users_UsersDeconnexion"); ?>">Se Déconnecter</a>
 
     <?= $this->section('main_content') ?>
 
