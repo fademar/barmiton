@@ -101,7 +101,8 @@
 	                </div>
 	            <?php endforeach ?>
 	        </div>
-		<?php else : ?>
+        <?php endif ?>
+		<?php if (!empty($error)): ?>
 			<div class="row">
 	            <div class="col-xs-12 col-md-12 text-center">
 	                <h2><?php echo $error ?></h2>
@@ -131,7 +132,7 @@
                     </div>
                 </section>
 
-            <? endforeach ?>
+            <?php endforeach ?>
 
         <?php endif ?>
 
