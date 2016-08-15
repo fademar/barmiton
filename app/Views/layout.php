@@ -17,9 +17,8 @@
   
 
 </head>
-<body>
 
-<!-- Mettre API Google connect -->
+<body>
 
   <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
 
@@ -54,26 +53,26 @@
     }
   </script>
 
-<script>
-  window.fbAsyncInit = function()
-  {
-    FB.init({
-    appId      : '564281287093366',
-    xfbml      : true,
-    version    : 'v2.7'
-    });
-  };
+  <script>
+    window.fbAsyncInit = function()
+    {
+      FB.init({
+      appId      : '564281287093366',
+      xfbml      : true,
+      version    : 'v2.7'
+      });
+    };
 
-  (function(d, s, id)
-  {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) {return;}
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js";
-    fjs.parentNode.insertBefore(js, fjs);
-  }
-  (document, 'script', 'facebook-jssdk'));
-</script>
+    (function(d, s, id)
+    {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {return;}
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }
+    (document, 'script', 'facebook-jssdk'));
+  </script>
 
   <script>
     // This is called with the results from from FB.getLoginStatus().
@@ -163,18 +162,15 @@
     data-show-faces="true">
   </div>
 
-  <div id="status">
-  </div>
+  <div id="status"></div>
 
   <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
-
 
   <nav class="white" role="navigation">
     <div class="nav-wrapper container">
       <a id="logo-container" href="#" class="brand-logo">Barmiton</a>
 
       <ul class="right hide-on-med-and-down">
-        <li><a href="#">Navbar Link</a></li>
       </ul>
 
       <ul id="nav-mobile" class="side-nav">
@@ -182,6 +178,9 @@
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
   </nav>
+
+  <a href="<?php echo $this->url("Users_UsersConnexion"); ?>">Se Connecter</a>
+  <a href="<?php echo $this->url("Users_UsersDeconnexion"); ?>">Se Déconnecter</a>
   
   <?= $this->section('main_content') ?>
 
@@ -191,9 +190,8 @@
         <div class="col l6 s12">
           <h5 class="white-text">Company Bio</h5>
           <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
-
-
         </div>
+
         <div class="col l3 s12">
           <h5 class="white-text">Settings</h5>
           <ul>
@@ -203,6 +201,7 @@
             <li><a class="white-text" href="#!">Link 4</a></li>
           </ul>
         </div>
+
         <div class="col l3 s12">
           <h5 class="white-text">Connect</h5>
           <ul>
@@ -214,11 +213,12 @@
         </div>
       </div>
     </div>
+
     <div class="footer-copyright">
       <div class="container">
       Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
       </div>
-    </div>
+    </div>   
   </footer>
 
 

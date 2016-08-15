@@ -5,6 +5,7 @@ namespace Controller;
 use \W\Controller\Controller;
 use Model\Users\UsersModel;
 use Model\Users\UsersAuthentificationModel;
+use Model\Users\UsersProfil;
 
 class UsersController extends Controller
 {
@@ -87,5 +88,20 @@ class UsersController extends Controller
 		}
 
 		$this->show('Users/UsersConnexion');
+	}
+
+	// deconnexion
+
+	public function UsersDeconnexion()
+	{
+			$db = new UsersAuthentificationModel;
+			$db->logUserOut();
+
+			$this->redirectToRoute('default_home');
+	}
+
+	public function UsersProfil()
+	{
+		$this->getUser()
 	}
 }
