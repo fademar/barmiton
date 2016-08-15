@@ -40,19 +40,20 @@ public function searchform()
 				
 				foreach ($_POST['ingredients'] as $ingredient) {
 
-					if (($ingredient === 'gin') || ($ingredient === 'rum') || ($ingredient === 'tequila') || ($ingredient === 'vodka') || ($ingredient === 'whisky')) 
-					{
+					if (!empty($ingredient)) {
 
-						$_urlpart .= '/withtype/' . $ingredient;
 
+						if (($ingredient === 'gin') || ($ingredient === 'rum') || ($ingredient === 'tequila') || ($ingredient === 'vodka') || ($ingredient === 'whisky')) 
+						{
+
+							$_urlpart .= '/withtype/' . $ingredient;
+
+						}
+						else {
+							$_urlpart		.= '/with/' . $ingredient;
+						}
 					}
-					else {
-						$_urlpart		.= '/with/' . $ingredient;
-					}
-				
 				}
-													var_dump($_urlpart);
-
 			}
 
 

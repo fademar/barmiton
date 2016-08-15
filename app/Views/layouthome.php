@@ -54,7 +54,7 @@
                         <a href="<?= $this->url('cocktails_showcocktails') ?>">Cocktails</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#">Se connecter</a>
+                        <a href="#">Profil</a>
                     </li>
                     <li class="page-scroll">
                         <a href="#">A propos</a>
