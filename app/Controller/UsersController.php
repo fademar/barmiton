@@ -100,8 +100,8 @@ class UsersController extends Controller
 			$this->redirectToRoute('default_home');
 	}
 
-	public function UsersProfil()
-	{
-		$this->getUser()
-	}
+	// public function UsersProfil()
+	// {
+	// 	$this->getUser()
+	// }
 }
