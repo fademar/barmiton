@@ -21,8 +21,17 @@ class IngredientsModel extends \W\Model\Model
 		$_id 			= $_ingredient[0]['idIngredientsApi'];
 
 		return $_id;
-	
-}
+	}
+
+	public function getName($id) {
+		$this->setTable('ingredients');
+		
+		$_ingredient 	= $this->search(['idIngredientsApi' => $id]);
+		$_name 			= $_ingredient[0]['nomIngredient'];
+
+		return $_name;
+	}
+
 	public function getAlcools() {
 
 		$this->setTable('alcools');
