@@ -9,6 +9,8 @@ use Model\Couleurs\CouleursModel;
 use Model\Gouts\GoutsModel;
 use Model\Difficultes\DifficultesModel;
 use Model\Occasions\OccasionsModel;
+use Model\Favoris\FavorisModel;
+use Model\Notes\NotesModel;
 
 class CocktailsController extends Controller
 {
@@ -84,16 +86,19 @@ class CocktailsController extends Controller
 		$ficheCocktails = new CocktailsModel();
 		$dataCocktail = $ficheCocktails->getcocktaildata($id);
 
-	// Ajout des favoris
+		
+
+
+		// Ajout des favoris
 
 		if($_POST) {
 
-			$objetFavoris = new FavorisModel();
-			$objetFavoris->setTable('favoris');
+		$objetFavoris = new FavorisModel();
+		$objetFavoris->setTable('favoris');
 
 			if (isset($_POST['ajouterFavoris']))
 			{
-
+				
 				$User = $this->getUser();
 				$idMembres = $User['id'];
 
@@ -101,49 +106,71 @@ class CocktailsController extends Controller
 
 					'iddrink' => $id,
 					'idMembres' => $idMembres
-					);
-
+				);
+				
 
 				$objetFavoris->insert($data);
 
-				$this->redirectToRoute('cocktails_showcocktails');
-
+				$this->redirectToRoute('cocktails_afficher_cocktail', ['id' => $dataCocktail['id']]);
+				
 			}
 
-		}
-
-
-	// Ajout des notes
-
-		// echo $_POST['note'];
-
-		if($_POST) {
-
-	// $objetNotes = new NotesModel();
-	// $objetNotes->setTable('cocktails');
+		/*Ajout des notes*/
 
 			if (isset($_POST['noter']))
 			{
 
-				$note = $_POST['note'];
 
-	// Récupérer la note du cocktail en question dans la BDD 
-	// Addition la note de la BDD au $note 
-	// Renvoyer cette valeur à la BDD (c'est dans cocktailmodel)
-	// ne pas oublier d'incrémenter le compteur de notes
+					$objetNotes = new NotesModel();
+					$objetNotes->setTable('cocktails');
+					$objetNotes->find($dataCocktail['id']);
 
-				$data = array(
-					'note' => $note,
-					);
+					$compteurnote = $_POST['compteurnote'];
+					$objetNotes->search(
+
+							['compteurnote' => $compteurnote]
+
+						);
 
 
-				$objetNotes->insert($data);
+				// Récupérer la note du cocktail en question dans la BDD 
+				// Addition la note de la BDD au $note 
+				// Renvoyer cette valeur à la BDD (c'est dans cocktailmodel)
+				// ne pas oublier d'incrémenter le compteur de notes
 
-				$this->redirectToRoute('cocktails_showcocktails');
 
+				$compteurnote++;
+
+
+				$dataNote = array(
+					'compteurnote' => $compteurnote,
+				);	
+
+				// $dataCompteur = array(
+				// 	'compteurNote' => $compteurNote,
+				// );				
+
+				$objetNotes->update($dataNote, $compteurnote);
+
+				$this->redirectToRoute('cocktails_afficher_cocktail', ['id' => $dataCocktail['id']]);
+				
+					var_dump($_POST);
 			}
 
+
+
 		}
+
+
+
+		 
+
+
+
+		
+
+			
+		
 		$this->show('cocktail/fiche_cocktail', ['dataCocktail' => $dataCocktail]);
 
 	}

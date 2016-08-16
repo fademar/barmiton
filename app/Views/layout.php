@@ -40,7 +40,7 @@
 </head>
 
 <body id="page-top" class="index">
-    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+    <!-- <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div> -->
 
   <script>
     function onSignIn(googleUser) {
@@ -60,7 +60,7 @@
 
   </script>
 
-  <a href="#" onclick="signOut();">Sign out</a>
+  <!-- <a href="#" onclick="signOut();">Sign out</a> -->
 
   <script>
     function signOut()
@@ -175,16 +175,16 @@
     }
   </script>
 
-  <div
+<!--   <div
     class="fb-like"
     data-share="true"
     data-width="450"
     data-show-faces="true">
-  </div>
+  </div> -->
 
-  <div id="status"></div>
+  <!-- <div id="status"></div> -->
 
-  <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+  <!-- <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button> -->
     <!-- Navigation -->
     <nav id="mainNav" class="navbar navbar-default navbar-custom">
         <div class="container">
