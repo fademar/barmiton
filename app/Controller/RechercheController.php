@@ -21,7 +21,7 @@ class RechercheController extends Controller
 	private $_form;
 	private $_nbcocktails;
 
-public function searchform()
+	public function searchform()
 	{
 		$_formcontroller = new FormController();
 		$_form = $_formcontroller->createSearchForm();
@@ -183,9 +183,31 @@ public function searchform()
 						foreach ($taburl as $url) {
 							$api 							= new CocktailsModel;
 							$_data 							= $api->getCocktailListBy($url);
-							$db 							= new IngredientsModel();
-							$nomingredient					= $db->getName($idingredient);
+							
+							switch($idingredient)
+							{
+								case 'gin' : 
+									$nomingredient = 'Gin';
+									break;
+								case 'rum' :
+									$nomingredient = 'Rhum';
+									break;
+								case 'tequila' : 
+									$nomingredient = 'Tequila';
+									break;
+								case 'vodka' : 
+									$nomingredient = 'Vodka';
+									break;
+								case 'whisky' : 
+									$nomingredient = 'Whisky'
+									break;
+								default : 
+									$db 			= new IngredientsModel();
+									$nomingredient	= $db->getName($idingredient);
+							}
+								
 							$_cocktailoops[$nomingredient]	= $api->getRandomCocktail($_data, 4);;		
+							
 						}
 					}
 				}
