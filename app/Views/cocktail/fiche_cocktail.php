@@ -2,7 +2,9 @@
 
 <?php $this->start('main_content') ?>
 
-  
+
+
+
    <div id="test" class="row">
       <h1 id="h1FicheCocktail">Cocktail <?= $dataCocktail['name']?></h1>
         <div class="col s12 m5">
@@ -22,7 +24,12 @@
                ?></p>
             </div>
             <div class="card-action">
-              <a href="#">Ajouter aux favoris</a>
+              
+              <form method="POST">
+                <input type="hidden" name="iddrink" value="<?php echo $idDrink; ?>" />
+                <input type="submit" name="ajouterFavoris" value="Ajouter aux favoris">
+              </form>
+
             </div>
           </div>
         </div>
@@ -38,17 +45,33 @@
               <a href="#">Partagez</a>
               <a href="#">Notez</a>
 
-              <a href="#"><i class="tiny material-icons" id="1etoile">star</i></a>
-              <a href="#"><i class="tiny material-icons" id="2etoile">star</i></a>
-              <a href="#"><i class="tiny material-icons" id="3etoile">star</i></a>
-              <a href="#"><i class="tiny material-icons" id="4etoile">star</i></a>
-              <a href="#"><i class="tiny material-icons" id="5etoile">star</i></a>
+              <form method="POST">
+
+              <span class="star-rating">
+                <input type="radio" name="note" value="1"><i></i>
+                <input type="radio" name="note" value="2"><i></i>
+                <input type="radio" name="note" value="3"><i></i>
+                <input type="radio" name="note" value="4"><i></i>
+                <input type="radio" name="note" value="5"><i></i>
+              </span>
+                <input type="submit" name="noter" value="noter">
+
+              </form>
+              <strong class="choice">Choose a rating</strong>
+
+
+
+
+
+
+
 </div>
             </div>
           </div>
         </div>
       </div>
       </div>
+              
 
 
 <?php $this->stop('main_content') ?>
