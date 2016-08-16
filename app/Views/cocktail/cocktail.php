@@ -10,16 +10,12 @@
 
                 <div class="row">
                     <div class="col-xs-12 col-md-6">
-                        <div class="form-group">
-                            <label for="alcoolsprincipauxId">Alcools principaux</label>
-                            <select id="alcoolsprincipauxId" name="alcoolsprincipaux[]" class="form-control selectpicker" multiple title="Choisissez une ou plusieurs options">    
-                                <option value="gin">gin</option>
-                                <option value="rum">rhum</option>
-                                <option value="tequila">tequila</option>
-                                <option value="vodka">vodka</option>
-                                <option value="whisky">whisky</option>
-                            </select>
-                        </div>
+                        <label for="alcoolsprincipauxId">Alcools principaux</label>
+                        <select id="alcoolsprincipauxId" name="alcoolsprincipaux[]" class="form-control selectpicker" multiple title="Choisissez une ou plusieurs options"> 
+                            <?php foreach($form['alcoolsprincipaux'] as $champ): ?>     
+                                <option value="<?php echo $champ['idIngredientsApi']?>"><?php echo (mb_strtolower($champ['nomIngredient'], 'UTF-8')); ?></option>
+                            <?php endforeach ?>
+                        </select>
                     </div>
 
 
@@ -53,7 +49,7 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-xs-12 col-md-4">
+                    <div class="col-xs-12 col-md-6">
                         <label for="goutsId">Goûts</label>
                         <select id="goutsId" name="gouts[]" class="form-control selectpicker" multiple title="Choisissez une ou plusieurs options"> 
                             <?php foreach($form['gouts'] as $champ): ?>     
@@ -61,34 +57,13 @@
                             <?php endforeach ?>
                         </select>
                     </div>
-                    <div class="col-xs-12 col-md-4">
+                    <div class="col-xs-12 col-md-6">
                         <label for="occasionsId">Occasions</label>
                         <select id="occasionsId" name="occasions[]" class="form-control selectpicker" multiple title="Choisissez une ou plusieurs options"> 
                             <?php foreach($form['occasions'] as $champ): ?>     
                                 <option value="<?php echo $champ['champuk']?>"><?php echo (mb_strtolower($champ['champfr'], 'UTF-8')); ?></option>
                             <?php endforeach ?>
                         </select>
-                    </div>
-                    <div class="col-xs-12 col-md-4">
-                        <label for="difficultesId">Niveau</label>
-                        <div class="radio">
-                            <label>
-                            <input type="radio" name="difficultes" id="optionsRadios1" value="easy">
-                                Facile
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="difficultes" id="optionsRadios2" value="average">
-                                    Moyen
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="difficultes" id="optionsRadios3" value="advanced">
-                                Difficile
-                            </label>
-                        </div>
                     </div>
                 </div>
 

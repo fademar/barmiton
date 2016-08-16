@@ -69,27 +69,6 @@
                             <?php endforeach ?>
                         </select>
                     </div>
-                    <div class="col-xs-12 col-md-4">
-                        <label for="difficultesId">Niveau</label>
-                        <div class="radio">
-                            <label>
-                            <input type="radio" name="difficultes" id="optionsRadios1" value="easy">
-                                Facile
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="difficultes" id="optionsRadios2" value="average">
-                                    Moyen
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="difficultes" id="optionsRadios3" value="advanced">
-                                Difficile
-                            </label>
-                        </div>
-                    </div>
                 </div>
 
                 <div id="submitbtn" class="col-xs-12 col-md-12 text-center">
@@ -122,13 +101,41 @@
 	                </div>
 	            <?php endforeach ?>
 	        </div>
-		<?php else : ?>
+        <?php endif ?>
+		<?php if (!empty($error)) : ?>
 			<div class="row">
 	            <div class="col-xs-12 col-md-12 text-center">
 	                <h2><?php echo $error ?></h2>
 	            </div>
 	        </div>
-	      <?php endif ?>
+	       
+            <?php foreach ($cocktailoops as $nom => $cocktailslist) : ?>
+         
+                <section id="selection<?= $nom ?>">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12 col-md-12 text-center">
+                                <h2>Des cocktails composés de <?= $nom ?></h2>
+                                <hr class="glass-primary">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <?php foreach ($cocktailslist as $cocktailcard): ?>
+                                <div class="col-xs-6 col-md-3 portfolio-item">     
+                                    <a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $cocktailcard['id']]); ?>">
+                                        <img src="<?= $cocktailcard['imgurlsmall']?>" class="img-responsive img-rounded img-thumbnail" alt="">
+                                        <h3><?= $cocktailcard['name']?></h3>
+                                    </a>
+                                </div>
+                            <?php endforeach ?>
+                        </div>
+                    </div>
+                </section>
+
+            <?php endforeach ?>
+
+        <?php endif ?>
+
     </div>
 </section>
 

@@ -32,11 +32,11 @@
     <![endif]-->
 
     <!-- Mettre API Google connect -->
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <!-- <script src="https://apis.google.com/js/platform.js" async defer></script> -->
 
 </head>
 
-<body id="page-top" class="index">
+<!-- <body id="page-top" class="index">
     <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
 
   <script>
@@ -181,9 +181,9 @@
 
   <div id="status"></div>
 
-  <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+  <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button> -->
     <!-- Navigation -->
-    <nav id="mainNav" class="navbar navbar-default navbar-custom">
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
@@ -217,7 +217,6 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
-
 
     <?= $this->section('main_content') ?>
 
