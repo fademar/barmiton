@@ -131,6 +131,8 @@ class CocktailsModel extends \W\Model\Model
 		$_cocktaildata = array(
 							'id'			=> $_cocktailapi->id,
 							'name' 			=> $_cocktailapi->name,
+							'note' 			=> $_cocktaildb[0]['note'],
+							'compteurnote' 	=> $_cocktaildb[0]['compteurnote'],
 							'ingredients'	=> $tableauPhrase,
 							'description'	=> $_cocktaildb[0]['description'],
 							'occasions' 	=> $_cocktailapi->occasions,

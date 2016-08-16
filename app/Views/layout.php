@@ -26,6 +26,7 @@
 
     <!-- CSS principal -->
     <link href="<?= $this->assetUrl('css/style.css') ?>" rel="stylesheet">
+    <link href="<?= $this->assetUrl('css/jquery-confirm.css') ?>" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -186,11 +187,8 @@
 
   <!-- <div id="status"></div> -->
 
-<<<<<<< HEAD
   <!-- <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button> -->
-=======
-  <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button> -->
->>>>>>> origin/15_08_mergeConnexion
+  <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
     <!-- Navigation -->
     <nav id="mainNav" class="navbar navbar-default navbar-custom">
         <div class="container">
@@ -285,7 +283,6 @@
     </div>
 
     
-
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>    
    
@@ -311,8 +308,13 @@
     <!-- Functions JS -->
     <script src="<?= $this->assetUrl('js/functions.js') ?>"></script>
 
+    <!-- Confirm.js -->
+    <script src="<?= $this->assetUrl('js/jquery-confirm.js') ?>"></script>
+
     <!-- Main -->
     <script src="<?= $this->assetUrl('js/main.js') ?>"></script>
+
+    
 
 </body>
 

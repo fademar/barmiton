@@ -111,66 +111,47 @@ class CocktailsController extends Controller
 
 				$objetFavoris->insert($data);
 
+					sleep(1);
+
 				$this->redirectToRoute('cocktails_afficher_cocktail', ['id' => $dataCocktail['id']]);
 				
 			}
 
 		/*Ajout des notes*/
 
-			if (isset($_POST['noter']))
-			{
+			if (isset($_POST['noter']))	{
 
 
 					$objetNotes = new NotesModel();
 					$objetNotes->setTable('cocktails');
-					$objetNotes->find($dataCocktail['id']);
-
-					$compteurnote = $_POST['compteurnote'];
-					$objetNotes->search(
-
-							['compteurnote' => $compteurnote]
-
-						);
+					$objetNotes->setPrimaryKey('id');
 
 
-				// Récupérer la note du cocktail en question dans la BDD 
-				// Addition la note de la BDD au $note 
-				// Renvoyer cette valeur à la BDD (c'est dans cocktailmodel)
-				// ne pas oublier d'incrémenter le compteur de notes
+					$cocktailNote = $objetNotes->search(array('idCocktailApi' => $_POST['iddrink']));
 
-
-				$compteurnote++;
+					$compteurnote 	= $cocktailNote[0]['compteurnote'] + 1;
+					$note 			= $cocktailNote[0]['note'] + $_POST['note'];
 
 
 				$dataNote = array(
-					'compteurnote' => $compteurnote,
+					'compteurnote' 	=> $compteurnote,
+					'note'			=> $note
 				);	
+		
 
-				// $dataCompteur = array(
-				// 	'compteurNote' => $compteurNote,
-				// );				
+				$objetNotes->update($dataNote, $cocktailNote[0]['id']);
 
-				$objetNotes->update($dataNote, $compteurnote);
 
+					sleep(1);
 				$this->redirectToRoute('cocktails_afficher_cocktail', ['id' => $dataCocktail['id']]);
-				
-					var_dump($_POST);
 			}
+				
 
 
 
 		}
 
 
-
-		 
-
-
-
-		
-
-			
-		
 		$this->show('cocktail/fiche_cocktail', ['dataCocktail' => $dataCocktail]);
 
 	}
