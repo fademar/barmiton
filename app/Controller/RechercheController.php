@@ -21,7 +21,7 @@ class RechercheController extends Controller
 	private $_form;
 	private $_nbcocktails;
 
-public function searchform()
+public function searchform($page='')
 	{
 		$_formcontroller = new FormController();
 		$_form = $_formcontroller->createSearchForm();
@@ -163,16 +163,37 @@ public function searchform()
 			}
 
 
-			$api = new CocktailsModel;
-			$_data = $api->getCocktailListBy($_urlpart);
-			$_cocktaillist = $api->fetchData($_data);
+			$api 			= new CocktailsModel;
+			$url 			= $api->constructUrl($_urlpart);
+
+			// -------------------------------- //
+
+			if(null == $page) :
+
+				$_data 			= $api->getCocktailListBy($url);
+				$_cocktaillist 	= $api->fetchData($_data);
+
+			else :
+
+				$page 		= ($page -1) * 25;
+				$NextURL 	= $url."&start=".$page."&pageSize=25";
+				$_data 		= $api->getCocktailListBy($NextURL);
+				$_cocktaillist 	= $api->fetchData($_data);
+
+			endif;
+
+			// -------------------------------- //
+
 
 			if (!empty($_cocktaillist)) {
 				$this->show('cocktail/recherche', [
-													'cocktaillist' => $_cocktaillist, 
-													'error' => '', 
-													'form' => $_form, 
-													'nbcocktails' => $_data['totalresult']]);
+													'cocktaillist' 	=> $_cocktaillist, 
+													'error' 		=> '', 
+													'form' 			=> $_form, 
+													'nbcocktails' 	=> $_data['totalresult'],
+													'next'			=> $_data['next'],
+													'previous'		=> $_data['previous'],
+												]);
 			}
 			else {
 				$_error = '<div class="oops">Oups, aucune recette ne correspond à votre recherche !</div>
@@ -182,9 +203,10 @@ public function searchform()
 					
 					foreach ($tabingredients as $idingredient => $taburl) {
 						
-						foreach ($taburl as $url) {
-							$api 							= new CocktailsModel;
-							$_data 							= $api->getCocktailListBy($url);
+						foreach ($taburl as $urlpart) {
+							$api 	= new CocktailsModel;
+							$url 	= $api->constructUrl($urlpart);
+							$_data 	= $api->getCocktailListBy($url);
 							
 							switch($idingredient) //Changement des noms des alcools principaux
 							{

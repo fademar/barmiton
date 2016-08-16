@@ -38,7 +38,7 @@
                 <hr class="glass-primary">
             </div>
             <div class="center-block">
-                <form action="recherche/" method="POST">    
+                <form action="recherche/" method="GET">    
                     <div class="col-xs-12 col-md-12">
                         <div class="col-md-6 col-md-offset-3">                         
                             <div class="fieldcontainer">
@@ -49,7 +49,7 @@
                             </div>
                             <div class="results">
                                 <div>
-                                    <input id="ingredientId1" type="hidden" name="ingredients[]" value="">
+                                    <input id="ingredientId1" type="hidden" name="ingredients" value="">
                                 </div>
                             </div>
                         </div>

@@ -160,7 +160,7 @@ $(document).ready(function() {
             
             $(fieldcontainer).append(fieldHTML); // Add field html        	
         	
-        	var resultHTML = '<div><input id="ingredientId'+ i +'" type="hidden" name="ingredients[]" value=""></div>'
+        	var resultHTML = '<div><input id="ingredientId'+ i +'" type="hidden" name="ingredients" value=""></div>'
 
         	$('.results').append(resultHTML);
 

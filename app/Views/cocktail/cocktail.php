@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row center">
             <h2>Recherche avancée</h2>
-            <form action="../recherche/" method="POST">
+            <form action="../recherche/" method="GET">
 
                 <div class="row">
                     <div class="col-xs-12 col-md-6">

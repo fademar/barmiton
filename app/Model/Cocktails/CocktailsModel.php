@@ -24,12 +24,10 @@ class CocktailsModel extends \W\Model\Model
 
 
 
-	/************************ Récupération des données selon le type de cocktail recherché ($param) et la valeur de ce type ($urlpart) *****************************/
+	/************************ Construction de l'url pour l'API *****************************/
 
+	public function constructUrl($urlpart) {
 
-	public function getCocktailListBy($urlpart)
-	{
-		
 		if ($urlpart === 'all') {
 			$_jsonurl		= 'https://addb.absolutdrinks.com/drinks/?apiKey=2c758736e5f844bdb9d39308df889c6d';
 		}
@@ -37,15 +35,81 @@ class CocktailsModel extends \W\Model\Model
 		{
 			$_jsonurl		= 'https://addb.absolutdrinks.com/drinks'. $urlpart .'/?apiKey=2c758736e5f844bdb9d39308df889c6d';
 		}
-			$_json 			= file_get_contents($_jsonurl);
+
+		return $_jsonurl;
+	}
+
+
+	/************************ Récupération du json *****************************/
+
+	public function getCocktailListBy($jsonurl)
+	{
+		
+			$_json 			= file_get_contents($jsonurl);
 
 			$_list			= json_decode($_json)->result;
 			$_totalresult 	= json_decode($_json)->totalResult;
-			$_data 			= ["list" => $_list, 'totalresult' => $_totalresult];
+
+			if (property_exists(json_decode($_json), 'next')) { $_next = json_decode($_json)->next;} else { $_next='';}
+			if (property_exists(json_decode($_json), 'previous')) { $_previous = json_decode($_json)->previous;} else { $_previous='';}
+
+			$_data 			= ["list" => $_list, 'totalresult' => $_totalresult, 'next' => $_next, 'previous' => $_previous];
 			
 			return $_data;
 
 	} //fin de function getcocktaillist
+
+	
+	// public function nextIsTrue($jsonurl) {
+
+	// 	$_json = file_get_contents($jsonurl);
+		
+	// 	if (property_exists(json_decode($_json), 'next')) {
+	// 		$next = true;
+	// 	}
+	// 	else
+	// 	{
+	// 		$next = false;
+	// 	}
+
+	// 	return $next;
+	// }
+
+
+	// public function getNext($jsonurl) {
+
+	// 	$_next = $this->nextIsTrue($jsonurl);
+	// 	$_page = 1;
+
+	// 	while ($_next) {
+
+	// 		$_json 		= file_get_contents($jsonurl);
+	// 		$_jsonurl 	= json_decode($_json)->next; 
+	// 		$_next 		= $this->nextIsTrue($jsonurl);
+	// 		$_page++;
+	// 	}
+
+	// 	return $_page;
+	// }
+
+
+	// public function getPrevious($jsonurl) {
+		
+	// 	$_previous 	= '';
+	// 	$_json 		= file_get_contents($jsonurl);
+
+	// 	while (property_exists(json_decode($_json), 'previous')) {
+
+	// 		$_previous = json_decode($_json)->previous; 
+	// 		$_json = file_get_contents($_previous);
+	// 		$_list = json_decode($_json)->result;
+	// 		$_cocktaillist = $this->fetchData($_data);
+	// 		$_data = ['list' => $_list, 'previous' => $_previous, 'cocktaillist' => $_cocktaillist];
+
+	// 	return $_data; 
+
+	// }
+
 
 
 

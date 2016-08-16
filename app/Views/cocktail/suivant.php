@@ -84,59 +84,16 @@
 <!-- Résultats de recherche -->
 <section id="results">
     <div class="container">
-        <?php if (empty($error)) : ?>
-	        <div class="row">
-	            <div class="col-xs-12 col-md-12 text-center">
-	                <h2>Nous vous proposons <?php if ($nbcocktails > 1) {echo $nbcocktails . ' cocktails'; } else {echo 'un cocktail';} ?> </h2>
-	                <hr class="glass-primary">
-	            </div>
-	        </div>
-	        <div class="row">
-	            <?php foreach ($cocktaillist as $cocktailcard): ?>
-	                <div class="col-xs-6 col-md-3 portfolio-item">     
-	                    <a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $cocktailcard['id']]); ?>">
-	                        <img src="<?= $cocktailcard['imgurlsmall']?>" class="img-responsive img-rounded img-thumbnail" alt="">
-	                        <h3><?= $cocktailcard['name']?></h3>
-	                    </a>
-	                </div>
-	            <?php endforeach ?>
-	        </div>
-        <?php endif ?>
-		<?php if (!empty($error)): ?>
-			<div class="row">
-	            <div class="col-xs-12 col-md-12 text-center">
-	                <h2><?php echo $error ?></h2>
-	            </div>
-	        </div>
-	       
-            <?php foreach ($cocktailoops as $nom => $cocktailslist) : ?>
-         
-                <section id="selection<?= $nom ?>">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xs-12 col-md-12 text-center">
-                                <h2>Des cocktails composés <?php if ((substr($nom, 0, 1) === 'A') || (substr($nom, 0, 1) === 'E') || (substr($nom, 0, 1) === 'I') || (substr($nom, 0, 1) === 'O') || (substr($nom, 0, 1) === 'U')) { echo "d'" . $nom; } else { echo "de " . $nom;}?></h2>
-                                <hr class="glass-primary">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <?php foreach ($cocktailslist as $cocktailcard): ?>
-                                <div class="col-xs-6 col-md-3 portfolio-item">     
-                                    <a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $cocktailcard['id']]); ?>">
-                                        <img src="<?= $cocktailcard['imgurlsmall']?>" class="img-responsive img-rounded img-thumbnail" alt="">
-                                        <h3><?= $cocktailcard['name']?></h3>
-                                    </a>
-                                </div>
-                            <?php endforeach ?>
-                        </div>
-                    </div>
-                </section>
-
+        <div class="row">
+            <?php foreach ($cocktaillist as $cocktailcard): ?>
+                <div class="col-xs-6 col-md-3 portfolio-item">     
+                    <a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $cocktailcard['id']]); ?>">
+                        <img src="<?= $cocktailcard['imgurlsmall']?>" class="img-responsive img-rounded img-thumbnail" alt="">
+                        <h3><?= $cocktailcard['name']?></h3>
+                    </a>
+                </div>
             <?php endforeach ?>
-
-        <?php endif ?>
-
-    </div>
+        </div>
 </section>
 
 <!-- Pagination -->
@@ -144,15 +101,24 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-md-12 text-center">
-                
-                <h3><?= $next ?></h3>
+                <h3><?php if (!empty($previous)){ echo 'précédent'; } ?></h3>
+                <h3><?php if (!empty($next)){ echo 'suivant'; } ?></h3>
+            </div>
+        </div>
+    </div>
+</section>
 
+
+<!-- Pagination -->
+<section id="pagination">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-12 text-center">
                 <?php if (!empty($previous)): ?><a href="<?= $this->url("recherche_precedent_showprecedent") ?>">précédent</a><?php endif ?>
                 <?php if (!empty($next)): ?><a href="<?= $this->url("recherche_suivant_shownext") ?>">suivant</a><?php endif ?>
             </div>
         </div>
     </div>
 </section>
-
 
 <?php $this->stop('main_content') ?>

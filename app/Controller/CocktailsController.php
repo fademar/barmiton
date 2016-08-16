@@ -51,10 +51,12 @@ class CocktailsController extends Controller
 
 		$cocktails 		= new CocktailsModel();
 
-		$_cocktailscouleur 	= $cocktails->getCocktailListBy('/colored/' . $_couleur['champuk']);
+		$urlcouleurs		= $cocktails->constructUrl('/colored/' . $_couleur['champuk']);
+		$_cocktailscouleur 	= $cocktails->getCocktailListBy($urlcouleurs);
 		$_cocktailscouleur 	= $cocktails->getRandomCocktail($_cocktailscouleur['list'], 4);
 
-		$_cocktailsoccasion = $cocktails->getCocktailListBy('/for/' . $_occasion['champuk']);
+		$urloccasions		= $cocktails->constructUrl('/for/' . $_occasion['champuk']);
+		$_cocktailsoccasion = $cocktails->getCocktailListBy($urloccasions);
 		$_cocktailsoccasion = $cocktails->getRandomCocktail($_cocktailsoccasion['list'], 4);
 
 		$_cocktailsbest 	= $cocktails->getBestCocktails();
