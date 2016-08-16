@@ -6,14 +6,29 @@
 <section id="fiche">
     <div class="container">
         <div class="row">
-            <div class="col-xs-12 col-md-12 text-center">
+            <div class="col-xs-6 col-md-6 text-center">
                 <h2><?= $dataCocktail['name']?></h2>
                 <hr class="glass-primary">
-                <h2>Note du cocktail : <?php echo round($dataCocktail["note"] / $dataCocktail["compteurnote"], PHP_ROUND_HALF_UP) . "/5"; ?></h2>
+                <h2>Note du cocktail : 
+
+                    <?php 
+
+                    if($dataCocktail["note"] > 0) :
+                        echo round($dataCocktail["note"] / $dataCocktail["compteurnote"], PHP_ROUND_HALF_UP) . "/5"; 
+
+                    else :
+                        echo "<p> Pas encore de note pour ce cocktail.</p>";
+                        
+                    endif;
+
+                    ?>
+                    
+                </h2>
+
             </div>
         </div>
         <div class="row">
-            <div id="" class="col-xs-12 .col-md-12 text-center">
+            <div id="" class="col-xs-6 .col-md-6 text-center">
                 <img src="<?= $dataCocktail['imgurlmodal']?>">
             </div>
                 <h3>Ingrédients</h3>
@@ -28,21 +43,18 @@
                 
                 <form method="POST">
                    <input type="hidden" name="iddrink" value="<?php echo $dataCocktail['id']; ?>" />
-                   <input type="submit" id="confirmFavoris" name="ajouterFavoris" value="Ajouter aux favoris">
+                   <input type="submit" id="confirmFavoris" class="btn btn-primary btn-lg" name="ajouterFavoris" value="Ajouter aux favoris">
                 </form>
-
-                <span>Recette</span>
-
+                <h3>Recette</h3>
                 <p><?= $dataCocktail['description']?></p>
 
-        </div>
-            <div class="row">
+
+
+                <div class="row">
 
             
 
                 <div class="rating">
-                    <a href="#">Partagez</a>
-                    <a href="#">Notez</a>
 
                      <form method="POST">
 
@@ -55,11 +67,14 @@
                         <input type="radio" name="note" value="4"><i></i>
                         <input type="radio" name="note" value="5"><i></i>
                       </span>
-                        <input type="submit" id="confirmNotation" name="noter" value="Noter">
+                        <span><input type="submit" id="confirmNotation" class="btn btn-primary btn-lg" name="noter" value="Noter"></span>
 
                      </form>
                 </div>
             </div>
+
+        </div>
+            
     </div>
 </section>
 

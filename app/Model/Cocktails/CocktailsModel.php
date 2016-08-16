@@ -87,22 +87,39 @@ class CocktailsModel extends \W\Model\Model
 	
 	public function getcocktaildata($urlpart)
 	{
+
+		$this->setTable('cocktails');
 		/**************** Récupération des données ******************/
 		$_jsonurl = 'https://addb.absolutdrinks.com/drinks/' . $urlpart . '/?apiKey=2c758736e5f844bdb9d39308df889c6d';
 		$_json = file_get_contents($_jsonurl);
 		$_data = json_decode($_json)->result;
+	    
 
 		$_cocktailapi 	= $_data[0];
 		$_ingredientapi = $_cocktailapi->ingredients;
+	
 
-		$this->setTable('cocktails');
 		$_cocktaildb = $this->search(['idCocktailApi' => $urlpart]);
+
+		if ($_cocktaildb == null) {
+
+
+			$dataEn = array(
+					'idCocktailApi' => $urlpart,
+					'nomCocktail' 	=> $_cocktailapi->name,
+					'description'	=> $_cocktailapi->descriptionPlain,
+					'langue' 		=> $_cocktailapi->languageBranch
+					);
+
+			$this->insert($dataEn);
+
+		} 
+
 
 		$this->setTable('ingredients');
 
-		foreach ($_ingredientapi as $value) {
 
-			// var_dump($value);
+		foreach ($_ingredientapi as $value) {
 
 			$idIngredient = $value->id;
 			
@@ -118,7 +135,7 @@ class CocktailsModel extends \W\Model\Model
 			if ($dose > 1) {
 				$phrase = $dose . ' doses de ' . $ingredientsDb[0]['nomIngredient'];
 			}  elseif (!is_numeric($dose)) {
-				$phrase = $ingredientsDb[0]['nomIngredient'];
+				$phrase = '½ dose de ' . $ingredientsDb[0]['nomIngredient'];
 			}  else {
 				$phrase = $dose . ' dose de ' . $ingredientsDb[0]['nomIngredient'];
 			}
@@ -144,9 +161,9 @@ class CocktailsModel extends \W\Model\Model
 
 		);
 	
-
 				
 		return $_cocktaildata;
+	
 
 	} //fin de function getcocktaildata
 

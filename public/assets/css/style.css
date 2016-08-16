@@ -230,8 +230,9 @@ section#contact {
   background: #BAD1CD;
 }
 section#fiche .container {
-  padding-top: 100px;
+  padding-top: 8%;
   padding-bottom: 50px;
+  margin-top: -4%;
 }
 section#recherche {
   height: 80vh;
@@ -734,4 +735,10 @@ fieldset[disabled] .btn-success.active {
   text-align: center;
   padding: 20px;
   display: block;
+}
+
+#confirmNotation {
+      margin-bottom: 3%;
+    margin-left: 2%;
+
 }
