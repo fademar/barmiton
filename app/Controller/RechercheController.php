@@ -162,7 +162,7 @@ public function searchform()
 				}
 			}
 
-			var_dump($_urlpart);
+	
 			// // -------------------------------- //
 
 			// if(null == $page) :
