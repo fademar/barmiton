@@ -73,6 +73,10 @@ class CocktailsModel extends \W\Model\Model
 			/**************** Enregistrement des données dans un tableau associatif ******************/
 			foreach ($data['list'] as $_cocktail) {
 
+				$_occasionsfr 	= array();
+				$_difficultefr 	= '';
+				$_couleurfr		= '';
+
 				$this->setTable('cocktails');
 				$_cocktaildb = $this->search(['idCocktailApi' => $_cocktail->id]);
 
@@ -84,7 +88,6 @@ class CocktailsModel extends \W\Model\Model
 
 				$this->setTable('occasions');
 
-				$_occasionsfr = array();
 
 				foreach ($_cocktail->occasions as $occasion) {
 
@@ -93,12 +96,27 @@ class CocktailsModel extends \W\Model\Model
 					$_occasionsfr[] = $_occasionsdb[0]['champfr'];
 					
 				}
+				
+				$this->setTable('difficultes');
+
+				$_difficultedb = $this->search(['champuk' => $_cocktail->skill->id]);
+				
+				$_difficultefr = $_difficultedb[0]['champfr'];
+
+
+				$this->setTable('couleurs');
+
+				$_couleurdb = $this->search(['champuk' => $_cocktail->color]);
+
+				$_couleurfr = $_couleurdb[0]['champfr'];
+					
 
 				$_cocktailcard = array(
 									'id'			=> $_cocktail->id,
 									'name' 			=> $_cocktail->name,
-									'skill'			=> $_cocktail->skill->id,
+									'skill'			=> $_difficultefr,
 									'occasionsfr' 	=> $_occasionsfr,
+									'couleur'		=> $_couleurfr,
 									'note'			=> $_note,
 									'imgurlsmall' 	=> "http://assets.absolutdrinks.com/drinks/218x300/" . $_cocktail->id . "(60).jpg"
 

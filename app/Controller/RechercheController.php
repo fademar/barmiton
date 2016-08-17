@@ -167,10 +167,8 @@ public function searchform()
 				}
 			}
 
-			$api 			= new CocktailsModel;
 			$url 			= $api->constructUrl($_urlpart);
 
-			} 
 
 
 
@@ -191,12 +189,35 @@ public function searchform()
 				list($_querypage)	= explode('&', $_SERVER['QUERY_STRING']);
 			}
 
-			$nbpages = ceil($_data['totalresult'] / 24);
+			$nbpages = ceil($_data['totalresult'] / 24);			
+
+			if (isset($_GET['tri'])) {
+
+				$tri = $_GET['tri'];
 
 
+				switch($tri) 
+				{
+					case 'facile' : 
+						
+						break;
+					case 'moyen' :
 
-			// var_dump($_cocktaillist);
+						break;
+					case 'difficile' : 
 
+						break;
+					case 'meilleurs' : 
+
+						break;
+
+					default : 
+						$db 			= new IngredientsModel();
+						$nomingredient	= $db->getName($idingredient);
+				}
+
+
+			}
 
 
 
