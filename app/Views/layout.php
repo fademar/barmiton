@@ -186,7 +186,7 @@
 
   <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button> -->
     <!-- Navigation -->
-    <nav id="mainNav" class="navbar navbar-default navbar-custom">
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
@@ -281,7 +281,7 @@
     
 
     <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>    
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>    
    
     <!-- Bootstrap Core JavaScript -->
     <script src="<?= $this->assetUrl('vendor/bootstrap/js/bootstrap.min.js') ?>"></script>
@@ -298,6 +298,9 @@
     <!-- Contact Form JavaScript -->
     <script src="<?= $this->assetUrl('js/jqBootstrapValidation.js') ?>"></script>
     <script src="<?= $this->assetUrl('js/contact_me.js') ?>"></script>
+    
+    <!-- Infinite scroll Ajax -->
+    <script src="<?= $this->assetUrl('js/jquery-ias.min.js') ?>"></script>
 
     <!-- Theme JavaScript -->
     <script src="<?= $this->assetUrl('js/theme.min.js') ?>"></script>

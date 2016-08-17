@@ -71,6 +71,7 @@
                 <div class="col-xs-12 col-md-12 text-center">
                     <h2>Nos suggestions</h2>
                     <hr class="glass-grey">
+
                 </div>
             </div>
             <div class="row">

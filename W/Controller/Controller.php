@@ -72,7 +72,6 @@ class Controller
 
 		//charge nos extensions (nos fonctions personnalisées)
 		$engine->loadExtension(new \W\View\Plates\PlatesExtensions());
-		$engine->loadExtension(new \League\Plates\Extension\URI($_SERVER['PATH_INFO']));
 
 		$app = getApp();
 

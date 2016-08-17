@@ -87,8 +87,12 @@ header#home {
 }
 header#recherche {
   background: #EF626C;
-
 }
+
+header#filtre {
+  background: #BAD1CD;
+}
+
 header .container {
   padding-top: 100px;
   padding-bottom: 50px;
@@ -679,4 +683,15 @@ fieldset[disabled] .btn-success.active {
   font-size: 1em;
   color: #EF626C;
   
+}
+
+.btn-newsearch {
+  background: #EF626C;
+  width: 10%;
+}
+
+.submenu {
+  display: none;
+  background: #EF626C;
+
 }

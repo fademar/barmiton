@@ -183,7 +183,7 @@
 
   <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button> -->
     <!-- Navigation -->
-    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
+    <nav id="mainNav" class="navbar navbar-default navbar-custom">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
@@ -299,6 +299,9 @@
     <!-- Contact Form JavaScript -->
     <script src="<?= $this->assetUrl('js/jqBootstrapValidation.js') ?>"></script>
     <script src="<?= $this->assetUrl('js/contact_me.js') ?>"></script>
+
+    <!-- Infinite Scroll Ajax -->
+    <script src="<?= $this->assetUrl('js/jquery-ias.min.js') ?>"></script>
 
     <!-- Theme JavaScript -->
     <script src="<?= $this->assetUrl('js/theme.min.js') ?>"></script>

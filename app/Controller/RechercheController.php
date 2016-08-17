@@ -23,6 +23,7 @@ class RechercheController extends Controller
 
 public function searchform()
 	{
+		
 		$_formcontroller = new FormController();
 		$_form = $_formcontroller->createSearchForm();
 		
@@ -171,17 +172,18 @@ public function searchform()
 
 			// -------------------------------- //
 
-			if (empty($_GET['page'])) {
+			if (!isset($_GET['page'])) {
 				$_data 			= $api->getCocktailListBy($url . "&pageSize=24");
 				$_cocktaillist 	= $api->fetchData($_data);
+				$_query 		= $_SERVER['QUERY_STRING'];
 			}
-			else {				
-				
-				$page = $_GET['page'];
+			else {					
+				$page 			= $_GET['page'];
 				$page 			= ($page -1) * 25;
 				$nextURL 		= $url."&start=" . $page . "&pageSize=24";
 				$_data 			= $api->getCocktailListBy($nextURL);
 				$_cocktaillist 	= $api->fetchData($_data);
+				list($_query, $_numeropage)	= explode('&page', $_SERVER['QUERY_STRING']);
 			}
 
 			$nbpages = ceil($_data['totalresult'] / 24);
@@ -193,7 +195,7 @@ public function searchform()
 													'form' 			=> $_form, 
 													'nbcocktails' 	=> $_data['totalresult'],
 													'nbpages'		=> $nbpages,	
-													'query'			=> $query
+													'query'			=> $_query
 												]);
 			}
 			else {
