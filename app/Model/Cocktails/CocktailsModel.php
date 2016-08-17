@@ -73,9 +73,12 @@ class CocktailsModel extends \W\Model\Model
 			/**************** Enregistrement des données dans un tableau associatif ******************/
 			foreach ($data['list'] as $_cocktail) {
 
+				// var_dump($_cocktail);
+
 				$_occasionsfr 	= array();
 				$_difficultefr 	= '';
 				$_couleurfr		= '';
+				$_valueskill 	= $_cocktail->skill->value;
 
 				$this->setTable('cocktails');
 				$_cocktaildb = $this->search(['idCocktailApi' => $_cocktail->id]);
@@ -114,6 +117,7 @@ class CocktailsModel extends \W\Model\Model
 				$_cocktailcard = array(
 									'id'			=> $_cocktail->id,
 									'name' 			=> $_cocktail->name,
+									'valueskill'	=> $_valueskill,
 									'skill'			=> $_difficultefr,
 									'occasionsfr' 	=> $_occasionsfr,
 									'couleur'		=> $_couleurfr,
@@ -124,13 +128,13 @@ class CocktailsModel extends \W\Model\Model
 			
 				$_cocktaillist[] = $_cocktailcard;
 
-			
 			} // Fin de foreach()	
+			
 		}
 		else {
 			$_cocktaillist = '';
 		}
-				
+
 
 		return $_cocktaillist;
 
@@ -314,36 +318,37 @@ class CocktailsModel extends \W\Model\Model
 
 	/************************ Tri des résultats *****************************/
 
-	public function filterResults($tri, $cocktaillist) {
-
-		switch($tri) //Changement des noms des alcools principaux
+	public function multiSort($data, $sortCriteria, $caseInSensitive = true)
+	{
+		if( !is_array($data) || !is_array($sortCriteria))
+			return false;       
+		$args = array(); 
+		$i = 0;
+		foreach($sortCriteria as $sortColumn => $sortAttributes)  
 		{
-			case 'facile' : 
-				
-				break;
-			case 'moyen' :
-				$nomingredient = 'Rhum';
-				break;
-			case 'difficile' : 
-				$nomingredient = 'Tequila';
-				break;
-			case 'meilleurs' : 
-				$nomingredient = 'Vodka';
-				break;
-			
+			$colList = array(); 
+			foreach ($data as $key => $row)
+			{ 
+				$convertToLower = $caseInSensitive && (in_array(SORT_STRING, $sortAttributes) || in_array(SORT_REGULAR, $sortAttributes)); 
+				$rowData = $convertToLower ? strtolower($row[$sortColumn]) : $row[$sortColumn]; 
+				$colLists[$sortColumn][$key] = $rowData;
+			}
+			$args[] = &$colLists[$sortColumn];
 
-
-			// default : 
-			// 	$db 			= new IngredientsModel();
-			// 	$nomingredient	= $db->getName($idingredient);
+			foreach($sortAttributes as $sortAttribute)
+			{      
+				$tmp[$i] = $sortAttribute;
+				$args[] = &$tmp[$i];
+				$i++;      
+			}
 		}
+		$args[] = &$data;
+		call_user_func_array('array_multisort', $args);
+		
+		return end($args);
+	} 
 
 
-
-
-
-
-	}
 
 
 } //Fin de classe

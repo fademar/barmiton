@@ -73,9 +73,8 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-md-12 text-center">
-                <a class="btn btn-default" href="?<?= $_SERVER['QUERY_STRING']. '&tri=facile'?>" role="button">Facile</a>                    
-                <a class="btn btn-default" href="?<?= $_SERVER['QUERY_STRING']. '&tri=moyen'?>" role="button">Moyen</a>                    
-                <a class="btn btn-default" href="?<?= $_SERVER['QUERY_STRING']. '&tri=difficile'?>" role="button">Difficile</a>                    
+                <a class="btn btn-default" href="?<?= $_SERVER['QUERY_STRING']. '&tri=facile'?>" role="button">Des plus faciles aux plus difficiles</a>                    
+                <a class="btn btn-default" href="?<?= $_SERVER['QUERY_STRING']. '&tri=difficile'?>" role="button">Des plus difficiles aux plus faciles</a>                    
                 <a class="btn btn-default" href="?<?= $_SERVER['QUERY_STRING']. '&tri=meilleurs'?>" role="button">Les mieux notés</a>                    
                 
                 
@@ -101,19 +100,17 @@
                 <?php foreach ($cocktaillist as $cocktailcard): ?>
                     <div class="item">
                         <div class="col-xs-6 col-md-3 portfolio-item">
-                            <div class="card">
-                                <img class="card-img-top center-block" src="<?= $cocktailcard['imgurlsmall']?>" alt="Photo du cocktail <?= $cocktailcard['name']?>">
-                                <div class="card-block">
-                                    <h3 class="card-title"><?= $cocktailcard['name']?></h3>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h2 class="panel-title"><?= $cocktailcard['name']?></h2>
                                 </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item"><?= $cocktailcard['note']?></li>
-                                    <li class="list-group-item"><?php foreach ($cocktailcard['occasionsfr'] as $occasion): ?><?= $occasion ?><?php endforeach ?></li>
-                                    <li class="list-group-item"><?= $cocktailcard['skill']?></li>
-                                </ul>
-                                <div class="card-block">
-                                    <a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $cocktailcard['id']]); ?>" class="card-link">Détails</a>
+                                <div class="panel-body">
+                                    <img class="card-img-top center-block" src="<?= $cocktailcard['imgurlsmall']?>" alt="Photo du cocktail <?= $cocktailcard['name']?>">
+                                    <p><?= $cocktailcard['note']?></p>
+                                    <p><?= $cocktailcard['skill']?></p>
+
                                 </div>
+                                <div class="panel-footer"><a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $cocktailcard['id']]); ?>">Détails</a></div>
                             </div>
                         </div>
                     </div>

@@ -179,6 +179,7 @@ public function searchform()
 				$_data 			= $api->getCocktailListBy($url . "&pageSize=24");
 				$_cocktaillist 	= $api->fetchData($_data);
 				$_querypage		= $_SERVER['QUERY_STRING'];
+				
 			}
 			else {					
 				$page 				= $_GET['page'];
@@ -189,7 +190,11 @@ public function searchform()
 				list($_querypage)	= explode('&', $_SERVER['QUERY_STRING']);
 			}
 
+
 			$nbpages = ceil($_data['totalresult'] / 24);			
+
+
+			// ---------------- TRI ---------------- //
 
 			if (isset($_GET['tri'])) {
 
@@ -198,28 +203,24 @@ public function searchform()
 
 				switch($tri) 
 				{
-					case 'facile' : 
-						
+					case 'facile' : 						
+						$sortCriteria 	= $sortCriteria = array('valueskill' => array(SORT_ASC, SORT_NUMERIC));
+						$_cocktaillist 	= $api->multiSort($_cocktaillist, $sortCriteria, $caseInSensitive = true);
 						break;
-					case 'moyen' :
 
-						break;
 					case 'difficile' : 
-
+						$sortCriteria 	= $sortCriteria = array('valueskill' => array(SORT_DESC, SORT_NUMERIC));
+						$_cocktaillist 	= $api->multiSort($_cocktaillist, $sortCriteria, $caseInSensitive = true);
 						break;
+
 					case 'meilleurs' : 
-
+						$sortCriteria 	= $sortCriteria = array('note' => array(SORT_DESC, SORT_NUMERIC));
+						$_cocktaillist 	= $api->multiSort($_cocktaillist, $sortCriteria, $caseInSensitive = true);
 						break;
-
-					default : 
-						$db 			= new IngredientsModel();
-						$nomingredient	= $db->getName($idingredient);
+						
 				}
 
-
 			}
-
-
 
 
 			if (!empty($_cocktaillist)) {
@@ -286,6 +287,7 @@ public function searchform()
 			}	
 		}
 	}
+
 
 
 
