@@ -38,13 +38,13 @@
                 <hr class="glass-primary">
             </div>
             <div class="center-block">
-                <form action="recherche/" method="POST">    
+                <form action="recherche/" method="GET">    
                     <div class="col-xs-12 col-md-12">
                         <div class="col-md-6 col-md-offset-3">                         
                             <div class="fieldcontainer">
-                                <div class="input-group">
+                                <div>
                                     <input id="ingredient1" class="typeaheadhome" type="text" placeholder="">
-                                    <span class="input-group-addon"><a href="javascript:void(0);" class="btn-ajouter" title="ajouter un champ"><i class="fa fa-plus-circle"></i></a></span>
+                                    <span><a href="javascript:void(0);" class="btn-ajouter" title="ajouter un champ"><i class="fa fa-plus-circle"></i></a></span>
                                 </div>
                             </div>
                             <div class="results">

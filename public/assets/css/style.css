@@ -672,3 +672,11 @@ fieldset[disabled] .btn-success.active {
   vertical-align: middle;
   overflow: hidden;
 }
+
+
+.oops {
+  font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;;
+  font-size: 1em;
+  color: #EF626C;
+  
+}

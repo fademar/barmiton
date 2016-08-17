@@ -32,30 +32,31 @@ class CocktailsController extends Controller
 	public function showcocktails() {
 
 		// Création du formulaire à partir des données de la dbb
-		$_formcontrol 	= new FormController();
-		$_form			= $_formcontrol->createSearchForm();
+		$_formcontrol 		= new FormController();
+		$_form				= $_formcontrol->createSearchForm();
 
 		// Génération des paramètres aléatoires pour la sélection
-		$couleurdb 		= new CouleursModel();
-		$_couleur 		= $couleurdb->getRandomCouleurs();
+		$couleurdb 			= new CouleursModel();
+		$_couleur 			= $couleurdb->getRandomCouleurs();
 		
-		$goutdb 		= new GoutsModel();
-		$_gout 			= $goutdb->getRandomGouts();
+		$goutdb 			= new GoutsModel();
+		$_gout 				= $goutdb->getRandomGouts();
 				
-		$difficultedb 	= new DifficultesModel();
-		$_difficulte 	= $difficultedb->getRandomDifficultes();
+		$difficultedb 		= new DifficultesModel();
+		$_difficulte 		= $difficultedb->getRandomDifficultes();
 
-        $occasiondb 	= new OccasionsModel();
-		$_occasion 		= $occasiondb->getRandomOccasions();
+        $occasiondb 		= new OccasionsModel();
+		$_occasion 			= $occasiondb->getRandomOccasions();
 
 
-		$cocktails 		= new CocktailsModel();
+		$cocktails 			= new CocktailsModel();
+		$urlcouleur			= $cocktails->constructUrl('/colored/' . $_couleur['champuk']);
+		$_cocktailscouleur 	= $cocktails->getCocktailListBy($urlcouleur);
+		$_cocktailscouleur 	= $cocktails->getRandomCocktail($_cocktailscouleur['list'], 4);
 
-		$_cocktailscouleur 	= $cocktails->getCocktailListBy('/colored/' . $_couleur['champuk']);
-		$_cocktailscouleur 	= $cocktails->getRandomCocktail($_cocktailscouleur, 4);
-
-		$_cocktailsoccasion = $cocktails->getCocktailListBy('/for/' . $_occasion['champuk']);
-		$_cocktailsoccasion = $cocktails->getRandomCocktail($_cocktailsoccasion, 4);
+		$urloccasion		= $cocktails->constructUrl('/for/' . $_occasion['champuk']);
+		$_cocktailsoccasion = $cocktails->getCocktailListBy($urloccasion);
+		$_cocktailsoccasion = $cocktails->getRandomCocktail($_cocktailsoccasion['list'], 4);
 
 		$_cocktailsbest 	= $cocktails->getBestCocktails();
 

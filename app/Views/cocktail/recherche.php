@@ -36,7 +36,7 @@
                 <div class="row">
                     <div class="col-xs-12 col-md-6">
                         <label for="softsId">Softs</label>
-                        <select id="softsId" name="softs[]" class="form-control selectpicker" multiple title="Choisissez une ou plusieurs options"> 
+                        <select id="softsId" name="softs[]" class="form-control selectpicker" multiple data-live-search="true" title="Choisissez une ou plusieurs options"> 
                             <?php foreach($form['softs'] as $champ): ?>     
                                 <option value="<?php echo $champ['idIngredientsApi']?>"><?php echo (mb_strtolower($champ['nomIngredient'], 'UTF-8')); ?></option>
                             <?php endforeach ?>
@@ -44,7 +44,7 @@
                     </div>
                     <div class="col-xs-12 col-md-6">
                         <label for="softsId">Fruits/Jus de fruits</label>
-                        <select id="softsId" name="fruits[]" class="form-control selectpicker" multiple title="Choisissez une ou plusieurs options"> 
+                        <select id="softsId" name="fruits[]" class="form-control selectpicker" multiple data-live-search="true" title="Choisissez une ou plusieurs options"> 
                             <?php foreach($form['fruits'] as $champ): ?>     
                                 <option value="<?php echo $champ['idIngredientsApi']?>"><?php echo (mb_strtolower($champ['nomIngredient'], 'UTF-8')); ?></option>
                             <?php endforeach ?>
@@ -69,27 +69,6 @@
                             <?php endforeach ?>
                         </select>
                     </div>
-                    <div class="col-xs-12 col-md-4">
-                        <label for="difficultesId">Niveau</label>
-                        <div class="radio">
-                            <label>
-                            <input type="radio" name="difficultes" id="optionsRadios1" value="easy">
-                                Facile
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="difficultes" id="optionsRadios2" value="average">
-                                    Moyen
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="difficultes" id="optionsRadios3" value="advanced">
-                                Difficile
-                            </label>
-                        </div>
-                    </div>
                 </div>
 
                 <div id="submitbtn" class="col-xs-12 col-md-12 text-center">
@@ -108,7 +87,7 @@
         <?php if (empty($error)) : ?>
 	        <div class="row">
 	            <div class="col-xs-12 col-md-12 text-center">
-	                <h2>Nous vous proposons <?php echo $nbcocktails ?> cocktails</h2>
+	                <h2>Nous vous proposons <?php if ($nbcocktails > 1) {echo $nbcocktails . ' cocktails'; } else {echo 'un cocktail';} ?> </h2>
 	                <hr class="glass-primary">
 	            </div>
 	        </div>
@@ -122,17 +101,61 @@
 	                </div>
 	            <?php endforeach ?>
 	        </div>
-		<?php else : ?>
+        <?php endif ?>
+		<?php if (!empty($error)): ?>
 			<div class="row">
 	            <div class="col-xs-12 col-md-12 text-center">
 	                <h2><?php echo $error ?></h2>
 	            </div>
 	        </div>
-	      <?php endif ?>
+	       
+            <?php foreach ($cocktailoops as $nom => $cocktailslist) : ?>
+         
+                <section id="selection<?= $nom ?>">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12 col-md-12 text-center">
+                                <h2>Des cocktails composés <?php if ((substr($nom, 0, 1) === 'A') || (substr($nom, 0, 1) === 'E') || (substr($nom, 0, 1) === 'I') || (substr($nom, 0, 1) === 'O') || (substr($nom, 0, 1) === 'U')) { echo "d'" . $nom; } else { echo "de " . $nom;}?></h2>
+                                <hr class="glass-primary">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <?php foreach ($cocktailslist as $cocktailcard): ?>
+                                <div class="col-xs-6 col-md-3 portfolio-item">     
+                                    <a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $cocktailcard['id']]); ?>">
+                                        <img src="<?= $cocktailcard['imgurlsmall']?>" class="img-responsive img-rounded img-thumbnail" alt="">
+                                        <h3><?= $cocktailcard['name']?></h3>
+                                    </a>
+                                </div>
+                            <?php endforeach ?>
+                        </div>
+                    </div>
+                </section>
+
+            <?php endforeach ?>
+
+        <?php endif ?>
+
     </div>
 </section>
 
-
+<!-- pagination -->
+<section id="pagination">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-12 text-center">
+                <h2>
+                    <?=$_SERVER['PATH_INFO']?>
+                    <?php if ($nbpages > 0) :?>
+                        <?php $i = 2; ?>
+                            <a href="&page=<?= $i ?>">suivant</a>
+                        <?php $i++ ?>
+                    <?php endif ?>
+                </h2>
+            </div>
+        </div>
+    </div>
+</section>
 
 
 <?php $this->stop('main_content') ?>
