@@ -8,7 +8,6 @@
             <h2>Recherche avancée</h2>
             <form action="../recherche/" method="GET">
 
-                <div class="row">
                     <div class="col-xs-12 col-md-6">
                         <label for="alcoolsprincipauxId">Alcools principaux</label>
                         <select id="alcoolsprincipauxId" name="alcoolsprincipaux[]" class="form-control selectpicker" multiple title="Choisissez une ou plusieurs options"> 

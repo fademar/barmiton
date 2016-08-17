@@ -67,17 +67,40 @@ class CocktailsModel extends \W\Model\Model
 
 	public function fetchData($data)
 	{
-	
+
 		if (!empty($data)) {
 
 			/**************** Enregistrement des données dans un tableau associatif ******************/
 			foreach ($data['list'] as $_cocktail) {
 
+				$this->setTable('cocktails');
+				$_cocktaildb = $this->search(['idCocktailApi' => $_cocktail->id]);
+
+				if (empty($_cocktaildb)) { 
+					$_note = 0; 
+				} else { 
+					$_note = $_cocktaildb[0]['note'];
+				}
+
+				$this->setTable('occasions');
+
+				$_occasionsfr = array();
+
+				foreach ($_cocktail->occasions as $occasion) {
+
+					$_occasionsdb = $this->search(['champuk' => $occasion->id]);
+
+					$_occasionsfr[] = $_occasionsdb[0]['champfr'];
+					
+				}
+
 				$_cocktailcard = array(
 									'id'			=> $_cocktail->id,
-									'name' 			=> $_cocktail->name,										
-									'occasions' 	=> $_cocktail->occasions,
-									'imgurlsmall' 	=> "http://assets.absolutdrinks.com/drinks/300x400/" . $_cocktail->id . "(60).jpg",
+									'name' 			=> $_cocktail->name,
+									'skill'			=> $_cocktail->skill->id,
+									'occasionsfr' 	=> $_occasionsfr,
+									'note'			=> $_note,
+									'imgurlsmall' 	=> "http://assets.absolutdrinks.com/drinks/218x300/" . $_cocktail->id . "(60).jpg"
 
 				);
 			
@@ -205,8 +228,6 @@ class CocktailsModel extends \W\Model\Model
 			$_json 		= file_get_contents($_jsonurl);
 			$_data 		= json_decode($_json)->result;
 			
-
-			/**************** Traitement des données ******************/
 			foreach ($_data as $_cocktail) {
 
 
@@ -239,7 +260,6 @@ class CocktailsModel extends \W\Model\Model
 
 	public function getIngredients($id)
 	{
-		/**************** Récupération des données ******************/
 		$_jsonurl = 'https://addb.absolutdrinks.com/drinks/' . $id . '/?apiKey=2c758736e5f844bdb9d39308df889c6d';
 		$_json = file_get_contents($_jsonurl);
 		$_data = json_decode($_json)->result;
@@ -274,8 +294,38 @@ class CocktailsModel extends \W\Model\Model
 	} //fin de function getIngredients
 
 
+	/************************ Tri des résultats *****************************/
+
+	public function filterResults($tri, $cocktaillist) {
+
+		switch($tri) //Changement des noms des alcools principaux
+		{
+			case 'facile' : 
+				
+				break;
+			case 'moyen' :
+				$nomingredient = 'Rhum';
+				break;
+			case 'difficile' : 
+				$nomingredient = 'Tequila';
+				break;
+			case 'meilleurs' : 
+				$nomingredient = 'Vodka';
+				break;
+			
 
 
+			// default : 
+			// 	$db 			= new IngredientsModel();
+			// 	$nomingredient	= $db->getName($idingredient);
+		}
+
+
+
+
+
+
+	}
 
 
 } //Fin de classe

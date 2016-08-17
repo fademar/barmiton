@@ -168,25 +168,38 @@ public function searchform()
 			}
 
 			$api 			= new CocktailsModel;
-			$url 			= $api->constructUrl($_urlpart); 
+			$url 			= $api->constructUrl($_urlpart);
 
-			// -------------------------------- //
+			} 
+
+
+
+
+			// ---------------- PAGINATION ---------------- //
 
 			if (!isset($_GET['page'])) {
 				$_data 			= $api->getCocktailListBy($url . "&pageSize=24");
 				$_cocktaillist 	= $api->fetchData($_data);
-				$_query 		= $_SERVER['QUERY_STRING'];
+				$_querypage		= $_SERVER['QUERY_STRING'];
 			}
 			else {					
-				$page 			= $_GET['page'];
-				$page 			= ($page -1) * 25;
-				$nextURL 		= $url."&start=" . $page . "&pageSize=24";
-				$_data 			= $api->getCocktailListBy($nextURL);
-				$_cocktaillist 	= $api->fetchData($_data);
-				list($_query, $_numeropage)	= explode('&page', $_SERVER['QUERY_STRING']);
+				$page 				= $_GET['page'];
+				$page 				= ($page -1) * 25;
+				$nextURL 			= $url."&start=" . $page . "&pageSize=24";
+				$_data 				= $api->getCocktailListBy($nextURL);
+				$_cocktaillist 		= $api->fetchData($_data);
+				list($_querypage)	= explode('&', $_SERVER['QUERY_STRING']);
 			}
 
 			$nbpages = ceil($_data['totalresult'] / 24);
+
+
+
+			// var_dump($_cocktaillist);
+
+
+
+
 
 			if (!empty($_cocktaillist)) {
 				$this->show('cocktail/recherche', [
@@ -195,7 +208,7 @@ public function searchform()
 													'form' 			=> $_form, 
 													'nbcocktails' 	=> $_data['totalresult'],
 													'nbpages'		=> $nbpages,	
-													'query'			=> $_query
+													'querypage'		=> $_querypage
 												]);
 			}
 			else {

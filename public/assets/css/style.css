@@ -88,10 +88,15 @@ header#home {
 header#recherche {
   background: #EF626C;
 }
+header#resultats {
+  background: #EF626C;
+}
 
 header#filtre {
-  background: #BAD1CD;
+  background: #ffffff;
 }
+
+
 
 header .container {
   padding-top: 100px;
@@ -240,7 +245,9 @@ section#fiche .container {
 section#recherche {
   height: 80vh;
 }
-
+section#best .container {
+  margin-top: -20px;
+}
 
 @media (max-width: 767px) {
   section {
