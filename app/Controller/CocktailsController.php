@@ -9,6 +9,10 @@ use Model\Couleurs\CouleursModel;
 use Model\Gouts\GoutsModel;
 use Model\Difficultes\DifficultesModel;
 use Model\Occasions\OccasionsModel;
+use Model\Favoris\FavorisModel;
+use Model\Notes\NotesModel;
+use Model\Commentaire\CommentaireModel;
+use Model\Users\UsersModel;
 
 class CocktailsController extends Controller
 {
@@ -85,16 +89,16 @@ class CocktailsController extends Controller
 		$ficheCocktails = new CocktailsModel();
 		$dataCocktail = $ficheCocktails->getcocktaildata($id);
 
-	// Ajout des favoris
+		// Ajout des favoris
 
 		if($_POST) {
 
-			$objetFavoris = new FavorisModel();
-			$objetFavoris->setTable('favoris');
+		$objetFavoris = new FavorisModel();
+		$objetFavoris->setTable('favoris');
 
 			if (isset($_POST['ajouterFavoris']))
 			{
-
+				
 				$User = $this->getUser();
 				$idMembres = $User['id'];
 
@@ -102,52 +106,106 @@ class CocktailsController extends Controller
 
 					'iddrink' => $id,
 					'idMembres' => $idMembres
-					);
-
+				);
+				
 
 				$objetFavoris->insert($data);
 
-				$this->redirectToRoute('cocktails_showcocktails');
+					sleep(1);
 
+				$this->redirectToRoute('cocktails_afficher_cocktail', ['id' => $dataCocktail['id']]);
+				
 			}
 
-		}
+		/*Ajout des notes*/
+
+			if (isset($_POST['noter']))	{
 
 
-	// Ajout des notes
+					$objetNotes = new NotesModel();
+					$objetNotes->setTable('cocktails');
+					$objetNotes->setPrimaryKey('id');
 
-		// echo $_POST['note'];
 
-		if($_POST) {
+					$cocktailNote = $objetNotes->search(array('idCocktailApi' => $_POST['iddrink']));
 
-	// $objetNotes = new NotesModel();
-	// $objetNotes->setTable('cocktails');
+					$compteurnote 	= $cocktailNote[0]['compteurnote'] + 1;
+					$note 			= $cocktailNote[0]['note'] + $_POST['note'];
 
-			if (isset($_POST['noter']))
-			{
 
-				$note = $_POST['note'];
+				$dataNote = array(
+					'compteurnote' 	=> $compteurnote,
+					'note'			=> $note
+				);	
+		
 
-	// Récupérer la note du cocktail en question dans la BDD 
-	// Addition la note de la BDD au $note 
-	// Renvoyer cette valeur à la BDD (c'est dans cocktailmodel)
-	// ne pas oublier d'incrémenter le compteur de notes
+				$objetNotes->update($dataNote, $cocktailNote[0]['id']);
 
-				$data = array(
-					'note' => $note,
+
+					sleep(1);
+				$this->redirectToRoute('cocktails_afficher_cocktail', ['id' => $dataCocktail['id']]);
+			}
+		
+
+				if (isset($_POST['commenter'])) {
+					
+					$objetComment = new CommentaireModel();
+					$objetComment->setTable('commentaires');
+
+					$User = $this->getUser();
+					$idMembres = $User['id'];
+					$commentaire = $_POST['commentaireCocktail'];
+
+
+					$dataCommentaire = array(
+
+						'text' 			 => $commentaire,
+						'idMembres' 	 => $idMembres,
+						'iddrink' 		 => $id
 					);
 
+					$objetComment->insert($dataCommentaire);
 
-				$objetNotes->insert($data);
 
-				$this->redirectToRoute('cocktails_showcocktails');
 
-			}
+					$this->redirectToRoute('cocktails_afficher_cocktail', ['id' => $dataCocktail['id']]);
+					
+
+				}
 
 		}
-		$this->show('cocktail/fiche_cocktail', ['dataCocktail' => $dataCocktail]);
 
+	$objetRecupCommentaire = new CocktailsModel();
+	$recupListeDesCommentaires = $objetRecupCommentaire->recupCommentaire($dataCocktail['id']);
+
+
+		if (!empty($recupListeDesCommentaires)) {
+			foreach ($recupListeDesCommentaires as $key => $value) {
+				$objetUser = new UsersModel();
+				$afficherUsername = $objetUser->getUserName($value['idMembres']);
+
+				// var_dump($value);
+				
+				$assocIdMembre = array(
+
+						'id' 	   => $value['idMembres'],
+						'username' => $afficherUsername
+
+					);
+			}
+		} else {
+			$recupListeDesCommentaires =""; 
+			$assocIdMembre="";
+		}
+
+		$this->show('cocktail/fiche_cocktail', ['dataCocktail' => $dataCocktail, 'listecommentaires' => $recupListeDesCommentaires, 'tabUser' => $assocIdMembre]);
 	}
+
+
+
+
+	
+
 
 
 

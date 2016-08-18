@@ -31,6 +31,16 @@ class FormController extends Controller
 	public function createSearchForm() {
 		
 
+<<<<<<< HEAD
+=======
+		$_listePrincipaux	= [
+								['nomIngredient' => 'Gin', 'idIngredientsApi' => 'gin'],
+								['nomIngredient' => 'Rhum', 'idIngredientsApi' => 'rum'],
+								['nomIngredient' => 'Tequila', 'idIngredientsApi' => 'tequila'],
+								['nomIngredient' => 'Vodka', 'idIngredientsApi' => 'vodka'],
+								['nomIngredient' => 'Whisky', 'idIngredientsApi' => 'whisky'],
+							  ];
+>>>>>>> origin/travail-pierre-fiche-cocktail_1808
 
 
 		$_ingredientsdb		= new IngredientsModel();

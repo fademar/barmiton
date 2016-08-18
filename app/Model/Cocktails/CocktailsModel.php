@@ -11,6 +11,7 @@ class CocktailsModel extends \W\Model\Model
 	private $_cocktail;
 	private $_cocktailapi;
 	private $_cocktaildb;
+	private $_commentairedb;
 
 	private $_cocktailcard = array();
 	private $_cocktaillist = array();
@@ -147,22 +148,39 @@ class CocktailsModel extends \W\Model\Model
 	
 	public function getcocktaildata($urlpart)
 	{
+
+		$this->setTable('cocktails');
 		/**************** Récupération des données ******************/
 		$_jsonurl = 'https://addb.absolutdrinks.com/drinks/' . $urlpart . '/?apiKey=2c758736e5f844bdb9d39308df889c6d';
 		$_json = file_get_contents($_jsonurl);
 		$_data = json_decode($_json)->result;
+	    
 
 		$_cocktailapi 	= $_data[0];
 		$_ingredientapi = $_cocktailapi->ingredients;
+	
 
-		$this->setTable('cocktails');
 		$_cocktaildb = $this->search(['idCocktailApi' => $urlpart]);
+
+		if ($_cocktaildb == null) {
+
+
+			$dataEn = array(
+					'idCocktailApi' => $urlpart,
+					'nomCocktail' 	=> $_cocktailapi->name,
+					'description'	=> $_cocktailapi->descriptionPlain,
+					'langue' 		=> $_cocktailapi->languageBranch
+					);
+
+			$this->insert($dataEn);
+
+		} 
+
 
 		$this->setTable('ingredients');
 
-		foreach ($_ingredientapi as $value) {
 
-			// var_dump($value);
+		foreach ($_ingredientapi as $value) {
 
 			$idIngredient = $value->id;
 			
@@ -178,7 +196,7 @@ class CocktailsModel extends \W\Model\Model
 			if ($dose > 1) {
 				$phrase = $dose . ' doses de ' . $ingredientsDb[0]['nomIngredient'];
 			}  elseif (!is_numeric($dose)) {
-				$phrase = $ingredientsDb[0]['nomIngredient'];
+				$phrase = '½ dose de ' . $ingredientsDb[0]['nomIngredient'];
 			}  else {
 				$phrase = $dose . ' dose de ' . $ingredientsDb[0]['nomIngredient'];
 			}
@@ -191,6 +209,8 @@ class CocktailsModel extends \W\Model\Model
 		$_cocktaildata = array(
 							'id'			=> $_cocktailapi->id,
 							'name' 			=> $_cocktailapi->name,
+							'note' 			=> $_cocktaildb[0]['note'],
+							'compteurnote' 	=> $_cocktaildb[0]['compteurnote'],
 							'ingredients'	=> $tableauPhrase,
 							'description'	=> $_cocktaildb[0]['description'],
 							'occasions' 	=> $_cocktailapi->occasions,
@@ -199,12 +219,17 @@ class CocktailsModel extends \W\Model\Model
 							'skill' 		=> $_cocktailapi->skill->name,
 							'imgurlsmall' 	=> "http://assets.absolutdrinks.com/drinks/300x400/" . $_cocktailapi->id . "(60).jpg",
 							'imgurlmodal' 	=> "http://assets.absolutdrinks.com/drinks/450x600/" . $_cocktailapi->id . ".png",
+							'video' 		=> $_cocktailapi->videos[0]->video
+
 
 		);
-	
+							
 
+		// var_dump($_cocktailapi->videos[0]->video);
+	
 				
 		return $_cocktaildata;
+	
 
 	} //fin de function getcocktaildata
 
@@ -305,7 +330,7 @@ class CocktailsModel extends \W\Model\Model
 							'color' 		=> $_cocktailapi->color,
 							'skill' 		=> $_cocktailapi->skill->name,
 							'imgurlsmall' 	=> "http://assets.absolutdrinks.com/drinks/300x400/" . $_cocktailapi->id . "(60).jpg",
-							'imgurlmodal' 	=> "http://assets.absolutdrinks.com/drinks/450x600/" . $_cocktailapi->id . ".png",
+							'imgurlmodal' 	=> "http://assets.absolutdrinks.com/drinks/450x600/" . $_cocktailapi->id . ".png"
 
 		);
 	
@@ -316,6 +341,7 @@ class CocktailsModel extends \W\Model\Model
 	} //fin de function getIngredients
 
 
+<<<<<<< HEAD
 	/************************ Tri des résultats *****************************/
 
 	public function multiSort($data, $sortCriteria, $caseInSensitive = true)
@@ -347,7 +373,20 @@ class CocktailsModel extends \W\Model\Model
 		
 		return end($args);
 	} 
+=======
+	public function recupCommentaire($id)
+	{
+		/**************** Récupération des commentaires ******************/
+		
 
+		$this->setTable('commentaires');
+
+		$_listecommentaire = $this->search(['iddrink' => $id]);
+
+		return $_listecommentaire;
+>>>>>>> origin/travail-pierre-fiche-cocktail_1808
+
+	}//fin de function recupCommentaire
 
 
 

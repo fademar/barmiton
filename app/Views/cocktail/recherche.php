@@ -76,8 +76,11 @@
                             <?php endforeach ?>
                         </select>
                     </div>
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> origin/travail-pierre-fiche-cocktail_1808
                 </div>
 
                 <div id="submitbtn" class="col-xs-12 col-md-12 text-center">
@@ -135,7 +138,11 @@
 	            <?php endforeach ?>
 	        </div>
         <?php endif ?>
+<<<<<<< HEAD
 		<?php if (!empty($error)): ?>
+=======
+		<?php if (!empty($error)) : ?>
+>>>>>>> origin/travail-pierre-fiche-cocktail_1808
 			<div class="row">
 	            <div class="col-xs-12 col-md-12 text-center">
 	                <h2><?php echo $error ?></h2>
@@ -148,7 +155,11 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-xs-12 col-md-12 text-center">
+<<<<<<< HEAD
                                 <h2>Des cocktails composés <?php if ((substr($nom, 0, 1) === 'A') || (substr($nom, 0, 1) === 'E') || (substr($nom, 0, 1) === 'I') || (substr($nom, 0, 1) === 'O') || (substr($nom, 0, 1) === 'U')) { echo "d'" . $nom; } else { echo "de " . $nom;}?></h2>
+=======
+                                <h2>Des cocktails composés de <?= $nom ?></h2>
+>>>>>>> origin/travail-pierre-fiche-cocktail_1808
                                 <hr class="glass-primary">
                             </div>
                         </div>
