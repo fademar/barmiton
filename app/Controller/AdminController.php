@@ -19,36 +19,38 @@ class AdminController extends Controller
 		$this->show('admin/admin'); 
 	}
 
-
-	public function admincocktails()
-	{
+	public function updatecocktail() {
 		$_admin = new AdminModel();
 		$_updates = $_admin->getLastUpdates();
 		$_cocktaildata = array();
 
-		if (isset($_POST)) {
-			var_dump($_POST);
-			if (isset($_POST['searchdb'])) {
+		$this->show('admin/adminupdates', [
+												'updates' => $_updates,
+											]);
 
-				$_cocktaildb = new CocktailsModel();
-				$_cocktaildb->setTable('cocktails');
-				$_cocktaildata = $_cocktaildb->search(['idCocktailApi' => $_POST['idcocktail']]);
 
-				$this->show('admin/modifcocktail', [
-												'cocktaildata' => $_cocktaildata,
+	}
+
+	public function admincocktails()
+	{
+		
+
+		if ($_POST) {
+			
+
+			$_cocktaildb = new CocktailsModel();
+			$_cocktaildb->setTable('cocktails');
+			$_cocktaildata = $_cocktaildb->search(['idCocktailApi' => $_POST['idcocktail']]);
+
+			$this->show('admin/modifcocktail', [
+												'cocktaildata' => $_cocktaildata[0]
 											]);
 
 
 			}
 
 
-		}
-
-
-		$this->show('admin/admincocktails', [
-												'updates' => $_updates,
-											]);
-
+		
 
 	}
 

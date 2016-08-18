@@ -1,19 +1,80 @@
 <?php $this->layout('layoutadmin', ['title' => 'back-office']) ?>
 
 <?php $this->start('main_content') ?>
-
+<!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li class="active">
+                        <a href="<?= $this->url('admin_admin') ?>"><i class="fa fa-fw fa-dashboard"></i> Tableau de bord</a>
+                    </li>
+                    <li>
+                        <a href="<?= $this->url('admin_updatecocktail') ?>"><i class="fa fa-fw fa fa-plus"></i> Updates</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Base de données <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo" class="collapse">
+                            <li>
+                                <a href="#"><i class="fa fa-fw fa fa-glass"></i> Cocktails</a>
+                            </li>
+                            <li>
+                                <a href="#">Ingrédients</a>
+                            </li>
+                            <li>
+                                <a href="#">Goûts</a>
+                            </li>
+                            <li>
+                                <a href="#">Couleurs</a>
+                            </li>
+                            <li>
+                                <a href="#">Occasions</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href=""><i class="fa fa-fw fa-comment"></i> Commentaires</a>
+                    </li>
+                    <li>
+                        <a href=""><i class="fa fa-fw fa-user"></i> Membres</a>
+                    </li>
+                    
+                    <li>
+                        <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
+                    </li>
+                    <li>
+                        <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo" class="collapse">
+                            <li>
+                                <a href="#">Dropdown Item</a>
+                            </li>
+                            <li>
+                                <a href="#">Dropdown Item</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
+                    </li>
+                    <li>
+                        <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+        
 
 <div id="page-wrapper">
 
             <div class="container-fluid">
                 
-                <?php var_dump($updates); ?>
-
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Dashboard <small>Statistics Overview</small>
+                            Tableau de bord
                         </h1>
                         <ol class="breadcrumb">
                             <li class="active">
