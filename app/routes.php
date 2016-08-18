@@ -18,5 +18,6 @@
 		['GET|POST', '/users/profil/', 'Users#UsersProfil', 'Users_UsersProfil'],
 		['GET|POST', '/admin/', 'Admin#admin', 'admin_admin'],
 		['GET|POST', '/admin/cocktails/', 'Admin#admincocktails', 'admin_admincocktails'],
+		['GET|POST', '/admin/cocktails/[:id]/', 'Admin#modifcocktail', 'admin_modifcocktail'],
 
 	);

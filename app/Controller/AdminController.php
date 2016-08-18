@@ -27,12 +27,17 @@ class AdminController extends Controller
 		$_cocktaildata = array();
 
 		if (isset($_POST)) {
-
+			var_dump($_POST);
 			if (isset($_POST['searchdb'])) {
 
 				$_cocktaildb = new CocktailsModel();
 				$_cocktaildb->setTable('cocktails');
 				$_cocktaildata = $_cocktaildb->search(['idCocktailApi' => $_POST['idcocktail']]);
+
+				$this->show('admin/modifcocktail', [
+												'cocktaildata' => $_cocktaildata,
+											]);
+
 
 			}
 
@@ -42,7 +47,6 @@ class AdminController extends Controller
 
 		$this->show('admin/admincocktails', [
 												'updates' => $_updates,
-												'cocktaildata' => $_cocktaildata,
 											]);
 
 

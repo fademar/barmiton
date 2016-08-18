@@ -1,6 +1,4 @@
-<?php $this->layout('layoutadmin', ['title' => 'updates']) ?>
 
-<?php $this->start('main_content') ?>
 
 
 <div id="page-wrapper">
@@ -136,4 +134,3 @@
         <!-- /#page-wrapper -->
 
 
-<?php $this->stop('main_content') ?>
