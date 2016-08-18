@@ -36,8 +36,6 @@
 
 </head>
 
-<<<<<<< HEAD
-=======
 <!-- <body id="page-top" class="index">
     <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
 
@@ -125,7 +123,7 @@
         statusChangeCallback(response);
       });
     }
->>>>>>> origin/travail-pierre-fiche-cocktail_1808
+
 
     window.fbAsyncInit = function() {
     FB.init({

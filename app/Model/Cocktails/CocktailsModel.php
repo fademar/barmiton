@@ -341,39 +341,7 @@ class CocktailsModel extends \W\Model\Model
 	} //fin de function getIngredients
 
 
-<<<<<<< HEAD
-	/************************ Tri des résultats *****************************/
 
-	public function multiSort($data, $sortCriteria, $caseInSensitive = true)
-	{
-		if( !is_array($data) || !is_array($sortCriteria))
-			return false;       
-		$args = array(); 
-		$i = 0;
-		foreach($sortCriteria as $sortColumn => $sortAttributes)  
-		{
-			$colList = array(); 
-			foreach ($data as $key => $row)
-			{ 
-				$convertToLower = $caseInSensitive && (in_array(SORT_STRING, $sortAttributes) || in_array(SORT_REGULAR, $sortAttributes)); 
-				$rowData = $convertToLower ? strtolower($row[$sortColumn]) : $row[$sortColumn]; 
-				$colLists[$sortColumn][$key] = $rowData;
-			}
-			$args[] = &$colLists[$sortColumn];
-
-			foreach($sortAttributes as $sortAttribute)
-			{      
-				$tmp[$i] = $sortAttribute;
-				$args[] = &$tmp[$i];
-				$i++;      
-			}
-		}
-		$args[] = &$data;
-		call_user_func_array('array_multisort', $args);
-		
-		return end($args);
-	} 
-=======
 	public function recupCommentaire($id)
 	{
 		/**************** Récupération des commentaires ******************/
@@ -384,7 +352,7 @@ class CocktailsModel extends \W\Model\Model
 		$_listecommentaire = $this->search(['iddrink' => $id]);
 
 		return $_listecommentaire;
->>>>>>> origin/travail-pierre-fiche-cocktail_1808
+
 
 	}//fin de function recupCommentaire
 

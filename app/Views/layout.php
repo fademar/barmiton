@@ -190,12 +190,9 @@
   <!-- <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button> -->
   <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
     <!-- Navigation -->
-<<<<<<< HEAD
+
     <nav id="mainNav" class="navbar navbar-default  navbar-fixed-top  navbar-custom">
-=======
-    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
-    <!--  -->
->>>>>>> origin/travail-pierre-fiche-cocktail_1808
+
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">

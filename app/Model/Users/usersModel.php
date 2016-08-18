@@ -3,9 +3,7 @@ namespace Model\Users;
 
 class UsersModel extends \W\Model\UsersModel
 {
-<<<<<<< HEAD
-	
-=======
+
 	public function getUserName($id)
 	{
 		$this->setTable('users');
@@ -13,5 +11,4 @@ class UsersModel extends \W\Model\UsersModel
 
 		return $dataUser['username'];
 	}
->>>>>>> origin/travail-pierre-fiche-cocktail_1808
 }

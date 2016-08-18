@@ -32,7 +32,7 @@ class IngredientsModel extends \W\Model\Model
 		return $_name;
 	}
 
-<<<<<<< HEAD
+
 	public function getAlcoolsPrincipaux() {
 
 		$this->setTable('alcoolsprincipaux');
@@ -44,8 +44,6 @@ class IngredientsModel extends \W\Model\Model
 	}
 
 
-=======
->>>>>>> origin/travail-pierre-fiche-cocktail_1808
 	public function getAlcools() {
 
 		$this->setTable('alcools');
