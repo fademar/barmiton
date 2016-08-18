@@ -686,7 +686,6 @@ fieldset[disabled] .btn-success.active {
 }
 
 
-<<<<<<< HEAD
 .oops {
   font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;;
   font-size: 1em;
@@ -704,7 +703,7 @@ fieldset[disabled] .btn-success.active {
   background: #EF626C;
 }
 
-=======
+
 /* CSS to LESS */
 
 .star-rating {
@@ -796,4 +795,4 @@ iframe {
   margin-left: 43%;
   margin-bottom: 3%;
 }
->>>>>>> origin/travail-pierre-fiche-cocktail_1808
+

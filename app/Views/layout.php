@@ -191,7 +191,7 @@
   <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
     <!-- Navigation -->
 
-    <nav id="mainNav" class="navbar navbar-default  navbar-fixed-top  navbar-custom">
+    <nav id="mainNav" class="navbar navbar-default navbar-custom">
 
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->

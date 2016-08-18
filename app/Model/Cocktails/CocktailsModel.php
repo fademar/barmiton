@@ -162,19 +162,30 @@ class CocktailsModel extends \W\Model\Model
 
 		$_cocktaildb = $this->search(['idCocktailApi' => $urlpart]);
 
-		if ($_cocktaildb == null) {
+		if (empty($_cocktaildb)) {
 
 
-			$dataEn = array(
+			$descriptionPlain = rawurlencode(htmlentities($_cocktailapi->descriptionPlain, ENT_QUOTES));
+
+			$urlgoogle 		= 'https://www.googleapis.com/language/translate/v2?key=AIzaSyBmL7IRhjcpPBeqg3h2SYWZywj02qr3X94&q='. $descriptionPlain. '&source=en&target=fr';
+
+			$jsontranslate 	= file_get_contents($urlgoogle);
+			$datagoogle 	= json_decode($jsontranslate);
+
+			$descriptiontraduite = $datagoogle->data->translations[0]->translatedText;
+
+			$datafr = array(
 					'idCocktailApi' => $urlpart,
 					'nomCocktail' 	=> $_cocktailapi->name,
-					'description'	=> $_cocktailapi->descriptionPlain,
-					'langue' 		=> $_cocktailapi->languageBranch
+					'description'	=> $descriptiontraduite,
+					'langue' 		=> 'fr'
 					);
 
-			$this->insert($dataEn);
+			$this->insert($datafr);
 
 		} 
+
+		$_cocktaildb = $this->search(['idCocktailApi' => $urlpart]);
 
 
 		$this->setTable('ingredients');
@@ -188,10 +199,9 @@ class CocktailsModel extends \W\Model\Model
 			$dose = substr($recupDose, 0, 1);
 			$int = (int)$dose;
 			
-
 			$ingredientsDb = $this->search(['idIngredientsApi' => $idIngredient]);
-			// var_dump($ingredientsDb);
 
+			if (($idIngredient) === 'gin') {$ingredientsDb[0]['nomIngredient'] = 'Gin';}
 
 			if ($dose > 1) {
 				$phrase = $dose . ' doses de ' . $ingredientsDb[0]['nomIngredient'];
@@ -205,6 +215,8 @@ class CocktailsModel extends \W\Model\Model
 			$tableauPhrase[] = $phrase;
 
 		}
+
+
 
 		$_cocktaildata = array(
 							'id'			=> $_cocktailapi->id,
@@ -225,7 +237,6 @@ class CocktailsModel extends \W\Model\Model
 		);
 							
 
-		// var_dump($_cocktailapi->videos[0]->video);
 	
 				
 		return $_cocktaildata;
