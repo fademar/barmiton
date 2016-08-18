@@ -11,6 +11,7 @@ class CocktailsModel extends \W\Model\Model
 	private $_cocktail;
 	private $_cocktailapi;
 	private $_cocktaildb;
+	private $_commentairedb;
 
 	private $_cocktailcard = array();
 	private $_cocktaillist = array();
@@ -158,8 +159,13 @@ class CocktailsModel extends \W\Model\Model
 							'skill' 		=> $_cocktailapi->skill->name,
 							'imgurlsmall' 	=> "http://assets.absolutdrinks.com/drinks/300x400/" . $_cocktailapi->id . "(60).jpg",
 							'imgurlmodal' 	=> "http://assets.absolutdrinks.com/drinks/450x600/" . $_cocktailapi->id . ".png",
+							'video' 		=> $_cocktailapi->videos[0]->video
+
 
 		);
+							
+
+		// var_dump($_cocktailapi->videos[0]->video);
 	
 				
 		return $_cocktaildata;
@@ -267,7 +273,7 @@ class CocktailsModel extends \W\Model\Model
 							'color' 		=> $_cocktailapi->color,
 							'skill' 		=> $_cocktailapi->skill->name,
 							'imgurlsmall' 	=> "http://assets.absolutdrinks.com/drinks/300x400/" . $_cocktailapi->id . "(60).jpg",
-							'imgurlmodal' 	=> "http://assets.absolutdrinks.com/drinks/450x600/" . $_cocktailapi->id . ".png",
+							'imgurlmodal' 	=> "http://assets.absolutdrinks.com/drinks/450x600/" . $_cocktailapi->id . ".png"
 
 		);
 	
@@ -278,7 +284,18 @@ class CocktailsModel extends \W\Model\Model
 	} //fin de function getIngredients
 
 
+	public function recupCommentaire($id)
+	{
+		/**************** Récupération des commentaires ******************/
+		
 
+		$this->setTable('commentaires');
+
+		$_listecommentaire = $this->search(['iddrink' => $id]);
+
+		return $_listecommentaire;
+
+	}//fin de function recupCommentaire
 
 
 

@@ -11,6 +11,8 @@ use Model\Difficultes\DifficultesModel;
 use Model\Occasions\OccasionsModel;
 use Model\Favoris\FavorisModel;
 use Model\Notes\NotesModel;
+use Model\Commentaire\CommentaireModel;
+use Model\Users\UsersModel;
 
 class CocktailsController extends Controller
 {
@@ -86,9 +88,6 @@ class CocktailsController extends Controller
 		$ficheCocktails = new CocktailsModel();
 		$dataCocktail = $ficheCocktails->getcocktaildata($id);
 
-		
-
-
 		// Ajout des favoris
 
 		if($_POST) {
@@ -145,16 +144,67 @@ class CocktailsController extends Controller
 					sleep(1);
 				$this->redirectToRoute('cocktails_afficher_cocktail', ['id' => $dataCocktail['id']]);
 			}
-				
+		
+
+				if (isset($_POST['commenter'])) {
+					
+					$objetComment = new CommentaireModel();
+					$objetComment->setTable('commentaires');
+
+					$User = $this->getUser();
+					$idMembres = $User['id'];
+					$commentaire = $_POST['commentaireCocktail'];
 
 
+					$dataCommentaire = array(
+
+						'text' 			 => $commentaire,
+						'idMembres' 	 => $idMembres,
+						'iddrink' 		 => $id
+					);
+
+					$objetComment->insert($dataCommentaire);
+
+
+
+					$this->redirectToRoute('cocktails_afficher_cocktail', ['id' => $dataCocktail['id']]);
+					
+
+				}
 
 		}
 
+	$objetRecupCommentaire = new CocktailsModel();
+	$recupListeDesCommentaires = $objetRecupCommentaire->recupCommentaire($dataCocktail['id']);
 
-		$this->show('cocktail/fiche_cocktail', ['dataCocktail' => $dataCocktail]);
 
+		if (!empty($recupListeDesCommentaires)) {
+			foreach ($recupListeDesCommentaires as $key => $value) {
+				$objetUser = new UsersModel();
+				$afficherUsername = $objetUser->getUserName($value['idMembres']);
+
+				// var_dump($value);
+				
+				$assocIdMembre = array(
+
+						'id' 	   => $value['idMembres'],
+						'username' => $afficherUsername
+
+					);
+			}
+		} else {
+			$recupListeDesCommentaires =""; 
+			$assocIdMembre="";
+		}
+
+		$this->show('cocktail/fiche_cocktail', ['dataCocktail' => $dataCocktail, 'listecommentaires' => $recupListeDesCommentaires, 'tabUser' => $assocIdMembre]);
 	}
+
+
+
+
+	
+
 
 
 

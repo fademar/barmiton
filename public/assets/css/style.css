@@ -742,3 +742,27 @@ fieldset[disabled] .btn-success.active {
     margin-left: 2%;
 
 }
+
+.form-control {
+      width: 53%;
+    margin: 2% auto;
+}
+
+#commenter {
+    margin-left: 46%;
+    margin-bottom: 3%;
+}
+
+#avis {
+  text-align: center;
+}
+
+iframe {
+  margin-left: 27%;
+  margin-bottom: 7%;
+}
+
+.h3demonstration {
+  margin-left: 43%;
+  margin-bottom: 3%;
+}
