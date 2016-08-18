@@ -15,11 +15,6 @@ $(document).ready(function() {
 	// }));
 
 
-    $('.btn-newsearch').click(function(){
-	      $('.submenu').slideToggle();
-	    });
-
-
-
+	$('.sortable').bootstrapSortable;
 
 }); // Fin Document Ready

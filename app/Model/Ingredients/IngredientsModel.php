@@ -32,6 +32,17 @@ class IngredientsModel extends \W\Model\Model
 		return $_name;
 	}
 
+	public function getAlcoolsPrincipaux() {
+
+		$this->setTable('alcoolsprincipaux');
+
+		$_alcools = $this->findAll();
+
+		return $_alcools;
+
+	}
+
+
 	public function getAlcools() {
 
 		$this->setTable('alcools');

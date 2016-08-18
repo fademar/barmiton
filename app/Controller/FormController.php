@@ -31,16 +31,10 @@ class FormController extends Controller
 	public function createSearchForm() {
 		
 
-		$_listePrincipaux	= [
-								['nomIngredient' => 'Gin', 'idIngredientsApi' => 'gin'],
-								['nomIngredient' => 'Rhum', 'idIngredientsApi' => 'rum'],
-								['nomIngredient' => 'Tequila', 'idIngredientsApi' => 'tequila'],
-								['nomIngredient' => 'Vodka', 'idIngredientsApi' => 'vodka'],
-								['nomIngredient' => 'Whisky', 'idIngredientsApi' => 'whisky'],
-							  ];
 
 
 		$_ingredientsdb		= new IngredientsModel();
+		$_listePrincipaux	= $_ingredientsdb->getAlcoolsPrincipaux();
 		$_listeAlcools		= $_ingredientsdb->getAlcools();
 		$_listeSofts 		= $_ingredientsdb->getSofts();
 		$_listeEpices 		= $_ingredientsdb->getEpices();

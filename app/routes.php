@@ -16,4 +16,7 @@
 		['GET|POST', '/users/connexion/', 'Users#UsersConnexion', 'Users_UsersConnexion'],
 		['GET|POST', '/users/deconnexion/', 'Users#UsersDeconnexion', 'Users_UsersDeconnexion'],
 		['GET|POST', '/users/profil/', 'Users#UsersProfil', 'Users_UsersProfil'],
+		['GET|POST', '/admin/', 'Admin#admin', 'admin_admin'],
+		['GET|POST', '/admin/cocktails/', 'Admin#admincocktails', 'admin_admincocktails'],
+
 	);

@@ -125,7 +125,7 @@ public function searchform()
 			if (!empty($_GET['couleurs'])) {
 
 				$_couleurs	= $_GET['couleurs'];
-				$_urlpart	.= '/colored/' . $_couleurs;
+				$_urlpart	.= '/colored/' . implode('/or/', $_couleurs);;
 				foreach ($_couleurs as $couleur) {
 					if (!empty($couleur)) {
 						$_urloops['couleur'][$couleur][]	 	 = '/colored/' . $couleur;
@@ -148,7 +148,7 @@ public function searchform()
 			if (!empty($_GET['difficultes'])) {
 
 				$_difficultes	= $_GET['difficultes'];
-				$_urlpart	.= '/skill/' . $_difficultes;
+				$_urlpart	.= '/skill/' . implode('/or/', $_difficultes);
 				foreach ($_difficultes as $difficulte) {
 					if (!empty($difficulte)) {
 						$_urloops['difficulte'][$difficulte][]		 = '/skill/' . $difficulte;
@@ -187,40 +187,21 @@ public function searchform()
 				$nextURL 			= $url."&start=" . $page . "&pageSize=24";
 				$_data 				= $api->getCocktailListBy($nextURL);
 				$_cocktaillist 		= $api->fetchData($_data);
-				list($_querypage)	= explode('&', $_SERVER['QUERY_STRING']);
-			}
 
+				$URLExp = explode('&', $_SERVER['QUERY_STRING']);
+				$nbRech = count($URLExp);
+
+				for ($i=0; $i < $nbRech - 1; $i++) { 
+					$urlNextFinal[] = $URLExp[$i];
+				}
+
+				$_querypage = implode ('&', $urlNextFinal);
+
+			}
 
 			$nbpages = ceil($_data['totalresult'] / 24);			
 
 
-			// ---------------- TRI ---------------- //
-
-			if (isset($_GET['tri'])) {
-
-				$tri = $_GET['tri'];
-
-
-				switch($tri) 
-				{
-					case 'facile' : 						
-						$sortCriteria 	= $sortCriteria = array('valueskill' => array(SORT_ASC, SORT_NUMERIC));
-						$_cocktaillist 	= $api->multiSort($_cocktaillist, $sortCriteria, $caseInSensitive = true);
-						break;
-
-					case 'difficile' : 
-						$sortCriteria 	= $sortCriteria = array('valueskill' => array(SORT_DESC, SORT_NUMERIC));
-						$_cocktaillist 	= $api->multiSort($_cocktaillist, $sortCriteria, $caseInSensitive = true);
-						break;
-
-					case 'meilleurs' : 
-						$sortCriteria 	= $sortCriteria = array('note' => array(SORT_DESC, SORT_NUMERIC));
-						$_cocktaillist 	= $api->multiSort($_cocktaillist, $sortCriteria, $caseInSensitive = true);
-						break;
-						
-				}
-
-			}
 
 
 			if (!empty($_cocktaillist)) {
