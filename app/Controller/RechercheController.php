@@ -28,18 +28,18 @@ public function searchform()
 		
 		$api = new CocktailsModel;
 
-		if(!$_POST) {$this->redirectToRoute('cocktails_showcocktails');}
+		if(!$_GET) {$this->redirectToRoute('cocktails_showcocktails');}
 
-		if ($_POST) {
+		if ($_GET) {
 			
 			$_urlpart = '';
 			$_urloops = array();
 
 			/**************** Construction de l'url pour la requête des cocktails ******************/
+			var_dump($_GET);
 
-			if (!empty($_POST['ingredients'])) {
-				
-				foreach ($_POST['ingredients'] as $ingredient) {
+			if (!empty($_GET['ingredients'])) {
+				foreach ($_GET['ingredients'] as $ingredient) {
 
 					if (!empty($ingredient)) {
 
@@ -58,9 +58,9 @@ public function searchform()
 			}
 
 
-			if (!empty($_POST['alcoolsprincipaux'])) {
+			if (!empty($_GET['alcoolsprincipaux'])) {
 
-				$_alcoolsprincipaux	 = $_POST['alcoolsprincipaux'];
+				$_alcoolsprincipaux	 = $_GET['alcoolsprincipaux'];
 				$_urlpart			.= '/withtype/' . implode('/and/', $_alcoolsprincipaux);				
 				
 				foreach ($_alcoolsprincipaux as $principal) {
@@ -71,9 +71,9 @@ public function searchform()
 				}
 			}
 			
-			if (!empty($_POST['alcools'])) {
+			if (!empty($_GET['alcools'])) {
 
-				$_alcools	 = $_POST['alcools'];
+				$_alcools	 = $_GET['alcools'];
 				$_urlpart	.= '/with/' . implode('/and/', $_alcools);
 				
 				foreach ($_alcools as $alcool) {
@@ -83,9 +83,9 @@ public function searchform()
 				}
 			}
 
-			if (!empty($_POST['softs'])) {
+			if (!empty($_GET['softs'])) {
 
-				$_softs		 = $_POST['softs'];
+				$_softs		 = $_GET['softs'];
 				$_urlpart	.= '/with/' . implode('/and/', $_softs);
 				foreach ($_softs as $soft) {
 					if (!empty($soft)) {
@@ -95,9 +95,9 @@ public function searchform()
 
 			}
 
-			if (!empty($_POST['epices'])) {
+			if (!empty($_GET['epices'])) {
 
-				$_epices	 = $_POST['epices'];
+				$_epices	 = $_GET['epices'];
 				$_urlpart	.= '/with/' . implode('/and/', $_epices);
 				foreach ($_softs as $epice) {
 					if (!empty($epice)) {
@@ -106,9 +106,9 @@ public function searchform()
 				}			
 			}
 
-			if (!empty($_POST['fruits'])) {
+			if (!empty($_GET['fruits'])) {
 
-				$_fruits	= $_POST['fruits'];
+				$_fruits	= $_GET['fruits'];
 				$_urlpart	.= '/with/' . implode('/and/', $_fruits);
 				foreach ($_fruits as $fruit) {
 					if (!empty($fruit)) {
@@ -117,9 +117,9 @@ public function searchform()
 				}
 			}
 			
-			if (!empty($_POST['couleurs'])) {
+			if (!empty($_GET['couleurs'])) {
 
-				$_couleurs	= $_POST['couleurs'];
+				$_couleurs	= $_GET['couleurs'];
 				$_urlpart	.= '/colored/' . $_couleurs;
 				foreach ($_couleurs as $couleur) {
 					if (!empty($couleur)) {
@@ -128,9 +128,9 @@ public function searchform()
 				}
 			}
 			
-			if (!empty($_POST['gouts'])) {
+			if (!empty($_GET['gouts'])) {
 
-				$_gouts	= $_POST['gouts'];
+				$_gouts	= $_GET['gouts'];
 				$_urlpart	.= '/tasting/' . implode('/and/', $_gouts);
 				foreach ($_gouts as $gout) {
 					if (!empty($gout)) {
@@ -140,9 +140,9 @@ public function searchform()
 
 			}
 
-			if (!empty($_POST['difficultes'])) {
+			if (!empty($_GET['difficultes'])) {
 
-				$_difficultes	= $_POST['difficultes'];
+				$_difficultes	= $_GET['difficultes'];
 				$_urlpart	.= '/skill/' . $_difficultes;
 				foreach ($_difficultes as $difficulte) {
 					if (!empty($difficulte)) {
@@ -151,9 +151,9 @@ public function searchform()
 				}
 			}
 
-			if (!empty($_POST['occasions'])) {
+			if (!empty($_GET['occasions'])) {
 
-				$_occasions	= $_POST['occasions'];
+				$_occasions	= $_GET['occasions'];
 				$_urlpart	.= '/for/' . implode('/and/', $_occasions);
 				foreach ($_occasions as $occasion) {
 					if (!empty($occasion)) {
@@ -164,7 +164,8 @@ public function searchform()
 
 
 			$api = new CocktailsModel;
-			$_data = $api->getCocktailListBy($_urlpart);
+			$url = $api->constructUrl($_urlpart);
+			$_data = $api->getCocktailListBy($url);
 			$_cocktaillist = $api->fetchData($_data);
 
 			if (!empty($_cocktaillist)) {
@@ -184,7 +185,8 @@ public function searchform()
 						
 						foreach ($taburl as $url) {
 							$api 							= new CocktailsModel;
-							$_data 							= $api->getCocktailListBy($url);
+							$url = $api->constructUrl($_urlpart);
+							$_data = $api->getCocktailListBy($_url);
 							
 							switch($idingredient) //Changement des noms des alcools principaux
 							{

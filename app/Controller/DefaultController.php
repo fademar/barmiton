@@ -20,7 +20,8 @@ class DefaultController extends Controller
 	public function home()
 	{
 		$_cocktailapi		 = new CocktailsModel();
-		$_cocktailselection	 = $_cocktailapi->getCocktailListBy('all');
+		$url 				 = $_cocktailapi->constructUrl('all');
+		$_cocktailselection	 = $_cocktailapi->getCocktailListBy($url);
 		$_cocktailselection	 = $_cocktailapi->getRandomCocktail($_cocktailselection['list'], 6);
 	
 		//$_autocomplete = new AutocompleteController();

@@ -3,7 +3,7 @@
 	$w_routes = array(
 		['GET|POST', '/', 'Default#home', 'default_home'],
 		['GET|POST', '/cocktails/', 'Cocktails#showcocktails', 'cocktails_showcocktails'],
-		['GET|POST', '/recherche/', 'Recherche#searchform', 'recherche_searchform'],
+		['GET|POST', '/recherche[:ingredient]', 'Recherche#searchform', 'recherche_searchform'],
 		['GET|POST', '/cocktails/[:id]', 'Cocktails#afficherCocktail', 'cocktails_afficher_cocktail'],
 		['GET|POST', '/data/alcools/', 'Autocomplete#autoCompleteAlcools', 'autocomplete_alcools'],
 		['GET|POST', '/data/softs/', 'Autocomplete#autoCompleteSofts', 'autocomplete_softs'],

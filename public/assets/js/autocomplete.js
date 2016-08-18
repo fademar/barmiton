@@ -73,7 +73,7 @@ $(document).ready(function() {
 		divers.initialize();
 
 		$('.typeaheadhome').typeahead({
-		  minLength: 2,
+		  minLength: 1,
 		  highlight: true
 		},
 		{

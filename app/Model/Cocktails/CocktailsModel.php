@@ -24,12 +24,10 @@ class CocktailsModel extends \W\Model\Model
 
 
 
-	/************************ Récupération des données selon le type de cocktail recherché ($param) et la valeur de ce type ($urlpart) *****************************/
+	/************************ Construction de l'url pour l'API *****************************/
 
+	public function constructUrl($urlpart) {
 
-	public function getCocktailListBy($urlpart)
-	{
-		
 		if ($urlpart === 'all') {
 			$_jsonurl		= 'https://addb.absolutdrinks.com/drinks/?apiKey=2c758736e5f844bdb9d39308df889c6d';
 		}
@@ -37,11 +35,25 @@ class CocktailsModel extends \W\Model\Model
 		{
 			$_jsonurl		= 'https://addb.absolutdrinks.com/drinks'. $urlpart .'/?apiKey=2c758736e5f844bdb9d39308df889c6d';
 		}
-			$_json 			= file_get_contents($_jsonurl);
+
+		return $_jsonurl;
+	}
+
+
+	/************************ Récupération du json *****************************/
+
+	public function getCocktailListBy($jsonurl)
+	{
+		
+			$_json 			= file_get_contents($jsonurl);
 
 			$_list			= json_decode($_json)->result;
 			$_totalresult 	= json_decode($_json)->totalResult;
-			$_data 			= ["list" => $_list, 'totalresult' => $_totalresult];
+
+			if (property_exists(json_decode($_json), 'next')) { $_next = json_decode($_json)->next;} else { $_next='';}
+			if (property_exists(json_decode($_json), 'previous')) { $_previous = json_decode($_json)->previous;} else { $_previous='';}
+
+			$_data 			= ["list" => $_list, 'totalresult' => $_totalresult, 'next' => $_next, 'previous' => $_previous];
 			
 			return $_data;
 
