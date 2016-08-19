@@ -115,8 +115,10 @@ class UsersController extends Controller
 
 	public function UsersProfil()
 	{
-	
-		$this->show('Users/profil');
+		
+		$loggedUser = $this->getUser();
+
+		$this->show('Users/profil', ['loggedUser' => $loggedUser]);
 	}
 
 	public function ChangePassword()
