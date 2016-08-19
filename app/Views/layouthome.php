@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <meta name="google-signin-scope" content="profile email">
-    <meta name="google-signin-client_id" content="1064140416057-ac0a4g0drkpjjn4v82lj64itcm858nrl.apps.googleusercontent.com">
+    <!-- <meta name="google-signin-scope" content="profile email"> -->
+    <!-- <meta name="google-signin-client_id" content="1064140416057-ac0a4g0drkpjjn4v82lj64itcm858nrl.apps.googleusercontent.com"> -->
 
     <title><?= $this->e($title) ?></title>
 
@@ -36,8 +36,13 @@
 
 </head>
 
+<<<<<<< HEAD
 <!-- <body id="page-top" class="index">
     <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+=======
+<body id="page-top" class="index">
+    <!-- <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+>>>>>>> refs/remotes/origin/Profil_15_08
 
   <script>
     function onSignIn(googleUser) {
@@ -184,7 +189,8 @@
 
   <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button> -->
     <!-- Navigation -->
-    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
+
+        <nav id="mainNav" class="navbar navbar-default navbar-custom">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
@@ -203,9 +209,27 @@
                     <li class="page-scroll">
                         <a href="<?= $this->url('cocktails_showcocktails') ?>">Cocktails</a>
                     </li>
-                    <li class="page-scroll">
-                        <a href="#">Profil</a>
+                    
+                    <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php if (empty($w_user)) {echo 'Profil';} else {echo $w_user['Prenom'];} ?> <span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <?php 
+                        
+                          if (empty($w_user)) {
+
+                              echo '<li><a href="' . $this->url('Users_UsersConnexion') . '">Se connecter</a></li>';
+                              echo '<li><a href="' . $this->url('Users_UsersInscription') . '">S\'inscrire</a></li>';
+                          }
+                          else {
+                              echo '<li><a href="' . $this->url('Users_UsersProfil') . '">Mon profil</a></li>';
+                              // echo '<li><a href="' . $this->url('Users_UsersFavoris') . '">Mes favoris</a></li>';
+                              echo '<li><a href="' . $this->url('Users_UsersDeconnexion') . '">Se déconnecter</a></li>';
+                          }
+                      
+                        ?>
+                      </ul>
                     </li>
+
                     <li class="page-scroll">
                         <a href="#">A propos</a>
                     </li>

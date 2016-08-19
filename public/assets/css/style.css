@@ -173,6 +173,11 @@ header .btn-begin a:hover {
   font-weight: 700;
 }
 .navbar-custom .navbar-nav li a {
+
+  /*
+    A changer
+  */
+  
   color: white;
 }
 .navbar-custom .navbar-nav li a:hover {
@@ -794,5 +799,13 @@ iframe {
 .h3demonstration {
   margin-left: 43%;
   margin-bottom: 3%;
+}
+
+.dropdown-menu {
+  background: #EF626C;
+}
+
+.dropdown-menu li {
+  color: #22264B;
 }
 

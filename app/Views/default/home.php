@@ -2,7 +2,6 @@
 
 <?php $this->start('main_content') ?>
 
-
  <!-- Header -->
     <header id="home">
         <div class="container">

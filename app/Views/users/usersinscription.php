@@ -4,27 +4,47 @@
 
 <h2>Inscription</h2>
 
-<form method="POST">
+<form method="POST" action="">
 
-	<label for="nomId">Nom</label>
-	<input type="text" id="nomId" name="nom" required>
+	<div class="form-group">
+		<label for="nomId">Nom</label>
+		<input class="form-control" type="text" id="nomId" name="nom" placeholder="Votre Nom" required>
+	</div>
 
-	<label for="prenomId">Prenom</label>
-	<input id="prenomId" name="prenom" type="text" required>
+	<div class="form-group">
+		<label for="prenomId">Prenom</label>
+		<input class="form-control" id="prenomId" name="prenom" type="text" placeholder="Votre Prenom" required>
+	</div>
 
-	<label for="usernameId">Pseudo</label>
-	<input id="usernameId" name="username" type="text" required>
+	<div class="form-group">
+		<label for="usernameId">Pseudo</label>
+		<input class="form-control" id="usernameId" name="username" type="text" placeholder="Votre Pseudo" required>
+	</div>
 
-	<label for="dateNaissanceId">Date de naissance</label>
-	<input id="dateNaissanceId" name="dateNaissance" type="date" required>
+	<div class="form-group">
+		<label for="motDePasseId">Mot de passe</label>
+		<input class="form-control" type="password" id="motDePasseId" name="motDePasse" placeholder="Votre Mot de passe" required>
+	</div>
 
-	<label for="motDePasseId">Mot de passe</label>
-	<input type="password" id="motDePasseId" name="motDePasse" required>
+	<div class="form-group">
+		<label for="confirmMotDePasseId">Confirmation mot de passe</label>
+		<input class="form-control" type="password" id="confirmMotDePasseId" name="confirmMotDePasse" placeholder="Confirmer Mot de passe" required>
+	</div>
 
-	<label for="emailId">Email</label>
-	<input type="email" id="emailId" name="email" required>
+	<div class="form-group">
+		<label for="dateNaissanceId">Date de naissance</label>
+		<input class="form-control" id="dateNaissanceId" name="dateNaissance" type="date" placeholder="Votre Date de naissance" required>
+	</div>
 
-	<input type="submit" name="inscription" value="Inscription" class="btn">
+	<div class="form-group">
+		<label for="emailId">Email</label>
+		<input class="form-control" type="email" id="emailId" name="email" placeholder="Votre adresse mail" required>
+	</div>
+
+	<div class="form-group">
+		<input class="form-control" type="submit" name="inscription" value="Inscription">
+	</div>
+
 </form>
 
 <?php $this->stop('main_content') ?>

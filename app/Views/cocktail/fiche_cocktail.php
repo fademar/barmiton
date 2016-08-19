@@ -31,8 +31,10 @@
             <div id="" class="col-xs-6 .col-md-6 text-center">
                 <img src="<?= $dataCocktail['imgurlmodal']?>">
             </div>
+
                 <h3>Ingrédients</h3>
                     <p><?php
+
 
                         foreach($dataCocktail['ingredients'] as $element){
                             echo $element . '<br />';
@@ -50,9 +52,9 @@
 
 
 
+
                 <div class="row">
 
-            
 
                 <div class="rating">
 
