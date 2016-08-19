@@ -118,7 +118,16 @@ class UsersController extends Controller
 		
 		$loggedUser = $this->getUser();
 
-		$this->show('Users/profil', ['loggedUser' => $loggedUser]);
+		$usersdb = new UsersModel();
+		$usersdb->setTable('users');
+
+		$user = $usersdb->find($loggedUser['id']);
+
+		$datenaissance = new DateTime($user['date_naissance']);
+
+		$user['date_naissance'] = $datenaissance->format('d/m/Y');
+
+		$this->show('Users/profil', ['loggedUser' => $user]);
 	}
 
 	public function ChangePassword()
