@@ -677,3 +677,11 @@ fieldset[disabled] .btn-success.active {
   vertical-align: middle;
   overflow: hidden;
 }
+
+.dropdown-menu {
+  background: #EF626C;
+}
+
+.dropdown-menu li {
+  color: #22264B;
+}

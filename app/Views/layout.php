@@ -185,8 +185,9 @@
   <div id="status"></div>
 
   <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button> -->
+    
     <!-- Navigation -->
-    <nav id="mainNav" class="navbar navbar-default navbar-custom">
+        <nav id="mainNav" class="navbar navbar-default navbar-custom">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
@@ -205,9 +206,27 @@
                     <li class="page-scroll">
                         <a href="<?= $this->url('cocktails_showcocktails') ?>">Cocktails</a>
                     </li>
-                    <li class="page-scroll">
-                        <a href="<?= $this->url('Users_UsersProfil') ?>">Profil</a>
+                    
+                    <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php if (empty($w_user)) {echo 'Profil';} else {echo $w_user['Prenom'];} ?> <span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <?php 
+                        
+                          if (empty($w_user)) {
+
+                              echo '<li><a href="' . $this->url('Users_UsersConnexion') . '">Se connecter</a></li>';
+                              echo '<li><a href="' . $this->url('Users_UsersInscription') . '">S\'inscrire</a></li>';
+                          }
+                          else {
+                              echo '<li><a href="' . $this->url('Users_UsersProfil') . '">Mon profil</a></li>';
+                              // echo '<li><a href="' . $this->url('Users_UsersFavoris') . '">Mes favoris</a></li>';
+                              echo '<li><a href="' . $this->url('Users_UsersDeconnexion') . '">Se déconnecter</a></li>';
+                          }
+                      
+                        ?>
+                      </ul>
                     </li>
+
                     <li class="page-scroll">
                         <a href="#">A propos</a>
                     </li>
@@ -220,11 +239,6 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
-
-    <a class="btn btn-default" href="<?php echo $this->url("Users_UsersInscription"); ?>" role="button">S'inscrire</a>
-    <a class="btn btn-default" href="<?php echo $this->url("Users_UsersConnexion"); ?>" role="button">Se Connecter</a>
-    <a class="btn btn-default" href="<?php echo $this->url("Users_UsersDeconnexion"); ?>" role="button">Se Déconnecter</a>
-
 
     <?= $this->section('main_content') ?>
 

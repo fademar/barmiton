@@ -15,11 +15,11 @@
 
         <div class="row">
             <div>
-                <h3>Votre adresse mail : <?php echo $loggedUser['email']; ?></h3>
+                <h3>Votre adresse mail : <?php echo $w_user['email']; ?></h3>
             </div>
 
             <div>
-                <h3>Votre pseudo : <?php echo $loggedUser['username']; ?></h3>
+                <h3>Votre pseudo : <?php echo  $w_user['username']; ?></h3>
                 <h3><a href="<?= $this->url('Users_ChangeUsername') ?>">Changer votre pseudo</a></h3>
             </div>
 
@@ -28,9 +28,6 @@
             <h3><a href="<?= $this->url('Users_ChangePassword') ?>">Changer votre mot de passe</a></h3>
             </div>
 
-            <div>
-                <h3>Votre séléction de favoris :</h3>
-            </div>
         </div>
     </div>
 </section>

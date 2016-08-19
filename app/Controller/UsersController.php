@@ -52,11 +52,11 @@ class UsersController extends Controller
 
 					else
 					{
-						echo "Les mots de passe ne sont pas identique";
+						echo "Les mots de passe ne sont pas identiques";
 					}
 
 
-				$this->redirectToRoute('default_home');
+				$this->redirectToRoute('Users_UsersConnexion');
 			}
 		}
 
@@ -114,8 +114,8 @@ class UsersController extends Controller
 
 	public function UsersProfil()
 	{
-		$loggedUser = $this->getUser();
-		$this->show('Users/profil', ['loggedUser'=> $loggedUser]);
+	
+		$this->show('Users/profil');
 	}
 
 	public function ChangePassword()
@@ -134,15 +134,23 @@ class UsersController extends Controller
 
 	public function ChangeUsername()
 	{
-		$loggedUser = $this->getUser();
+		
+		if ($_POST) {
 
+			$loggedUser = $this->getUser();
 
+			if (($_POST['newUsername'] !== $loggedUser['username']) && ($_POST['newUsername'] === $_POST['newUsernameConfirm']))
+			{
+				$newPseudo = $_POST['newUsername'];
+				$user = new UsersModel();
+				$user->setTable('users');
 
-		if ($_POST['username'] !== $_POST['newUsername'])
-		{
-			$newPseudo = ($_POST['newUsername']);
+				$user->update(['username' => $newPseudo], $loggedUser['id'], $stripTags = true);
+
+				$this->redirectToRoute('Users_UsersProfil', [':username' => $loggedUser['username']]);
+			}
 		}
 
-		$this->show('Users/changeusername', ['loggedUser'=> $loggedUser]);
+		$this->show('Users/changeusername');
 	}
 }
