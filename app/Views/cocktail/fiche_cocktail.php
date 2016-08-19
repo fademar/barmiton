@@ -16,6 +16,7 @@
             <div id="" class="col-xs-12 .col-md-12 text-center">
                 <img src="<?= $dataCocktail['imgurlmodal']?>"></a>
             </div>
+
             <h3>Ingrédients</h3>
             <p><?php
 
@@ -28,6 +29,7 @@
                 <span>Recette</span>
                 <p><?= $dataCocktail['description']?></p>
             </div>
+            
             <div class="row">
 
                 <div class="rating">

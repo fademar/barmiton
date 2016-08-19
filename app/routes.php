@@ -13,7 +13,9 @@
 		['GET|POST', '/data/alcoolsprincipaux/', 'Autocomplete#autoCompletePrincipaux', 'autocomplete_alcoolsprincipaux'],
 		['GET|POST', '/data/noms/', 'Autocomplete#autoCompleteNoms', 'autocomplete_noms'],
 		['GET|POST', '/users/inscription/', 'Users#UsersInscription', 'Users_UsersInscription'],
-		['GET|POST', '/users/connexion/', 'Users#UsersConnexion', 'Users_UsersConnexion'],
-		['GET|POST', '/users/deconnexion/', 'Users#UsersDeconnexion', 'Users_UsersDeconnexion'],
-		['GET|POST', '/users/profil/', 'Users#UsersProfil', 'Users_UsersProfil'],
+		['GET|POST', '/Users/connexion/', 'Users#UsersConnexion', 'Users_UsersConnexion'],
+		['GET|POST', '/Users/deconnexion/', 'Users#UsersDeconnexion', 'Users_UsersDeconnexion'],
+		['GET|POST', '/Users/profil/', 'Users#UsersProfil', 'Users_UsersProfil'],
+		['GET|POST', '/Users/changepassword/', 'Users#ChangePassword', 'Users_ChangePassword'],
+		['GET|POST', '/Users/changeusername/', 'Users#ChangeUsername', 'Users_ChangeUsername'],
 	);

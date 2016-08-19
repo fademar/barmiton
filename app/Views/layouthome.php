@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <meta name="google-signin-scope" content="profile email">
-    <meta name="google-signin-client_id" content="1064140416057-ac0a4g0drkpjjn4v82lj64itcm858nrl.apps.googleusercontent.com">
+    <!-- <meta name="google-signin-scope" content="profile email"> -->
+    <!-- <meta name="google-signin-client_id" content="1064140416057-ac0a4g0drkpjjn4v82lj64itcm858nrl.apps.googleusercontent.com"> -->
 
     <title><?= $this->e($title) ?></title>
 
@@ -32,12 +32,12 @@
     <![endif]-->
 
     <!-- Mettre API Google connect -->
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <!-- <script src="https://apis.google.com/js/platform.js" async defer></script> -->
 
 </head>
 
 <body id="page-top" class="index">
-    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+    <!-- <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
 
   <script>
     function onSignIn(googleUser) {
@@ -181,7 +181,7 @@
 
   <div id="status"></div>
 
-  <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+  <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button> -->
     <!-- Navigation -->
     <nav id="mainNav" class="navbar navbar-default navbar-custom">
         <div class="container">
@@ -203,7 +203,7 @@
                         <a href="<?= $this->url('cocktails_showcocktails') ?>">Cocktails</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#">Profil</a>
+                        <a href="<?= $this->url('Users_UsersProfil') ?>">Profil</a>
                     </li>
                     <li class="page-scroll">
                         <a href="#">A propos</a>
@@ -218,8 +218,9 @@
         <!-- /.container-fluid -->
     </nav>
 
-    <a href="<?php echo $this->url("Users_UsersConnexion"); ?>">Se Connecter</a>
-    <a href="<?php echo $this->url("Users_UsersDeconnexion"); ?>">Se Déconnecter</a>
+    <a class="btn btn-default" href="<?php echo $this->url("Users_UsersInscription"); ?>" role="button">S'inscrire</a>
+    <a class="btn btn-default" href="<?php echo $this->url("Users_UsersConnexion"); ?>" role="button">Se Connecter</a>
+    <a class="btn btn-default" href="<?php echo $this->url("Users_UsersDeconnexion"); ?>" role="button">Se Déconnecter</a>
 
     <?= $this->section('main_content') ?>
 

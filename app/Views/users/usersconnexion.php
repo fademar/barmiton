@@ -4,13 +4,19 @@
 
 <form method="POST">
 
-	<label for="emailId">Email</label>
-	<input type="email" id="emailId" name="email" required>
+	<div class="form-group">
+		<label for="emailId">Email</label>
+		<input class="form-control" type="email" id="emailId" name="email" required>
+	</div>
 
-	<label for="motDePasseId">Mot de passe</label>
-	<input type="password" id="motDePasseId" name="motDePasse" required>
+	<div class="form-group">
+		<label for="motDePasseId">Mot de passe</label>
+		<input class="form-control" type="password" id="motDePasseId" name="motDePasse" required>
+	</div>
 
-	<input type="submit" value="Connexion" class="btn">
+	<div class="form-group">
+		<input class="form-control" type="submit" name="inscription" value="Inscription" class="btn">
+	</div>
 
 </form>
 

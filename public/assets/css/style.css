@@ -164,6 +164,11 @@ header .btn-begin a:hover {
   font-weight: 700;
 }
 .navbar-custom .navbar-nav li a {
+
+  /*
+    A changer
+  */
+  
   color: white;
 }
 .navbar-custom .navbar-nav li a:hover {

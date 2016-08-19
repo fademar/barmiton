@@ -6,6 +6,7 @@ use \W\Controller\Controller;
 use Model\Users\UsersModel;
 use Model\Users\UsersAuthentificationModel;
 use Model\Users\UsersProfil;
+use Model\Users\ChangePassword;
 
 class UsersController extends Controller
 {
@@ -23,26 +24,37 @@ class UsersController extends Controller
 
 			$db = new UsersModel;
 
-			if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['username']) && isset($_POST['dateNaissance']) && isset($_POST['motDePasse']) && isset($_POST['email']))
+			if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['username']) && isset($_POST['dateNaissance']) && isset($_POST['motDePasse']) && isset($_POST['confirmMotDePasse']) && isset($_POST['email']))
 			{
-					$nom 				= $_POST['nom'];
-					$prenom 			= $_POST['prenom'];
-					$pseudo 			= $_POST['username'];
-					$dateNaissance 		= $_POST['dateNaissance'];
-					$password 			= $_POST['motDePasse'];
-					$email 				= $_POST['email'];
+					$nom 						= $_POST['nom'];
+					$prenom 					= $_POST['prenom'];
+					$pseudo 					= $_POST['username'];
+					$dateNaissance 				= $_POST['dateNaissance'];
+					$password 					= $_POST['motDePasse'];
+					$confirmPassword 			= $_POST['confirmMotDePasse'];
+					$email 						= $_POST['email'];
 
-				$data = array(
-					'nom' 				=> $nom,
-					'prenom' 			=> $prenom,
-					'username' 			=> $pseudo,
-					'date_naissance' 	=> $dateNaissance,
-					'password' 			=> password_hash($password, PASSWORD_DEFAULT),
-					'email' 			=> $email
-				);
+					if ($password == $confirmPassword)
+					{
+						
+						$data = array(
+							'nom' 				=> $nom,
+							'prenom' 			=> $prenom,
+							'username' 			=> $pseudo,
+							'date_naissance' 	=> $dateNaissance,
+							'password' 			=> password_hash($password, PASSWORD_DEFAULT),
+							'email' 			=> $email
+						);
 				
 
-				$db->insert($data);
+						$db->insert($data);
+					}
+
+					else
+					{
+						echo "Les mots de passe ne sont pas identique";
+					}
+
 
 				$this->redirectToRoute('default_home');
 			}
@@ -100,8 +112,37 @@ class UsersController extends Controller
 			$this->redirectToRoute('default_home');
 	}
 
-	// public function UsersProfil()
-	// {
-	// 	$this->getUser()
-	// }
+	public function UsersProfil()
+	{
+		$loggedUser = $this->getUser();
+		$this->show('Users/profil', ['loggedUser'=> $loggedUser]);
+	}
+
+	public function ChangePassword()
+	{
+		$loggedUser = $this->getUser();
+
+		
+
+		if ($_POST['motDePasse'] == $_POST['confirmNewMotDePasse'])
+		{
+			$pass_hache=sha1($_POST['newMotDePasse']);
+		}
+
+		$this->show('Users/changepassword', ['loggedUser'=> $loggedUser]);
+	}
+
+	public function ChangeUsername()
+	{
+		$loggedUser = $this->getUser();
+
+
+
+		if ($_POST['username'] !== $_POST['newUsername'])
+		{
+			$newPseudo = ($_POST['newUsername']);
+		}
+
+		$this->show('Users/changeusername', ['loggedUser'=> $loggedUser]);
+	}
 }
