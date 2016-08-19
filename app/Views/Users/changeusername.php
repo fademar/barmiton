@@ -4,11 +4,16 @@
 
 <h2>Changer votre pseudo :</h2>
 
-<form method="POST">
+<form method="POST" action="">
 
   <div class="form-group">
     <label for="newUsername">Nouveau pseudo</label>
     <input type="text" class="form-control" id="newUsernameId" name="newUsername" placeholder="Nouveau Pseudo" required>
+  </div>
+
+  <div class="form-group">
+    <label for="confirmNewUsernameId">Confirmation nouveau pseudo</label>
+    <input type="text" class="form-control" id="confirmNewUsernameId" name="confirmNewUsername" placeholder="Confirmation nouveau Pseudo" required>
   </div>
  
   <button type="submit" class="btn btn-default">Confirmer</button>

@@ -2,7 +2,7 @@
 
 <?php $this->start('main_content') ?>
 
-<form method="POST">
+<form method="POST" action="">
 
 	<div class="form-group">
 		<label for="emailId">Email</label>
@@ -15,7 +15,7 @@
 	</div>
 
 	<div class="form-group">
-		<input class="form-control" type="submit" name="inscription" value="Inscription" class="btn">
+		<input class="form-control" type="submit" name="connexion" value="Connexion" class="btn">
 	</div>
 
 </form>

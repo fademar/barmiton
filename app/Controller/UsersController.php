@@ -7,6 +7,7 @@ use Model\Users\UsersModel;
 use Model\Users\UsersAuthentificationModel;
 use Model\Users\UsersProfil;
 use Model\Users\ChangePassword;
+use Model\Users\ChangeUsername;
 
 class UsersController extends Controller
 {
@@ -52,7 +53,7 @@ class UsersController extends Controller
 
 					else
 					{
-						echo "Les mots de passe ne sont pas identique";
+						echo "Les mots de passe ne sont pas identiques";
 					}
 
 
@@ -122,25 +123,39 @@ class UsersController extends Controller
 	{
 		$loggedUser = $this->getUser();
 
-		
-
-		if ($_POST['motDePasse'] == $_POST['confirmNewMotDePasse'])
+		if ($_POST)
 		{
-			$pass_hache=sha1($_POST['newMotDePasse']);
+			if ($_POST['newMotDePasse'] == $_POST['confirmNewMotDePasse'])
+			{
+				$newPassword=sha1($_POST['newMotDePasse']);
+			}
+			else
+			{
+				$error = "Vos nouveaux mot de passe ne sont identiques";
+			}
+
+			$this->redirectToRoute('Users_UsersProfil');
 		}
 
 		$this->show('Users/changepassword', ['loggedUser'=> $loggedUser]);
 	}
 
 	public function ChangeUsername()
-	{
+	{ 
 		$loggedUser = $this->getUser();
 
-
-
-		if ($_POST['username'] !== $_POST['newUsername'])
+		if ($_POST)
 		{
-			$newPseudo = ($_POST['newUsername']);
+			if ($_POST['username'] !== $_POST['newUsername'])
+			{
+				$newPseudo = ($_POST['newUsername']);
+			}
+			else
+			{
+				$error = "Vous avez utilisé votre pseudo actuel";
+			}
+
+			$this->redirectToRoute('Users_UsersProfil');
 		}
 
 		$this->show('Users/changeusername', ['loggedUser'=> $loggedUser]);
