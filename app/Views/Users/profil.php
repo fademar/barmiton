@@ -38,12 +38,9 @@
                 <h3><a href="<?= $this->url('Users_ChangeUsername') ?>">Changer votre pseudo</a></h3>
                 <h3><a href="<?= $this->url('Users_ChangePassword') ?>">Changer votre mot de passe</a></h3>
             </div>
+
         </div>
     </div>
 </section>
-
-
-
-
 
 <?php $this->stop('main_content') ?>
