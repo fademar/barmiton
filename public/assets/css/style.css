@@ -801,11 +801,11 @@ iframe {
   margin-bottom: 3%;
 }
 
-.dropdown-menu {
+nav .dropdown-menu {
   background: #EF626C;
 }
 
-.dropdown-menu li {
+nav .dropdown-menu li {
   color: #22264B;
 }
 

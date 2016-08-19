@@ -36,13 +36,9 @@
 
 </head>
 
-<<<<<<< HEAD
 <!-- <body id="page-top" class="index">
     <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-=======
-<body id="page-top" class="index">
-    <!-- <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
->>>>>>> refs/remotes/origin/Profil_15_08
+
 
   <script>
     function onSignIn(googleUser) {

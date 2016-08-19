@@ -123,10 +123,6 @@ class UsersController extends Controller
 
 		$user = $usersdb->find($loggedUser['id']);
 
-		$datenaissance = new DateTime($user['date_naissance']);
-
-		$user['date_naissance'] = $datenaissance->format('d/m/Y');
-
 		$this->show('Users/profil', ['loggedUser' => $user]);
 	}
 
