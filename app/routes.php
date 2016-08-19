@@ -53,6 +53,9 @@
 		// Page changement pseudo
 		['GET|POST', '/Users/changeusername/', 'Users#ChangeUsername', 'Users_ChangeUsername'],
 
+		// Page favoris
+		['GET|POST', '/Users/favoris/', 'Favoris#showFavoris', 'Favoris_showFavoris'],
+
 		// Routes Back-office
 		['GET|POST', '/admin/', 'Admin#admin', 'admin_admin'],
 
