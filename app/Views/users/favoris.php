@@ -12,16 +12,18 @@
                 <hr class="glass-primary">
             </div>
         </div>
-
         <div class="row">
-            <?php foreach ($favorislist as $favoris): ?>
-                <div class="col-xs-6 col-md-3 portfolio-item">     
-                    <a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $cocktailcard['id']]); ?>">
-                        <img src="<?= $cocktailcard['imgurlsmall']?>" class="img-responsive img-rounded img-thumbnail" alt="">
-                        <h3><?= $cocktailcard['name']?></h3>
-                    </a>
-                </div>
-            <?php endforeach ?>
+            <form method=POST action="">
+                <?php foreach ($favorislist as $favoris): ?>
+                    <div class="col-xs-6 col-md-3 portfolio-item">     
+                        <a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $favoris['favorisdata']['id']]); ?>">
+                            <img src="<?= $favoris['favorisdata']['imgurlsmall']?>" class="img-responsive img-rounded img-thumbnail" alt="">
+                            <h3><?= $favoris['favorisdata']['name']?></h3>
+                        </a>
+                        <button class="btn btn-default" type="submit" name="supprimer" value="<?= $favoris['idfavoris'] ?>">Supprimer</button>
+                    </div>
+                <?php endforeach ?>
+            </form>
         </div>
     </div>
 </section>

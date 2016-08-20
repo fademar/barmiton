@@ -34,7 +34,7 @@ $(document).ready(function() {
 
 
 
-
+    $('#cookie-message').cookieBar();
   
 
 	// var ias = $.ias({
@@ -50,6 +50,9 @@ $(document).ready(function() {
 	//   text: 'There are no more pages left to load.'      // override text when no pages left
 	// }));
 
+
+
+	// Tri des tableaux dans le back-office
 
 	$('.sortable').bootstrapSortable;
 

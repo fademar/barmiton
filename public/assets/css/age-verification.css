@@ -1,0 +1,181 @@
+/*!
+ * Age verification CSS to go with the JS that can be found at (https://github.com/Herudea/age-verification)
+ */
+
+#modal_screen {
+	position: fixed;
+	top:0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 1100;
+	background-color: rgba(0,0,0,.8);
+}
+
+#modal_screen.nope {
+	background-color: #1e0924; 
+}
+
+#modal_content {
+	position: fixed;
+	z-index: 1101;
+	margin: 0 auto;
+	background-color:#fff;
+	border:4px solid #444;
+	border-radius: 100%;
+	font-size: 12px;
+	width:290px;
+	height: 290px;
+
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	box-sizing: border-box;
+
+	background-position: center 2em;
+	background-repeat: no-repeat;
+	background-size: 90px auto;
+}
+
+#modal_content .content_wrapper {
+	margin:3em auto 0;
+	text-align: center;
+}
+
+#modal_content h1 {
+	margin: 0 0 0 0;
+	font-family: "Lobster", cursive;
+  	color: #22264B;
+	font-size: 2.5em;
+}
+
+#modal_content hr.glass-primary, #modal_content hr.sad-primary{
+  padding: 0;
+  border: none;
+  border-top: solid 5px;
+  text-align: center;
+  max-width: 200px;
+  margin: 25px auto 50px;
+  border-color: #22264B;
+}
+
+#modal_content hr.glass-primary:after ,#modal_content hr.sad-primary:after {
+  font-family: FontAwesome;
+  display: inline-block;
+  position: relative;
+  top: -0.8em;
+  font-size: 1.5em;
+  padding: 0 0.25em;
+  background-color: white;
+  color: #22264B;
+}
+
+#modal_content hr.glass-primary:after {
+  	content: "\f000";
+}
+
+#modal_content hr.sad-primary:after {
+	content: "\f119";
+}
+
+#modal_content h2 {
+	margin: 0 0 0 0;
+	font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 1.3em;
+}
+
+#modal_content p {
+	max-width: 75%;
+	margin: 1.2em auto 0;
+	font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 1.5em;
+}
+
+#modal_content nav {font-size: 16px; display:table; width: 282px;}
+#modal_content nav ul {display:table-row; width: 100%; margin:0; padding:0;}
+#modal_content nav li {display: table-cell; text-align: right; width: auto;}
+
+#modal_content nav:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+#modal_content nav small {
+	display: block;
+	text-align: center;
+	color: #ccc;
+	margin: 1em 0 0;
+}
+
+#modal_content nav a.av_btn {
+	display:block;
+	text-align:center;
+	width: 65px;
+	border-radius: 23px;
+	margin:1em auto 0;
+	text-decoration: none;
+	padding:1em;
+	color: #fff;
+	font-family:  "Lobster", cursive;
+	font-size : 1em;
+	text-transform: none;
+	letter-spacing: 0;
+}
+
+#modal_content nav .av_go {
+	background-color: #22264B;
+}
+
+#modal_content nav .av_no {
+	background-color: #EF626C;
+}
+
+#modal_content nav .av_btn:hover {
+	background-color: #CCCCCC;
+}
+
+#modal_content #modal_regret_wrapper nav a.av_btn {
+	margin-top:0;
+	width:130px;
+	font-size: 0.8em;
+}
+
+@media (min-width: 688px) {
+	#modal_content {
+		top: 10em;
+		top: 30vh;
+		left: 30vw;
+		width: 90%;
+		max-width: 500px;
+		height:500px;
+		padding:3em;
+		border-radius: 100%;
+		background-position: center 3em;
+		background-size: 160px auto;
+		font-size: 16px;
+	}
+
+	#modal_content .content_wrapper {
+		margin: 1.5em auto 0;
+		text-align: center;
+	}
+
+	#modal_content h2 {
+		margin: 0 0 0 0;
+		font-size: 1.875em;
+	}
+
+	#modal_content p {
+		font-size: 1em;
+		line-height: 1.9em;
+	}
+
+	#modal_content nav {width: 396px;}
+
+	#modal_content nav a.av_btn {
+		margin:1.6em auto 0;
+		font-size: 1.1em;
+	}
+}

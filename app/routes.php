@@ -41,7 +41,7 @@
 		// Page de connexion
 		['GET|POST', '/Users/connexion/', 'Users#UsersConnexion', 'Users_UsersConnexion'],
 
-		// bouton de deconexion
+		// bouton de déconnexion
 		['GET|POST', '/Users/deconnexion/', 'Users#UsersDeconnexion', 'Users_UsersDeconnexion'],
 
 		// Page profil
@@ -62,4 +62,9 @@
 		['GET|POST', '/admin/updates/', 'Admin#updatecocktail', 'admin_updatecocktail'],
 
 		['GET|POST', '/admin/cocktails/', 'Admin#admincocktails', 'admin_admincocktails'],
+	
+
+		['GET|POST', '/outils/', 'Outils#showOutils', 'outils_showoutils'],
+
+
 	);

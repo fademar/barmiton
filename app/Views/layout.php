@@ -19,10 +19,13 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css">
 
+    <!-- Age verification CSS -->
+    <link href="<?= $this->assetUrl('css/age-verification.css') ?>" rel="stylesheet">
+
     <!-- Custom Fonts -->
     <link href="<?= $this->assetUrl('vendor/font-awesome/css/font-awesome.min.css') ?>" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Raleway" rel="stylesheet">
 
     <!-- CSS principal -->
     <link href="<?= $this->assetUrl('css/style.css') ?>" rel="stylesheet">
@@ -82,7 +85,6 @@
     
     <!-- Navigation -->
         <nav id="mainNav" class="navbar navbar-default navbar-custom">
-
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
@@ -98,42 +100,42 @@
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
-                    <li class="page-scroll">
+                    <li>
                         <a href="<?= $this->url('cocktails_showcocktails') ?>">Cocktails</a>
                     </li>
-                    
-                    <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php if (empty($w_user)) {echo 'Profil';} else {echo $w_user['Prenom'];} ?> <span class="caret"></span></a>
-                      <ul class="dropdown-menu">
-                        <?php 
-                        
-                          if (empty($w_user)) {
-
-                              echo '<li><a href="' . $this->url('Users_UsersConnexion') . '">Se connecter</a></li>';
-                              echo '<li><a href="' . $this->url('Users_UsersInscription') . '">S\'inscrire</a></li>';
-                          }
-                          else {
-                              echo '<li><a href="' . $this->url('Users_UsersProfil') . '">Mon profil</a></li>';
-                              // echo '<li><a href="' . $this->url('Users_UsersFavoris') . '">Mes favoris</a></li>';
-                              echo '<li><a href="' . $this->url('Users_UsersDeconnexion') . '">Se déconnecter</a></li>';
-                          }
-                      
-                        ?>
-                      </ul>
+                    <li>
+                        <a href="">Bar-à-outils</a>
                     </li>
 
-                    <li class="page-scroll">
-                        <a href="#">A propos</a>
+                    <li>
+                        <a href="#">&Agrave; propos</a>
                     </li>
-                    <li class="page-scroll">
+                    <li>
                         <a href="#">Contact</a>
                     </li>
+                    
+                    <?php if (empty($w_user)) : ?>
+                    <li>
+                        <a href="<?= $this->url('Users_UsersConnexion') ?>">Se connecter</a>
+                    </li>
+                    <?php else : ?>
+                    <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i>&nbsp;&nbsp;<?= $w_user['Prenom']; ?> <span class="caret"></span></a>
+                        <ul class="dropdown-menu"> 
+                            <li><a href="<?= $this->url('Users_UsersProfil') ?>">Mon profil</a></li>
+                            <li><a href="<?= $this->url('Favoris_showFavoris') ?>">Mes favoris</a></li>
+                            <li><a href="<?= $this->url('Users_UsersDeconnexion') ?>">Se déconnecter</a></li>
+                          
+                        </ul>
+                    </li>
+                    <?php endif ?>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container-fluid -->
     </nav>
+
 
     <?= $this->section('main_content') ?>
 
@@ -168,8 +170,8 @@
                         </ul>
                     </div>
                     <div class="footer-col col-md-4">
-                        <h3>Barmiton</h3>
-                        <p>Barmiton est le projet de fin de formation de Pierre Météyé, Thibault Pezeron et Fabrice Demarthon, étudiants à l'Ecole Webforce3.</p>
+                        <p>L'abus d'alcool est dangereux pour la santé.</p>
+                        <p>&Agrave; consommer avec modération</p>
                     </div>
                 </div>
             </div>
@@ -198,6 +200,15 @@
    
     <!-- Bootstrap Core JavaScript -->
     <script src="<?= $this->assetUrl('vendor/bootstrap/js/bootstrap.min.js') ?>"></script>
+    
+    <!-- Jquery Cookie -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script> 
+    
+    <!-- Age verification JS -->
+    <script src="<?= $this->assetUrl('js/age-verification.js') ?>"></script>
+    
+    <!-- Cookie Bar JS -->
+    <script src="<?= $this->assetUrl('js/jquery.cookieBar.min.js') ?>"></script>
 
     <!-- Plugin JavaScript -->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>

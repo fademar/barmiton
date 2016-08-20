@@ -95,6 +95,7 @@ class CocktailsController extends Controller
 
 		$objetFavoris = new FavorisModel();
 		$objetFavoris->setTable('favoris');
+		$objetFavoris->setPrimaryKey('idFavoris');
 
 			if (isset($_POST['ajouterFavoris']))
 			{
@@ -108,7 +109,6 @@ class CocktailsController extends Controller
 					'idMembres' => $idMembres
 				);
 				
-
 				$objetFavoris->insert($data);
 
 					sleep(1);

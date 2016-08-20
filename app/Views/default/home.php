@@ -3,6 +3,7 @@
 <?php $this->start('main_content') ?>
 
  <!-- Header -->
+    <div id="cookie-message"></div>
     <header id="home">
         <div class="container">
             <div class="row">

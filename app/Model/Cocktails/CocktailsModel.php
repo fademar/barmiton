@@ -2,6 +2,9 @@
 
 namespace Model\Cocktails;
 
+use Model\Traductions\TraductionsModel;
+
+
 class CocktailsModel extends \W\Model\Model 
 {
 	
@@ -51,10 +54,7 @@ class CocktailsModel extends \W\Model\Model
 			$_list			= json_decode($_json)->result;
 			$_totalresult 	= json_decode($_json)->totalResult;
 
-			if (property_exists(json_decode($_json), 'next')) { $_next = json_decode($_json)->next;} else { $_next='';}
-			if (property_exists(json_decode($_json), 'previous')) { $_previous = json_decode($_json)->previous;} else { $_previous='';}
-
-			$_data 			= ["list" => $_list, 'totalresult' => $_totalresult, 'next' => $_next, 'previous' => $_previous];
+			$_data 			= ["list" => $_list, 'totalresult' => $_totalresult];
 			
 			return $_data;
 
@@ -142,14 +142,12 @@ class CocktailsModel extends \W\Model\Model
 	} //fin de function fetchdata
 
 
-
-
-
 	
 	public function getcocktaildata($urlpart)
 	{
 
 		$this->setTable('cocktails');
+
 		/**************** Récupération des données ******************/
 		$_jsonurl = 'https://addb.absolutdrinks.com/drinks/' . $urlpart . '/?apiKey=2c758736e5f844bdb9d39308df889c6d';
 		$_json = file_get_contents($_jsonurl);
@@ -165,20 +163,14 @@ class CocktailsModel extends \W\Model\Model
 		if (empty($_cocktaildb)) {
 
 
-			$descriptionPlain = rawurlencode(htmlentities($_cocktailapi->descriptionPlain, ENT_QUOTES));
-
-			$urlgoogle 		= 'https://www.googleapis.com/language/translate/v2?key=AIzaSyBmL7IRhjcpPBeqg3h2SYWZywj02qr3X94&q='. $descriptionPlain. '&source=en&target=fr';
-
-			$jsontranslate 	= file_get_contents($urlgoogle);
-			$datagoogle 	= json_decode($jsontranslate);
-
-			$descriptiontraduite = $datagoogle->data->translations[0]->translatedText;
+			$traduction = new TraductionsModel();
+			$descriptiontraduite = $traduction->getTrad($_cocktailapi->descriptionPlain);			
 
 			$datafr = array(
 					'idCocktailApi' => $urlpart,
 					'nomCocktail' 	=> $_cocktailapi->name,
 					'description'	=> $descriptiontraduite,
-					'langue' 		=> 'fr'
+					'langue' 		=> 'en'
 					);
 
 			$this->insert($datafr);
@@ -246,6 +238,10 @@ class CocktailsModel extends \W\Model\Model
 
 
 
+
+
+
+
 	/************************ Récupération d'une sélection aléatoire de cocktails *****************************/
 	
 	public function getRandomCocktail($data, $n) {
@@ -269,6 +265,8 @@ class CocktailsModel extends \W\Model\Model
 		return $_cocktailselection;
 
 	} // Fin de fonction
+
+
 
 
 
@@ -304,6 +302,8 @@ class CocktailsModel extends \W\Model\Model
 		return $_cocktaillist;
 
 	} //fin de function getbestcocktail
+
+
 
 
 

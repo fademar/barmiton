@@ -16,10 +16,14 @@
     <!-- Bootstrap Core CSS -->
     <link href="<?= $this->assetUrl('vendor/bootstrap/css/bootstrap.css') ?>" rel="stylesheet">
 
+    <!-- Age Verification CSS -->
+    <link href="<?= $this->assetUrl('css/age-verification.css') ?>" rel="stylesheet">
+
+
     <!-- Custom Fonts -->
     <link href="<?= $this->assetUrl('vendor/font-awesome/css/font-awesome.min.css') ?>" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Raleway" rel="stylesheet">
 
     <!-- CSS principal -->
     <link href="<?= $this->assetUrl('css/style.css') ?>" rel="stylesheet">
@@ -36,154 +40,6 @@
 
 </head>
 
-<!-- <body id="page-top" class="index">
-    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-
-
-  <script>
-    function onSignIn(googleUser) {
-    // Useful data for your client-side scripts:
-    var profile = googleUser.getBasicProfile();
-    console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-    console.log('Full Name: ' + profile.getName());
-    console.log('Given Name: ' + profile.getGivenName());
-    console.log('Family Name: ' + profile.getFamilyName());
-    console.log("Image URL: " + profile.getImageUrl());
-    console.log("Email: " + profile.getEmail());
-
-    // The ID token you need to pass to your backend:
-    var id_token = googleUser.getAuthResponse().id_token;
-    console.log("ID Token: " + id_token);
-    };
-
-  </script>
-
-  <a href="#" onclick="signOut();">Sign out</a>
-
-  <script>
-    function signOut()
-    {
-      var auth2 = gapi.auth2.getAuthInstance();
-      auth2.signOut().then(function ()
-      {
-        console.log('User signed out.');
-      });
-    }
-  </script>
-
-  <script>
-    window.fbAsyncInit = function()
-    {
-      FB.init({
-      appId      : '564281287093366',
-      xfbml      : true,
-      version    : 'v2.7'
-      });
-    };
-
-    (function(d, s, id)
-    {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) {return;}
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/en_US/sdk.js";
-      fjs.parentNode.insertBefore(js, fjs);
-    }
-    (document, 'script', 'facebook-jssdk'));
-  </script>
-
-  <script>
-    // This is called with the results from from FB.getLoginStatus().
-    function statusChangeCallback(response) {
-      console.log('statusChangeCallback');
-      console.log(response);
-      // The response object is returned with a status field that lets the
-      // app know the current login status of the person.
-      // Full docs on the response object can be found in the documentation
-      // for FB.getLoginStatus().
-      if (response.status === 'connected') {
-        // Logged into your app and Facebook.
-        testAPI();
-      } else if (response.status === 'not_authorized') {
-        // The person is logged into Facebook, but not your app.
-        document.getElementById('status').innerHTML = 'Please log ' +
-          'into this app.';
-      } else {
-        // The person is not logged into Facebook, so we're not sure if
-        // they are logged into this app or not.
-        document.getElementById('status').innerHTML = 'Please log ' +
-          'into Facebook.';
-      }
-    }
-
-    // This function is called when someone finishes with the Login
-    // Button.  See the onlogin handler attached to it in the sample
-    // code below.
-    function checkLoginState() {
-      FB.getLoginStatus(function(response) {
-        statusChangeCallback(response);
-      });
-    }
-
-
-    window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '564281287093366',
-      cookie     : true,  // enable cookies to allow the server to access 
-                          // the session
-      xfbml      : true,  // parse social plugins on this page
-      version    : 'v2.5' // use graph api version 2.5
-    });
-
-    // Now that we've initialized the JavaScript SDK, we call 
-    // FB.getLoginStatus().  This function gets the state of the
-    // person visiting this page and can return one of three states to
-    // the callback you provide.  They can be:
-    //
-    // 1. Logged into your app ('connected')
-    // 2. Logged into Facebook, but not your app ('not_authorized')
-    // 3. Not logged into Facebook and can't tell if they are logged into
-    //    your app or not.
-    //
-    // These three cases are handled in the callback function.
-
-    FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
-    });
-
-    };
-
-    // Load the SDK asynchronously
-    (function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/en_US/sdk.js";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-
-    // Here we run a very simple test of the Graph API after login is
-    // successful.  See statusChangeCallback() for when this call is made.
-    function testAPI() {
-      console.log('Welcome!  Fetching your information.... ');
-      FB.api('/me', function(response) {
-        console.log('Successful login for: ' + response.name);
-        document.getElementById('status').innerHTML =
-          'Thanks for logging in, ' + response.name + '!';
-      });
-    }
-  </script>
-
-  <div
-    class="fb-like"
-    data-share="true"
-    data-width="450"
-    data-show-faces="true">
-  </div>
-
-  <div id="status"></div>
-
-  <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button> -->
     <!-- Navigation -->
 
         <nav id="mainNav" class="navbar navbar-default navbar-custom">
@@ -202,36 +58,35 @@
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
-                    <li class="page-scroll">
+                    <li>
                         <a href="<?= $this->url('cocktails_showcocktails') ?>">Cocktails</a>
                     </li>
-                    
-                    <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php if (empty($w_user)) {echo 'Profil';} else {echo $w_user['Prenom'];} ?> <span class="caret"></span></a>
-                      <ul class="dropdown-menu">
-                        <?php 
-                        
-                          if (empty($w_user)) {
-
-                              echo '<li><a href="' . $this->url('Users_UsersConnexion') . '">Se connecter</a></li>';
-                              echo '<li><a href="' . $this->url('Users_UsersInscription') . '">S\'inscrire</a></li>';
-                          }
-                          else {
-                              echo '<li><a href="' . $this->url('Users_UsersProfil') . '">Mon profil</a></li>';
-                              // echo '<li><a href="' . $this->url('Users_UsersFavoris') . '">Mes favoris</a></li>';
-                              echo '<li><a href="' . $this->url('Users_UsersDeconnexion') . '">Se déconnecter</a></li>';
-                          }
-                      
-                        ?>
-                      </ul>
+                    <li>
+                        <a href="">Bar-à-outils</a>
                     </li>
-
-                    <li class="page-scroll">
-                        <a href="#">A propos</a>
+                    <li>
+                        <a href="#">&Agrave; propos</a>
                     </li>
-                    <li class="page-scroll">
+                    <li>
                         <a href="#">Contact</a>
                     </li>
+
+                    <?php if (empty($w_user)) : ?>
+                    <li>
+                        <a href="<?= $this->url('Users_UsersConnexion') ?>">Se connecter</a>
+                    </li>
+                    <?php else : ?>
+                    <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i>&nbsp;&nbsp;<?= $w_user['Prenom']; ?> <span class="caret"></span></a>
+                        <ul class="dropdown-menu"> 
+                            <li><a href="<?= $this->url('Users_UsersProfil') ?>">Mon profil</a></li>
+                            <li><a href="<?= $this->url('Favoris_showFavoris') ?>">Mes favoris</a></li>
+                            <li><a href="<?= $this->url('Users_UsersDeconnexion') ?>">Se déconnecter</a></li>
+                          
+                        </ul>
+                    </li>
+                    <?php endif ?>
+
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -272,8 +127,8 @@
                         </ul>
                     </div>
                     <div class="footer-col col-md-4">
-                        <h3>Barmiton</h3>
-                        <p>Barmiton est le projet de fin de formation de Pierre Météyé, Thibault Pezeron et Fabrice Demarthon, étudiants à l'Ecole Webforce3</p>
+                        <p>L'abus d'alcool est dangereux pour la santé.</p>
+                        <p>&Agrave; consommer avec modération</p>
                     </div>
                 </div>
             </div>
@@ -299,8 +154,15 @@
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>    
+    
     <!-- Bootstrap Core JavaScript -->
     <script src="<?= $this->assetUrl('vendor/bootstrap/js/bootstrap.min.js') ?>"></script>
+
+    <!-- Jquery Cookie -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script> 
+
+    <!-- Age verification JS -->
+    <script src="<?= $this->assetUrl('js/age-verification.js') ?>"></script>
 
     <!-- Plugin JavaScript -->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
