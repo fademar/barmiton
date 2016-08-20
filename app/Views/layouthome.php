@@ -39,6 +39,7 @@
     <!-- <script src="https://apis.google.com/js/platform.js" async defer></script> -->
 
 </head>
+<body>
 
     <!-- Navigation -->
 
@@ -62,7 +63,7 @@
                         <a href="<?= $this->url('cocktails_showcocktails') ?>">Cocktails</a>
                     </li>
                     <li>
-                        <a href="">Bar-à-outils</a>
+                        <a href="<?= $this->url('outils_showoutils') ?>">Bar-à-outils</a>
                     </li>
                     <li>
                         <a href="#">&Agrave; propos</a>
@@ -73,7 +74,7 @@
 
                     <?php if (empty($w_user)) : ?>
                     <li>
-                        <a href="<?= $this->url('Users_UsersConnexion') ?>">Se connecter</a>
+                        <a href="#connexion" data-toggle="modal">Se connecter</a>
                     </li>
                     <?php else : ?>
                     <li class="dropdown">
@@ -81,7 +82,7 @@
                         <ul class="dropdown-menu"> 
                             <li><a href="<?= $this->url('Users_UsersProfil') ?>">Mon profil</a></li>
                             <li><a href="<?= $this->url('Favoris_showFavoris') ?>">Mes favoris</a></li>
-                            <li><a href="<?= $this->url('Users_UsersDeconnexion') ?>">Se déconnecter</a></li>
+                            <li><a href="<?= $this->url('Users_UsersDeconnexion')  . '?url=' . $w_current_route ?>">Se déconnecter</a></li>
                           
                         </ul>
                     </li>
@@ -150,6 +151,84 @@
             <i class="fa fa-chevron-up"></i>
         </a>
     </div>
+
+     <!-- Portfolio Modals -->
+    <div class="portfolio-modal modal fade" id="connexion" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>Connectez-vous à votre compte</h2>
+                            <hr class="star-primary">
+                              <form method="POST" action="../Users/connexion/">
+
+                                <div class="form-group">
+                                  <label for="emailId">Email</label>
+                                  <input class="form-control" type="email" id="emailId" name="email" required>
+                                </div>
+
+                                <div class="form-group">
+                                  <label for="motDePasseId">Mot de passe</label>
+                                  <input class="form-control" type="password" id="motDePasseId" name="motDePasse" required>
+                                </div>
+
+                                <div class="form-group">
+                                  <input class="form-control" type="submit" name="connexion" value="Connexion" class="btn">
+                                </div>
+                                <input type="hidden" name="url" value="<?= $w_current_route ?>" >
+                              </form>                
+                
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<header>
+    <div class="container">
+        <div class="row center">
+            <h2 class="text-center">Connexion</h2>
+    </div>
+  </div>
+</header>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-12 text-center">
+                    
+            <form method="POST" action="">
+
+            <div class="form-group">
+              <label for="emailId">Email</label>
+              <input class="form-control" type="email" id="emailId" name="email" required>
+            </div>
+
+            <div class="form-group">
+              <label for="motDePasseId">Mot de passe</label>
+              <input class="form-control" type="password" id="motDePasseId" name="motDePasse" required>
+            </div>
+
+            <div class="form-group">
+              <input class="form-control" type="submit" name="connexion" value="Connexion" class="btn">
+            </div>
+
+          </form>                
+                
+                
+            </div>
+        </div>
+    </div>
+</section>
 
 
     <!-- jQuery -->

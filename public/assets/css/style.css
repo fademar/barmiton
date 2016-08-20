@@ -520,7 +520,7 @@ fieldset[disabled] .btn-success.active {
   -webkit-box-shadow: none;
   box-shadow: none;
   border: none;
-  min-height: 100%;
+  min-height: 50%;
   padding: 100px 0;
   text-align: center;
 }
@@ -806,4 +806,3 @@ nav .dropdown-menu {
 nav .dropdown-menu li {
   color: #22264B;
 }
-

@@ -198,6 +198,30 @@ class CocktailsController extends Controller
 			$assocIdMembre="";
 		}
 
+
+		// Recette pas-à-pas
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		$this->show('cocktail/fiche_cocktail', ['dataCocktail' => $dataCocktail, 'listecommentaires' => $recupListeDesCommentaires, 'tabUser' => $assocIdMembre]);
 	}
 

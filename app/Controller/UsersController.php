@@ -79,6 +79,8 @@ class UsersController extends Controller
 
 		if ($_POST)
 		{
+			
+
 			$db = new UsersAuthentificationModel;
 
 			if (isset($_POST['email']) && isset($_POST['motDePasse']))
@@ -90,27 +92,27 @@ class UsersController extends Controller
 
 				if ($id > 0)
 				{
+					
 					$users = new UsersModel;
 
 					$db->logUserIn($users->find($id));
-
-					$this->redirectToRoute('default_home');
 
 				}
 			}
 		}
 
-		$this->show('users/usersconnexion');
+		$this->redirectToRoute($_POST['url']);
 	}
 
 	// deconnexion
 
 	public function UsersDeconnexion()
 	{
+			
 			$db = new UsersAuthentificationModel;
 			$db->logUserOut();
 
-			$this->redirectToRoute('default_home');
+			$this->redirectToRoute($_GET['url']);
 	}
 
 	public function UsersProfil()
@@ -168,4 +170,13 @@ class UsersController extends Controller
 
 		$this->show('Users/changeusername');
 	}
+
+
+	public function showfacebook() {
+
+
+		$this->show('users/facebookconnect');
+	}
+
+
 }

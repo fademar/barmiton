@@ -86,8 +86,6 @@
                     <h2>Nos suggestions</h2>
                     <hr class="glass-grey">
 
-                  
-
                 </div>
             </div>
             <div class="row">

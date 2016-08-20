@@ -45,44 +45,6 @@
 
 <body id="page-top" class="index">
 
-
-    <!-- <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div> -->
-
-
-  <script>
-    // function onSignIn(googleUser) {
-    // // Useful data for your client-side scripts:
-    // var profile = googleUser.getBasicProfile();
-    // console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-    // console.log('Full Name: ' + profile.getName());
-    // console.log('Given Name: ' + profile.getGivenName());
-    // console.log('Family Name: ' + profile.getFamilyName());
-    // console.log("Image URL: " + profile.getImageUrl());
-    // console.log("Email: " + profile.getEmail());
-
-    // // The ID token you need to pass to your backend:
-    // var id_token = googleUser.getAuthResponse().id_token;
-    // console.log("ID Token: " + id_token);
-    // };
-
-  </script>
-
-  <!-- <a href="#" onclick="signOut();">Sign out</a> -->
-
-  <script>
-    // function signOut()
-    // {
-    //   var auth2 = gapi.auth2.getAuthInstance();
-    //   auth2.signOut().then(function ()
-    //   {
-    //     console.log('User signed out.');
-    //   });
-    // }
-  </script>
-
-  
-
-    
     <!-- Navigation -->
         <nav id="mainNav" class="navbar navbar-default navbar-custom">
         <div class="container">
@@ -104,7 +66,7 @@
                         <a href="<?= $this->url('cocktails_showcocktails') ?>">Cocktails</a>
                     </li>
                     <li>
-                        <a href="">Bar-à-outils</a>
+                        <a href="<?= $this->url('outils_showoutils') ?>">Bar-à-outils</a>
                     </li>
 
                     <li>
@@ -116,7 +78,7 @@
                     
                     <?php if (empty($w_user)) : ?>
                     <li>
-                        <a href="<?= $this->url('Users_UsersConnexion') ?>">Se connecter</a>
+                        <a href="#connexion" data-toggle="modal">Se connecter</a>
                     </li>
                     <?php else : ?>
                     <li class="dropdown">
@@ -124,7 +86,7 @@
                         <ul class="dropdown-menu"> 
                             <li><a href="<?= $this->url('Users_UsersProfil') ?>">Mon profil</a></li>
                             <li><a href="<?= $this->url('Favoris_showFavoris') ?>">Mes favoris</a></li>
-                            <li><a href="<?= $this->url('Users_UsersDeconnexion') ?>">Se déconnecter</a></li>
+                            <li><a href="<?= $this->url('Users_UsersDeconnexion') . '?url=' . $w_current_route ?>">Se déconnecter</a></li>
                           
                         </ul>
                     </li>
@@ -194,7 +156,47 @@
         </a>
     </div>
 
-    
+     <!-- Portfolio Modals -->
+    <div class="portfolio-modal modal fade" id="connexion" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>Connectez-vous à votre compte</h2>
+                            <hr class="star-primary">
+                              <form method="POST" action="../Users/connexion/">
+
+                                <div class="form-group">
+                                  <label for="emailId">Email</label>
+                                  <input class="form-control" type="email" id="emailId" name="email" required>
+                                </div>
+
+                                <div class="form-group">
+                                  <label for="motDePasseId">Mot de passe</label>
+                                  <input class="form-control" type="password" id="motDePasseId" name="motDePasse" required>
+                                </div>
+
+                                <div class="form-group">
+                                  <input class="form-control" type="submit" name="connexion" value="Connexion" class="btn">
+                                </div>
+                                <input type="hidden" name="url" value="<?= $w_current_route ?>" >
+                              </form>                
+                
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>    
    
