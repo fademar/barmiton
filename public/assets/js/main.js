@@ -33,8 +33,6 @@ $(document).ready(function() {
 	});
 
 
-
-    $('#cookie-message').cookieBar();
   
 
 	// var ias = $.ias({

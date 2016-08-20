@@ -43,7 +43,7 @@
 
     <!-- Navigation -->
 
-        <nav id="mainNav" class="navbar navbar-default navbar-custom">
+        <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
@@ -245,25 +245,6 @@
 
     <!-- Plugin JavaScript -->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-
-    <!-- Bloodhound JS -->
-    <script src="<?= $this->assetUrl('js/bloodhound.min.js') ?>"></script>
-
-    <!-- handlebars JS -->
-    <script src="<?= $this->assetUrl('js/handlebars.min.js') ?>"></script>
-
-    <!-- Typeahead JS -->
-    <script src="<?= $this->assetUrl('js/typeahead.jquery.min.js') ?>"></script>
-    
-    <!-- Snap SVG JS -->
-    <script src="<?= $this->assetUrl('vendor/snap/snap.svg-min.js') ?>"></script>
-
-    <!-- Contact Form JavaScript -->
-    <script src="<?= $this->assetUrl('js/jqBootstrapValidation.js') ?>"></script>
-    <script src="<?= $this->assetUrl('js/contact_me.js') ?>"></script>
-
-    <!-- Infinite Scroll Ajax -->
-    <script src="<?= $this->assetUrl('js/jquery-ias.min.js') ?>"></script>
 
     <!-- Theme JavaScript -->
     <script src="<?= $this->assetUrl('js/theme.min.js') ?>"></script>

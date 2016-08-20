@@ -79,8 +79,8 @@ hr.glass-grey:after {
 }
 header#home {
   text-align: center;
-  background: #EF626C;
-  color: white;
+  background: #47BDCF;
+  color: #ffffff;
   height: 100vh;
 }
 header#recherche {
@@ -679,15 +679,6 @@ fieldset[disabled] .btn-success.active {
   display: block;
 }
 
-.svgbox {
-  display: inline-block;
-  position: relative;
-  width: 70%;
-  padding-bottom: 100%;
-  vertical-align: middle;
-  overflow: hidden;
-}
-
 
 .oops {
   font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;;
@@ -707,7 +698,7 @@ fieldset[disabled] .btn-success.active {
 }
 
 
-/* CSS to LESS */
+/* CSS notes */
 
 .star-rating {
   font-size: 0;
