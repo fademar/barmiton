@@ -21,6 +21,9 @@
 
     <!-- Age verification CSS -->
     <link href="<?= $this->assetUrl('css/age-verification.css') ?>" rel="stylesheet">
+
+    <!-- Login CSS -->
+    <link href="<?= $this->assetUrl('css/login-register.css') ?>" rel="stylesheet">
     
     <!-- Hipsters Cards CSS -->
     <link href="<?= $this->assetUrl('css/hipster_cards.css') ?>" rel="stylesheet">
@@ -81,7 +84,7 @@
                     
                     <?php if (empty($w_user)) : ?>
                     <li>
-                        <a href="#connexion" data-toggle="modal">Se connecter</a>
+                        <a data-toggle="modal" href="javascript:void(0)" onclick="openLoginModal();">Se connecter</a>
                     </li>
                     <?php else : ?>
                     <li class="dropdown">
@@ -198,10 +201,60 @@
         </div>
     </div>
 
+         <div class="modal fade login" id="loginModal">
+              <div class="modal-dialog login animated">
+                  <div class="modal-content">
+                     <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Connectez-vous</h4>
+                    </div>
+                    <div class="modal-body">  
+                        <div class="box">
+                             <div class="content">
+                                <div class="error"></div>
+                                <div class="form loginBox">
+                                    <form method="post" action="/login" accept-charset="UTF-8">
+                                    <input id="email" class="form-control" type="text" placeholder="Email" name="email">
+                                    <input id="password" class="form-control" type="password" placeholder="Password" name="password">
+                                    <input class="btn btn-default btn-login" type="button" value="Login" onclick="loginAjax()">
+                                    </form>
+                                </div>
+                             </div>
+                        </div>
+                        <div class="box">
+                            <div class="content registerBox" style="display:none;">
+                             <div class="form">
+                                <form method="post" html="{:multipart=>true}" data-remote="true" action="/register" accept-charset="UTF-8">
+                                <input id="email" class="form-control" type="text" placeholder="Email" name="email">
+                                <input id="password" class="form-control" type="password" placeholder="Password" name="password">
+                                <input id="password_confirmation" class="form-control" type="password" placeholder="Repeat Password" name="password_confirmation">
+                                <input class="btn btn-default btn-register" type="submit" value="Create account" name="commit">
+                                </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="forgot login-footer">
+                            <span>Pas encore de compte ? 
+                                 <a href="javascript: showRegisterForm();">Inscrivez-vous</a> !
+                            </span>
+                        </div>
+                        <div class="forgot register-footer" style="display:none">
+                             <span>Vous avez déjà un compte ? </span>
+                             <a href="javascript: showLoginForm();">Connectez-vous.</a>
+                        </div>
+                    </div>        
+                  </div>
+              </div>
+          </div>
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>    
    
+    <!-- JQuery UI <-->
+    <script src="<?= $this->assetUrl('js/jquery-ui.custom.min.js') ?>"></script>
+
     <!-- Bootstrap Core JavaScript -->
     <script src="<?= $this->assetUrl('vendor/bootstrap/js/bootstrap.min.js') ?>"></script>
     
@@ -212,6 +265,9 @@
 
     <!-- Age verification JS -->
     <script src="<?= $this->assetUrl('js/age-verification.js') ?>"></script>
+
+     <!-- Login JS -->
+    <script src="<?= $this->assetUrl('js/login-register.js') ?>"></script>
  
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
@@ -237,7 +293,7 @@
     <!-- Main -->
     <script src="<?= $this->assetUrl('js/main.js') ?>"></script>
 
-    
+
 
 </body>
 

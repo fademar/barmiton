@@ -13,11 +13,24 @@
         </div>
         <div class="row">
             <?php foreach ($outils as $outil): ?>
-                <div class="col-xs-6 col-md-3 portfolio-item">     
-                    <a href="<?= $this->url("outils_showficheoutil", ["id" => $outil['idapi']]); ?>">
-                        <img src="<?= $this->assetUrl('img/' . $outil['idapi']. '.jpg') ?>" class="img-responsive img-rounded img-thumbnail" alt="">
-                        <h3><?= $outil['nom']?></h3>
-                    </a>
+                <div class="card-box col-md-3 col-sm-6">
+                    <div class="card" data-mh="searchgroup">                            
+                        <div class="header">
+                            <img classs="img-responsive" src="<?= $this->assetUrl('img/' . $outil['idapi']. '.jpg') ?>"/>
+                            <div class="filter"></div>
+
+                            <div class="actions">
+                                <button class="btn btn-round btn-fill btn-neutral btn-modern">
+                                    <a href="<?= $this->url("outils_showficheoutil", ["id" => $outil['idapi']]); ?>">
+                                        Détails</a>
+                                    </button>
+                            </div>
+                        </div>
+
+                        <div class="content">
+                            <h4 class="title"><a href="<?= $this->url("outils_showficheoutil", ["id" => $outil['idapi']]); ?>"><?= $outil['nom']?></a></h4>
+                        </div>                                           
+                    </div> <!-- end card -->
                 </div>
             <?php endforeach ?>
         </div>

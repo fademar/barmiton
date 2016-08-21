@@ -19,6 +19,9 @@
     <!-- Age Verification CSS -->
     <link href="<?= $this->assetUrl('css/age-verification.css') ?>" rel="stylesheet">
 
+    <!-- Login CSS -->
+    <link href="<?= $this->assetUrl('css/login-register.css') ?>" rel="stylesheet">
+
     <!-- Hipsters Cards CSS -->
     <link href="<?= $this->assetUrl('css/hipster_cards.css') ?>" rel="stylesheet">
     
@@ -198,6 +201,9 @@
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>    
     
+    <!-- JQuery UI <-->
+    <script src="<?= $this->assetUrl('js/jquery-ui.custom.min.js') ?>"></script>
+
     <!-- Bootstrap Core JavaScript -->
     <script src="<?= $this->assetUrl('vendor/bootstrap/js/bootstrap.min.js') ?>"></script>
 
@@ -206,6 +212,9 @@
 
     <!-- Age verification JS -->
     <script src="<?= $this->assetUrl('js/age-verification.js') ?>"></script>
+
+     <!-- Login JS -->
+    <script src="<?= $this->assetUrl('js/login-register.js') ?>"></script>
 
     <!-- Moteur de recherche de la home -->
 
