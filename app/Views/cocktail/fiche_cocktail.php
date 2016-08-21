@@ -3,131 +3,130 @@
 <?php $this->start('main_content') ?>
 
 <!-- section de recherche --> 
-<section id="fiche">
+<section>
     <div class="container">
         <div class="row">
-            <div class="col-xs-6 col-md-6 text-center">
-                <h2><?= $dataCocktail['name']?></h2>
+            <div class="col-xs-12 col-md-12 text-center">
+                <h1><?= $dataCocktail['name']?></h1>
                 <hr class="glass-primary">
-                <h2>Note du cocktail : 
+                    <?php if($dataCocktail["note"] > 0) : ?>
+                        <h3>Note : <?= round($dataCocktail["note"] / $dataCocktail["compteurnote"], PHP_ROUND_HALF_UP) ?>/5</h3> 
 
-                    <?php 
-
-                    if($dataCocktail["note"] > 0) :
-                        echo round($dataCocktail["note"] / $dataCocktail["compteurnote"], PHP_ROUND_HALF_UP) . "/5"; 
-
-                    else :
-                        echo "<p> Pas encore de note pour ce cocktail.</p>";
-                        
-                    endif;
-
-                    ?>
-                    
-                </h2>
-
+                    <?php else : ?>
+                        <p>Ce cocktail n'a pas encore été noté. Soyez le premier !</p>                        
+                    <?php endif ?>
             </div>
         </div>
         <div class="row">
-            <div id="" class="col-xs-6 .col-md-6 text-center">
-                <img src="<?= $dataCocktail['imgurlmodal']?>">
-            </div>
-
-                <h3>Ingrédients</h3>
-                    <p><?php
-
-
-                        foreach($dataCocktail['ingredients'] as $element){
-                            echo $element . '<br />';
-                        }
-
-                        ?>
-                    </p>
-                
-                <form method="POST">
-                   <input type="hidden" name="iddrink" value="<?php echo $dataCocktail['id']; ?>" />
-                   <input type="submit" id="confirmFavoris" class="btn btn-primary btn-lg" name="ajouterFavoris" value="Ajouter aux favoris">
-                </form>
-                <h3>Recette</h3>
-                <p><?= $dataCocktail['description']?></p>
-
-
-
-
-                <div class="row">
-
-
-                <div class="rating">
-
-                     <form method="POST">
-
-                      <span class="star-rating">
-                        <!-- <input type="hidden" name="compteurnote" value="1"><i></i> -->
-                        <input type="hidden" name="iddrink" value="<?php echo $dataCocktail['id']; ?>" />
-                        <input type="radio" name="note" value="1"><i></i>
-                        <input type="radio" name="note" value="2"><i></i>
-                        <input type="radio" name="note" value="3"><i></i>
-                        <input type="radio" name="note" value="4"><i></i>
-                        <input type="radio" name="note" value="5"><i></i>
-                      </span>
-                        <span><input type="submit" id="confirmNotation" class="btn btn-primary btn-lg" name="noter" value="Noter"></span>
-
-                     </form>
+            <div class="col-xs-12 col-md-12">
+                <div class="col-xs-12 col-md-6">
+                    <img src="<?= $dataCocktail['imgurlmodal']?>">
                 </div>
-            </div>
+                <div class="col-xs-12 col-md-6 pull-middle"> 
+                    <h2>Ingrédients</h2>
+                    <?php foreach($dataCocktail['ingredients'] as $element) : ?>
+                        <p><?= $element ?></p>
+                    <?php endforeach ?>
 
-                <div id="video">
-                    <h3 class="h3demonstration">Démonstration</h3>
+                    
 
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/<?= $dataCocktail['video']?>"frameborder="0" allowfullscreen></iframe>
+                    <h2>Recette</h2>
+                    <p><?= $dataCocktail['description']?><?php if ($dataCocktail['langue'] == 'en') { echo '<p class="small note">Note : Ce texte a été traduit automatiquement par Google. Notre équipe met tout en oeuvre pour l\'améliorer.</p>';} ?></p>
+                        
+                    <div>
+                        <?php if (empty($w_user)) : ?><p class="small note"><a href="#connexion" data-toggle="modal">Connectez-vous</a> à votre compte ou <a href="<?= $this->url('Users_UsersInscription')?>">inscrivez-vous</a> pour enregistrer ce cocktail dans vos favoris ou lui attribuer une note.</p><?php endif ?>
+                        
+                        <form method="POST">
+                            <button type="submit" id="confirmFavoris" class="btn btn-default btn-circle btn-lg" name="ajouterFavoris" <?php if (empty($w_user)) {echo 'disabled';} ?> ><i class="fa fa-heart" aria-hidden="true"></i></button>
+                            <input type="hidden" name="iddrink" value="<?php echo $dataCocktail['id']; ?>" />
+                            <span class="star-rating">
+                                <input type="hidden" name="iddrink" value="<?php echo $dataCocktail['id']; ?>" />
+                                <input type="radio" name="note" value="1"><i></i>
+                                <input type="radio" name="note" value="2"><i></i>
+                                <input type="radio" name="note" value="3"><i></i>
+                                <input type="radio" name="note" value="4"><i></i>
+                                <input type="radio" name="note" value="5"><i></i>
+                            </span>
+                            <span><input type="submit" id="confirmNotation" class="btn btn-default btn-sm" name="noter" value="Noter"></span>
+                            
+                        </form>
+                    </div>
                 </div>
-            
-            <div>
-
-                <h3 id="avis">Donnez votre avis sur le <?= $dataCocktail['name']?> !</h3>
-
-                <form method="POST" id="formComment">
-                    <textarea class="form-control" rows="4" name="commentaireCocktail"></textarea>
-                    <input type="submit" class="btn btn-primary btn-lg" name="commenter" value="commenter" id="commenter">
-                </form>
-
-
-            
-                                  
-                                        <?php 
-
-            if (!empty($listecommentaires)) {            
-            foreach ($listecommentaires as $key => $value) {
-               echo'<div class="row">';
-                echo'<div class="col-sm-1">';
-                    echo'<div class="thumbnail">';
-                    echo'<img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">';
-                    echo'</div><!-- /thumbnail -->';
-                echo'</div><!-- /col-sm-1 -->';
-                
-                echo'<div class="col-sm-8">';
-                    echo'<div class="panel panel-default">';
-                        echo'<div class="panel-heading">';
-                echo '<strong>'.$tabUser['username'].'</strong>';
-                echo'</div>';
-                echo'<div class="panel-body">';
-                echo $value['text'];
-                echo'</div>';
-                // var_dump($key);
-                // var_dump($tabUser['username']);
-                // var_dump($value);
-                echo'</div><!-- /panel panel-default -->';
-                                  echo'</div><!-- /col-sm-5 -->';
-                                  echo "</div>";
-            }
-            }
-
-                                        ?>
-                                    
-                    
-                    
             </div>
         </div>
-            
+
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+
+                <h2 class="text-center">Recette pas-à-pas</h2>
+                <ul class="timeline">
+                    <?php  foreach ($recette as $etape) : ?>
+                            <li <?php if (($etape['ordre'])%2 == 0) { echo 'class="timeline-inverted"';} ?>>
+                                <div class="timeline-badge"><?= $etape['ordre'] ?></div>
+                                <div class="timeline-panel">
+                                    <div class="timeline-heading">
+                                        <h3 class="timeline-title"><?= $etape['texte'] ?></h3>
+                                    </div>
+                                    <div class="timeline-body">
+                                        <p><?= $etape['description'] ?></p>
+                                        <?php if ($etape['langue'] == 'en') { echo '<p class="small note">Note : Ce texte a été traduit automatiquement par Google. Notre équipe met tout en oeuvre pour l\'améliorer.</p>';} ?>
+                                    </div>
+                                </div>
+                            </li>
+                    <?php endforeach ?>
+                </ul> 
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-md-12 text-center">
+                <h2>Démonstration</h2>
+                <div class="video">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/<?= $dataCocktail['video']?>" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="row">
+            <div class="col-xs-12 col-md-12 text-center">
+                <h2>Donnez votre avis sur le <?= $dataCocktail['name']?> !</h2>
+                <form method="POST" id="formComment">
+                    <?php if (empty($w_user)) : ?><p class="small note"><a href="#connexion" data-toggle="modal">Connectez-vous</a> à votre compte ou <a href="<?= $this->url('Users_UsersInscription')?>">inscrivez-vous</a> pour soumettre un commentaire.</p><?php endif ?>
+                    <textarea class="form-control" rows="4" name="commentaireCocktail"></textarea>
+                    <button type="submit" class="btn btn-primary btn-lg" name="commenter" <?php if (empty($w_user)) {echo 'disabled';} ?> >commenter</button>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-md-12 text-center">
+            <?php if (!empty($listecommentaires)) : ?>
+                <?php foreach ($listecommentaires as $key => $value) :?>
+                    <div class="row">
+                        <div class="commentaires">
+                            <div class="col-sm-1 col-md-1">
+                                <div class="thumbnail">
+                                    <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">';
+                                </div><!-- /thumbnail -->
+                            </div><!-- /col-sm-1 -->
+                            <div class="col-sm-11 col-md-11">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <strong><?= $tabUser['username'] ?></strong>
+                                    </div>
+                                    <div class="panel-body">
+                                        <?= $value['text'] ?>
+                                    </div>
+                                </div><!-- /panel panel-default -->';
+                            </div><!-- /col-sm-8 -->
+                        </div>
+                    </div>
+                <?php endforeach ?>
+            <?php endif ?>
+            </div>                                       
+        </div>          
     </div>
 </section>
 

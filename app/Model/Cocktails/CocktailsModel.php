@@ -2,8 +2,12 @@
 
 namespace Model\Cocktails;
 
+use Model\Occasions\OccasionsModel;
+use Model\Couleurs\CouleursModel;
+use Model\Difficultes\DifficultesModel;
+use Model\Gouts\GoutsModel;
 use Model\Traductions\TraductionsModel;
-
+use Model\Recettes\RecettesModel;
 
 class CocktailsModel extends \W\Model\Model 
 {
@@ -90,27 +94,55 @@ class CocktailsModel extends \W\Model\Model
 					$_note = $_cocktaildb[0]['note'];
 				}
 
-				$this->setTable('occasions');
 
+				$occasionstab = array();
+				$goutstab = array();
+			
+				$occasionsdb = new OccasionsModel();
+			
+				foreach ($_cocktail->occasions as $key => $occasion) {		
+					$occasionsdata = $occasionsdb->search(['champuk' => $occasion->id]);				
+					switch ($occasionsdata[0]['champfr']) {
+						case "après-midi":
+							$occasionfr = 'l\'après-midi';
+							break;
+						case "apéritif":
+							$occasionfr = 'l\'apéritif';
+							break;
+						case "digestif":
+							$occasionfr = 'le digestif';
+							break;
+						case "soirée":
+							$occasionfr = 'la soirée';
+							break;
+					}
 
-				foreach ($_cocktail->occasions as $occasion) {
+					$occasionstab[] = $occasionfr;
 
-					$_occasionsdb = $this->search(['champuk' => $occasion->id]);
-
-					$_occasionsfr[] = $_occasionsdb[0]['champfr'];
-					
 				}
-				
-				$this->setTable('difficultes');
 
-				$_difficultedb = $this->search(['champuk' => $_cocktail->skill->id]);
+				$_occasionstext = implode(', ', $occasionstab);
+
+				$goutsdb = new GoutsModel();
+
+				foreach ($_cocktail->tastes as $key => $gout) {
+					$goutsdata = $goutsdb->search(['champuk' => $gout->id]);
+					$goutstab[] = $goutsdata[0]['champfr'];
+				}
+			
+				$_goutstext = implode(', ', $goutstab);
+
+
+				$difficultesmodel = new DifficultesModel();
+
+				$_difficultedb = $difficultesmodel->search(['champuk' => $_cocktail->skill->id]);
 				
 				$_difficultefr = $_difficultedb[0]['champfr'];
 
 
-				$this->setTable('couleurs');
+				$couleursmodel = new CouleursModel();
 
-				$_couleurdb = $this->search(['champuk' => $_cocktail->color]);
+				$_couleurdb = $couleursmodel->search(['champuk' => $_cocktail->color]);
 
 				$_couleurfr = $_couleurdb[0]['champfr'];
 					
@@ -120,12 +152,13 @@ class CocktailsModel extends \W\Model\Model
 									'name' 			=> $_cocktail->name,
 									'valueskill'	=> $_valueskill,
 									'skill'			=> $_difficultefr,
-									'occasionsfr' 	=> $_occasionsfr,
+									'occasions' 	=> $_occasionstext,
 									'couleur'		=> $_couleurfr,
 									'note'			=> $_note,
-									'imgurlsmall' 	=> "http://assets.absolutdrinks.com/drinks/218x300/" . $_cocktail->id . "(60).jpg"
+									'gouts'			=> $_goutstext,
+									'imgurlsmall' 	=> "http://assets.absolutdrinks.com/drinks/300x400/" . $_cocktail->id . "(60).jpg"
 
-				);
+								);
 			
 				$_cocktaillist[] = $_cocktailcard;
 
@@ -140,6 +173,31 @@ class CocktailsModel extends \W\Model\Model
 		return $_cocktaillist;
 
 	} //fin de function fetchdata
+
+
+
+	public function recordCocktail($data, $urlpart) {
+
+		$this->setTable('cocktails');
+		$this->setPrimaryKey('id');
+
+			
+		$traduction = new TraductionsModel();
+
+		$descriptiontraduite = $traduction->getTrad($data->descriptionPlain);			
+
+		$datafr = array(
+				'idCocktailApi' => $urlpart,
+				'nomCocktail' 	=> $data->name,
+				'description'	=> $descriptiontraduite,
+				'note'			=> 0,
+				'compteurnote'	=> 0,
+				'langue' 		=> 'en'
+				);
+
+		$this->insert($datafr);
+
+	}
 
 
 	
@@ -162,22 +220,9 @@ class CocktailsModel extends \W\Model\Model
 
 		if (empty($_cocktaildb)) {
 
-
-			$traduction = new TraductionsModel();
-			$descriptiontraduite = $traduction->getTrad($_cocktailapi->descriptionPlain);			
-
-			$datafr = array(
-					'idCocktailApi' => $urlpart,
-					'nomCocktail' 	=> $_cocktailapi->name,
-					'description'	=> $descriptiontraduite,
-					'langue' 		=> 'en'
-					);
-
-			$this->insert($datafr);
-
+			$this->recordCocktail($_cocktailapi, $urlpart);
+			$_cocktaildb = $this->search(['idCocktailApi' => $urlpart]);
 		} 
-
-		$_cocktaildb = $this->search(['idCocktailApi' => $urlpart]);
 
 
 		$this->setTable('ingredients');
@@ -197,9 +242,14 @@ class CocktailsModel extends \W\Model\Model
 
 			if ($dose > 1) {
 				$phrase = $dose . ' doses de ' . $ingredientsDb[0]['nomIngredient'];
-			}  elseif (!is_numeric($dose)) {
+			}
+			else if (!is_numeric($dose) && $idIngredient !== 'ice-cubes') {
 				$phrase = '½ dose de ' . $ingredientsDb[0]['nomIngredient'];
-			}  else {
+			}
+			else if ($idIngredient == 'ice-cubes') {
+				$phrase = $ingredientsDb[0]['nomIngredient'];
+			} 
+			else {
 				$phrase = $dose . ' dose de ' . $ingredientsDb[0]['nomIngredient'];
 			}
 
@@ -207,7 +257,6 @@ class CocktailsModel extends \W\Model\Model
 			$tableauPhrase[] = $phrase;
 
 		}
-
 
 
 		$_cocktaildata = array(
@@ -222,9 +271,9 @@ class CocktailsModel extends \W\Model\Model
 							'color' 		=> $_cocktailapi->color,
 							'skill' 		=> $_cocktailapi->skill->name,
 							'imgurlsmall' 	=> "http://assets.absolutdrinks.com/drinks/300x400/" . $_cocktailapi->id . "(60).jpg",
-							'imgurlmodal' 	=> "http://assets.absolutdrinks.com/drinks/450x600/" . $_cocktailapi->id . ".png",
-							'video' 		=> $_cocktailapi->videos[0]->video
-
+							'imgurlmodal' 	=> "http://assets.absolutdrinks.com/drinks/500x700/" . $_cocktailapi->id . ".png",
+							'video' 		=> $_cocktailapi->videos[0]->video,
+							'langue'		=> $_cocktaildb[0]['langue']
 
 		);
 							
@@ -255,6 +304,7 @@ class CocktailsModel extends \W\Model\Model
 									'id'			=> $_cocktail->id,
 									'name' 			=> $_cocktail->name,
 									'occasions' 	=> $_cocktail->occasions,
+									'gouts'			=> $_cocktail->tastes,
 									'imgurlsmall' 	=> "http://assets.absolutdrinks.com/drinks/300x400/" . $_cocktail->id . "(60).jpg",
 								);
 				
@@ -290,6 +340,8 @@ class CocktailsModel extends \W\Model\Model
 				$_cocktailcard = array(
 										'id'			=> $_cocktail->id,
 										'name' 			=> $_cocktail->name,
+										'occasions' 	=> $_cocktail->occasions,
+										'gouts'			=> $_cocktail->tastes,
 										'imgurlsmall' 	=> "http://assets.absolutdrinks.com/drinks/300x400/" . $_cocktail->id . "(60).jpg",
 									);
 				

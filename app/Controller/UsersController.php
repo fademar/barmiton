@@ -101,7 +101,7 @@ class UsersController extends Controller
 			}
 		}
 
-		$this->redirectToRoute($_POST['url']);
+		$this->redirect($_POST['url']);
 	}
 
 	// deconnexion
@@ -112,7 +112,7 @@ class UsersController extends Controller
 			$db = new UsersAuthentificationModel;
 			$db->logUserOut();
 
-			$this->redirectToRoute($_GET['url']);
+			$this->redirect($_GET['url']);
 	}
 
 	public function UsersProfil()
@@ -178,5 +178,8 @@ class UsersController extends Controller
 		$this->show('users/facebookconnect');
 	}
 
+	public function showfavourite() {
 
+		$this->show('favourite');
+	}
 }

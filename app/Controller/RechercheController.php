@@ -6,7 +6,8 @@ use \W\Controller\Controller;
 use Controller\CocktailsController;
 use Model\Ingredients\IngredientsModel;
 use Model\Cocktails\CocktailsModel;
-
+use Model\Occasions\OccasionsModel;
+use Model\Gouts\GoutsModel;
 
 class RechercheController extends Controller
 {
@@ -179,39 +180,40 @@ class RechercheController extends Controller
 			$url 			= $api->constructUrl($_urlpart);
 
 
-			// ---------------- PAGINATION ---------------- //
-
-			if (!isset($_GET['page'])) {
-				$_data 			= $api->getCocktailListBy($url . "&pageSize=24");
-				$_cocktaillist 	= $api->fetchData($_data);
-				$_querypage		= $_SERVER['QUERY_STRING'];
-				
-
-			}
-			else {					
-				$page 				= $_GET['page'];
-				$page 				= ($page -1) * 25;
-				$nextURL 			= $url."&start=" . $page . "&pageSize=24";
-				$_data 				= $api->getCocktailListBy($nextURL);
-				$_cocktaillist 		= $api->fetchData($_data);
-
-				$URLExp = explode('&', $_SERVER['QUERY_STRING']);
-				$nbRech = count($URLExp);
-
-				for ($i=0; $i < $nbRech - 1; $i++) { 
-					$urlNextFinal[] = $URLExp[$i];
-				}
-
-				$_querypage = implode ('&', $urlNextFinal);
-
-			}
-
-			$nbpages = ceil($_data['totalresult'] / 24);			
 
 
 
 
 			if (!empty($_cocktaillist)) {
+				// ---------------- PAGINATION ---------------- //
+
+				if (!isset($_GET['page'])) {
+					$_data 			= $api->getCocktailListBy($url . "&pageSize=24");
+					$_cocktaillist 	= $api->fetchData($_data);
+					$_querypage		= $_SERVER['QUERY_STRING'];
+					
+
+				}
+				else {					
+					$page 				= $_GET['page'];
+					$page 				= ($page -1) * 25;
+					$nextURL 			= $url."&start=" . $page . "&pageSize=24";
+					$_data 				= $api->getCocktailListBy($nextURL);
+					$_cocktaillist 		= $api->fetchData($_data);
+
+					$URLExp = explode('&', $_SERVER['QUERY_STRING']);
+					$nbRech = count($URLExp);
+
+					for ($i=0; $i < $nbRech - 1; $i++) { 
+						$urlNextFinal[] = $URLExp[$i];
+					}
+
+					$_querypage = implode ('&', $urlNextFinal);
+
+				}
+
+				$nbpages = ceil($_data['totalresult'] / 24);			
+				
 				$this->show('cocktail/recherche', [
 													'cocktaillist' 	=> $_cocktaillist, 
 													'error' 		=> '', 
@@ -235,7 +237,8 @@ class RechercheController extends Controller
 							$api 	= new CocktailsModel;
 							$url 	= $api->constructUrl($urlpart);
 							$_data 	= $api->getCocktailListBy($url);
-							
+								
+
 							switch($idingredient) //Changement des noms des alcools principaux
 
 							{
@@ -262,7 +265,50 @@ class RechercheController extends Controller
 							}
 
 							if (count($_data['list']) > 4) {
-								$_cocktailoops[$nomingredient]	= $api->getRandomCocktail($_data, 4);;		
+								
+								$_randomlist = $api->getRandomCocktail($_data['list'], 4);		
+								
+								foreach ($_randomlist as $cocktail) {
+									$occasionstab = array();
+									$goutstab = array();
+
+									$occasionsdb = new OccasionsModel();
+
+									foreach ($cocktail['occasions'] as $key => $occasion) {		
+										$occasionsdata = $occasionsdb->search(['champuk' => $occasion->id]);				
+										switch ($occasionsdata[0]['champfr']) {
+											case "après-midi":
+											$occasionfr = 'l\'après-midi';
+											break;
+											case "apéritif":
+											$occasionfr = 'l\'apéritif';
+											break;
+											case "digestif":
+											$occasionfr = 'le digestif';
+											break;
+											case "soirée":
+											$occasionfr = 'la soirée';
+											break;
+										}
+
+										$occasionstab[] = $occasionfr;
+
+									}
+
+									$cocktail['occasions'] = implode(', ', $occasionstab);
+
+									$goutsdb = new GoutsModel();
+
+									foreach ($cocktail['gouts'] as $key => $gout) {
+										$goutsdata = $goutsdb->search(['champuk' => $gout->id]);
+										$goutstab[] = $goutsdata[0]['champfr'];
+									}
+
+									$cocktail['gouts'] = implode(', ', $goutstab);
+
+									$_cocktailoops[$nomingredient][] = $cocktail;
+								}
+																
 							}
 							else {
 								$_cocktailoops[$nomingredient]	= $api->fetchData($_data);
@@ -278,6 +324,7 @@ class RechercheController extends Controller
 													'error' 		=> $_error, 
 													'form' 			=> $_form,
 													'cocktailoops' 	=> $_cocktailoops,
+													'nbpages'		=> 0
 													]);
 			}	
 		}

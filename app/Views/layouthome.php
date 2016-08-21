@@ -19,7 +19,9 @@
     <!-- Age Verification CSS -->
     <link href="<?= $this->assetUrl('css/age-verification.css') ?>" rel="stylesheet">
 
-
+    <!-- Hipsters Cards CSS -->
+    <link href="<?= $this->assetUrl('css/hipster_cards.css') ?>" rel="stylesheet">
+    
     <!-- Custom Fonts -->
     <link href="<?= $this->assetUrl('vendor/font-awesome/css/font-awesome.min.css') ?>" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
@@ -60,7 +62,7 @@
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                        <a href="<?= $this->url('cocktails_showcocktails') ?>">Cocktails</a>
+                        <a href="<?= $this->url('cocktails_showcocktails') ?>">Recettes</a>
                     </li>
                     <li>
                         <a href="<?= $this->url('outils_showoutils') ?>">Bar-à-outils</a>
@@ -152,7 +154,7 @@
         </a>
     </div>
 
-     <!-- Portfolio Modals -->
+    <!-- Portfolio Modals -->
     <div class="portfolio-modal modal fade" id="connexion" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-content">
             <div class="close-modal" data-dismiss="modal">
@@ -165,7 +167,7 @@
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
                         <div class="modal-body">
-                            <h2>Connectez-vous à votre compte</h2>
+                            <h2>Connectez-vous à votre compte ou <a href="<?= $this->url('Users_UsersInscription')?>">inscrivez-vous</a></h2>
                             <hr class="star-primary">
                               <form method="POST" action="../Users/connexion/">
 
@@ -185,50 +187,12 @@
                                 <input type="hidden" name="url" value="<?= $w_current_route ?>" >
                               </form>                
                 
-                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-<header>
-    <div class="container">
-        <div class="row center">
-            <h2 class="text-center">Connexion</h2>
-    </div>
-  </div>
-</header>
-
-<section>
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-md-12 text-center">
-                    
-            <form method="POST" action="">
-
-            <div class="form-group">
-              <label for="emailId">Email</label>
-              <input class="form-control" type="email" id="emailId" name="email" required>
-            </div>
-
-            <div class="form-group">
-              <label for="motDePasseId">Mot de passe</label>
-              <input class="form-control" type="password" id="motDePasseId" name="motDePasse" required>
-            </div>
-
-            <div class="form-group">
-              <input class="form-control" type="submit" name="connexion" value="Connexion" class="btn">
-            </div>
-
-          </form>                
-                
-                
-            </div>
-        </div>
-    </div>
-</section>
 
 
     <!-- jQuery -->
@@ -243,8 +207,7 @@
     <!-- Age verification JS -->
     <script src="<?= $this->assetUrl('js/age-verification.js') ?>"></script>
 
-    <!-- Plugin JavaScript -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <!-- Moteur de recherche de la home -->
 
     <!-- Bloodhound JS -->
     <script src="<?= $this->assetUrl('js/bloodhound.min.js') ?>"></script>
@@ -254,28 +217,29 @@
 
     <!-- Typeahead JS -->
     <script src="<?= $this->assetUrl('js/typeahead.jquery.min.js') ?>"></script>
-    
-    <!-- Snap SVG JS -->
-    <script src="<?= $this->assetUrl('vendor/snap/snap.svg-min.js') ?>"></script>
-
-    <!-- Contact Form JavaScript -->
-    <script src="<?= $this->assetUrl('js/jqBootstrapValidation.js') ?>"></script>
-    <script src="<?= $this->assetUrl('js/contact_me.js') ?>"></script>
-
-    <!-- Infinite Scroll Ajax -->
-    <script src="<?= $this->assetUrl('js/jquery-ias.min.js') ?>"></script>
-
-    <!-- Theme JavaScript -->
-    <script src="<?= $this->assetUrl('js/theme.min.js') ?>"></script>
-
-    <!-- Functions JS -->
-    <script src="<?= $this->assetUrl('js/functions.js') ?>"></script>
-
-    <!-- Création du SVG de la home -->
-    <script src="<?= $this->assetUrl('js/svg.js') ?>"></script>
 
     <!-- Autocomplete du Typeahead -->
     <script src="<?= $this->assetUrl('js/autocomplete.js') ?>"></script>
+
+    <!-- SVG de la home -->
+
+    <!-- Snap SVG JS -->
+    <script src="<?= $this->assetUrl('vendor/snap/snap.svg-min.js') ?>"></script>
+
+    <!-- Functions JS -->
+    <script src="<?= $this->assetUrl('js/functions.js') ?>"></script>
+    
+    <!-- Création du SVG de la home -->
+    <script src="<?= $this->assetUrl('js/svg.js') ?>"></script>
+    
+    <!-- Hipsters Cards JS -->
+    <script src="<?= $this->assetUrl('js/hipster-cards.js') ?>"></script>
+
+    <!-- Match Height JS -->
+    <script src="<?= $this->assetUrl('js/jquery.matchHeight-min.js') ?>"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="<?= $this->assetUrl('js/theme.min.js') ?>"></script>
 
     <!-- Main -->
     <script src="<?= $this->assetUrl('js/main.js') ?>"></script>

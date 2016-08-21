@@ -13,6 +13,7 @@ use Model\Favoris\FavorisModel;
 use Model\Notes\NotesModel;
 use Model\Commentaire\CommentaireModel;
 use Model\Users\UsersModel;
+use Model\Recettes\RecettesModel;
 
 class CocktailsController extends Controller
 {
@@ -58,11 +59,139 @@ class CocktailsController extends Controller
 		$_cocktailscouleur 	= $cocktails->getCocktailListBy($urlcouleur);
 		$_cocktailscouleur 	= $cocktails->getRandomCocktail($_cocktailscouleur['list'], 4);
 
+		foreach ($_cocktailscouleur as $cocktail) {
+			$occasionstab = array();
+			$goutstab = array();
+			
+			$occasionsdb = new OccasionsModel();
+			
+			foreach ($cocktail['occasions'] as $key => $occasion) {		
+				$occasionsdata = $occasionsdb->search(['champuk' => $occasion->id]);				
+				switch ($occasionsdata[0]['champfr']) {
+					case "après-midi":
+						$occasionfr = 'l\'après-midi';
+						break;
+					case "apéritif":
+						$occasionfr = 'l\'apéritif';
+						break;
+					case "digestif":
+						$occasionfr = 'le digestif';
+						break;
+					case "soirée":
+						$occasionfr = 'la soirée';
+						break;
+				}
+
+				$occasionstab[] = $occasionfr;
+
+			}
+
+			$cocktail['occasions'] = implode(', ', $occasionstab);
+
+			$goutsdb = new GoutsModel();
+
+			foreach ($cocktail['gouts'] as $key => $gout) {
+				$goutsdata = $goutsdb->search(['champuk' => $gout->id]);
+				$goutstab[] = $goutsdata[0]['champfr'];
+			}
+			
+			$cocktail['gouts'] = implode(', ', $goutstab);
+
+			$_cocktailscouleurfr[] = $cocktail;
+		}
+
+
 		$urloccasion		= $cocktails->constructUrl('/for/' . $_occasion['champuk']);
 		$_cocktailsoccasion = $cocktails->getCocktailListBy($urloccasion);
 		$_cocktailsoccasion = $cocktails->getRandomCocktail($_cocktailsoccasion['list'], 4);
 
+
+		foreach ($_cocktailsoccasion as $cocktail) {
+			$occasionstab = array();
+			$goutstab = array();
+			
+			$occasionsdb = new OccasionsModel();
+			
+			foreach ($cocktail['occasions'] as $key => $occasion) {		
+				$occasionsdata = $occasionsdb->search(['champuk' => $occasion->id]);				
+				switch ($occasionsdata[0]['champfr']) {
+					case "après-midi":
+						$occasionfr = 'l\'après-midi';
+						break;
+					case "apéritif":
+						$occasionfr = 'l\'apéritif';
+						break;
+					case "digestif":
+						$occasionfr = 'le digestif';
+						break;
+					case "soirée":
+						$occasionfr = 'la soirée';
+						break;
+				}
+
+				$occasionstab[] = $occasionfr;
+
+			}
+
+			$cocktail['occasions'] = implode(', ', $occasionstab);
+
+			$goutsdb = new GoutsModel();
+
+			foreach ($cocktail['gouts'] as $key => $gout) {
+				$goutsdata = $goutsdb->search(['champuk' => $gout->id]);
+				$goutstab[] = $goutsdata[0]['champfr'];
+			}
+			
+			$cocktail['gouts'] = implode(', ', $goutstab);
+
+			$_cocktailsoccasionfr[] = $cocktail;
+		}
+
+
 		$_cocktailsbest 	= $cocktails->getBestCocktails();
+
+		foreach ($_cocktailsbest as $cocktail) {
+			$occasionstab = array();
+			$goutstab = array();
+			
+			$occasionsdb = new OccasionsModel();
+			
+			foreach ($cocktail['occasions'] as $key => $occasion) {		
+				$occasionsdata = $occasionsdb->search(['champuk' => $occasion->id]);				
+				switch ($occasionsdata[0]['champfr']) {
+					case "après-midi":
+						$occasionfr = 'l\'après-midi';
+						break;
+					case "apéritif":
+						$occasionfr = 'l\'apéritif';
+						break;
+					case "digestif":
+						$occasionfr = 'le digestif';
+						break;
+					case "soirée":
+						$occasionfr = 'la soirée';
+						break;
+				}
+
+				$occasionstab[] = $occasionfr;
+
+			}
+
+			$cocktail['occasions'] = implode(', ', $occasionstab);
+
+			$goutsdb = new GoutsModel();
+
+			foreach ($cocktail['gouts'] as $key => $gout) {
+				$goutsdata = $goutsdb->search(['champuk' => $gout->id]);
+				$goutstab[] = $goutsdata[0]['champfr'];
+			}
+			
+			$cocktail['gouts'] = implode(', ', $goutstab);
+
+			$_cocktailsbestfr[] = $cocktail;
+		}
+
+
 
 		if (($_occasion['champfr'] === "apéritif") || ($_occasion['champfr'] === "après-midi")) {$_occasion['champfr'] = 'l\'' . $_occasion['champfr'];}
 		if ($_occasion['champfr'] === "digestif") {$_occasion['champfr'] = 'le ' . $_occasion['champfr'];}
@@ -72,9 +201,9 @@ class CocktailsController extends Controller
 
 		$this->show('cocktail/cocktail', [
 											'form' 				=> $_form, 
-											'cocktailbest'		=> $_cocktailsbest,
-											'cocktailsoccasion'	=> $_cocktailsoccasion,
-											'cocktailscouleur' 	=> $_cocktailscouleur, 
+											'cocktailbest'		=> $_cocktailsbestfr,
+											'cocktailsoccasion'	=> $_cocktailsoccasionfr,
+											'cocktailscouleur' 	=> $_cocktailscouleurfr, 
 											'nomcouleur' 		=> $_couleur['champfr'],
 										 	'nommoment'			=> $_occasion['champfr'],
 
@@ -199,30 +328,17 @@ class CocktailsController extends Controller
 		}
 
 
-		// Recette pas-à-pas
+		// Recette pas à pas
 
+		$recettedb 	= new RecettesModel();
+		$recette 	= $recettedb->getRecette($id);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		$this->show('cocktail/fiche_cocktail', ['dataCocktail' => $dataCocktail, 'listecommentaires' => $recupListeDesCommentaires, 'tabUser' => $assocIdMembre]);
+		$this->show('cocktail/fiche_cocktail', [
+													'dataCocktail' 		=> $dataCocktail, 
+													'listecommentaires' => $recupListeDesCommentaires, 
+													'tabUser' 			=> $assocIdMembre,
+													'recette'			=> $recette
+												]);
 	}
 
 

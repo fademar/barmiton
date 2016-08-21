@@ -87,18 +87,6 @@
     </div>
 </header>
 
-<section>
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-md-12 text-center">
-                    
-                <a class="btn btn-default" href="?<?= $_SERVER['QUERY_STRING']. '&tri=meilleurs'?>" role="button">Les mieux notés</a>                    
-                
-                
-            </div>
-        </div>
-    </div>
-</section>
 
  
 
@@ -115,22 +103,26 @@
 	        <div id="cocktails" class="row">
 
                 <?php foreach ($cocktaillist as $cocktailcard): ?>
-                    <div class="item">
-                        <div class="col-xs-6 col-md-3 portfolio-item">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h2 class="panel-title"><?= $cocktailcard['name']?></h2>
-                                </div>
-                                <div class="panel-body">
-                                    <img class="card-img-top center-block" src="<?= $cocktailcard['imgurlsmall']?>" alt="Photo du cocktail <?= $cocktailcard['name']?>">
-                                    <p><?php if ($cocktailcard['note'] !== 0) { echo $cocktailcard['note'] . '/5'; } ?></p>
-                                    <p>Niveau : <?= $cocktailcard['skill']?></p>
+                <div class="card-box col-md-3 col-sm-6">
+                    <div class="card" data-mh="searchgroup">                            
+                        <div class="header">
+                            <img classs="img-responsive" src="<?= $cocktailcard['imgurlsmall']?>"/>
+                            <div class="filter"></div>
 
-                                </div>
-                                <div class="panel-footer"><a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $cocktailcard['id']]); ?>">Détails</a></div>
+                            <div class="actions">
+                                <button class="btn btn-round btn-fill btn-neutral btn-modern">
+                                    <a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $cocktailcard['id']]); ?>">
+                                    Détails</a>
+                                </button>
                             </div>
                         </div>
-                    </div>
+
+                        <div class="content">
+                            <h4 class="title"><a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $cocktailcard['id']]); ?>"><?= $cocktailcard['name']?></a></h4>
+                            <p class="description">Un cocktail <?= $cocktailcard['gouts'] ?> pour <?= $cocktailcard['occasions'] ?>.</p>
+                        </div>                                           
+                    </div> <!-- end card -->
+                </div>
 	            <?php endforeach ?>
 	        </div>
         <?php endif ?>
@@ -144,7 +136,7 @@
 	        </div>
 	       
             <?php foreach ($cocktailoops as $nom => $cocktailslist) : ?>
-         
+
                 <section id="selection<?= $nom ?>">
                     <div class="container">
                         <div class="row">
@@ -157,11 +149,25 @@
                         </div>
                         <div class="row">
                             <?php foreach ($cocktailslist as $cocktailcard): ?>
-                                <div class="col-xs-6 col-md-3 portfolio-item">     
-                                    <a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $cocktailcard['id']]); ?>">
-                                        <img src="<?= $cocktailcard['imgurlsmall']?>" class="img-responsive img-rounded img-thumbnail" alt="">
-                                        <h3><?= $cocktailcard['name']?></h3>
-                                    </a>
+                                <div class="card-box col-md-3 col-sm-6">
+                                    <div class="card" data-mh="searchgroup">                            
+                                        <div class="header">
+                                            <img classs="img-responsive" src="<?= $cocktailcard['imgurlsmall']?>"/>
+                                            <div class="filter"></div>
+
+                                            <div class="actions">
+                                                <button class="btn btn-round btn-fill btn-neutral btn-modern">
+                                                    <a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $cocktailcard['id']]); ?>">
+                                                        Détails</a>
+                                                    </button>
+                                            </div>
+                                        </div>
+
+                                        <div class="content">
+                                            <h4 class="title"><a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $cocktailcard['id']]); ?>"><?= $cocktailcard['name']?></a></h4>
+                                            <p class="description">Un cocktail <?= $cocktailcard['gouts'] ?> pour <?= $cocktailcard['occasions'] ?>.</p>
+                                        </div>                                           
+                                    </div> <!-- end card -->
                                 </div>
                             <?php endforeach ?>
                         </div>
@@ -181,16 +187,19 @@
         <div class="row">
             <div class="col-xs-12 col-md-12 text-center">
                 <?php if ($nbpages > 0) :?>                       
-                        <div id="pagination">
-                            <?php //phpinfo(); ?>
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination">
+
                             
                             <?php for ($i=2; $i < $nbpages ; $i++): ?>
                                 
-                                <a href="?<?= $querypage . '&page='. $i ?>" class="next"><?= $i?></a>
+                                <li><a href="?<?= $querypage . '&page='. $i ?>" class="next"><?= $i?></a></li>
 
                             <?php endfor ?>
 
-                        </div>
+                      </ul>
+                    </nav>
+
                 <?php endif ?>
             </div>
         </div>

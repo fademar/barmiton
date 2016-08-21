@@ -15,12 +15,26 @@
         <div class="row">
             <form method=POST action="">
                 <?php foreach ($favorislist as $favoris): ?>
-                    <div class="col-xs-6 col-md-3 portfolio-item">     
-                        <a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $favoris['favorisdata']['id']]); ?>">
-                            <img src="<?= $favoris['favorisdata']['imgurlsmall']?>" class="img-responsive img-rounded img-thumbnail" alt="">
-                            <h3><?= $favoris['favorisdata']['name']?></h3>
-                        </a>
-                        <button class="btn btn-default" type="submit" name="supprimer" value="<?= $favoris['idfavoris'] ?>">Supprimer</button>
+                    <div class="card-box col-md-3 col-sm-6">
+                        <div class="card" data-mh="searchgroup">                            
+                            <div class="header">
+                                <img classs="img-responsive" src="<?= $favoris['favorisdata']['imgurlsmall']?>"/>
+                                <div class="filter"></div>
+
+                                <div class="actions">
+                                    <button class="btn btn-round btn-fill btn-neutral btn-modern">
+                                        <a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $favoris['favorisdata']['id']]); ?>">
+                                            Détails</a>
+                                        </button>
+                                </div>
+                            </div>
+
+                            <div class="content">
+                                <h4 class="title"><a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $favoris['favorisdata']['id']]); ?>"><?= $favoris['favorisdata']['name']?></a></h4>
+                                
+                                <button class="btn btn-default" type="submit" name="supprimer" value="<?= $favoris['idfavoris'] ?>">Supprimer</button>
+                            </div>                                           
+                        </div> <!-- end card -->
                     </div>
                 <?php endforeach ?>
             </form>

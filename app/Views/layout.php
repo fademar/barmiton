@@ -21,6 +21,9 @@
 
     <!-- Age verification CSS -->
     <link href="<?= $this->assetUrl('css/age-verification.css') ?>" rel="stylesheet">
+    
+    <!-- Hipsters Cards CSS -->
+    <link href="<?= $this->assetUrl('css/hipster_cards.css') ?>" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="<?= $this->assetUrl('vendor/font-awesome/css/font-awesome.min.css') ?>" rel="stylesheet" type="text/css">
@@ -46,7 +49,7 @@
 <body id="page-top" class="index">
 
     <!-- Navigation -->
-        <nav id="mainNav" class="navbar navbar-default navbar-custom">
+        <nav id="mainNav" class="navbar navbar-default  navbar-custom">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
@@ -63,7 +66,7 @@
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                        <a href="<?= $this->url('cocktails_showcocktails') ?>">Cocktails</a>
+                        <a href="<?= $this->url('cocktails_showcocktails') ?>">Recettes</a>
                     </li>
                     <li>
                         <a href="<?= $this->url('outils_showoutils') ?>">Bar-à-outils</a>
@@ -86,7 +89,7 @@
                         <ul class="dropdown-menu"> 
                             <li><a href="<?= $this->url('Users_UsersProfil') ?>">Mon profil</a></li>
                             <li><a href="<?= $this->url('Favoris_showFavoris') ?>">Mes favoris</a></li>
-                            <li><a href="<?= $this->url('Users_UsersDeconnexion') . '?url=' . $w_current_route ?>">Se déconnecter</a></li>
+                            <li><a href="<?= $this->url('Users_UsersDeconnexion') . '?url=' . $_SERVER['REDIRECT_URL'] ?>">Se déconnecter</a></li>
                           
                         </ul>
                     </li>
@@ -156,7 +159,7 @@
         </a>
     </div>
 
-     <!-- Portfolio Modals -->
+<!-- Portfolio Modals -->
     <div class="portfolio-modal modal fade" id="connexion" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-content">
             <div class="close-modal" data-dismiss="modal">
@@ -169,7 +172,7 @@
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
                         <div class="modal-body">
-                            <h2>Connectez-vous à votre compte</h2>
+                            <h2>Connectez-vous à votre compte ou <a href="<?= $this->url('Users_UsersInscription')?>">inscrivez-vous</a></h2>
                             <hr class="star-primary">
                               <form method="POST" action="../Users/connexion/">
 
@@ -186,16 +189,15 @@
                                 <div class="form-group">
                                   <input class="form-control" type="submit" name="connexion" value="Connexion" class="btn">
                                 </div>
-                                <input type="hidden" name="url" value="<?= $w_current_route ?>" >
+                                <input type="hidden" name="url" value="<?= $_SERVER['REDIRECT_URL'] ?>" >
                               </form>                
-                
-                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>    
@@ -206,27 +208,22 @@
     <!-- Jquery Cookie -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script> 
     
+    jquery.matchHeight-min
+
     <!-- Age verification JS -->
     <script src="<?= $this->assetUrl('js/age-verification.js') ?>"></script>
-    
-    <!-- Cookie Bar JS -->
-    <script src="<?= $this->assetUrl('js/jquery.cookieBar.min.js') ?>"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-    
+ 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
 
     <!-- (Optional) Latest compiled and minified JavaScript translation files -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/i18n/defaults-fr_FR.min.js"></script>
+    
+    <!-- Hipsters Cards JS -->
+    <script src="<?= $this->assetUrl('js/hipster-cards.js') ?>"></script>
 
-    <!-- Contact Form JavaScript -->
-    <script src="<?= $this->assetUrl('js/jqBootstrapValidation.js') ?>"></script>
-    <script src="<?= $this->assetUrl('js/contact_me.js') ?>"></script>
-
-    <!-- Infinite scroll Ajax -->
-    <script src="<?= $this->assetUrl('js/jquery-ias.min.js') ?>"></script>
+    <!-- Match Height JS -->
+    <script src="<?= $this->assetUrl('js/jquery.matchHeight-min.js') ?>"></script>
 
     <!-- Theme JavaScript -->
     <script src="<?= $this->assetUrl('js/theme.min.js') ?>"></script>

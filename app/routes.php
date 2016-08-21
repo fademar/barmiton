@@ -68,8 +68,4 @@
 		['GET|POST', '/outils/[:id]', 'Outils#showFicheOutil', 'outils_showficheoutil'],
 
 
-		['GET|POST', '/users/facebook/', 'Users#showfacebook', 'users_showfacebook']
-
-
-
 	);
