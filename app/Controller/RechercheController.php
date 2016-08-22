@@ -183,8 +183,6 @@ class RechercheController extends Controller
 
 
 
-
-			if (!empty($_cocktaillist)) {
 				// ---------------- PAGINATION ---------------- //
 
 				if (!isset($_GET['page'])) {
@@ -214,6 +212,7 @@ class RechercheController extends Controller
 
 				$nbpages = ceil($_data['totalresult'] / 24);			
 				
+			if (!empty($_cocktaillist)) {
 				$this->show('cocktail/recherche', [
 													'cocktaillist' 	=> $_cocktaillist, 
 													'error' 		=> '', 

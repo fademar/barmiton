@@ -110,7 +110,7 @@
         <div class="footer-above">
             <div class="container">
                 <div class="row">
-                    <div class="footer-col col-md-4">
+                    <div class="col-sm-12 col-md-12">
                         <h3>Contact</h3>
                         <p>18 rue Geoffroy L'Asnier
                             <br>75015 Paris</p>
@@ -162,46 +162,43 @@
 
 
 
-         <!-- Portfolio Modals -->
-    <div class="portfolio-modal modal fade" id="connexion" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-content">
-            <div class="close-modal" data-dismiss="modal">
-                <div class="lr">
-                    <div class="rl">
-                    </div>
-                </div>
+ <!-- Modal -->
+<div class="modal fade" id="connexion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body text-center">
+        <h2>Connectez-vous à votre compte</h2>
+        <hr class="star-primary">
+        <form method="POST" action="../Users/connexion/">
+
+            <div class="form-group">
+                <label for="emailId">Email</label>
+                <input class="form-control" type="email" id="emailId" name="email" required>
             </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2">
-                        <div class="modal-body">
-                            <h2>Connectez-vous à votre compte</h2>
-                            <hr class="star-primary">
-                            <form method="POST" action="Users/connexion/">
 
-                                <div class="form-group">
-                                    <label for="emailId">Email</label>
-                                    <input class="form-control" type="email" id="emailId" name="email" required>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="motDePasseId">Mot de passe</label>
-                                    <input class="form-control" type="password" id="motDePasseId" name="motDePasse" required>
-                                </div>
-
-                                <div class="form-group">
-                                    <input class="form-control" type="submit" name="connexion" value="Connexion" class="btn">
-                                </div>
-                                <input type="hidden" name="url" value="<?= $_SERVER['REDIRECT_URL'] ?>" >
-                            </form>
-                            <p>Pas encore de compte, <a href="<?= $this->url('Users_UsersInscription') ?>">inscrivez-vous</a> !</p>               
-                        </div>
-                    </div>
-                </div>
+            <div class="form-group">
+                <label for="motDePasseId">Mot de passe</label>
+                <input class="form-control" type="password" id="motDePasseId" name="motDePasse" required>
             </div>
-        </div>
+
+
+       <p>Pas encore de compte, <a href="<?= $this->url('Users_UsersInscription') ?>">inscrivez-vous</a> !</p>
+
+      </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                <button type="submit" class="btn btn-primary" name="connexion">Se connecter</button>
+                <input type="hidden" name="url" value="<?= $_SERVER['REDIRECT_URL'] ?>" >
+
+                </div>
+              </div>
+        </form>                
     </div>
-
+  </div>
+</div>
 
 
 

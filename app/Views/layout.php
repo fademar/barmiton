@@ -118,34 +118,8 @@
         <div class="footer-above">
             <div class="container">
                 <div class="row">
-                    <div class="footer-col col-md-4">
-                        <h3>Contact</h3>
-                        <p>18 rue Geoffroy L'Asnier
-                            <br>75015 Paris</p>
-                    </div>
-                    <div class="footer-col col-md-4">
-                        <h3></h3>
-                        <ul class="list-inline">
-                            <li>
-                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
-                            </li>
-                            <li>
-                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
-                            </li>
-                            <li>
-                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
-                            </li>
-                            <li>
-                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
-                            </li>
-                            <li>
-                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-dribbble"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="footer-col col-md-4">
-                        <p>L'abus d'alcool est dangereux pour la santé.</p>
-                        <p>&Agrave; consommer avec modération</p>
+                    <div class="col-xs-12 col-md-12 text-center">
+                        <p>L'abus d'alcool est dangereux pour la santé. &Agrave; consommer avec modération.</p>
                     </div>
                 </div>
             </div>
@@ -198,7 +172,7 @@
       </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-                <button type="submit" class="btn btn-primary" name="connexion">Se connecter</button>
+                <input type="submit" class="btn btn-primary" name="connexion" value="Connexion">Se connecter</button>
                 <input type="hidden" name="url" value="<?= $_SERVER['REDIRECT_URL'] ?>" >
 
                 </div>
@@ -208,26 +182,6 @@
   </div>
 </div>
 
-
-    <!-- Portfolio Modals -->
-    <div class="portfolio-modal modal fade" id="" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-content">
-            <div class="close-modal" data-dismiss="modal">
-                <div class="lr">
-                    <div class="rl">
-                    </div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2">
-                        <div class="modal-body">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     
     <!-- jQuery -->

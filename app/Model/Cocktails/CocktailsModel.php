@@ -55,11 +55,13 @@ class CocktailsModel extends \W\Model\Model
 		
 			$_json 			= file_get_contents($jsonurl);
 
+
 			$_list			= json_decode($_json)->result;
 			$_totalresult 	= json_decode($_json)->totalResult;
 
 			$_data 			= ["list" => $_list, 'totalresult' => $_totalresult];
 			
+
 			return $_data;
 
 	} //fin de function getcocktaillist
@@ -78,7 +80,6 @@ class CocktailsModel extends \W\Model\Model
 			/**************** Enregistrement des données dans un tableau associatif ******************/
 			foreach ($data['list'] as $_cocktail) {
 
-				// var_dump($_cocktail);
 
 				$_occasionsfr 	= array();
 				$_difficultefr 	= '';
