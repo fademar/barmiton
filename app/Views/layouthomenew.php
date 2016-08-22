@@ -15,23 +15,16 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="<?= $this->assetUrl('vendor/bootstrap/css/bootstrap.css') ?>" rel="stylesheet">
-    
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css">
 
-    <!-- Age verification CSS -->
+    <!-- Age Verification CSS -->
     <link href="<?= $this->assetUrl('css/age-verification.css') ?>" rel="stylesheet">
-
-
-    <!-- Date picker CSS -->
-    <link href="<?= $this->assetUrl('css/bootstrap-datepicker.css') ?>" rel="stylesheet">
 
     <!-- Login CSS -->
     <link href="<?= $this->assetUrl('css/login-register.css') ?>" rel="stylesheet">
-    
+
     <!-- Hipsters Cards CSS -->
     <link href="<?= $this->assetUrl('css/hipster_cards.css') ?>" rel="stylesheet">
-
+    
     <!-- Custom Fonts -->
     <link href="<?= $this->assetUrl('vendor/font-awesome/css/font-awesome.min.css') ?>" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
@@ -39,7 +32,6 @@
 
     <!-- CSS principal -->
     <link href="<?= $this->assetUrl('css/style.css') ?>" rel="stylesheet">
-    <link href="<?= $this->assetUrl('css/jquery-confirm.css') ?>" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -47,15 +39,15 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    
+
     <!-- Mettre API Google connect -->
     <!-- <script src="https://apis.google.com/js/platform.js" async defer></script> -->
 
 </head>
-
-<body id="page-top" class="index">
+<body>
 
     <!-- Navigation -->
+
         <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -78,14 +70,13 @@
                     <li>
                         <a href="<?= $this->url('outils_showoutils') ?>">Bar-à-outils</a>
                     </li>
-
                     <li>
                         <a href="#">&Agrave; propos</a>
                     </li>
                     <li>
                         <a href="#">Contact</a>
                     </li>
-                    
+
                     <?php if (empty($w_user)) : ?>
                     <li>
                         <a data-toggle="modal" href="javascript:void(0)" onclick="openLoginModal();">Se connecter</a>
@@ -96,11 +87,12 @@
                         <ul class="dropdown-menu"> 
                             <li><a href="<?= $this->url('Users_UsersProfil') ?>">Mon profil</a></li>
                             <li><a href="<?= $this->url('Favoris_showFavoris') ?>">Mes favoris</a></li>
-                            <li><a href="<?= $this->url('Users_UsersDeconnexion') . '?url=' . $_SERVER['REDIRECT_URL'] ?>">Se déconnecter</a></li>
+                            <li><a href="<?= $this->url('Users_UsersDeconnexion')  . '?url=' . $w_current_route ?>">Se déconnecter</a></li>
                           
                         </ul>
                     </li>
                     <?php endif ?>
+
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -108,10 +100,9 @@
         <!-- /.container-fluid -->
     </nav>
 
-
     <?= $this->section('main_content') ?>
 
-   <!-- Footer -->
+    <!-- Footer -->
     <footer class="text-center">
         <div class="footer-above">
             <div class="container">
@@ -166,6 +157,8 @@
         </a>
     </div>
 
+
+
      <div class="modal fade login" id="loginModal">
           <div class="modal-dialog login animated">
               <div class="modal-content">
@@ -219,34 +212,50 @@
           </div>
       </div>
 
+
+
     <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>    
-   
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>    
+    
     <!-- JQuery UI <-->
     <script src="<?= $this->assetUrl('js/jquery-ui.custom.min.js') ?>"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="<?= $this->assetUrl('vendor/bootstrap/js/bootstrap.min.js') ?>"></script>
-    
+
     <!-- Jquery Cookie -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script> 
-    
-    jquery.matchHeight-min
 
     <!-- Age verification JS -->
     <script src="<?= $this->assetUrl('js/age-verification.js') ?>"></script>
 
-    <!-- Login JS -->
+     <!-- Login JS -->
     <script src="<?= $this->assetUrl('js/login-register.js') ?>"></script>
- 
-    <!-- Datepicker JS -->
-    <script src="<?= $this->assetUrl('js/bootstrap-datepicker.js') ?>"></script>
 
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
+    <!-- Moteur de recherche de la home -->
 
-    <!-- (Optional) Latest compiled and minified JavaScript translation files -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/i18n/defaults-fr_FR.min.js"></script>
+    <!-- Bloodhound JS -->
+    <script src="<?= $this->assetUrl('js/bloodhound.min.js') ?>"></script>
+
+    <!-- handlebars JS -->
+    <script src="<?= $this->assetUrl('js/handlebars.min.js') ?>"></script>
+
+    <!-- Typeahead JS -->
+    <script src="<?= $this->assetUrl('js/typeahead.jquery.min.js') ?>"></script>
+
+    <!-- Autocomplete du Typeahead -->
+    <script src="<?= $this->assetUrl('js/autocomplete.js') ?>"></script>
+
+    <!-- SVG de la home -->
+
+    <!-- Snap SVG JS -->
+    <script src="<?= $this->assetUrl('vendor/snap/snap.svg-min.js') ?>"></script>
+
+    <!-- Functions JS -->
+    <script src="<?= $this->assetUrl('js/functions.js') ?>"></script>
+    
+    <!-- Création du SVG de la home -->
+    <script src="<?= $this->assetUrl('js/svg.js') ?>"></script>
     
     <!-- Hipsters Cards JS -->
     <script src="<?= $this->assetUrl('js/hipster-cards.js') ?>"></script>
@@ -257,18 +266,9 @@
     <!-- Theme JavaScript -->
     <script src="<?= $this->assetUrl('js/theme.min.js') ?>"></script>
 
-    <!-- Functions JS -->
-    <script src="<?= $this->assetUrl('js/functions.js') ?>"></script>
-
-    <!-- Confirm.js -->
-    <script src="<?= $this->assetUrl('js/jquery-confirm.js') ?>"></script>
-
     <!-- Main -->
     <script src="<?= $this->assetUrl('js/main.js') ?>"></script>
-
-
 
 </body>
 
 </html>
-
