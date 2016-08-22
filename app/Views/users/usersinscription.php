@@ -2,6 +2,10 @@
 
 <?php $this->start('main_content') ?>
 
+<section>
+<div class="container">
+<div class="row">
+
 <h2>Inscription</h2>
 
 <form method="POST" action="">
@@ -46,5 +50,9 @@
 	</div>
 
 </form>
+
+</div>
+</div>
+</section>
 
 <?php $this->stop('main_content') ?>

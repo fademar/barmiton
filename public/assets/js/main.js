@@ -4,18 +4,24 @@ $(document).ready(function() {
 	var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
 	var limit = new Date (now.getFullYear() - 18, nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
 
+
+
 	console.log(nowTemp);
 	console.log(now);
 	console.log(limit);
 
-
+	console.log(limit.getDate());
 
 	$('.datepicker').datepicker({
-    	 weekStart:1,
-    	 color: 'red',
-    	 onRender: function(date) {
-    		return date.valueOf() > limit.valueOf() ? 'disabled' : '';
-  		}
+    	weekStart:1,
+    	color: 'red',
+    	defaultViewDate: {
+    		year: 1970,
+    		month: 12,
+    		day: 12
+  		},
+    	// onRender: function(date) {
+    	// 	return date.valueOf() > limit.valueOf() ? 'disabled' : '';}
 	});
 
 

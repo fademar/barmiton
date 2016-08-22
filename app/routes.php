@@ -35,6 +35,8 @@
 		// Page nom cocktails
 		['GET|POST', '/data/noms/', 'Autocomplete#autoCompleteNoms', 'autocomplete_noms'],
 
+		['GET', '/data/errors/', 'Users#generateErrors', 'users_generateerrors'],
+
 		// Page d'inscription
 		['GET|POST', '/users/inscription/', 'Users#UsersInscription', 'Users_UsersInscription'],
 

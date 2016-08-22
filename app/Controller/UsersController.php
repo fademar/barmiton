@@ -19,9 +19,13 @@ class UsersController extends Controller
 	{
 		if($_POST)
 		{
+			
+			$error = array();
+
 			//-- j'enclenche les verifications d'usage sur les donnée saisie
 			//-- Je procède à mon insertion en base de donnée. J'appelle mon model charger de l'inscription de mon membre
 			//-- 
+
 
 			$db = new UsersModel;
 
@@ -35,7 +39,15 @@ class UsersController extends Controller
 					$confirmPassword 			= $_POST['confirmMotDePasse'];
 					$email 						= $_POST['email'];
 
-					if ($password == $confirmPassword)
+					$pseudosolo = $db->search(['username' => $pseudo]);
+					$emailsolo	= $db->search(['email' => $email]);
+
+					if (!empty($pseudosolo)) { $error[] = 'Ce pseudo existe déjà !'; }
+					if (!empty($pseudosolo)) { $error[] = 'Cet email existe déjà !'; }
+					if ($password !== $confirmPassword) { $error[] = 'Veuillez confirmer votre mot de passe !'; }
+
+
+					if (empty($error))
 					{
 						
 						$data = array(
@@ -49,19 +61,28 @@ class UsersController extends Controller
 				
 
 						$db->insert($data);
+						
+						$this->redirect($_POST['url']);
 					}
-
-					else
+					else 
 					{
-						echo "Les mots de passe ne sont pas identiques";
+
+						$this->redirect($_POST['url'])
+
 					}
 
 
-				$this->redirectToRoute('Users_UsersConnexion');
+
+
 			}
 		}
 
-		$this->show('users/usersinscription');
+	}
+
+
+	public function generateErrors($errors) {
+
+		$this->show('Users/errors', ['errors' => $errors]);
 
 	}
 

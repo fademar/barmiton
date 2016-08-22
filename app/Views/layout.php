@@ -24,7 +24,7 @@
 
 
     <!-- Date picker CSS -->
-    <link href="<?= $this->assetUrl('css/bootstrap-datepicker.css') ?>" rel="stylesheet">
+    <link href="<?= $this->assetUrl('css/bootstrap-datepicker3.css') ?>" rel="stylesheet">
 
     <!-- Login CSS -->
     <link href="<?= $this->assetUrl('css/login-register.css') ?>" rel="stylesheet">
@@ -56,7 +56,7 @@
 <body id="page-top" class="index">
 
     <!-- Navigation -->
-        <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
+        <nav id="mainNav" class="navbar navbar-default navbar-custom">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
@@ -88,7 +88,7 @@
                     
                     <?php if (empty($w_user)) : ?>
                     <li>
-                        <a data-toggle="modal" href="javascript:void(0)" onclick="openLoginModal();">Se connecter</a>
+                        <a data-toggle="modal" href="#portfolioModal1">Se connecter</a>
                     </li>
                     <?php else : ?>
                     <li class="dropdown">
@@ -166,6 +166,45 @@
         </a>
     </div>
 
+    <!-- Portfolio Modals -->
+    <div class="modal fade login" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>Project Title</h2>
+                            <hr class="star-primary">
+                            <img src="img/portfolio/cabin.png" class="img-responsive img-centered" alt="">
+                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                            <ul class="list-inline item-details">
+                                <li>Client:
+                                    <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
+                                    </strong>
+                                </li>
+                                <li>Date:
+                                    <strong><a href="http://startbootstrap.com">April 2014</a>
+                                    </strong>
+                                </li>
+                                <li>Service:
+                                    <strong><a href="http://startbootstrap.com">Web Development</a>
+                                    </strong>
+                                </li>
+                            </ul>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
      <div class="modal fade login" id="loginModal">
           <div class="modal-dialog login animated">
               <div class="modal-content">
@@ -178,10 +217,11 @@
                          <div class="content">
                             <div class="error"></div>
                             <div class="form loginBox">
-                                <form method="post" action="users/connexion/" accept-charset="UTF-8">
+                                <form method="post" action="../users/connexion/" accept-charset="UTF-8">
                                 <input id="email" class="form-control" type="text" placeholder="Email" name="email">
                                 <input id="password" class="form-control" type="password" placeholder="Password" name="password">
-                                <input class="btn btn-default btn-login" type="button" value="Login" onclick="loginAjax()">
+                                <input class="btn btn-default btn-login" type="button" name="connexion" value="Connexion">
+                                <input type="hidden" name="url" value="<?= $_SERVER['REDIRECT_URL'] ?>" >
                                 </form>
                             </div>
                          </div>
@@ -189,7 +229,7 @@
                     <div class="box">
                         <div class="content registerBox" style="display:none;">
                          <div class="form">
-                            <form method="post" html="{:multipart=>true}" data-remote="true" action="users/inscription/" accept-charset="UTF-8">
+                            <form method="post" html="{:multipart=>true}" data-remote="true" action="../users/inscription/" accept-charset="UTF-8">
                                     <input class="form-control" id="usernameId" name="username" type="text" placeholder="Votre Pseudo" required>
                                     <input class="form-control" type="text" id="emailId" name="email" placeholder="Votre adresse mail" required>
                                     <input class="form-control" type="text" id="nomId" name="nom" placeholder="Votre Nom" required>
@@ -197,8 +237,9 @@
                                     <input class="datepicker form-control" type="text" id="dateNaissanceId" name="dateNaissance" placeholder="Votre Date de naissance" required>
                                     <input class="form-control" type="password" id="motDePasseId" name="motDePasse" placeholder="Votre Mot de passe" required>
                                     <input class="form-control" type="password" id="confirmMotDePasseId" name="confirmMotDePasse" placeholder="Confirmer Mot de passe" required>
+                                    <input type="hidden" name="url" value="<?= $_SERVER['REDIRECT_URL'] ?>" >
                                     <input class="btn btn-default btn-register" type="submit" name="inscription" value="Inscription">
-                
+             
                            </form>
                             </div>
                         </div>
@@ -240,7 +281,7 @@
     <script src="<?= $this->assetUrl('js/login-register.js') ?>"></script>
  
     <!-- Datepicker JS -->
-    <script src="<?= $this->assetUrl('js/bootstrap-datepicker.js') ?>"></script>
+    <script src="<?= $this->assetUrl('js/bootstrap-datepicker.fr.min.js') ?>"></script>
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>

@@ -20,7 +20,7 @@
     <link href="<?= $this->assetUrl('css/age-verification.css') ?>" rel="stylesheet">
 
     <!-- Date picker CSS -->
-    <link href="<?= $this->assetUrl('css/bootstrap-datepicker.css') ?>" rel="stylesheet">
+    <link href="<?= $this->assetUrl('css/bootstrap-datepicker3.css') ?>" rel="stylesheet">
 
     <!-- Login CSS -->
     <link href="<?= $this->assetUrl('css/login-register.css') ?>" rel="stylesheet">
@@ -178,6 +178,7 @@
                                 <input id="email" class="form-control" type="text" placeholder="Email" name="email">
                                 <input id="password" class="form-control" type="password" placeholder="Password" name="password">
                                 <input class="btn btn-default btn-login" type="button" value="Login" onclick="loginAjax()">
+                                 <input type="hidden" name="url" value="<?= $_SERVER['REDIRECT_URL'] ?>" >
                                 </form>
                             </div>
                          </div>
@@ -193,8 +194,9 @@
                                     <input class="datepicker form-control" type="text" id="dateNaissanceId" name="dateNaissance" placeholder="Votre Date de naissance" required>
                                     <input class="form-control" type="password" id="motDePasseId" name="motDePasse" placeholder="Votre Mot de passe" required>
                                     <input class="form-control" type="password" id="confirmMotDePasseId" name="confirmMotDePasse" placeholder="Confirmer Mot de passe" required>
+                                    <input type="hidden" name="url" value="<?= $_SERVER['REDIRECT_URL'] ?>" >
                                     <input class="btn btn-default btn-register" type="submit" name="inscription" value="Inscription">
-                
+             
                            </form>
                             </div>
                         </div>
@@ -236,7 +238,7 @@
     <script src="<?= $this->assetUrl('js/login-register.js') ?>"></script>
 
    <!-- Datepicker JS -->
-    <script src="<?= $this->assetUrl('js/bootstrap-datepicker.js') ?>"></script>
+    <script src="<?= $this->assetUrl('js/bootstrap-datepicker.fr.min.js') ?>"></script>
 
     <!-- Moteur de recherche de la home -->
 
