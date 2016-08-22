@@ -17,11 +17,13 @@ class UsersController extends Controller
 	 */
 	public function UsersInscription()
 	{
+		$prenom = '';
+		$showform = true;
+		$error = '';
+
 		if($_POST)
 		{
-			
-			$error = array();
-
+	
 			//-- j'enclenche les verifications d'usage sur les donnée saisie
 			//-- Je procède à mon insertion en base de donnée. J'appelle mon model charger de l'inscription de mon membre
 			//-- 
@@ -61,28 +63,15 @@ class UsersController extends Controller
 				
 
 						$db->insert($data);
-						
-						$this->redirect($_POST['url']);
+						$showform = false;					
 					}
-					else 
-					{
-
-						$this->redirect($_POST['url'])
+					else {
 
 					}
-
-
-
-
 			}
 		}
-
-	}
-
-
-	public function generateErrors($errors) {
-
-		$this->show('Users/errors', ['errors' => $errors]);
+		
+		$this->show('Users/usersinscription', ['showform' => $showform, 'prenom' => $prenom, 'error' => $error]);
 
 	}
 

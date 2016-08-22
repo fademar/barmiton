@@ -82,7 +82,7 @@
 
                     <?php if (empty($w_user)) : ?>
                     <li>
-                        <a data-toggle="modal" href="javascript:void(0)" onclick="openLoginModal();">Se connecter</a>
+                        <a data-toggle="modal" href="#connexion">Se connecter</a>
                     </li>
                     <?php else : ?>
                     <li class="dropdown">
@@ -90,7 +90,7 @@
                         <ul class="dropdown-menu"> 
                             <li><a href="<?= $this->url('Users_UsersProfil') ?>">Mon profil</a></li>
                             <li><a href="<?= $this->url('Favoris_showFavoris') ?>">Mes favoris</a></li>
-                            <li><a href="<?= $this->url('Users_UsersDeconnexion')  . '?url=' . $w_current_route ?>">Se déconnecter</a></li>
+                            <li><a href="<?= $this->url('Users_UsersDeconnexion')  . '?url=' . $_SERVER['REDIRECT_URL'] ?>">Se déconnecter</a></li>
                           
                         </ul>
                     </li>
@@ -162,60 +162,46 @@
 
 
 
-     <div class="modal fade login" id="loginModal">
-          <div class="modal-dialog login animated">
-              <div class="modal-content">
-                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">Connectez-vous</h4>
-                </div>
-                <div class="modal-body">  
-                    <div class="box">
-                         <div class="content">
-                            <div class="error"></div>
-                            <div class="form loginBox">
-                                <form method="post" action="users/connexion/" accept-charset="UTF-8">
-                                <input id="email" class="form-control" type="text" placeholder="Email" name="email">
-                                <input id="password" class="form-control" type="password" placeholder="Password" name="password">
-                                <input class="btn btn-default btn-login" type="button" value="Login" onclick="loginAjax()">
-                                 <input type="hidden" name="url" value="<?= $_SERVER['REDIRECT_URL'] ?>" >
-                                </form>
-                            </div>
-                         </div>
+         <!-- Portfolio Modals -->
+    <div class="portfolio-modal modal fade" id="connexion" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
                     </div>
-                    <div class="box">
-                        <div class="content registerBox" style="display:none;">
-                         <div class="form">
-                            <form method="post" html="{:multipart=>true}" data-remote="true" action="users/inscription/" accept-charset="UTF-8">
-                                    <input class="form-control" id="usernameId" name="username" type="text" placeholder="Votre Pseudo" required>
-                                    <input class="form-control" type="text" id="emailId" name="email" placeholder="Votre adresse mail" required>
-                                    <input class="form-control" type="text" id="nomId" name="nom" placeholder="Votre Nom" required>
-                                    <input class="form-control" id="prenomId" name="prenom" type="text" placeholder="Votre Prenom" required>
-                                    <input class="datepicker form-control" type="text" id="dateNaissanceId" name="dateNaissance" placeholder="Votre Date de naissance" required>
-                                    <input class="form-control" type="password" id="motDePasseId" name="motDePasse" placeholder="Votre Mot de passe" required>
-                                    <input class="form-control" type="password" id="confirmMotDePasseId" name="confirmMotDePasse" placeholder="Confirmer Mot de passe" required>
-                                    <input type="hidden" name="url" value="<?= $_SERVER['REDIRECT_URL'] ?>" >
-                                    <input class="btn btn-default btn-register" type="submit" name="inscription" value="Inscription">
-             
-                           </form>
-                            </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>Connectez-vous à votre compte</h2>
+                            <hr class="star-primary">
+                            <form method="POST" action="Users/connexion/">
+
+                                <div class="form-group">
+                                    <label for="emailId">Email</label>
+                                    <input class="form-control" type="email" id="emailId" name="email" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="motDePasseId">Mot de passe</label>
+                                    <input class="form-control" type="password" id="motDePasseId" name="motDePasse" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <input class="form-control" type="submit" name="connexion" value="Connexion" class="btn">
+                                </div>
+                                <input type="hidden" name="url" value="<?= $_SERVER['REDIRECT_URL'] ?>" >
+                            </form>
+                            <p>Pas encore de compte, <a href="<?= $this->url('Users_UsersInscription') ?>">inscrivez-vous</a> !</p>               
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <div class="forgot login-footer">
-                        <span>Pas encore de compte ? 
-                             <a href="javascript: showRegisterForm();">Inscrivez-vous</a> !
-                        </span>
-                    </div>
-                    <div class="forgot register-footer" style="display:none">
-                         <span>Vous avez déjà un compte ? </span>
-                         <a href="javascript: showLoginForm();">Connectez-vous.</a>
-                    </div>
-                </div>        
-              </div>
-          </div>
-      </div>
+            </div>
+        </div>
+    </div>
+
 
 
 
