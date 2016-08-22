@@ -18,7 +18,7 @@
     <link href="<?= $this->assetUrl('css/bootstrap-sortable.css') ?>" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="<?= $this->assetUrl('css/sb-admin.css') ?>" rel="stylesheet">
+    <link href="<?= $this->assetUrl('css/sb-admin-2.css') ?>" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
     <link href="<?= $this->assetUrl('css/morris.css') ?>" rel="stylesheet">

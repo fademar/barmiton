@@ -52,7 +52,7 @@
                     <form action="recherche/" method="GET">    
                         <div class="fieldcontainer">
                             <div>
-                                <input id="ingredient1" class="typeaheadhome" type="text" placeholder="">
+                                <input id="ingredient1" class="typeaheadhome" type="text" placeholder="Recherche">
                             </div>
                         </div>
                         <div class="results">
@@ -60,8 +60,9 @@
                                 <input id="ingredientId1" type="hidden" name="ingredients[]" value="">
                             </div>
                         </div>
-                        
-                        <button type="submit" class="btn btn-primary btn-lg">Mixer</button>
+                        <div class="containermixer">
+                            <button type="submit" class="pulse-button">Mixer</button>
+                        </div>
                     </form>
                 </div>
             </div>

@@ -3,18 +3,12 @@
 <?php $this->start('main_content') ?>
 
 <!-- section de recherche --> 
-<section>
+<section id="fiche">
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-md-12 text-center">
                 <h1><?= $dataCocktail['name']?></h1>
                 <hr class="glass-primary">
-                    <?php if($dataCocktail["note"] > 0) : ?>
-                        <h3>Note : <?= round($dataCocktail["note"] / $dataCocktail["compteurnote"], PHP_ROUND_HALF_UP) ?>/5</h3> 
-
-                    <?php else : ?>
-                        <p>Ce cocktail n'a pas encore été noté. Soyez le premier !</p>                        
-                    <?php endif ?>
             </div>
         </div>
         <div class="row">
@@ -30,15 +24,24 @@
 
                     
 
-                    <h2>Recette</h2>
+                    <h2>En résumé</h2>
                     <p><?= $dataCocktail['description']?><?php if ($dataCocktail['langue'] == 'en') { echo '<p class="small note">Note : Ce texte a été traduit automatiquement par Google. Notre équipe met tout en oeuvre pour l\'améliorer.</p>';} ?></p>
                         
-                    <div>
-                        <?php if (empty($w_user)) : ?><p class="small note"><a href="#connexion" data-toggle="modal">Connectez-vous</a> à votre compte ou <a href="<?= $this->url('Users_UsersInscription')?>">inscrivez-vous</a> pour enregistrer ce cocktail dans vos favoris ou lui attribuer une note.</p><?php endif ?>
-                        
+            </div>
+            <div class="col-xs-12 col-md-12 text-center">        
+                     <h2>Vous aimez ?</h2>
                         <form method="POST">
-                            <button type="submit" id="confirmFavoris" class="btn btn-default btn-circle btn-lg" name="ajouterFavoris" <?php if (empty($w_user)) {echo 'disabled';} ?> ><i class="fa fa-heart" aria-hidden="true"></i></button>
-                            <input type="hidden" name="iddrink" value="<?php echo $dataCocktail['id']; ?>" />
+                            <div>
+                                <button type="submit" id="confirmFavoris" class="btn btn-default btn-round-lg" name="ajouterFavoris" <?php if (empty($w_user)) {echo 'disabled';} ?> ><i class="fa fa-heart" aria-hidden="true"></i>  Favori</button>
+                                <input type="hidden" name="iddrink" value="<?php echo $dataCocktail['id']; ?>" />
+                            </div>
+                            <div>
+                            <?php if($dataCocktail["note"] > 0) : ?>
+                                <h3>Note : <?= round($dataCocktail["note"] / $dataCocktail["compteurnote"], PHP_ROUND_HALF_UP) ?>/5</h3> 
+
+                            <?php else : ?>
+                                <p class="small">Ce cocktail n'a pas encore été noté. Soyez le premier !</p>                        
+                            <?php endif ?>
                             <span class="star-rating">
                                 <input type="hidden" name="iddrink" value="<?php echo $dataCocktail['id']; ?>" />
                                 <input type="radio" name="note" value="1"><i></i>
@@ -47,13 +50,15 @@
                                 <input type="radio" name="note" value="4"><i></i>
                                 <input type="radio" name="note" value="5"><i></i>
                             </span>
-                            <span><input type="submit" id="confirmNotation" class="btn btn-default btn-sm" name="noter" value="Noter"></span>
-                            
+                            <span><input type="submit" id="confirmNotation" class="btn btn-default" name="noter" value="Noter"></span>
+                            </div>
+                            <div>
+                                <?php if (empty($w_user)) : ?><p class="small note"><a href="#connexion" data-toggle="modal">Connectez-vous</a> à votre compte ou <a href="<?= $this->url('Users_UsersInscription')?>">inscrivez-vous</a> pour enregistrer ce cocktail dans vos favoris ou lui attribuer une note.</p><?php endif ?>
+                            </div>
                         </form>
                     </div>
                 </div>
             </div>
-        </div>
 
         <div class="row">
             <div class="col-xs-12 col-md-12">

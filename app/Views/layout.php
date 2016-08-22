@@ -22,6 +22,8 @@
     <!-- Age verification CSS -->
     <link href="<?= $this->assetUrl('css/age-verification.css') ?>" rel="stylesheet">
 
+     <!-- Sweet Alert CSS -->
+    <link href="<?= $this->assetUrl('css/sweetalert.css') ?>" rel="stylesheet">
 
     <!-- Date picker CSS -->
     <link href="<?= $this->assetUrl('css/bootstrap-datepicker3.css') ?>" rel="stylesheet">
@@ -56,7 +58,7 @@
 <body id="page-top" class="index">
 
     <!-- Navigation -->
-        <nav id="mainNav" class="navbar navbar-default navbar-custom">
+        <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
@@ -166,8 +168,49 @@
         </a>
     </div>
 
+
+
+<!-- Modal -->
+<div class="modal fade" id="connexion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body text-center">
+        <h2>Connectez-vous à votre compte</h2>
+        <hr class="star-primary">
+        <form method="POST" action="../Users/connexion/">
+
+            <div class="form-group">
+                <label for="emailId">Email</label>
+                <input class="form-control" type="email" id="emailId" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="motDePasseId">Mot de passe</label>
+                <input class="form-control" type="password" id="motDePasseId" name="motDePasse" required>
+            </div>
+
+
+       <p>Pas encore de compte, <a href="<?= $this->url('Users_UsersInscription') ?>">inscrivez-vous</a> !</p>
+
+      </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                <button type="submit" class="btn btn-primary" name="connexion">Se connecter</button>
+                <input type="hidden" name="url" value="<?= $_SERVER['REDIRECT_URL'] ?>" >
+
+                </div>
+              </div>
+        </form>                
+    </div>
+  </div>
+</div>
+
+
     <!-- Portfolio Modals -->
-    <div class="portfolio-modal modal fade" id="connexion" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="portfolio-modal modal fade" id="" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-content">
             <div class="close-modal" data-dismiss="modal">
                 <div class="lr">
@@ -179,27 +222,6 @@
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
                         <div class="modal-body">
-                            <h2>Connectez-vous à votre compte</h2>
-                            <hr class="star-primary">
-                            <form method="POST" action="../Users/connexion/">
-
-                                <div class="form-group">
-                                    <label for="emailId">Email</label>
-                                    <input class="form-control" type="email" id="emailId" name="email" required>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="motDePasseId">Mot de passe</label>
-                                    <input class="form-control" type="password" id="motDePasseId" name="motDePasse" required>
-                                </div>
-
-                                <div class="form-group">
-                                    <input class="form-control" type="submit" name="connexion" value="Connexion" class="btn">
-                                </div>
-                                <input type="hidden" name="url" value="<?= $_SERVER['REDIRECT_URL'] ?>" >
-                            </form>                
-
-                           <p>Pas encore de compte, <a href="<?= $this->url('Users_UsersInscription') ?>">inscrivez-vous</a> !</p>
                         </div>
                     </div>
                 </div>
@@ -224,6 +246,10 @@
 
     <!-- Age verification JS -->
     <script src="<?= $this->assetUrl('js/age-verification.js') ?>"></script>
+
+    <!-- Sweet alert JS -->
+    <script src="<?= $this->assetUrl('js/sweetalert.min.js') ?>"></script>
+
 
     <!-- Login JS -->
     <script src="<?= $this->assetUrl('js/login-register.js') ?>"></script>
