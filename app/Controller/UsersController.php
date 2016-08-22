@@ -24,10 +24,6 @@ class UsersController extends Controller
 		if($_POST)
 		{
 	
-			//-- j'enclenche les verifications d'usage sur les donnée saisie
-			//-- Je procède à mon insertion en base de donnée. J'appelle mon model charger de l'inscription de mon membre
-			//-- 
-
 
 			$db = new UsersModel;
 
