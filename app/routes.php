@@ -61,7 +61,7 @@
 		// Routes Back-office
 		['GET|POST', '/admin/', 'Admin#admin', 'admin_admin'],
 
-		['GET|POST', '/admin/updates/', 'Admin#updatecocktail', 'admin_updatecocktail'],
+		['GET|POST', '/admin/updatecocktail/[:idcocktail]/', 'Admin#updatecocktail', 'admin_updatecocktail'],
 
 		['GET|POST', '/admin/cocktails/', 'Admin#admincocktails', 'admin_admincocktails'],
 	

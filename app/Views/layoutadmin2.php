@@ -46,7 +46,7 @@
 <body id="page-top" class="index">
 
     <!-- Navigation -->
-        <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
+        <nav id="mainNav" class="navbar navbar-default navbar-custom">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
@@ -75,7 +75,7 @@
                     <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i>&nbsp;&nbsp;<?= $w_user['Prenom']; ?> <span class="caret"></span></a>
                         <ul class="dropdown-menu"> 
-                            <li><a href="<?= $this->url('Users_UsersDeconnexion') . '?url=' . $_SERVER['REDIRECT_URL'] ?>">Se déconnecter</a></li>
+                            <li><a href="<?= $this->url('Users_UsersDeconnexion') . '?url=back_office'?>">Se déconnecter</a></li>
                           
                         </ul>
                     </li>

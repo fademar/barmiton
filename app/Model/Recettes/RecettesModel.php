@@ -13,7 +13,7 @@ class RecettesModel extends \W\Model\Model
 
 		$this->setTable('recettes');
 		$this->setPrimaryKey('id');
-
+		
 		foreach ($data->steps as $key => $step) {
 			
 			$traduction = new TraductionsModel();

@@ -146,7 +146,8 @@ class UsersController extends Controller
 			$db = new UsersAuthentificationModel;
 			$db->logUserOut();
 
-			$this->redirect($_GET['url']);
+			if ($_GET['url'] == 'back_office') { $this->redirectToRoute('default_home'); }
+			else { $this->redirect($_GET['url']); }
 	}
 
 	public function UsersProfil()
