@@ -35,38 +35,31 @@ class AdminController extends Controller
 												'updates' 		=> $_updates,
 												'listrecettes' 	=> $listrecettes
 											]);
-	
-
-
-
 
 	}
 
-	public function updatecocktail($id) {
+	public function updatecocktail($idcocktail) {
 
 
 		$_cocktaildb = new CocktailsModel();
 		$_cocktaildb->setTable('cocktails');
-		$_cocktaildata = $_cocktaildb->search(['idCocktailApi' => $id]);
+		$_cocktaildata = $_cocktaildb->search(['idCocktailApi' => $idcocktail]);
 
 		$_recettedb = new RecettesModel();
 		$_recettedb->setTable('recettes');
-		$_recettedata = $_recettedb->search(['idcocktail' => $id]);
+		$_recettedata = $_recettedb->search(['idcocktail' => $idcocktail]);
 
 		if ($_POST) {
-			var_dump($_POST);
-			// $_cocktaildb->update(
-			// 						['description' => $_POST['description']], 
-			// 						['note' => $_POST['note']],
-			// 						['compteurnote' => $_POST['compteurnote']],
-			// 						$_POST['id'], $stripTags = true);
+			$_cocktaildb->update(
+									['description' => $_POST['description']], 
+									['note' => $_POST['note']],
+									['compteurnote' => $_POST['compteurnote']],
+									$_POST['iddb'], $stripTags = true);
 
 			foreach ($_POST['recettetextes'] as $key => $value) {
-			 	
+			 	var_dump($_POST['recetteiddb']);
 				var_dump($key);
 				var_dump($value);
-
-
 			} 
 
 			foreach ($_POST['recettedescriptions'] as $key => $value) {
@@ -77,11 +70,7 @@ class AdminController extends Controller
 
 			} 
 
-
-
 		}
-
-
 
 
 		$this->show('admin/modifcocktail', [
@@ -91,11 +80,96 @@ class AdminController extends Controller
 											]);
 
 
+	}
 
+	public function modifierMembre($id)
+	{
+		$db = new AdminModel;
+		$db->setTable('users');
+		$db->setPrimaryKey('id');
+		$user = $db->find($id);
 
+		//UPDATE DE LA BDD
+		if (isset($_POST['modifier']))
+		{
+			if (empty($_POST['username']))
+			{
+				$username = $user['username'];
+			}
+			else
+			{
+				$username = $_POST['username'];
+			}
+
+			if (empty($_POST['email']))
+			{
+				$email = $user['email'];
+			}
+			else
+			{
+				$email = $_POST['email'];
+			}
+
+			if (empty($_POST['role']))
+			{
+				$role = $user['role'];
+			}
+			else
+			{
+				$role = $_POST['role'];
+			}
+
+			$data= array(
+				'id' => $user['id'],
+				'Nom' => $user['Nom'],
+				'Prenom' => $user['Prenom'],
+				'date_naissance' => $user['date_naissance'],
+				'username' => $username,
+				'email' => $email,
+				'password' => $user['password'],
+				'role' => $role
+			);	
+
+			$user = $db->update($data, $id, $stripTags = true);
+			
+
+			$this->redirectToRoute('Admin_gestionMembre', ['user'=>$user]);
+		}
+
+		$this->show('admin/modifmembres', ['user'=>$user]);
+	}
+
+	public function supprimerMembre($id)
+	{
+		//Je récupère les infos du membre ciblé
+		$db = new AdminModel;
+		$db->setTable('users');
+		$db->setPrimaryKey('id');
+		$user = $db->find($id);
+
+		//suppression de la ligne et redirection
+		$db->delete($user['id']);
 		
+		$this->redirectToRoute('Admin_gestionMembre');
+	}
+
+	public function gestionMembre()
+	{
+		$dbAdmin= new AdminModel;
+		$dbAdmin->setTable('users');
+
+		$membres=$dbAdmin->findAll($orderBy="username", $orderDir="ASC");
+		
+
+		$this->show('admin/gestionmembres',['users'=> $membres]);
 	}
 
 
 
+
+
+
+
+
+		
 }

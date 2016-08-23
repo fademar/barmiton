@@ -64,6 +64,15 @@
 		['GET|POST', '/admin/updatecocktail/[:idcocktail]/', 'Admin#updatecocktail', 'admin_updatecocktail'],
 
 		['GET|POST', '/admin/cocktails/', 'Admin#admincocktails', 'admin_admincocktails'],
+
+		// Page gestion des membres
+		['GET|POST', '/Admin/gestionmembres/', 'Admin#gestionmembre', 'Admin_gestionMembre'],
+
+		// Page de modification des membres
+		['GET|POST', '/Admin/modifier_membre/[:id]', 'Admin#modifierMembre', 'Admin_modifier_membre'],
+
+		// Page de suppression du membre
+		['GET|POST', '/Admin/supprimer_membre/[:id]', 'Admin#supprimerMembre', 'Admin_supprimer_membre'],
 	
 
 		['GET|POST', '/outils/', 'Outils#showOutils', 'outils_showoutils'],

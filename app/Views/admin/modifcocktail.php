@@ -15,7 +15,6 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     Mise à jour d'un cocktail
-                <?php var_dump($cocktaildata) ?>
                 </div>
                 <div class="col-md-8 formulaire">
                 <form  action="" method="POST" ?>
@@ -55,10 +54,12 @@
                             <div class="form-group">                  
                                 <label for="texteId<?= $recette['ordre']?>">TEXTE Etape <?= $recette['ordre']?></label>
                                 <textarea id="texteId<?= $recette['ordre']?>" rows="8" class="form-control" name="recettetextes[]" placeholder=""><?= $recette['texte'] ?></textarea>
+
                             </div>
                             <div class="form-group">
                                 <label for="descriptionId<?= $recette['ordre']?>">DESCRIPTION Etape <?= $recette['ordre']?></label>
                                 <textarea id="descriptionId<?= $recette['ordre']?>" rows="8" class="form-control" name="recettedescriptions[]" placeholder=""><?= $recette['description'] ?></textarea>
+
                             </div>
                             <div class="form-group">
                                 <label for="langueId">Langue</label>
