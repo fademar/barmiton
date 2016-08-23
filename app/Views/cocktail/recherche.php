@@ -187,15 +187,18 @@
 <section>
     <div class="container">
         <div class="row">
+            <input type="hidden" id="nbpages" value="<?php echo $nbpages ?>">
+            <input type="hidden" id="querypage" value="<?php echo $querypage ?>">
             <div class="col-xs-12 col-md-12 text-center">
                 <?php if ($nbpages > 0) :?>                       
                     <nav aria-label="Page navigation">
                         <ul class="pagination">
 
 
-                            <?php for ($i=2; $i < $nbpages ; $i++): ?>
+                            <?php for ($i=1; $i < $nbpages ; $i++): ?>
 
-                                <li><a href="?<?= $querypage . '&page='. $i ?>" class="next"><?= $i?></a></li>
+                                <li><a href="?<?php echo $querypage . '&page='. $i ?>" class="next"><?= $i?></a></li>
+                                
 
                             <?php endfor ?>
 

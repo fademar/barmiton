@@ -48,27 +48,15 @@
                     <div class="form-group">
                         <label for="compteurId">Note</label>
                         <input type="text" id="compteurId" class="form-control" name="compteurnote" placeholder="" value="<?= $cocktaildata['compteurnote'] ?>">
-                    </div>                        
+                    </div>
 
-                        <?php foreach ($recettedata as $recette) : ?>
-                            <div class="form-group">                  
-                                <label for="texteId<?= $recette['ordre']?>">TEXTE Etape <?= $recette['ordre']?></label>
-                                <textarea id="texteId<?= $recette['ordre']?>" rows="8" class="form-control" name="recettetextes[]" placeholder=""><?= $recette['texte'] ?></textarea>
-
-                            </div>
-                            <div class="form-group">
-                                <label for="descriptionId<?= $recette['ordre']?>">DESCRIPTION Etape <?= $recette['ordre']?></label>
-                                <textarea id="descriptionId<?= $recette['ordre']?>" rows="8" class="form-control" name="recettedescriptions[]" placeholder=""><?= $recette['description'] ?></textarea>
-
-                            </div>
-                            <div class="form-group">
-                                <label for="langueId">Langue</label>
-                                <select class="form-control">
-                                    <option <?php if ($recette['langue'] == 'fr'){ echo "selected"; }?>>fr</option>
-                                    <option <?php if ($recette['langue'] == 'en'){ echo "selected"; }?>>en</option>
-                                </select>
-                            </div>
-                        <?php endforeach ?>
+                     <div class="form-group">
+                        <label for="langueId">Langue</label>
+                        <select id="langueId" class="form-control" name="langue">
+                            <option value="fr" <?php if ($cocktaildata['langue'] == 'fr') { echo "selected";} ?>>fr</option>
+                            <option value="en" <?php if ($cocktaildata['langue'] == 'en') { echo "selected";} ?>>en</option>
+                        </select>
+                    </div>                 
 
                     <button type="submit" class="btn btn-default">Mettre à jour</button>
 

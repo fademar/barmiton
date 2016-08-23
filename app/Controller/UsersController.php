@@ -160,7 +160,7 @@ class UsersController extends Controller
 		$usersdb->setTable('users');
 
 		$user = $usersdb->find($loggedUser['id']);
-
+		
 
 		$this->show('Users/profil', ['loggedUser' => $user]);
 	}
@@ -173,7 +173,7 @@ class UsersController extends Controller
 		{
 			if ($_POST['newMotDePasse'] == $_POST['confirmNewMotDePasse'])
 			{
-				$newPassword=sha1($_POST['newMotDePasse']);
+				$newPassword = sha1($_POST['newMotDePasse']);
 			}
 			else
 			{

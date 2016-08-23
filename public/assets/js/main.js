@@ -32,6 +32,21 @@ $(document).ready(function() {
 
 
 
+	var totalpage = $('input#nbpages').val();
+	var query = $('input#querypage').val();
+
+
+	$('.pagination').twbsPagination({
+        totalPages: totalpage,
+        visiblePages: 10,
+        href: '?' + query + '&page={{number}}'
+    });
+
+
+
+
+
+
 	// Tri des tableaux dans le back-office
 
 	$('.sortable').bootstrapSortable;

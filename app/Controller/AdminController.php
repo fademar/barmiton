@@ -16,37 +16,30 @@ class AdminController extends Controller
 
 	public function admin()
 	{
+		$this->allowTo('1');
 		$_admin = new AdminModel();
 		$_updates = $_admin->getLastUpdates();
 		$_cocktaildata = array();
 
-		$_recettedb = new RecettesModel();
-		$_recettedb->setTable('recettes');
-		$_recettedata = $_recettedb->search(['langue' => 'en'], $operator = 'AND');
-		
-		foreach ($_recettedata as $recette) {
-			
-			$listrecettes[] = array('id' => $recette['id'], 'idcocktail' => $recette['idcocktail']); 
-
-		}
-
 
 		$this->show('admin/admin', [
 												'updates' 		=> $_updates,
-												'listrecettes' 	=> $listrecettes
 											]);
 
 	}
 
 
 	public function admincocktails() {
+		$this->allowTo('1');
 		$_recettedb = new RecettesModel();
 		$_recettedb->setTable('recettes');
-		$_recettedata = $_recettedb->search(['langue' => 'en'], $operator = 'AND');
+		$_recettedata = $_recettedb->search(['langue' => 'en', 'ordre' => 1], $operator = 'AND');
 		
 		foreach ($_recettedata as $recette) {
 			
-			$listrecettes[] = array('id' => $recette['id'], 'idcocktail' => $recette['idcocktail']); 
+			if ($recette['ordre'] < 10) {
+				$listrecettes[] = array('id' => $recette['id'], 'idcocktail' => $recette['idcocktail']); 				
+			}
 
 		}
 
@@ -58,52 +51,72 @@ class AdminController extends Controller
 
 	}
 
-	public function updatecocktail($idcocktail) {
+	public function modifierCocktail($idcocktail) {
 
-
+		$this->allowTo('1');
 		$_cocktaildb = new CocktailsModel();
 		$_cocktaildb->setTable('cocktails');
 		$_cocktaildata = $_cocktaildb->search(['idCocktailApi' => $idcocktail]);
 
-		$_recettedb = new RecettesModel();
-		$_recettedb->setTable('recettes');
-		$_recettedata = $_recettedb->search(['idcocktail' => $idcocktail]);
 
 		if ($_POST) {
-			$_cocktaildb->update(
-									['description' => $_POST['description']], 
-									['note' => $_POST['note']],
-									['compteurnote' => $_POST['compteurnote']],
+			$_cocktaildb->update([
+									'id' => $_POST['iddb'],
+									'idCocktailApi' => $_POST['idcocktail'],
+									'nomCocktail' => $_POST['nom'],
+									'description' => $_POST['description'], 
+									'note' => $_POST['note'],
+									'compteurnote' => $_POST['compteurnote'],
+									'langue' => $_POST['langue']],
 									$_POST['iddb'], $stripTags = true);
 
-			foreach ($_POST['recettetextes'] as $key => $value) {
-			 	var_dump($_POST['recetteiddb']);
-				var_dump($key);
-				var_dump($value);
-			} 
-
-			foreach ($_POST['recettedescriptions'] as $key => $value) {
-			 	
-				var_dump($key);
-				var_dump($value);
-
-
-			} 
+			$_cocktaildata = $_cocktaildb->search(['idCocktailApi' => $idcocktail]);
 
 		}
 
 
 		$this->show('admin/modifcocktail', [
 												'cocktaildata' 	=> $_cocktaildata[0],
-												'recettedata'	=> $_recettedata
 
 											]);
+	}
 
+
+	public function modifierRecette($idcocktail) {
+
+		$_recettedb = new RecettesModel();
+		$_recettedb->setTable('recettes');
+		$_recettedata = $_recettedb->search(['idcocktail' => $idcocktail]);
+
+
+		if ($_POST) {
+
+			$_recettedb->update([
+									'id' 	=> $_POST['id'],
+									'idcocktail' => $_recettedata[0]['idcocktail'],
+									'texte' => $_POST['texte'],
+									'description' => $_POST['description'],
+									'ordre' => $_recettedata[0]['ordre'],
+									'langue' => $_POST['langue']],
+									$_POST['id'], $stripTags = true);
+
+			$_recettedata = $_recettedb->search(['idcocktail' => $idcocktail]);
+
+
+		} 
+
+		$this->show('admin/modifrecettes', ['recettedata' => $_recettedata]);
 
 	}
 
+
+
+
+
+
 	public function modifierMembre($id)
 	{
+		$this->allowTo('1');
 		$db = new AdminModel;
 		$db->setTable('users');
 		$db->setPrimaryKey('id');
@@ -161,6 +174,7 @@ class AdminController extends Controller
 
 	public function supprimerMembre($id)
 	{
+		$this->allowTo('1');
 		//Je récupère les infos du membre ciblé
 		$db = new AdminModel;
 		$db->setTable('users');
@@ -175,6 +189,7 @@ class AdminController extends Controller
 
 	public function gestionMembre()
 	{
+		$this->allowTo('1');
 		$dbAdmin= new AdminModel;
 		$dbAdmin->setTable('users');
 

@@ -5,6 +5,7 @@
 <!-- section de recherche --> 
 <section id="fiche">
     <div class="container">
+        <div class="back-btn"><a href="<?= $_SERVER['HTTP_REFERER'] ?>"><button class="btn btn-default"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i> Retour</button></a></div>
         <div class="row">
             <div class="col-xs-12 col-md-12 text-center">
                 <h1><?= $dataCocktail['name']?></h1>
@@ -37,7 +38,7 @@
                             </div>
                             <div>
                             <?php if($dataCocktail["note"] > 0) : ?>
-                                <h3>Note : <?= round($dataCocktail["note"] / $dataCocktail["compteurnote"], PHP_ROUND_HALF_UP) ?>/5</h3> 
+                                <div class="note">Note : <?= round($dataCocktail["note"] / $dataCocktail["compteurnote"], PHP_ROUND_HALF_UP) ?>/5</div> 
 
                             <?php else : ?>
                                 <p class="small">Ce cocktail n'a pas encore été noté. Soyez le premier !</p>                        

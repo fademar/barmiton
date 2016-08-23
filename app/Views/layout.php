@@ -197,9 +197,8 @@
     <!-- Sweet alert JS -->
     <script src="<?= $this->assetUrl('js/sweetalert.min.js') ?>"></script>
 
-     <!-- Sweet alert JS -->
-    <script src="<?= $this->assetUrl('js/jquery.twbsPagination.min.js') ?>"></script>
-
+     <!-- Pagination JS -->
+    <script src="<?= $this->assetUrl('js/jquery.twbsPagination.js') ?>"></script>
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>

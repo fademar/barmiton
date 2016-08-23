@@ -4,7 +4,7 @@
 
 
 <!-- Page profil -->
-<section id="profil">
+<section id="favoris">
     <div class="container">
         <?php if (empty($favorislist)) : ?>
         <div class="row">

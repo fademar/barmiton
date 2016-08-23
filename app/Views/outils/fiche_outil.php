@@ -3,8 +3,9 @@
 <?php $this->start('main_content') ?>
 
 <!-- section de recherche --> 
-<section>
+<section id="fiche">
     <div class="container">
+    <div class="back-btn"><a href="<?= $_SERVER['HTTP_REFERER'] ?>"><button class="btn btn-default"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i> Retour</button></a></div>
         <div class="row">
             <div class="col-xs-12 col-md-12 text-center">
                 <h2><?= $outil['nom']?></h2>

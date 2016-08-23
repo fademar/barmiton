@@ -21,7 +21,8 @@
                                     <tr>
                                         <th>ID BDD</th>
                                         <th>ID COCKTAIL</th>
-                                        <th>MODIFIER</th>
+                                        <th>MODIFIER DONNEES</th>
+                                        <th>MODIFIER RECETTES</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -29,7 +30,8 @@
                                         <tr>
                                             <td><?= $recette['id'] ?></td>
                                             <td><?= $recette['idcocktail'] ?></td>
-                                            <td><a href="<?= $this->url('admin_updatecocktail', ['idcocktail' => $recette['idcocktail']]) ?>" >Modifier</a></td>
+                                            <td><a href="<?= $this->url('admin_modifierCocktail', ['idcocktail' => $recette['idcocktail']]) ?>" >Modifier</a></td>
+                                            <td><a href="<?= $this->url('admin_modifierRecette', ['idcocktail' => $recette['idcocktail']]) ?>" >Modifier</a></td>
                                         </tr>
                                     <?php endforeach ?>
                                 </tbody>

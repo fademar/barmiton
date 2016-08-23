@@ -177,11 +177,8 @@ class RechercheController extends Controller
 				}
 			}
 
-			$url 			= $api->constructUrl($_urlpart);
-
-
-
-
+			$url	= $api->constructUrl($_urlpart);
+ 
 
 				// ---------------- PAGINATION ---------------- //
 
