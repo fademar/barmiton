@@ -45,7 +45,6 @@ class AdminController extends Controller
 
 			$_recettedb = new RecettesModel();
 			$_recettedb->setTable('recettes');
-			$_recettedata = $_recettedb->search 
 
 
 

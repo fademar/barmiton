@@ -88,6 +88,7 @@
                     <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i>&nbsp;&nbsp;<?= $w_user['Prenom']; ?> <span class="caret"></span></a>
                         <ul class="dropdown-menu"> 
+                            <?php if ($w_user['role'] == 1) { echo '<li><a href="'. $this->url('admin_admin') . '">Back-office</a></li>';} ?>
                             <li><a href="<?= $this->url('Users_UsersProfil') ?>">Mon profil</a></li>
                             <li><a href="<?= $this->url('Favoris_showFavoris') ?>">Mes favoris</a></li>
                             <li><a href="<?= $this->url('Users_UsersDeconnexion')  . '?url=' . $_SERVER['REDIRECT_URL'] ?>">Se déconnecter</a></li>

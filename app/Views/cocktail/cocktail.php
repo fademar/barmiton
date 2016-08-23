@@ -145,13 +145,12 @@
                             <img classs="img-responsive" src="<?= $cocktailcard['imgurlsmall']?>"/>
                             <div class="filter"></div>
 
-                            <div class="actions">
-                                <button class="btn btn-round btn-fill btn-neutral btn-modern">
-                                    <a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $cocktailcard['id']]); ?>">
-                                        Détails</a>
-                                    </button>
-                                </div>
+                            <a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $cocktailcard['id']]); ?>">
+                            <div class="actions"> 
+                                <i class="fa fa-search quatre" aria-hidden="true"></i>
                             </div>
+                        </a>
+                        </div>
 
                             <div class="content">
                                 <h4 class="title"><a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $cocktailcard['id']]); ?>"><?= $cocktailcard['name']?></a></h4>
@@ -178,12 +177,11 @@
                                 <img classs="img-responsive" src="<?= $cocktailcard['imgurlsmall']?>"/>
                                 <div class="filter"></div>
 
-                                <div class="actions">
-                                    <button class="btn btn-round btn-fill btn-neutral btn-modern">
-                                        <a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $cocktailcard['id']]); ?>">
-                                            Détails</a>
-                                        </button>
-                                    </div>
+                                <a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $cocktailcard['id']]); ?>">
+                            <div class="actions"> 
+                                <i class="fa fa-search quatre" aria-hidden="true"></i>
+                            </div>
+                        </a>
                                 </div>
 
                                 <div class="content">

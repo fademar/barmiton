@@ -41,6 +41,7 @@ $(document).ready(function() {
 	$( ".searchtrigger" ).click(function() {
 	  $( ".divsearch" ).slideToggle(function() {
 
+	  	$("i").toggleClass("fa-arrow-circle-o-down fa-arrow-circle-o-up");
 
 
 	  });
