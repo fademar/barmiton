@@ -1,4 +1,4 @@
-<?php $this->layout('layout', ['title' => 'Gestion des membres']) ?>
+<?php $this->layout('layoutadmin2', ['title' => 'Gestion des membres']) ?>
 
 <?php $this->start('main_content') ?>
 
@@ -7,7 +7,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-lg-12">
-			<h1 class="page-header">Notifications API et BDD</h1>
+			<h1 class="page-header">Gestion des membres</h1>
 		</div>
 		<!-- /.col-lg-12 -->
 	</div>
@@ -16,7 +16,7 @@
 		<div class="col-lg-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					Gestion des membres
+					
 				</div>
 				<!-- /.panel-heading -->
 				<div class="panel-body">

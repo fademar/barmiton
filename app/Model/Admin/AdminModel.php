@@ -14,7 +14,7 @@ class AdminModel extends \W\Model\Model
 
 	public function getLastUpdates() {
 
-		$_jsonurl		= "https://addb.absolutdrinks.com/updates/324500/?apiKey=2c758736e5f844bdb9d39308df889c6d";
+		$_jsonurl		= "https://addb.absolutdrinks.com/updates/324500/?apiKey=9183cb55cbf047fb9a4dacda11077cce";
 		$_json 			= file_get_contents($_jsonurl);
 		$_updatelist	= json_decode($_json);
 

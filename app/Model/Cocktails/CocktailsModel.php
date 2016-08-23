@@ -37,11 +37,11 @@ class CocktailsModel extends \W\Model\Model
 	public function constructUrl($urlpart) {
 
 		if ($urlpart === 'all') {
-			$_jsonurl		= 'https://addb.absolutdrinks.com/drinks/?apiKey=2c758736e5f844bdb9d39308df889c6d';
+			$_jsonurl		= 'https://addb.absolutdrinks.com/drinks/?apiKey=9183cb55cbf047fb9a4dacda11077cce';
 		}
 		else 
 		{
-			$_jsonurl		= 'https://addb.absolutdrinks.com/drinks'. $urlpart .'/?apiKey=2c758736e5f844bdb9d39308df889c6d';
+			$_jsonurl		= 'https://addb.absolutdrinks.com/drinks'. $urlpart .'/?apiKey=9183cb55cbf047fb9a4dacda11077cce';
 		}
 
 		return $_jsonurl;
@@ -208,7 +208,7 @@ class CocktailsModel extends \W\Model\Model
 		$this->setTable('cocktails');
 
 		/**************** Récupération des données ******************/
-		$_jsonurl = 'https://addb.absolutdrinks.com/drinks/' . $urlpart . '/?apiKey=2c758736e5f844bdb9d39308df889c6d';
+		$_jsonurl = 'https://addb.absolutdrinks.com/drinks/' . $urlpart . '/?apiKey=9183cb55cbf047fb9a4dacda11077cce';
 		$_json = file_get_contents($_jsonurl);
 		$_data = json_decode($_json)->result;
 	    
@@ -331,7 +331,7 @@ class CocktailsModel extends \W\Model\Model
 
 		foreach ($_listebest as $_bestcocktail) {
 			
-			$_jsonurl 	= 'https://addb.absolutdrinks.com/drinks/'. $_bestcocktail['idCocktailApi'] .'?apiKey=2c758736e5f844bdb9d39308df889c6d';
+			$_jsonurl 	= 'https://addb.absolutdrinks.com/drinks/'. $_bestcocktail['idCocktailApi'] .'?apiKey=9183cb55cbf047fb9a4dacda11077cce';
 			$_json 		= file_get_contents($_jsonurl);
 			$_data 		= json_decode($_json)->result;
 			
@@ -371,7 +371,7 @@ class CocktailsModel extends \W\Model\Model
 
 	public function getIngredients($id)
 	{
-		$_jsonurl = 'https://addb.absolutdrinks.com/drinks/' . $id . '/?apiKey=2c758736e5f844bdb9d39308df889c6d';
+		$_jsonurl = 'https://addb.absolutdrinks.com/drinks/' . $id . '/?apiKey=9183cb55cbf047fb9a4dacda11077cce';
 		$_json = file_get_contents($_jsonurl);
 		$_data = json_decode($_json)->result;
 

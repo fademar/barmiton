@@ -63,7 +63,7 @@
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                        <a href="<?= $this->url('admin_admin') ?>">Dashboard</a>
+                        <a href="<?= $this->url('admin_admin') ?>">Updates</a>
                     </li>
                     <li>
                         <a href="<?= $this->url('admin_admincocktails') ?>">Cocktails</a>

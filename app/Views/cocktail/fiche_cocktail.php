@@ -50,7 +50,7 @@
                                 <input type="radio" name="note" value="4"><i></i>
                                 <input type="radio" name="note" value="5"><i></i>
                             </span>
-                            <span><input type="submit" id="confirmNotation" class="btn btn-default" name="noter" value="Noter"></span>
+                            <span><input type="submit" id="confirmNotation" class="btn btn-default" name="noter" value="Noter" <?php if (empty($w_user)) {echo 'disabled';} ?>></span>
                             </div>
                             <div>
                                 <?php if (empty($w_user)) : ?><p class="small note"><a href="#connexion" data-toggle="modal">Connectez-vous</a> à votre compte ou <a href="<?= $this->url('Users_UsersInscription')?>">inscrivez-vous</a> pour enregistrer ce cocktail dans vos favoris ou lui attribuer une note.</p><?php endif ?>

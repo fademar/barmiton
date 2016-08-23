@@ -1,4 +1,4 @@
-<?php $this->layout('layout', ['title' => 'Modification des membres']) ?>
+<?php $this->layout('layoutadmin2', ['title' => 'Modification des membres']) ?>
 
 <?php $this->start('main_content') ?>
 
@@ -11,7 +11,7 @@
 
 					<div class="form-group">
 						<label for="pseudo">Pseudo</label>
-						<input type="text" name="pseudo" id="pseudo" class="form-control" value="<?php echo $user['username']?>">
+						<input type="text" name="username" id="pseudo" class="form-control" value="<?php echo $user['username']?>">
 					</div>
 
 					<div class="form-group">

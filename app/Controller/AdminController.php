@@ -38,6 +38,26 @@ class AdminController extends Controller
 
 	}
 
+
+	public function admincocktails() {
+		$_recettedb = new RecettesModel();
+		$_recettedb->setTable('recettes');
+		$_recettedata = $_recettedb->search(['langue' => 'en'], $operator = 'AND');
+		
+		foreach ($_recettedata as $recette) {
+			
+			$listrecettes[] = array('id' => $recette['id'], 'idcocktail' => $recette['idcocktail']); 
+
+		}
+
+		$this->show('admin/adminupdates', [
+												'listrecettes' 	=> $listrecettes
+											]);
+
+
+
+	}
+
 	public function updatecocktail($idcocktail) {
 
 

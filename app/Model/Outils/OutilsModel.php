@@ -13,7 +13,7 @@ class OutilsModel extends \W\Model\Model
 		$this->setTable('outils');
 
 		/**************** Récupération des données ******************/
-		$_jsonurl = 'https://addb.absolutdrinks.com/tools/?apiKey=2c758736e5f844bdb9d39308df889c6d';
+		$_jsonurl = 'https://addb.absolutdrinks.com/tools/?apiKey=9183cb55cbf047fb9a4dacda11077cce';
 		$_json = file_get_contents($_jsonurl);
 		$_data = json_decode($_json)->result;
 
