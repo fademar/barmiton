@@ -11,6 +11,7 @@ use Model\Users\ChangeUsername;
 use DateTime;
 use DateInterval;
 
+
 class UsersController extends Controller
 {
 
@@ -159,6 +160,7 @@ class UsersController extends Controller
 		$usersdb->setTable('users');
 
 		$user = $usersdb->find($loggedUser['id']);
+
 
 		$this->show('Users/profil', ['loggedUser' => $user]);
 	}

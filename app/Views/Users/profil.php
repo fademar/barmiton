@@ -31,7 +31,7 @@
             </div>
 
             <div>
-                <h3>Date de naissance : <?php echo $loggedUser['date_naissance']; echo gettype($loggedUser['date_naissance']); ?></h3>
+                <h3>Date de naissance : <?php echo $loggedUser['date_naissance']; ?></h3>
             </div>
 
             <div>

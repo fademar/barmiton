@@ -27,14 +27,21 @@ class FavorisController extends Controller
 
 		$favorisuser = $favorisdb->search(['idMembres' => $loggedUser['id']]);
 
-		foreach ($favorisuser as $cocktailfavoris) {
+		if (!empty($favorisuser)) {
 
-			$cocktaildb = new CocktailsModel();
-			$favoris = $cocktaildb->getcocktaildata($cocktailfavoris['iddrink']);
+			foreach ($favorisuser as $cocktailfavoris) {
 
-			$favorislist[] = ['idfavoris' => $cocktailfavoris['idFavoris'], 'favorisdata' => $favoris];
-			
+				$cocktaildb = new CocktailsModel();
+				$favoris = $cocktaildb->getcocktaildata($cocktailfavoris['iddrink']);
 
+				$favorislist[] = ['idfavoris' => $cocktailfavoris['idFavoris'], 'favorisdata' => $favoris];
+				
+
+			}
+		}
+		else
+		{
+			$favorislist = "";
 		}
 
 		$this->show('users/favoris', [
