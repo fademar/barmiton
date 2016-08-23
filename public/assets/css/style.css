@@ -1143,4 +1143,26 @@ padding-right: 10px;
   border-radius: 35px;
 }
 
+.imgoutil {
+  width: 60%;
+}
+
+.videooutil {
+  margin-top: 70px;
+}
+
+div.divsearch {
+  display:none;
+}
+
+
+i.searchtrigger {
+  font-size: 3em;
+}
+
+
+section.withheader {
+  padding-top: 0;
+}
+
 

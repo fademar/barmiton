@@ -19,12 +19,11 @@
                             <img classs="img-responsive" src="<?= $this->assetUrl('img/' . $outil['idapi']. '.jpg') ?>"/>
                             <div class="filter"></div>
 
+                            <a href="<?= $this->url("outils_showficheoutil", ["id" => $outil['idapi']]); ?>">
                             <div class="actions">
-                                <button class="btn btn-round btn-fill btn-neutral btn-modern">
-                                    <a href="<?= $this->url("outils_showficheoutil", ["id" => $outil['idapi']]); ?>">
-                                        Détails</a>
-                                    </button>
+                                <i class="fa fa-search quatre" aria-hidden="true"></i>
                             </div>
+                            </a>
                         </div>
 
                         <div class="content">

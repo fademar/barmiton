@@ -6,9 +6,12 @@
     <div class="container">
         <div class="row center">
 
-            <h2 class="text-center">Recherche avancée</h2>
-            <form action="../recherche/" method="GET">
-                <h3 class="text-center">Ingrédients</h3>    
+            <h2 class="searchtrigger text-center">Moteur de recherche</h2>
+            <div class="text-center"><i class="fa fa-arrow-circle-o-down searchtrigger" aria-hidden="true"></i></div>
+            <div class="divsearch">
+
+                <form action="../recherche/" method="GET">
+                    <h3 class="text-center">Ingrédients</h3>    
                     <div class="col-xs-12 col-sm-6 col-md-6">
                         <label for="alcoolsprincipauxId">Alcools principaux</label>
                         <select id="alcoolsprincipauxId" name="alcoolsprincipaux[]" class="form-control selectpicker" multiple title="Choisissez une ou plusieurs options"> 
@@ -86,7 +89,6 @@
                         </select>
                     </div>
                     <div class="clearfix"></div>
-                </div>
 
                 <div id="submitbtn" class="col-xs-12 col-md-12 text-center">
                     <button class="btn btn-primary btn-lg" type="submit">Rechercher</button>                 
@@ -94,10 +96,11 @@
             </form>
         </div>
     </div>
+</div>
 </header>
 
 <!-- Sélection des meilleurs cocktails -->
-<section>
+<section class="withheader">
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-md-12 text-center">
@@ -114,7 +117,7 @@
 
                         <a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $cocktailcard['id']]); ?>">
                             <div class="actions"> 
-                                <i class="fa fa-search" aria-hidden="true"></i>
+                                <i class="fa fa-search quatre" aria-hidden="true"></i>
                             </div>
                         </a>
                     </div>
@@ -145,52 +148,52 @@
                             <div class="actions">
                                 <button class="btn btn-round btn-fill btn-neutral btn-modern">
                                     <a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $cocktailcard['id']]); ?>">
-                                    Détails</a>
-                                </button>
+                                        Détails</a>
+                                    </button>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="content">
-                            <h4 class="title"><a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $cocktailcard['id']]); ?>"><?= $cocktailcard['name']?></a></h4>
-                            <p class="description">Un cocktail <?= $cocktailcard['gouts'] ?> pour <?= $cocktailcard['occasions'] ?>.</p>
-                        </div>                                           
-                    </div> <!-- end card -->
-                </div>
-            <?php endforeach ?>
-        </div>
-
-
-
-        <div class="row">
-            <div class="col-xs-12 col-md-12 text-center">
-                <h2>Vous aimez le <?= $nomcouleur ?> ?</h2>
-                <hr class="glass-primary">
-            </div>
-        </div>
-        <div class="row">
-            <?php foreach ($cocktailscouleur as $cocktailcard): ?>
-                <div class="card-box col-md-3 col-sm-6">
-                <div class="card" data-mh="colorgroup">                            
-                    <div class="header">
-                        <img classs="img-responsive" src="<?= $cocktailcard['imgurlsmall']?>"/>
-                        <div class="filter"></div>
-
-                        <div class="actions">
-                            <button class="btn btn-round btn-fill btn-neutral btn-modern">
-                                <a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $cocktailcard['id']]); ?>">
-                                Détails</a>
-                            </button>
-                        </div>
+                            <div class="content">
+                                <h4 class="title"><a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $cocktailcard['id']]); ?>"><?= $cocktailcard['name']?></a></h4>
+                                <p class="description">Un cocktail <?= $cocktailcard['gouts'] ?> pour <?= $cocktailcard['occasions'] ?>.</p>
+                            </div>                                           
+                        </div> <!-- end card -->
                     </div>
-
-                    <div class="content">
-                        <h4 class="title"><a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $cocktailcard['id']]); ?>"><?= $cocktailcard['name']?></a></h4>
-                        <p class="description">Un cocktail <?= $cocktailcard['gouts'] ?> pour <?= $cocktailcard['occasions'] ?>.</p>
-                    </div>                                           
-                </div> <!-- end card -->
+                <?php endforeach ?>
             </div>
-            <?php endforeach ?>
-        </div>
-    </div>
-</section>
-<?php $this->stop('main_content') ?>
+
+
+
+            <div class="row">
+                <div class="col-xs-12 col-md-12 text-center">
+                    <h2>Vous aimez le <?= $nomcouleur ?> ?</h2>
+                    <hr class="glass-primary">
+                </div>
+            </div>
+            <div class="row">
+                <?php foreach ($cocktailscouleur as $cocktailcard): ?>
+                    <div class="card-box col-md-3 col-sm-6">
+                        <div class="card" data-mh="colorgroup">                            
+                            <div class="header">
+                                <img classs="img-responsive" src="<?= $cocktailcard['imgurlsmall']?>"/>
+                                <div class="filter"></div>
+
+                                <div class="actions">
+                                    <button class="btn btn-round btn-fill btn-neutral btn-modern">
+                                        <a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $cocktailcard['id']]); ?>">
+                                            Détails</a>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="content">
+                                    <h4 class="title"><a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $cocktailcard['id']]); ?>"><?= $cocktailcard['name']?></a></h4>
+                                    <p class="description">Un cocktail <?= $cocktailcard['gouts'] ?> pour <?= $cocktailcard['occasions'] ?>.</p>
+                                </div>                                           
+                            </div> <!-- end card -->
+                        </div>
+                    <?php endforeach ?>
+                </div>
+            </div>
+        </section>
+        <?php $this->stop('main_content') ?>

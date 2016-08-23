@@ -91,7 +91,7 @@
                                     
                                     <a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $cocktailcard['id']]); ?>">
                                         <div class="actions"> 
-                                            <i class="fa fa-search" aria-hidden="true"></i>
+                                            <i class="fa fa-search trois" aria-hidden="true"></i>
                                         </div>
                                     </a>
                                 </div>
