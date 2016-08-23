@@ -74,7 +74,7 @@
                         <a href="<?= $this->url('outils_showoutils') ?>">Bar-à-outils</a>
                     </li>
                     <li>
-                        <a href="<?= $this->url('outils_showoutils') ?>">&Agrave; propos</a>
+                        <a href="<?= $this->url('about_aPropos') ?>">&Agrave; propos</a>
                     </li>
                     <li>
                         <a href="<?= $this->url('contact_envoieEmail') ?>">Contact</a>

@@ -76,7 +76,7 @@
                     </li>
 
                     <li>
-                        <a href="#">&Agrave; propos</a>
+                        <a href="<?= $this->url('about_aPropos') ?>">&Agrave; propos</a>
                     </li>
                     <li>
                         <a href="<?= $this->url('contact_envoieEmail') ?>">Contact</a>

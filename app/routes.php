@@ -81,5 +81,8 @@
 		['GET|POST', '/outils/', 'Outils#showOutils', 'outils_showoutils'],
 		['GET|POST', '/outils/[:id]', 'Outils#showFicheOutil', 'outils_showficheoutil'],
 
+		// Page a propos
+		['GET|POST', '/about/', 'About#aPropos', 'about_aPropos']
+
 
 	);
