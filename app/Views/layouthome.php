@@ -74,10 +74,10 @@
                         <a href="<?= $this->url('outils_showoutils') ?>">Bar-à-outils</a>
                     </li>
                     <li>
-                        <a href="#">&Agrave; propos</a>
+                        <a href="<?= $this->url('outils_showoutils') ?>">&Agrave; propos</a>
                     </li>
                     <li>
-                        <a href="#">Contact</a>
+                        <a href="<?= $this->url('contact_envoieEmail') ?>">Contact</a>
                     </li>
 
                     <?php if (empty($w_user)) : ?>

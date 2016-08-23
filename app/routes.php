@@ -74,6 +74,9 @@
 		// Page de suppression du membre
 		['GET|POST', '/Admin/supprimer_membre/[:id]', 'Admin#supprimerMembre', 'Admin_supprimer_membre'],
 	
+		['GET|POST', '/contact/', 'Contact#envoieEmail', 'contact_envoieEmail'],
+		['GET|POST', '/contact/confirm/', 'Contact#confirmEmail', 'contact_confirmEmail'],
+
 
 		['GET|POST', '/outils/', 'Outils#showOutils', 'outils_showoutils'],
 		['GET|POST', '/outils/[:id]', 'Outils#showFicheOutil', 'outils_showficheoutil'],

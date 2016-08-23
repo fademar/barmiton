@@ -79,7 +79,7 @@
                         <a href="#">&Agrave; propos</a>
                     </li>
                     <li>
-                        <a href="#">Contact</a>
+                        <a href="<?= $this->url('contact_envoieEmail') ?>">Contact</a>
                     </li>
                     
                     <?php if (empty($w_user)) : ?>
