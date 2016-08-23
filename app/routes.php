@@ -38,7 +38,7 @@
 		['GET', '/data/errors/', 'Users#generateErrors', 'users_generateerrors'],
 
 		// Page d'inscription
-		['GET|POST', '/users/inscription/', 'Users#UsersInscription', 'Users_UsersInscription'],
+		['GET|POST', '/Users/inscription/', 'Users#UsersInscription', 'Users_UsersInscription'],
 
 		// Page de connexion
 		['GET|POST', '/Users/connexion/', 'Users#UsersConnexion', 'Users_UsersConnexion'],

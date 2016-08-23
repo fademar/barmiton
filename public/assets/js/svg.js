@@ -25,8 +25,8 @@ $(document).ready(function() {
 					
 					var bubble = martini.circle(xbulle, ybulle, rbulle)
 					bubble.attr({
-						fill: '#BAD1CD', 
-						opacity: 0.9, 
+						fill: '#49A1BC', 
+						opacity: 0.75, 
 						stroke: '#ffffff', 
 						strokeWidth: 0.1,
 					});

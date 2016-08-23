@@ -8,6 +8,8 @@ use Model\Users\UsersAuthentificationModel;
 use Model\Users\UsersProfil;
 use Model\Users\ChangePassword;
 use Model\Users\ChangeUsername;
+use DateTime;
+use DateInterval;
 
 class UsersController extends Controller
 {
@@ -20,6 +22,12 @@ class UsersController extends Controller
 		$prenom = '';
 		$showform = true;
 		$error = '';
+		$nom	= '';
+		$pseudo	= '';
+		$dateNaissance	= '';
+		$password	= '';
+		$confirmPassword	= '';
+		$email	= '';
 
 		if($_POST)
 		{
@@ -39,6 +47,13 @@ class UsersController extends Controller
 
 					$pseudosolo = $db->search(['username' => $pseudo]);
 					$emailsolo	= $db->search(['email' => $email]);
+
+					$now 		= new DateTime();
+					$date 		= new DateTime($dateNaissance);
+					$interval 	= new DateInterval('P18Y');
+
+					if ($now->sub($interval) < $date) { $error[] = 'Vous devez avoir au moins 18 ans pour vous inscrire.' ;}
+
 
 					if (!empty($pseudosolo)) { $error[] = 'Ce pseudo existe déjà !'; }
 					if (!empty($pseudosolo)) { $error[] = 'Cet email existe déjà !'; }
@@ -61,13 +76,21 @@ class UsersController extends Controller
 						$db->insert($data);
 						$showform = false;					
 					}
-					else {
 
-					}
 			}
 		}
 		
-		$this->show('Users/usersinscription', ['showform' => $showform, 'prenom' => $prenom, 'error' => $error]);
+		$this->show('Users/usersinscription', [
+												'showform' 			=> $showform, 
+												'prenom' 			=> $prenom, 
+												'nom' 				=> $nom,
+												'pseudo' 			=> $pseudo,
+												'dateNaissance' 	=> $dateNaissance,
+												'password' 			=> $password,
+												'confirmPassword' 	=> $confirmPassword,
+												'email' 			=> $email,
+												'error' 			=> $error
+											  ]);
 
 	}
 
@@ -82,7 +105,6 @@ class UsersController extends Controller
 		// -- Verification de mon utilisateur avec la BDD
 
 		// -- Si tous est Ok on le connecte puis on le redirige
-
 		if ($_POST)
 		{
 			
@@ -106,8 +128,14 @@ class UsersController extends Controller
 				}
 			}
 		}
-
-		$this->redirect($_POST['url']);
+		
+		if (($_POST['url'] == '/barmiton/public/Users/connexion/') || ($_POST['url'] == '/barmiton/public/Users/inscription/')) {
+			
+			$this->redirectToRoute('default_home');
+		}
+		else {
+			$this->redirect($_POST['url']);	
+		}
 	}
 
 	// deconnexion

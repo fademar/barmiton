@@ -1,9 +1,8 @@
-<?php $this->layout('layoutadmin2', ['title' => 'Administration Updates']) ?>
+<?php $this->layout('layoutadmin2', ['title' => 'Accueil Backoffice']) ?>
 
 <?php $this->start('main_content') ?>  
 
-
-    <div id="page-wrapper">
+<div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">Tables</h1>
@@ -54,7 +53,7 @@
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
-           
+   </div>        
 </div>
 
 <?php $this->stop('main_content') ?>

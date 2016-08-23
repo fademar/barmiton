@@ -55,7 +55,9 @@ $(document).ready(function() {
 
 	});
 
-
+	$('#pagination').twbsPagination({
+        visiblePages: 10,
+    });
 
 
 	// Tri des tableaux dans le back-office

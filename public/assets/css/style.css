@@ -36,7 +36,8 @@ hr.glass-light,
 hr.glass-primary,
 hr.glass-grey, 
 hr.heart-primary,
-hr.time-primary {
+hr.time-primary, 
+hr.pencil-primary {
   padding: 0;
   border: none;
   border-top: solid 5px;
@@ -76,6 +77,16 @@ hr.time-primary:after {
   font-size: 2em;
   padding: 0 0.25em;
 }
+
+hr.pencil-primary:after {
+  content: "\f040";
+  font-family: FontAwesome;
+  display: inline-block;
+  position: relative;
+  top: -0.8em;
+  font-size: 2em;
+  padding: 0 0.25em; 
+}
 hr.glass-light {
   border-color: white;
 }
@@ -85,12 +96,14 @@ hr.glass-light:after {
 }
 hr.glass-primary, 
 hr.heart-primary,
-hr.time-primary {
+hr.time-primary,
+hr.pencil-primary {
   border-color: #22264B;
 }
 hr.glass-primary:after,
 hr.heart-primary:after,
-hr.time-primary:after {
+hr.time-primary:after,
+hr.pencil-primary:after {
   background-color: white;
   color: #22264B;
 }
@@ -114,13 +127,19 @@ header#home .container {
   padding-bottom: 50px;
 }
 
-header#recherche {
-  background: #EF626C;
+header.recherche {
+  background: #FAF7FA;
+}
+header.recherche h2 {
+  padding-top: 40px;
+}
+header.recherche h3 {
+  padding: 30px 0 15px 0;
+}
+header.recherche label {
+  margin-top: 10px;
 }
 
-header#resultats {
-  background: #EF626C;
-}
 
 header#filtre {
   background: #ffffff;
@@ -681,7 +700,7 @@ fieldset[disabled] .btn-success.active {
 .containermixer {
   width: 200px;
   height: 100%;
-  margin: 3em auto;
+  margin: 4em auto;
 }
 
 .pulse-button {
@@ -841,10 +860,6 @@ fieldset[disabled] .btn-success.active {
 
 }
 
-.form-control {
-      width: 53%;
-    margin: 2% auto;
-}
 
 #commenter {
     margin-left: 46%;
@@ -1100,4 +1115,32 @@ border-radius: 11px;
 padding-left: 10px;
 padding-right: 10px;
 }
+
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+  color: #FFFFFF;
+}
+.btn-circle.btn-lg {
+  width: 50px;
+  height: 50px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+}
+.btn-circle.btn-xl {
+  width: 70px;
+  height: 70px;
+  padding: 10px 16px;
+  font-size: 24px;
+  line-height: 1.33;
+  border-radius: 35px;
+}
+
 

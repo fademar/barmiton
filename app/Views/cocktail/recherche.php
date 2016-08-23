@@ -2,7 +2,7 @@
 
 <?php $this->start('main_content') ?>
 
-<header id="resultats">
+<header class="recherche">
     <div class="container">
         <div class="row center">
             <h2 class="text-center">Recherche avancée</h2>
@@ -80,7 +80,7 @@
                 </div>
 
                 <div id="submitbtn" class="col-xs-12 col-md-12 text-center">
-                    <button class="btn btn-primary btn-lg" type="submit">Mixer !</button>                 
+                    <button class="btn btn-primary btn-lg" type="submit">Rechercher</button>                 
                 </div>
             </form>
         </div>
@@ -109,12 +109,11 @@
                             <img classs="img-responsive" src="<?= $cocktailcard['imgurlsmall']?>"/>
                             <div class="filter"></div>
 
-                            <div class="actions">
-                                <button class="btn btn-round btn-fill btn-neutral btn-modern">
-                                    <a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $cocktailcard['id']]); ?>">
-                                    Détails</a>
-                                </button>
+                            <a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $cocktailcard['id']]); ?>">
+                            <div class="actions"> 
+                                <i class="fa fa-search" aria-hidden="true"></i>
                             </div>
+                            </a>
                         </div>
 
                         <div class="content">

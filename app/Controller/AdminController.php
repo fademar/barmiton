@@ -15,21 +15,21 @@ class AdminController extends Controller
 
 	public function admin()
 	{
-		
-		$this->show('admin/admin'); 
-	}
-
-	public function updatecocktail() {
 		$_admin = new AdminModel();
 		$_updates = $_admin->getLastUpdates();
 		$_cocktaildata = array();
 
-		$this->show('admin/adminupdates', [
+		$this->show('admin/admin', [
 												'updates' => $_updates,
+		
 											]);
+	
+
+
 
 
 	}
+
 
 	public function admincocktails()
 	{
@@ -41,6 +41,13 @@ class AdminController extends Controller
 			$_cocktaildb = new CocktailsModel();
 			$_cocktaildb->setTable('cocktails');
 			$_cocktaildata = $_cocktaildb->search(['idCocktailApi' => $_POST['idcocktail']]);
+
+
+			$_recettedb = new RecettesModel();
+			$_recettedb->setTable('recettes');
+			$_recettedata = $_recettedb->search 
+
+
 
 			$this->show('admin/modifcocktail', [
 												'cocktaildata' => $_cocktaildata[0]

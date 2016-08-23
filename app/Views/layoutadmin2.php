@@ -19,14 +19,8 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css">
 
-    <!-- Age verification CSS -->
-    <link href="<?= $this->assetUrl('css/age-verification.css') ?>" rel="stylesheet">
-
-     <!-- Sweet Alert CSS -->
-    <link href="<?= $this->assetUrl('css/sweetalert.css') ?>" rel="stylesheet">
-    
-    <!-- Hipsters Cards CSS -->
-    <link href="<?= $this->assetUrl('css/hipster_cards.css') ?>" rel="stylesheet">
+     <!-- Bootstrap Table sorter -->
+    <link href="<?= $this->assetUrl('css/bootstrap-sortable.css') ?>" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="<?= $this->assetUrl('vendor/font-awesome/css/font-awesome.min.css') ?>" rel="stylesheet" type="text/css">
@@ -59,7 +53,7 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="<?= $this->url('default_home') ?>">Barmiton</a>
+                <a class="navbar-brand" href="<?= $this->url('default_home') ?>">Barmiton Admin</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -69,34 +63,22 @@
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                        <a href="<?= $this->url('cocktails_showcocktails') ?>">Recettes</a>
+                        <a href="<?= $this->url('admin_admin') ?>">Dashboard</a>
                     </li>
                     <li>
-                        <a href="<?= $this->url('outils_showoutils') ?>">Bar-à-outils</a>
+                        <a href="<?= $this->url('admin_admincocktails') ?>">Cocktails</a>
                     </li>
 
                     <li>
-                        <a href="#">&Agrave; propos</a>
+                        <a href="#">Membres</a>
                     </li>
-                    <li>
-                        <a href="#">Contact</a>
-                    </li>
-                    
-                    <?php if (empty($w_user)) : ?>
-                    <li>
-                        <a data-toggle="modal" href="#connexion">Se connecter</a>
-                    </li>
-                    <?php else : ?>
                     <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i>&nbsp;&nbsp;<?= $w_user['Prenom']; ?> <span class="caret"></span></a>
                         <ul class="dropdown-menu"> 
-                            <li><a href="<?= $this->url('Users_UsersProfil') ?>">Mon profil</a></li>
-                            <li><a href="<?= $this->url('Favoris_showFavoris') ?>">Mes favoris</a></li>
                             <li><a href="<?= $this->url('Users_UsersDeconnexion') . '?url=' . $_SERVER['REDIRECT_URL'] ?>">Se déconnecter</a></li>
                           
                         </ul>
                     </li>
-                    <?php endif ?>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

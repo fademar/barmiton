@@ -32,7 +32,7 @@
                             <div class="content">
                                 <h4 class="title"><a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $favoris['favorisdata']['id']]); ?>"><?= $favoris['favorisdata']['name']?></a></h4>
                                 
-                                <button class="btn btn-default" type="submit" name="supprimer" value="<?= $favoris['idfavoris'] ?>">Supprimer</button>
+                                <button class="btn btn-danger btn-circle" type="submit" name="supprimer" value="<?= $favoris['idfavoris'] ?>"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                             </div>                                           
                         </div> <!-- end card -->
                     </div>
