@@ -211,6 +211,10 @@ class CocktailsController extends Controller
 
 	}
 
+	public function alert($msg) {
+
+		echo '<script type="text/javascript">alert("' . $msg . '")</script>';
+	}
 
 
 	public function afficherCocktail($id)
@@ -229,20 +233,32 @@ class CocktailsController extends Controller
 			if (isset($_POST['ajouterFavoris']))
 			{
 				
-				$User = $this->getUser();
-				$idMembres = $User['id'];
+					$User = $this->getUser();
+					$idMembres = $User['id'];
 
-				$data = array(
+					$datafavoris = $objetFavoris->search(['iddrink' => $id, 'idMembres' => $idMembres], $operator = 'AND');
+					
+					$data = array(
 
-					'iddrink' => $id,
-					'idMembres' => $idMembres
-				);
-				
-				$objetFavoris->insert($data);
+						'iddrink' => $id,
+						'idMembres' => $idMembres
+					);
+
+				if (empty($datafavoris)) {
+					
+					$objetFavoris->insert($data);
 
 					sleep(1);
+				}
+				else {
+					$favorisok = "false";
 
-				$this->redirectToRoute('cocktails_afficher_cocktail', ['id' => $dataCocktail['id']]);
+				}
+
+				$this->redirectToRoute('cocktails_afficher_cocktail', [	
+																		'id' 	=> $dataCocktail['id'],
+																		'favorisok' => $favorisok
+																		]);
 				
 			}
 

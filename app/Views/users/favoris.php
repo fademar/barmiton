@@ -28,20 +28,19 @@
                             <div class="header">
                                 <img classs="img-responsive" src="<?= $favoris['favorisdata']['imgurlsmall']?>"/>
                                 <div class="filter"></div>
-
-                                <div class="actions">
-                                    <button class="btn btn-round btn-fill btn-neutral btn-modern">
-                                        <a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $favoris['favorisdata']['id']]); ?>">
-                                            Détails</a>
-                                        </button>
-                                </div>
+                                
+                                <a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $favoris['favorisdata']['id']]); ?>">
+                                    <div class="actions">
+                                        <i class="fa fa-search quatre" aria-hidden="true"></i>
+                                    </div>
+                                </a>
                             </div>
 
                             <div class="content">
                                 <h4 class="title"><a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $favoris['favorisdata']['id']]); ?>"><?= $favoris['favorisdata']['name']?></a></h4>
                                 
                                 <form method=POST action="">
-                                    <button class="btn btn-danger btn-circle" type="submit" name="supprimer" value="<?= $favoris['idfavoris'] ?>"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                    <button class="btn btn-defaut btn-circle" type="submit" name="supprimer" value="<?= $favoris['idfavoris'] ?>"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                                 </form>
                             </div>                                           
                         </div> <!-- end card -->

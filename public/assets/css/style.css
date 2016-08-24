@@ -716,6 +716,7 @@ fieldset[disabled] .btn-success.active {
   color: #FFFFFF;
   font-family: 'Lobster', cursive;
   font-size: 2em;
+  outline: none;
 }
 .pulse-button:hover 
 {
@@ -755,7 +756,9 @@ fieldset[disabled] .btn-success.active {
 }
 
 
-
+button#confirmFavoris {
+  outline: none;
+}
 
 
 

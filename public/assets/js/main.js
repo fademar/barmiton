@@ -37,7 +37,7 @@ $(document).ready(function() {
 
 
 	$('.pagination').twbsPagination({
-        totalPages: totalpage,
+        totalPages: totalpage - 1,
         visiblePages: 10,
         href: '?' + query + '&page={{number}}'
     });

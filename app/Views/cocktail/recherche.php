@@ -211,5 +211,16 @@
     </div>
 </section>
 
+<script>
+$(document).ready(function() {
+var totalpage = $('input#nbpages').val();
+var query = $('input#querypage').val();
 
+$('.pagination').twbsPagination({
+        totalPages: totalpage,
+        visiblePages: 10,
+        href: '?' + query + '&page={{number}}'
+    });
+});
+</script>
 <?php $this->stop('main_content') ?>
