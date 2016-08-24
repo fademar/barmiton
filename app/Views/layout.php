@@ -31,7 +31,7 @@
     <!-- Custom Fonts -->
     <link href="<?= $this->assetUrl('vendor/font-awesome/css/font-awesome.min.css') ?>" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lobster|Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
 
     <!-- CSS principal -->
     <link href="<?= $this->assetUrl('css/style.css') ?>" rel="stylesheet">
@@ -140,7 +140,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="connexion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="connexion" tabindex="-1" role="dialog" aria-labelledby="connexion">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">

@@ -7,7 +7,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-md-12 ">
-                    <div id="svg parent text-center">
+                    <div id="svg" class="parent text-center">
                     <div class="svgbox hidden-xs">
                         <svg id="martini" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 65 100" preserveAspectRatio="xMinYMin meet">
                             <title>martini</title>
@@ -44,7 +44,7 @@
         <div class="container">
             <div class="col-xs-12 col-md-12 text-center">
                 <h2>Choisissez votre ingrédient préféré<br>
-                ou consultez nos <a href="$this->url('cocktails_showcocktails')">recettes</a></h2>
+                ou consultez nos <a href="<?= $this->url('cocktails_showcocktails') ?>">recettes</a></h2>
                 <hr class="glass-primary">
             </div>
             <div class="row">
@@ -86,7 +86,7 @@
                         <div class="card-box col-md-4 col-sm-6">
                             <div class="card" data-mh="homegroup">                            
                                 <div class="header">
-                                    <img classs="img-responsive" src="<?= $cocktailcard['imgurlsmall']?>"/>
+                                    <img class="img-responsive" src="<?= $cocktailcard['imgurlsmall']?>"/>
                                     <div class="filter"></div>
                                     
                                     <a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $cocktailcard['id']]); ?>">
