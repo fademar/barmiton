@@ -2,58 +2,59 @@
 
 <?php $this->start('main_content') ?>
 
-<header id="recherche">
+<header class="recherche">
     <div class="container">
         <div class="row center">
-            <h2>Recherche avancée</h2>
-            <form action="../recherche/" method="POST">
 
-                <div class="row">
-                    <div class="col-xs-12 col-md-6">
-                        <div class="form-group">
-                            <label for="alcoolsprincipauxId">Alcools principaux</label>
-                            <select id="alcoolsprincipauxId" name="alcoolsprincipaux[]" class="form-control selectpicker" multiple title="Choisissez une ou plusieurs options">    
-                                <option value="gin">gin</option>
-                                <option value="rum">rhum</option>
-                                <option value="tequila">tequila</option>
-                                <option value="vodka">vodka</option>
-                                <option value="whisky">whisky</option>
-                            </select>
-                        </div>
+            <h2 class="searchtrigger text-center">Moteur de recherche</h2>
+            <div class="text-center"><i class="fa fa-arrow-circle-o-down searchtrigger" aria-hidden="true"></i></div>
+            <div class="divsearch">
+
+                <form action="../recherche/" method="GET">
+                    <h3 class="text-center">Ingrédients</h3>    
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <label for="alcoolsprincipauxId">Alcools principaux</label>
+                        <select id="alcoolsprincipauxId" name="alcoolsprincipaux[]" class="form-control selectpicker" multiple title="Choisissez une ou plusieurs options"> 
+                            <?php foreach($form['alcoolsprincipaux'] as $champ): ?>     
+                                <option value="<?php echo $champ['champuk']?>"><?php echo (mb_strtolower($champ['champfr'], 'UTF-8')); ?></option>
+
+
+                            <?php endforeach ?>
+                        </select>
                     </div>
 
 
-                    <div class="col-xs-12 col-md-6">
-                        <label for="alcoolsId">Autres alcools/liqueurs</label>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <label for="alcoolsId">Autres alcools</label>
                         <select id="alcoolsId" name="alcools[]" class="form-control selectpicker" multiple data-live-search="true" title="Choisissez une ou plusieurs options"> 
                             <?php foreach($form['alcools'] as $champ): ?>     
                                 <option value="<?php echo $champ['idIngredientsApi']?>"><?php echo (mb_strtolower($champ['nomIngredient'], 'UTF-8')); ?></option>
                             <?php endforeach ?>
                         </select>
                     </div>
-                </div>
+                    <div class="clearfix"></div>
 
-                <div class="row">
-                    <div class="col-xs-12 col-md-6">
+                    <div class="col-xs-12 col-sm-6 col-md-6">
                         <label for="softsId">Softs</label>
-                        <select id="softsId" name="softs[]" class="form-control selectpicker" multiple title="Choisissez une ou plusieurs options"> 
+                        <select id="softsId" name="softs[]" class="form-control selectpicker" multiple data-live-search="true" title="Choisissez une ou plusieurs options"> 
                             <?php foreach($form['softs'] as $champ): ?>     
                                 <option value="<?php echo $champ['idIngredientsApi']?>"><?php echo (mb_strtolower($champ['nomIngredient'], 'UTF-8')); ?></option>
                             <?php endforeach ?>
                         </select>
                     </div>
-                    <div class="col-xs-12 col-md-6">
+
+                    <div class="col-xs-12 col-sm-6 col-md-6">
                         <label for="softsId">Fruits/Jus de fruits</label>
-                        <select id="softsId" name="fruits[]" class="form-control selectpicker" multiple title="Choisissez une ou plusieurs options"> 
+                        <select id="softsId" name="fruits[]" class="form-control selectpicker" multiple data-live-search="true" title="Choisissez une ou plusieurs options"> 
                             <?php foreach($form['fruits'] as $champ): ?>     
                                 <option value="<?php echo $champ['idIngredientsApi']?>"><?php echo (mb_strtolower($champ['nomIngredient'], 'UTF-8')); ?></option>
                             <?php endforeach ?>
                         </select>
                     </div>
-                </div>
+                    <div class="clearfix"></div>
+                    <h3  class="text-center">Options</h3>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
 
-                <div class="row">
-                    <div class="col-xs-12 col-md-4">
                         <label for="goutsId">Goûts</label>
                         <select id="goutsId" name="gouts[]" class="form-control selectpicker" multiple title="Choisissez une ou plusieurs options"> 
                             <?php foreach($form['gouts'] as $champ): ?>     
@@ -61,7 +62,25 @@
                             <?php endforeach ?>
                         </select>
                     </div>
-                    <div class="col-xs-12 col-md-4">
+
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <label for="couleursId">Couleurs</label>
+                        <select id="couleursId" name="couleurs[]" class="form-control selectpicker" multiple title="Choisissez une ou plusieurs options"> 
+                            <?php foreach($form['couleurs'] as $champ): ?>     
+                                <option value="<?php echo $champ['champuk']?>"><?php echo (mb_strtolower($champ['champfr'], 'UTF-8')); ?></option>
+                            <?php endforeach ?>
+                        </select>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <label for="difficultesId">Difficulté</label>
+                        <select id="difficultesId" name="difficultes[]" class="form-control selectpicker" multiple title="Choisissez une ou plusieurs options"> 
+                            <?php foreach($form['difficultes'] as $champ): ?>     
+                                <option value="<?php echo $champ['champuk']?>"><?php echo (mb_strtolower($champ['champfr'], 'UTF-8')); ?></option>
+                            <?php endforeach ?>
+                        </select>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+
                         <label for="occasionsId">Occasions</label>
                         <select id="occasionsId" name="occasions[]" class="form-control selectpicker" multiple title="Choisissez une ou plusieurs options"> 
                             <?php foreach($form['occasions'] as $champ): ?>     
@@ -69,102 +88,110 @@
                             <?php endforeach ?>
                         </select>
                     </div>
-                    <div class="col-xs-12 col-md-4">
-                        <label for="difficultesId">Niveau</label>
-                        <div class="radio">
-                            <label>
-                            <input type="radio" name="difficultes" id="optionsRadios1" value="easy">
-                                Facile
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="difficultes" id="optionsRadios2" value="average">
-                                    Moyen
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="difficultes" id="optionsRadios3" value="advanced">
-                                Difficile
-                            </label>
-                        </div>
-                    </div>
-                </div>
+                    <div class="clearfix"></div>
 
                 <div id="submitbtn" class="col-xs-12 col-md-12 text-center">
-                    <button class="btn btn-primary btn-lg" type="submit">Mixer !</button>                 
+                    <button class="btn btn-primary btn-lg" type="submit">Rechercher</button>                 
                 </div>
             </form>
         </div>
     </div>
+</div>
 </header>
 
 <!-- Sélection des meilleurs cocktails -->
-<section id="best">
+<section class="withheader">
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-md-12 text-center">
                 <h2>Nos utilisateurs ont aimé</h2>
-                <hr class="glass-primary">
+                <hr class="heart-primary">
             </div>
         </div>
-        <div class="row">
-            <?php foreach ($cocktailbest as $cocktailcard): ?>
-                <div class="col-xs-6 col-md-3 portfolio-item">     
-                    <a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $cocktailcard['id']]); ?>">
-                        <img src="<?= $cocktailcard['imgurlsmall']?>" class="img-responsive img-rounded img-thumbnail" alt="">
-                        <h3><?= $cocktailcard['name']?></h3>
-                    </a>
-                </div>
-            <?php endforeach ?>
-        </div>
-    </div>
-</section>
+        <?php foreach ($cocktailbest as $cocktailcard): ?>
+            <div class="card-box col-md-3 col-sm-6">
+                <div class="card" data-mh="bestgroup">                            
+                    <div class="header">
+                        <img classs="img-responsive" src="<?= $cocktailcard['imgurlsmall']?>"/>
+                        <div class="filter"></div>
 
-<!-- Sélection de cocktails du moment -->
-<section id="occasions">
-    <div class="container">
+                        <a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $cocktailcard['id']]); ?>">
+                            <div class="actions"> 
+                                <i class="fa fa-search quatre" aria-hidden="true"></i>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="content">
+                        <h4 class="title"><a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $cocktailcard['id']]); ?>"><?= $cocktailcard['name']?></a></h4>
+                        <p class="description">Un cocktail <?= $cocktailcard['gouts'] ?> pour <?= $cocktailcard['occasions'] ?>.</p>
+                    </div>                                           
+                </div> <!-- end card -->
+            </div>
+        <?php endforeach ?>
+
+
         <div class="row">
             <div class="col-xs-12 col-md-12 text-center">
                 <h2>Un cocktail pour <?= $nommoment ?> ?</h2>
-                <hr class="glass-primary">
+                <hr class="time-primary">
             </div>
         </div>
         <div class="row">
             <?php foreach ($cocktailsoccasion as $cocktailcard): ?>
-                <div class="col-xs-6 col-md-3 portfolio-item">     
-                    <a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $cocktailcard['id']]); ?>">
-                        <img src="<?= $cocktailcard['imgurlsmall']?>" class="img-responsive img-rounded img-thumbnail" alt="">
-                        <h3><?= $cocktailcard['name']?></h3>
-                    </a>
-                </div>
-            <?php endforeach ?>
-        </div>
-    </div>
-</section>
+                <div class="card-box col-md-3 col-sm-6">
+                    <div class="card" data-mh="momentgroup">                            
+                        <div class="header">
+                            <img classs="img-responsive" src="<?= $cocktailcard['imgurlsmall']?>"/>
+                            <div class="filter"></div>
 
+                            <a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $cocktailcard['id']]); ?>">
+                            <div class="actions"> 
+                                <i class="fa fa-search quatre" aria-hidden="true"></i>
+                            </div>
+                        </a>
+                        </div>
 
-<!-- Sélection de cocktails par couleur -->
-<section id="couleurs">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-md-12 text-center">
-                <h2>Vous aimez le <?= $nomcouleur ?> ?</h2>
-                <hr class="glass-primary">
+                            <div class="content">
+                                <h4 class="title"><a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $cocktailcard['id']]); ?>"><?= $cocktailcard['name']?></a></h4>
+                                <p class="description">Un cocktail <?= $cocktailcard['gouts'] ?> pour <?= $cocktailcard['occasions'] ?>.</p>
+                            </div>                                           
+                        </div> <!-- end card -->
+                    </div>
+                <?php endforeach ?>
             </div>
-        </div>
-        <div class="row">
-            <?php foreach ($cocktailscouleur as $cocktailcard): ?>
-                <div class="col-xs-6 col-md-3 portfolio-item">     
-                    <a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $cocktailcard['id']]); ?>">
-                        <img src="<?= $cocktailcard['imgurlsmall']?>" class="img-responsive img-rounded img-thumbnail" alt="">
-                        <h3><?= $cocktailcard['name']?></h3>
-                    </a>
-                </div>
-            <?php endforeach ?>
-        </div>
-    </div>
-</section>
 
-<?php $this->stop('main_content') ?>
+
+
+            <div class="row">
+                <div class="col-xs-12 col-md-12 text-center">
+                    <h2>Vous aimez le <?= $nomcouleur ?> ?</h2>
+                    <hr class="glass-primary">
+                </div>
+            </div>
+            <div class="row">
+                <?php foreach ($cocktailscouleur as $cocktailcard): ?>
+                    <div class="card-box col-md-3 col-sm-6">
+                        <div class="card" data-mh="colorgroup">                            
+                            <div class="header">
+                                <img classs="img-responsive" src="<?= $cocktailcard['imgurlsmall']?>"/>
+                                <div class="filter"></div>
+
+                                <a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $cocktailcard['id']]); ?>">
+                            <div class="actions"> 
+                                <i class="fa fa-search quatre" aria-hidden="true"></i>
+                            </div>
+                        </a>
+                                </div>
+
+                                <div class="content">
+                                    <h4 class="title"><a href="<?= $this->url("cocktails_afficher_cocktail", ["id" => $cocktailcard['id']]); ?>"><?= $cocktailcard['name']?></a></h4>
+                                    <p class="description">Un cocktail <?= $cocktailcard['gouts'] ?> pour <?= $cocktailcard['occasions'] ?>.</p>
+                                </div>                                           
+                            </div> <!-- end card -->
+                        </div>
+                    <?php endforeach ?>
+                </div>
+            </div>
+        </section>
+        <?php $this->stop('main_content') ?>

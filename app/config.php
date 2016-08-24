@@ -16,10 +16,10 @@ $w_config = [
 	'security_password_property' => 'password',		//nom de la colonne pour le "mot de passe"
 	'security_role_property' => 'role',				//nom de la colonne pour le "role"
 
-	'security_login_route_name' => 'login',			//nom de la route affichant le formulaire de connexion
+	'security_login_route_name' => 'Users_UsersConnexion',			//nom de la route affichant le formulaire de connexion
 
 	// configuration globale
-	'site_name'	=> '', 								// contiendra le nom du site
+	'site_name'	=> 'barmiton', 								// contiendra le nom du site
 ];
 // Coucou les enculés
 require('routes.php');

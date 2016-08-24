@@ -80,6 +80,7 @@ $(document).ready(function() {
 		  name: 'alcoolsprincipaux',
 		  display: 'ingredient',
 		  source: alcoolsprincipaux,
+		  limit:10,
 		  templates: {
 		    header: '<h3 class="league-name">Alcools principaux</h3>',
 		  }
@@ -87,6 +88,7 @@ $(document).ready(function() {
 		{
 		  name: 'alcools',
 		  display: 'ingredient',
+  		  limit:10,
 		  source: alcools,
 		  templates: {
 		    header: '<h3 class="league-name">Alcools</h3>',
@@ -96,6 +98,7 @@ $(document).ready(function() {
 		  name: 'softs',
 		  display: 'ingredient',
 		  source: softs,
+		  limit:10,
 		  templates: {
 		    header: '<h3 class="league-name">Softs</h3>',
 		  }
@@ -104,6 +107,7 @@ $(document).ready(function() {
 		  name: 'fruits',
 		  display: 'ingredient',
 		  source: fruits,
+		  limit:10,
 		  templates: {
 		    header: '<h3 class="league-name">Fruits</h3>',
 		  }
@@ -112,6 +116,7 @@ $(document).ready(function() {
 		  name: 'epices',
 		  display: 'ingredient',
 		  source: epices,
+  		  limit:10,
 		  templates: {
 		    header: '<h3 class="league-name">Epices</h3>',
 		  }
@@ -120,6 +125,7 @@ $(document).ready(function() {
 		  name: 'divers',
 		  display: 'ingredient',
 		  source: divers,
+		  limit:10,		  
 		  templates: {
 		    header: '<h3 class="league-name">Divers</h3>',
 		  }
@@ -154,7 +160,7 @@ $(document).ready(function() {
             
             $(fieldcontainer).append(fieldHTML); // Add field html        	
         	
-        	var resultHTML = '<div><input id="ingredientId'+ i +'" type="hidden" name="ingredients[]" value=""></div>'
+        	var resultHTML = '<div><input id="ingredientId'+ i +'" type="hidden" name="ingredients[]"></div>'
 
         	$('.results').append(resultHTML);
 
